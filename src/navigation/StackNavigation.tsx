@@ -1,12 +1,31 @@
-import React from 'react'
-import { Text, View } from 'react-native'
+import { createStackNavigator } from '@react-navigation/stack';
+import React from 'react';
+import MyFavoritesScreen from '../screens/MyFavoritesScreen';
+import PaymentsScreen from '../screens/PaymentsScreen';
+import ProfileScreen from '../screens/ProfileScreen';
+
+const Stack = createStackNavigator();
 
 const StackNavigation = () => {
-    return (
-        <View>
-            <Text>Stack</Text>
-        </View>
-    )
-}
+  return (
+    <Stack.Navigator >
+      <Stack.Screen
+        name="Profile"
+        options={{ title: 'Mi perfil' }}
+        component={ProfileScreen}
+      />
+      <Stack.Screen
+        name="Payments"
+        options={{ title: 'Mis pagos' }}
+        component={PaymentsScreen}
+      />
+      <Stack.Screen
+        name="MyFavorites"
+        options={{ title: 'Mis favoritos' }}
+        component={MyFavoritesScreen}
+      />
+    </Stack.Navigator>
+  );
+};
 
-export default StackNavigation
+export default StackNavigation;

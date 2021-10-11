@@ -5,6 +5,7 @@ import HomeScreen from '../screens/HomeScreen';
 import ProfileScreen from '../screens/ProfileScreen';
 import MyPropertiesScreen from '../screens/MyPropertiesScreen';
 import MyDestPropertiesScreen from '../screens/MyDestPropertiesScreen';
+import StackNavigation from './StackNavigation';
 
 const Tab = createBottomTabNavigator();
 
@@ -53,9 +54,8 @@ const TabsNavigation = () => {
       />
       <Tab.Screen
         name="ProfileScreen"
-        
         options={{ title: 'Mi perfil', headerShown: false }}
-        component={ProfileScreen}
+        component={StackNavigation}
       />
     </Tab.Navigator>
   );

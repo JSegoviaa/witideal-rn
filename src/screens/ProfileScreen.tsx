@@ -5,7 +5,6 @@ import BtnList from '../components/ProfileScreen/BtnList';
 import PersonalInfo from '../components/ProfileScreen/PersonalInfo';
 
 
-
 const ProfileScreen = () => {
   return (
     <ScrollView>
@@ -13,7 +12,7 @@ const ProfileScreen = () => {
         <View>
           <PersonalInfo />
           {/* <Packages /> */}
-          <BtnList/>
+          <BtnList   />
         </View>
       </View>
     </ScrollView>

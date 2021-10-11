@@ -1,25 +1,24 @@
+import { useNavigation } from '@react-navigation/core';
 import React from 'react';
 import { TouchableOpacity, Text, View, StyleSheet } from 'react-native';
 
-
-
-
 const BtnList = () => {
+  const navigation = useNavigation();
 
   return (
     <View>
       <View style={styles.container}>
-        <TouchableOpacity>
+        <TouchableOpacity
+          onPress={() => {
+            navigation.navigate('Payments');
+          }}>
           <Text style={styles.btn}>Mis pagos</Text>
         </TouchableOpacity>
-        <TouchableOpacity>
+        <TouchableOpacity
+          onPress={() => {
+            navigation.navigate('MyFavorites');
+          }}>
           <Text style={styles.btn}>Mis favoritos</Text>
-        </TouchableOpacity>
-        <TouchableOpacity>
-          <Text style={styles.btn}>Añadir propiedad</Text>
-        </TouchableOpacity>
-        <TouchableOpacity>
-          <Text style={styles.btn}>Editar propiedad</Text>
         </TouchableOpacity>
       </View>
     </View>
