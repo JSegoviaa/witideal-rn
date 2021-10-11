@@ -30,10 +30,11 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     flex: 1,
     paddingBottom: 15,
+    marginTop:20
   },
   btn: {
-    backgroundColor: 'gray',
-    borderColor: 'teal',
+    backgroundColor: '#F5F5F5',
+    borderColor: '#41B8F9',
     borderRadius: 50,
     borderWidth: 1,
     marginBottom: 5,
@@ -41,6 +42,8 @@ const styles = StyleSheet.create({
     paddingVertical: 8,
     textAlign: 'center',
     width: 320,
+    color:'#3F19F9',
+    fontWeight:'700'
   },
 });
 

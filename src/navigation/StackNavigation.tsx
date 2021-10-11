@@ -8,10 +8,11 @@ const Stack = createStackNavigator();
 
 const StackNavigation = () => {
   return (
-    <Stack.Navigator >
+    <Stack.Navigator
+      screenOptions={{ cardStyle: { backgroundColor: 'white' } }}>
       <Stack.Screen
         name="Profile"
-        options={{ title: 'Mi perfil' }}
+        options={{ title: '' }}
         component={ProfileScreen}
       />
       <Stack.Screen
