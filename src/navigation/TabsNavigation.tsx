@@ -1,5 +1,5 @@
 import React from 'react';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { createBottomTabNavigator,  } from '@react-navigation/bottom-tabs';
 import Icon from 'react-native-vector-icons/Ionicons';
 import HomeScreen from '../screens/HomeScreen';
 import ProfileScreen from '../screens/ProfileScreen';
@@ -12,6 +12,7 @@ const TabsNavigation = () => {
   return (
     <Tab.Navigator
       screenOptions={({ route }) => ({
+        tabBarO:'',
         tabBarIcon: () => {
           let iconName: string = '';
           switch (route.name) {
@@ -33,7 +34,8 @@ const TabsNavigation = () => {
 
           return <Icon name={iconName} size={20} />;
         },
-      })}>
+      }) 
+      }>
       <Tab.Screen
         name="HomeScreen"
         options={{ title: 'Inicio', headerShown: false }}
@@ -51,6 +53,7 @@ const TabsNavigation = () => {
       />
       <Tab.Screen
         name="ProfileScreen"
+        
         options={{ title: 'Mi perfil', headerShown: false }}
         component={ProfileScreen}
       />
