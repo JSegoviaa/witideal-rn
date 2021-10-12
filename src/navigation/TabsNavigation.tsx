@@ -1,18 +1,19 @@
 import React from 'react';
-import { createBottomTabNavigator,  } from '@react-navigation/bottom-tabs';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Icon from 'react-native-vector-icons/Ionicons';
 import HomeScreen from '../screens/HomeScreen';
 import MyPropertiesScreen from '../screens/MyPropertiesScreen';
 import MyDestPropertiesScreen from '../screens/MyDestPropertiesScreen';
 import StackNavigation from './StackNavigation';
+import LoginScreen from '../screens/LoginScreen';
 
 const Tab = createBottomTabNavigator();
 
 const TabsNavigation = () => {
   return (
     <Tab.Navigator
+
       screenOptions={({ route }) => ({
-        tabBarO:'',
         tabBarIcon: () => {
           let iconName: string = '';
           switch (route.name) {
@@ -34,8 +35,7 @@ const TabsNavigation = () => {
 
           return <Icon name={iconName} size={20} />;
         },
-      }) 
-      }>
+      })}>
       <Tab.Screen
         name="HomeScreen"
         options={{ title: 'Inicio', headerShown: false }}
@@ -49,7 +49,7 @@ const TabsNavigation = () => {
       <Tab.Screen
         name="MyPropertiesScreen"
         options={{ title: 'Mis propiedades', headerShown: false }}
-        component={MyPropertiesScreen}
+        component={LoginScreen}
       />
       <Tab.Screen
         name="ProfileScreen"
