@@ -1,6 +1,7 @@
 import React from 'react';
 import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
+import { appStyles } from '../../theme/appTheme';
 
 const PersonalInfo = () => {
   return (
@@ -26,8 +27,12 @@ const PersonalInfo = () => {
           <Icon name="mail-open-outline" size={20} />
           140300177@ucaribe.edu.mx
         </Text>
-        <TouchableOpacity style={styles.btn}>
-          <Text style={styles.textCenter}>Editar perfil</Text>
+        <TouchableOpacity style={appStyles.btnPrimary}>
+          <Text style={appStyles.textCenter}>Editar perfil</Text>
+        </TouchableOpacity>
+        <View style={{ marginTop: 20 }}></View>
+        <TouchableOpacity>
+          <Text style={{ color: 'gray' }}>Cerrar sesión</Text>
         </TouchableOpacity>
       </View>
     </View>
@@ -43,19 +48,7 @@ const styles = StyleSheet.create({
     width: 150,
     height: 150,
     borderRadius: 100,
-    marginTop: -30
-  },
-  btn: {
-    backgroundColor: '#3F19F9',
-    borderColor: '#3F19F9',
-    borderRadius: 50,
-    borderWidth: 1,
-    marginBottom: 5,
-    marginTop: 10,
-    paddingVertical: 8,
-    textAlign: 'center',
-    width: 320,
-    fontWeight: '700',
+    marginTop: -30,
   },
   center: {
     textAlign: 'center',
@@ -63,14 +56,10 @@ const styles = StyleSheet.create({
     alignContent: 'center',
     color: '#1E0E6F',
     fontSize: 20,
-    paddingTop:10,
-    paddingBottom:10
+    paddingTop: 10,
+    paddingBottom: 10,
   },
-  container: {
-    alignItems: 'center',
-    flex: 1,
-    paddingBottom: 15,
-  },
+  container: { alignItems: 'center', flex: 1, paddingBottom: 15 },
   name: {
     textAlign: 'center',
     justifyContent: 'center',
@@ -78,10 +67,6 @@ const styles = StyleSheet.create({
     color: '#1E0E6F',
     fontSize: 30,
     fontWeight: '700',
-  },
-  textCenter: {
-    textAlign: 'center',
-    color: 'white',
   },
   uid: {
     textAlign: 'center',
