@@ -6,6 +6,7 @@ import MyPropertiesScreen from '../screens/MyPropertiesScreen';
 import MyDestPropertiesScreen from '../screens/MyDestPropertiesScreen';
 import StackNavigation from './StackNavigation';
 import LoginScreen from '../screens/LoginScreen';
+import RegisterScreen from '../screens/RegisterScreen';
 
 const Tab = createBottomTabNavigator();
 
@@ -44,7 +45,7 @@ const TabsNavigation = () => {
       <Tab.Screen
         name="MyDestPropertiesScreen"
         options={{ title: 'Mis destacados', headerShown: false }}
-        component={MyDestPropertiesScreen}
+        component={RegisterScreen}
       />
       <Tab.Screen
         name="MyPropertiesScreen"

@@ -1,4 +1,3 @@
-import { useNavigation } from '@react-navigation/core';
 import React from 'react';
 import {
   Text,
@@ -7,7 +6,9 @@ import {
   StyleSheet,
   TouchableOpacity,
   Image,
+  ScrollView,
 } from 'react-native';
+import { useNavigation } from '@react-navigation/core';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { useForm } from '../hooks/useForm';
 import { appStyles } from '../theme/appTheme';
@@ -22,63 +23,68 @@ const LoginScreen = () => {
 
   return (
     <View style={styles.background}>
-      <View style={appStyles.container}>
-        <View style={styles.logoContainer}>
-          <Image
-            style={styles.logo}
-            source={{
-              uri: 'https://i.imgur.com/nACtLME.png',
-            }}
+      <ScrollView>
+        <View style={appStyles.container}>
+          <View style={appStyles.logoContainer}>
+            <Image
+              style={appStyles.logo}
+              source={{
+                uri: 'https://i.imgur.com/nACtLME.png',
+              }}
+            />
+          </View>
+
+          <Text style={styles.title}>Inicia sesión para poder continuar</Text>
+          <Text style={styles.textCenter}>
+            Ingresa tu correo electrónico y contraseña
+          </Text>
+          <TextInput
+            placeholder="Coreo electrónico"
+            style={styles.input}
+            onChangeText={value => onChange(value, 'email')}
           />
-        </View>
+          <TextInput
+            placeholder="Contraseña"
+            secureTextEntry
+            style={styles.input}
+            onChangeText={value => onChange(value, 'password')}
+          />
 
-        <Text style={styles.title}>Inicia sesión para poder continuar</Text>
-        <Text style={styles.textCenter}>
-          Ingresa tu correo electrónico y contraseña
-        </Text>
-        <TextInput
-          placeholder="Coreo electrónico"
-          style={styles.input}
-          onChangeText={value => onChange(value, 'email')}
-        />
-        <TextInput
-          placeholder="Contraseña"
-          secureTextEntry
-          style={styles.input}
-          onChangeText={value => onChange(value, 'password')}
-        />
+          <View style={styles.center}>
+            <TouchableOpacity style={appStyles.btnPrimary}>
+              <Text style={appStyles.textCenter}>Iniciar sesión</Text>
+            </TouchableOpacity>
+          </View>
+          <Text style={styles.center}></Text>
+          <TouchableOpacity
+            onPress={() => navigation.navigate('MyDestPropertiesScreen')}>
+            <Text style={styles.textCenter}>
+              No tengo cuenta, quiero registrarme
+            </Text>
+          </TouchableOpacity>
+          <Text style={styles.center}></Text>
+          <Text style={styles.center}></Text>
+          <View
+            style={{ borderBottomWidth: 1, borderBottomColor: '#000' }}></View>
 
-        <View style={styles.center}>
-          <TouchableOpacity style={appStyles.btnPrimary}>
-            <Text style={appStyles.textCenter}>Iniciar sesión</Text>
+          <Text style={styles.center}></Text>
+          <TouchableOpacity>
+            <View style={styles.center}>
+              <Text style={styles.google}>
+                <Icon name="logo-google" size={20} /> Inicia sesión con google
+              </Text>
+            </View>
           </TouchableOpacity>
         </View>
-        <Text style={styles.center}></Text>
-        <TouchableOpacity
-          onPress={() => navigation.navigate('MyDestPropertiesScreen')}>
-          <Text style={styles.textCenter}>
-            No tengo cuenta, quiero registrarme
-          </Text>
-        </TouchableOpacity>
-        <Text style={styles.center}></Text>
-        <Text style={styles.center}></Text>
-        <View
-          style={{ borderBottomWidth: 1, borderBottomColor: '#000' }}></View>
-
-        <Text style={styles.center}></Text>
-        <TouchableOpacity>
-          <View style={styles.center}>
-            <Text style={styles.google}>
-              <Icon name="logo-google" size={20} /> Inicia sesión con google
-            </Text>
-          </View>
-        </TouchableOpacity>
-      </View>
+      </ScrollView>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
+  background: { backgroundColor: '#fff', flex: 1 },
+  center: { alignItems: 'center' },
+  google: { fontSize: 20, color: '#000', padding:15 },
   input: {
     height: 40,
     margin: 12,
@@ -87,27 +93,12 @@ const styles = StyleSheet.create({
     borderRadius: 50,
     backgroundColor: '#f6f6f6',
   },
-  background: { backgroundColor: '#fff' },
-  textCenter: {
-    textAlign: 'center',
-  },
-  logo: {
-    width: 204,
-    height: 50,
-  },
-  logoContainer: { alignItems: 'center', paddingBottom: 20, paddingTop: 20 },
+  textCenter: { textAlign: 'center' },
   title: {
     textAlign: 'center',
     fontSize: 25,
     color: '#1E0E9D',
     fontWeight: '700',
-  },
-  center: {
-    alignItems: 'center',
-  },
-  google: {
-    fontSize: 20,
-    color: '#000',
   },
 });
 

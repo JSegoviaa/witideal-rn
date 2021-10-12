@@ -1,12 +1,86 @@
 import React from 'react';
-import { Text, View } from 'react-native';
+import {
+  Image,
+  StyleSheet,
+  Text,
+  View,
+  TouchableOpacity,
+  ScrollView,
+} from 'react-native';
+import Icon from 'react-native-vector-icons/Ionicons';
+import { appStyles } from '../theme/appTheme';
 
 const RegisterScreen = () => {
   return (
-    <View>
-      <Text>Registrarse</Text>
-    </View>
+    <ScrollView>
+      <View style={styles.background}>
+        <View style={appStyles.container}>
+          <View style={appStyles.logoContainer}>
+            <Image
+              style={appStyles.logo}
+              source={{
+                uri: 'https://i.imgur.com/nACtLME.png',
+              }}
+            />
+          </View>
+          <Text style={styles.title}>Empecemos con tu cuenta</Text>
+
+          <View style={styles.card}>
+            <Icon style={styles.iconColor} name="search-outline" size={45} />
+            <Text style={styles.subtitle}>
+              Crea una cuenta para buscar propiedades
+            </Text>
+            <TouchableOpacity style={appStyles.btnRegister}>
+              <Text style={{ color: '#41B8F9', textAlign: 'center' }}>
+                Buscador
+              </Text>
+            </TouchableOpacity>
+          </View>
+          <View style={styles.card}>
+            <Icon style={styles.iconColor} name="megaphone-outline" size={45} />
+            <Text style={styles.subtitle}>
+              Crea una cuenta para anunciar propiedades
+            </Text>
+
+            <TouchableOpacity style={appStyles.btnRegister}>
+              <Text style={{ color: '#41B8F9', textAlign: 'center' }}>
+                Promotor
+              </Text>
+            </TouchableOpacity>
+          </View>
+        </View>
+      </View>
+    </ScrollView>
   );
 };
+
+const styles = StyleSheet.create({
+  background: { backgroundColor: '#f5f5f5', flex: 1 },
+  card: {
+    margin: 10,
+    borderRadius: 5,
+    backgroundColor: '#fff',
+    elevation: 2,
+    alignItems: 'center',
+  },
+  title: {
+    fontSize: 30,
+    textAlign: 'center',
+    color: '#1E0E6F',
+    fontWeight: '700',
+    padding:10
+  },
+  subtitle: {
+    fontSize: 20,
+    textAlign: 'center',
+    color: '#1e0e6f',
+    fontWeight: '600',
+    padding: 5,
+  },
+  iconColor: {
+    color: '#3F19F9',
+    padding: 5,
+  },
+});
 
 export default RegisterScreen;

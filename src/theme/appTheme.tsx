@@ -27,6 +27,17 @@ export const appStyles = StyleSheet.create({
     color: '#3F19F9',
     fontWeight: '700',
   },
+  btnRegister: {
+    backgroundColor: '#fff',
+    borderColor: '#41B8F9',
+    borderRadius: 50,
+    borderWidth: 1,
+    marginBottom: 10,
+    marginTop: 10,
+    paddingVertical: 8,
+    width: 120,
+    fontWeight: '700',
+  },
   container: {
     width: '90%',
     height: '100%',
@@ -35,6 +46,8 @@ export const appStyles = StyleSheet.create({
     marginTop: 'auto',
     borderRadius: 10,
   },
+  logo: { width: 204, height: 50 },
+  logoContainer: { alignItems: 'center', paddingBottom: 20, paddingTop: 20 },
   textCenter: {
     textAlign: 'center',
     color: 'white',
