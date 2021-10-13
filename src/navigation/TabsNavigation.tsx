@@ -45,12 +45,12 @@ const TabsNavigation = () => {
       <Tab.Screen
         name="MyDestPropertiesScreen"
         options={{ title: 'Mis destacados', headerShown: false }}
-        component={RegisterScreen}
+        component={MyDestPropertiesScreen}
       />
       <Tab.Screen
         name="MyPropertiesScreen"
         options={{ title: 'Mis propiedades', headerShown: false }}
-        component={LoginScreen}
+        component={MyPropertiesScreen}
       />
       <Tab.Screen
         name="ProfileScreen"
