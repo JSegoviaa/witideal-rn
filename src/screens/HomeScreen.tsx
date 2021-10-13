@@ -2,7 +2,6 @@ import React from 'react';
 import {
   Image,
   ImageBackground,
-  SafeAreaView,
   ScrollView,
   Text,
   TouchableOpacity,
@@ -14,7 +13,7 @@ const image = { uri: 'https://i.imgur.com/QxTLA6l.jpg' };
 
 const HomeScreen = () => {
   return (
-    <ScrollView contentContainerStyle={{ flexGrow: 1 }} >
+    <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
       <ImageBackground source={image} resizeMode="cover">
         <View style={appStyles.container}>
           <View style={{ paddingTop: 30 }}>
@@ -40,7 +39,7 @@ const HomeScreen = () => {
             bienvenido a Witideal.
           </Text>
           <Text style={{ color: '#32FFD2', fontSize: 18, paddingTop: 10 }}>
-            Realiza tu primerea búsqueda,
+            Realiza tu primera búsqueda,
           </Text>
           <Text style={{ color: '#32FFD2', fontSize: 18 }}>
             te ayudamos a encontrar el inmueble que necesitas
