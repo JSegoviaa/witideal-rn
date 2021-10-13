@@ -45,18 +45,19 @@ const destacados = [
 const MyDestPropertiesScreen = () => {
   return (
     <SafeAreaView style={{ backgroundColor: '#fff' }}>
-    <View style={appStyles.container}>
-      <Text style={styles.textCenter}>Mis destacados</Text>
-      <FlatList
-        data={destacados}
-        renderItem={({ item }: any) => <MyDestPropertiesList inmueble={item} />}
-        keyExtractor={item => item.id}
-      />
-    </View>
-  </SafeAreaView>
+      <View style={appStyles.container}>
+        <Text style={styles.textCenter}>Mis destacados</Text>
+        <FlatList
+          data={destacados}
+          renderItem={({ item }: any) => (
+            <MyDestPropertiesList inmueble={item} />
+          )}
+          keyExtractor={item => item.id}
+        />
+      </View>
+    </SafeAreaView>
   );
 };
-
 
 const styles = StyleSheet.create({
   textCenter: {
