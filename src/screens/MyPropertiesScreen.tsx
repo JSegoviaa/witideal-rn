@@ -48,6 +48,7 @@ const MyPropertiesScreen = () => {
     <SafeAreaView style={{ backgroundColor: '#fff' }}>
       <View style={appStyles.container}>
         <Text style={styles.textCenter}>Mis inmuebles</Text>
+
         <FlatList
           data={inmuebles}
           renderItem={({ item }: any) => <MyPropertiesList inmueble={item} />}
