@@ -1,13 +1,10 @@
 import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Icon from 'react-native-vector-icons/Ionicons';
-import HomeScreen from '../screens/HomeScreen';
 import MyPropertiesScreen from '../screens/MyPropertiesScreen';
 import MyDestPropertiesScreen from '../screens/MyDestPropertiesScreen';
+import SearchStackNavigation from './SearchStackNavigation';
 import StackNavigation from './StackNavigation';
-import LoginScreen from '../screens/LoginScreen';
-import RegisterScreen from '../screens/RegisterScreen';
-import SearchScreen from '../screens/SearchScreen';
 
 const Tab = createBottomTabNavigator();
 
@@ -41,7 +38,7 @@ const TabsNavigation = () => {
       <Tab.Screen
         name="HomeScreen"
         options={{ title: 'Inicio', headerShown: false }}
-        component={SearchScreen}
+        component={SearchStackNavigation}
       />
       <Tab.Screen
         name="MyDestPropertiesScreen"

@@ -1,3 +1,4 @@
+import { useNavigation } from '@react-navigation/core';
 import React from 'react';
 import {
   Image,
@@ -12,6 +13,8 @@ import { appStyles } from '../theme/appTheme';
 const image = { uri: 'https://i.imgur.com/QxTLA6l.jpg' };
 
 const HomeScreen = () => {
+  const navigation = useNavigation();
+
   return (
     <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
       <ImageBackground source={image} resizeMode="cover">
@@ -54,7 +57,11 @@ const HomeScreen = () => {
               paddingTop: 30,
               flex: 1,
             }}>
-            <TouchableOpacity style={appStyles.btnPrimary}>
+            <TouchableOpacity
+              style={appStyles.btnPrimary}
+              onPress={() => {
+                navigation.navigate('SearchScreen');
+              }}>
               <Text
                 style={{
                   color: 'white',
