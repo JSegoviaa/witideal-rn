@@ -11,6 +11,7 @@ import {
 import { Picker } from '@react-native-picker/picker';
 import { appStyles } from '../theme/appTheme';
 import { useForm } from '../hooks/useForm';
+import Filters from '../components/SearchScreen.tsx/Filters';
 
 const image = { uri: 'https://i.imgur.com/QxTLA6l.jpg' };
 
@@ -23,6 +24,9 @@ const SearchScreen = () => {
 
   const [propertyType, setPropertyType] = useState();
   const [currency, setCurrency] = useState();
+  const [showFilters, setShowFilters] = useState(false);
+
+  const handleFilters = () => setShowFilters(!showFilters);
 
   return (
     <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
@@ -129,8 +133,12 @@ const SearchScreen = () => {
                 onChangeText={value => onChange(value, 'ubicacion')}
               />
             </View>
+            {showFilters && <Filters />}
+
             <View style={{ flexDirection: 'row' }}>
-              <TouchableOpacity style={styles.btnFiltros}>
+              <TouchableOpacity
+                style={styles.btnFiltros}
+                onPress={handleFilters}>
                 <Text style={{ color: '#3F19F9', fontSize: 15 }}>
                   Agregar más filtros
                 </Text>
@@ -142,6 +150,7 @@ const SearchScreen = () => {
               </TouchableOpacity>
             </View>
           </View>
+          <View style={{paddingBottom:20}} ></View>
         </View>
       </ImageBackground>
     </ScrollView>
@@ -154,7 +163,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#3F19F9',
     borderRadius: 50,
     flex: 1,
-    marginRight:10,
+    marginRight: 10,
     padding: 11,
   },
   btnNoActive: {
@@ -181,6 +190,7 @@ const styles = StyleSheet.create({
     borderRadius: 25,
     elevation: 10,
     padding: 15,
+    
   },
   input: {
     backgroundColor: '#fff',
