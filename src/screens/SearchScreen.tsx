@@ -154,7 +154,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#3F19F9',
     borderRadius: 50,
     flex: 1,
-    marginRight: 10,
+    marginRight:10,
     padding: 11,
   },
   btnNoActive: {
@@ -164,7 +164,6 @@ const styles = StyleSheet.create({
     borderRadius: 50,
     borderWidth: 1,
     flex: 1,
-    marginRight: 10,
     padding: 11,
   },
   btnFiltros: {
@@ -174,7 +173,6 @@ const styles = StyleSheet.create({
     borderRadius: 50,
     borderWidth: 1,
     flex: 1,
-    marginRight: 10,
     marginTop: 15,
     padding: 8,
   },
@@ -191,7 +189,6 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     flex: 1,
     height: 40,
-    marginRight: 10,
     padding: 11,
   },
   optional: {
