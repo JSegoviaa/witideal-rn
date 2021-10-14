@@ -7,6 +7,7 @@ import MyDestPropertiesScreen from '../screens/MyDestPropertiesScreen';
 import StackNavigation from './StackNavigation';
 import LoginScreen from '../screens/LoginScreen';
 import RegisterScreen from '../screens/RegisterScreen';
+import SearchScreen from '../screens/SearchScreen';
 
 const Tab = createBottomTabNavigator();
 
@@ -40,7 +41,7 @@ const TabsNavigation = () => {
       <Tab.Screen
         name="HomeScreen"
         options={{ title: 'Inicio', headerShown: false }}
-        component={HomeScreen}
+        component={SearchScreen}
       />
       <Tab.Screen
         name="MyDestPropertiesScreen"
