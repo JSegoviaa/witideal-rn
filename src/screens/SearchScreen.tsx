@@ -4,6 +4,7 @@ import {
   View,
   TouchableOpacity,
   ImageBackground,
+  ScrollView,
   StyleSheet,
   TextInput,
 } from 'react-native';
@@ -24,6 +25,8 @@ const SearchScreen = () => {
   const [currency, setCurrency] = useState();
 
   return (
+      <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
+
     <ImageBackground source={image} resizeMode="cover">
       <View style={appStyles.container}>
         <Text style={styles.title}>¡Hola! Bievenido a Witideal</Text>
@@ -119,13 +122,12 @@ const SearchScreen = () => {
           </View>
           <View style={{ flexDirection: 'row' }}>
             <TouchableOpacity style={styles.btnFiltros}>
-              <Text style={{ color: '#3F19F9',  fontSize: 15 }}>
+              <Text style={{ color: '#3F19F9', fontSize: 15 }}>
                 Agregar más filtros
               </Text>
             </TouchableOpacity>
             <TouchableOpacity style={styles.btnFiltros}>
-              <Text
-                style={{ color: '#3F19F9',  fontSize: 15 }}>
+              <Text style={{ color: '#3F19F9', fontSize: 15 }}>
                 Mostrar inmuebles
               </Text>
             </TouchableOpacity>
@@ -133,6 +135,8 @@ const SearchScreen = () => {
         </View>
       </View>
     </ImageBackground>
+    </ScrollView>
+
   );
 };
 
@@ -163,8 +167,8 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     flex: 1,
     marginRight: 10,
-    marginTop:15,
-    padding:8
+    marginTop: 15,
+    padding: 8,
   },
   card: {
     backgroundColor: '#fff',
