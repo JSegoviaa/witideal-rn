@@ -1,11 +1,12 @@
 import React from 'react';
 import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { appStyles } from '../../theme/appTheme';
 
 const PersonalInfo = () => {
   return (
-    <View>
+    <SafeAreaView>
       <View style={styles.container}>
         <View style={styles.avatarContainer}>
           <Image
@@ -35,20 +36,18 @@ const PersonalInfo = () => {
           <Text style={{ color: 'gray' }}>Cerrar sesión</Text>
         </TouchableOpacity>
       </View>
-    </View>
+    </SafeAreaView>
   );
 };
 
 const styles = StyleSheet.create({
   avatarContainer: {
     alignItems: 'center',
-    marginTop: 20,
   },
   avatar: {
     width: 150,
     height: 150,
     borderRadius: 100,
-    marginTop: -30,
   },
   center: {
     textAlign: 'center',

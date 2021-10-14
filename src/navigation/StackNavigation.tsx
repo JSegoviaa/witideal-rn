@@ -4,21 +4,23 @@ import MyFavoritesScreen from '../screens/MyFavoritesScreen';
 import PaymentsScreen from '../screens/PaymentsScreen';
 import ProfileScreen from '../screens/ProfileScreen';
 
-const Stack = createStackNavigator();
+export type StackNavigation ={
+  Profile: undefined;
+  Payments: undefined;
+  MyFavorites: undefined;
+}
 
-
-
+const Stack = createStackNavigator<StackNavigation>();
 
 const StackNavigation = () => {
   return (
     <Stack.Navigator
       screenOptions={{
         cardStyle: { backgroundColor: 'white' },
-       
       }}>
       <Stack.Screen
         name="Profile"
-        options={{ title: '',  }}
+        options={{ headerShown: false }}
         component={ProfileScreen}
       />
       <Stack.Screen

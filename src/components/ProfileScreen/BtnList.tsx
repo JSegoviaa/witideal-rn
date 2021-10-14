@@ -7,7 +7,7 @@ const BtnList = () => {
   const navigation = useNavigation();
 
   return (
-    <View>
+    <>
       <View style={styles.container}>
         <TouchableOpacity
           onPress={() => {
@@ -22,14 +22,17 @@ const BtnList = () => {
           <Text style={appStyles.btnSecondary}>Mis favoritos</Text>
         </TouchableOpacity>
       </View>
-    </View>
+    </>
   );
 };
 
 const styles = StyleSheet.create({
-  container: { alignItems: 'center', flex: 1, paddingBottom: 15 },
-
-})
-
+  container: {
+    alignItems: 'center',
+    flex: 1,
+    paddingBottom: 15,
+    paddingTop: 15,
+  },
+});
 
 export default BtnList;
