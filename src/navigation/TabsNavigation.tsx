@@ -11,12 +11,11 @@ const Tab = createBottomTabNavigator();
 const TabsNavigation = () => {
   return (
     <Tab.Navigator
-
       screenOptions={({ route }) => ({
         tabBarIcon: () => {
           let iconName: string = '';
           switch (route.name) {
-            case 'HomeScreen':
+            case 'HomeScreenNavigation':
               iconName = 'home-outline';
               break;
 
@@ -36,7 +35,7 @@ const TabsNavigation = () => {
         },
       })}>
       <Tab.Screen
-        name="HomeScreen"
+        name="HomeScreenNavigation"
         options={{ title: 'Inicio', headerShown: false }}
         component={SearchStackNavigation}
       />

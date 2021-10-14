@@ -4,11 +4,11 @@ import MyFavoritesScreen from '../screens/MyFavoritesScreen';
 import PaymentsScreen from '../screens/PaymentsScreen';
 import ProfileScreen from '../screens/ProfileScreen';
 
-export type StackNavigation ={
+export type StackNavigation = {
   Profile: undefined;
   Payments: undefined;
   MyFavorites: undefined;
-}
+};
 
 const Stack = createStackNavigator<StackNavigation>();
 
