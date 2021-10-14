@@ -25,8 +25,13 @@ const SearchScreen = () => {
   const [propertyType, setPropertyType] = useState();
   const [currency, setCurrency] = useState();
   const [showFilters, setShowFilters] = useState(false);
+  const [actionSelected, setActionSelected] = useState(false);
+  const [propertyTypeSelected, setPropertyTypeSelected] = useState(false);
 
   const handleFilters = () => setShowFilters(!showFilters);
+  const handleActionTypeSelected = () => setActionSelected(!actionSelected);
+  const handlePropertyTypeSelected = () =>
+    setPropertyTypeSelected(!propertyTypeSelected);
 
   return (
     <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
@@ -38,26 +43,64 @@ const SearchScreen = () => {
             <View>
               <Text style={styles.subtitle}>¿Qué acción quieres realizar?</Text>
 
-              <View style={{ flexDirection: 'row' }}>
-                <TouchableOpacity style={styles.btnActivate}>
-                  <Text
-                    style={{ color: '#fff', fontWeight: '700', fontSize: 17 }}>
-                    Rentar
-                  </Text>
-                </TouchableOpacity>
-                <TouchableOpacity style={styles.btnNoActive}>
-                  <Text
-                    style={{
-                      color: '#3f19f9',
-                      fontWeight: '700',
-                      fontSize: 17,
-                    }}>
-                    Comprar
-                  </Text>
-                </TouchableOpacity>
-              </View>
+              {/* Botonoes rentar comprar */}
+              {!actionSelected ? (
+                <View style={{ flexDirection: 'row' }}>
+                  <TouchableOpacity style={styles.btnActivate}>
+                    <Text
+                      style={{
+                        color: '#fff',
+                        fontWeight: '700',
+                        fontSize: 17,
+                      }}>
+                      Rentar
+                    </Text>
+                  </TouchableOpacity>
+                  <TouchableOpacity
+                    style={styles.btnNoActive}
+                    onPress={handleActionTypeSelected}>
+                    <Text
+                      style={{
+                        color: '#3f19f9',
+                        fontWeight: '700',
+                        fontSize: 17,
+                      }}>
+                      Comprar
+                    </Text>
+                  </TouchableOpacity>
+                </View>
+              ) : (
+                <View style={{ flexDirection: 'row' }}>
+                  <TouchableOpacity
+                    style={styles.btnNoActive}
+                    onPress={handleActionTypeSelected}>
+                    <Text
+                      style={{
+                        color: '#3f19f9',
+                        fontWeight: '700',
+                        fontSize: 17,
+                      }}>
+                      Rentar
+                    </Text>
+                  </TouchableOpacity>
+                  <TouchableOpacity style={styles.btnActivate}>
+                    <Text
+                      style={{
+                        color: '#fff',
+                        fontWeight: '700',
+                        fontSize: 17,
+                      }}>
+                      Comprar
+                    </Text>
+                  </TouchableOpacity>
+                </View>
+              )}
             </View>
-            <View>
+
+            {/* Botonoes habitacional comercial */}
+            {!propertyTypeSelected ? 
+            (
+              <View>
               <Text style={styles.subtitle}>
                 ¿Qué tipo de propiedad te interesa?
               </Text>
@@ -68,7 +111,7 @@ const SearchScreen = () => {
                     Habitacional
                   </Text>
                 </TouchableOpacity>
-                <TouchableOpacity style={styles.btnNoActive}>
+                <TouchableOpacity style={styles.btnNoActive} onPress={handlePropertyTypeSelected} >
                   <Text
                     style={{
                       color: '#3F19F9',
@@ -96,6 +139,50 @@ const SearchScreen = () => {
                 </Picker>
               </View>
             </View>
+            )
+             : (
+              <View>
+              <Text style={styles.subtitle}>
+                ¿Qué tipo de propiedad te interesa?
+              </Text>
+              <View style={{ flexDirection: 'row' }}>
+                <TouchableOpacity style={styles.btnNoActive} onPress={handlePropertyTypeSelected} >
+                  <Text
+                    style={{ color: '#3F19F9', fontWeight: '700', fontSize: 17 }}>
+                    Habitacional
+                  </Text>
+                </TouchableOpacity>
+                <TouchableOpacity style={styles.btnActivate}>
+                  <Text
+                    style={{
+                      color: '#fff',
+                      fontWeight: '700',
+                      fontSize: 17,
+                    }}>
+                    Comercial
+                  </Text>
+                </TouchableOpacity>
+              </View>
+              <View style={styles.picker}>
+                <Picker
+                  selectedValue={propertyType}
+                  onValueChange={(itemValue, itemIndex) =>
+                    setPropertyType(itemValue)
+                  }>
+                  <Picker.Item label="Casa" value="casa" />
+                  <Picker.Item
+                    label="Casa en condominio"
+                    value="casa-condominio"
+                  />
+                  <Picker.Item label="Departamento" value="departamento" />
+                  <Picker.Item label="Edificio" value="edificio" />
+                  <Picker.Item label="Terreno" value="terreno" />
+                </Picker>
+              </View>
+            </View>
+             )
+               }
+           
 
             <View style={{ flexDirection: 'row' }}>
               <Text style={styles.subtitle}>¿Cuál es tu presupuesto?</Text>
@@ -150,7 +237,7 @@ const SearchScreen = () => {
               </TouchableOpacity>
             </View>
           </View>
-          <View style={{paddingBottom:20}} ></View>
+          <View style={{ paddingBottom: 20 }}></View>
         </View>
       </ImageBackground>
     </ScrollView>
@@ -163,7 +250,6 @@ const styles = StyleSheet.create({
     backgroundColor: '#3F19F9',
     borderRadius: 50,
     flex: 1,
-    marginRight: 10,
     padding: 11,
   },
   btnNoActive: {
@@ -190,7 +276,6 @@ const styles = StyleSheet.create({
     borderRadius: 25,
     elevation: 10,
     padding: 15,
-    
   },
   input: {
     backgroundColor: '#fff',
