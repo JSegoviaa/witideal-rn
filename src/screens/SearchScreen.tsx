@@ -24,9 +24,10 @@ const SearchScreen = () => {
 
   const [propertyType, setPropertyType] = useState();
   const [currency, setCurrency] = useState();
-  const [showFilters, setShowFilters] = useState(false);
-  const [actionSelected, setActionSelected] = useState(false);
-  const [propertyTypeSelected, setPropertyTypeSelected] = useState(false);
+  const [showFilters, setShowFilters] = useState<Boolean>(false);
+  const [actionSelected, setActionSelected] = useState<Boolean>(false);
+  const [propertyTypeSelected, setPropertyTypeSelected] =
+    useState<Boolean>(false);
 
   const handleFilters = () => setShowFilters(!showFilters);
   const handleActionTypeSelected = () => setActionSelected(!actionSelected);
@@ -98,91 +99,99 @@ const SearchScreen = () => {
             </View>
 
             {/* Botonoes habitacional comercial */}
-            {!propertyTypeSelected ? 
-            (
+            {!propertyTypeSelected ? (
               <View>
-              <Text style={styles.subtitle}>
-                ¿Qué tipo de propiedad te interesa?
-              </Text>
-              <View style={{ flexDirection: 'row' }}>
-                <TouchableOpacity style={styles.btnActivate}>
-                  <Text
-                    style={{ color: '#fff', fontWeight: '700', fontSize: 17 }}>
-                    Habitacional
-                  </Text>
-                </TouchableOpacity>
-                <TouchableOpacity style={styles.btnNoActive} onPress={handlePropertyTypeSelected} >
-                  <Text
-                    style={{
-                      color: '#3F19F9',
-                      fontWeight: '700',
-                      fontSize: 17,
-                    }}>
-                    Comercial
-                  </Text>
-                </TouchableOpacity>
+                <Text style={styles.subtitle}>
+                  ¿Qué tipo de propiedad te interesa?
+                </Text>
+                <View style={{ flexDirection: 'row' }}>
+                  <TouchableOpacity style={styles.btnActivate}>
+                    <Text
+                      style={{
+                        color: '#fff',
+                        fontWeight: '700',
+                        fontSize: 17,
+                      }}>
+                      Habitacional
+                    </Text>
+                  </TouchableOpacity>
+                  <TouchableOpacity
+                    style={styles.btnNoActive}
+                    onPress={handlePropertyTypeSelected}>
+                    <Text
+                      style={{
+                        color: '#3F19F9',
+                        fontWeight: '700',
+                        fontSize: 17,
+                      }}>
+                      Comercial
+                    </Text>
+                  </TouchableOpacity>
+                </View>
+                <View style={styles.picker}>
+                  <Picker
+                    selectedValue={propertyType}
+                    onValueChange={(itemValue, itemIndex) =>
+                      setPropertyType(itemValue)
+                    }>
+                    <Picker.Item label="Casa" value="casa" />
+                    <Picker.Item
+                      label="Casa en condominio"
+                      value="casa-condominio"
+                    />
+                    <Picker.Item label="Departamento" value="departamento" />
+                    <Picker.Item label="Edificio" value="edificio" />
+                    <Picker.Item label="Terreno" value="terreno" />
+                  </Picker>
+                </View>
               </View>
-              <View style={styles.picker}>
-                <Picker
-                  selectedValue={propertyType}
-                  onValueChange={(itemValue, itemIndex) =>
-                    setPropertyType(itemValue)
-                  }>
-                  <Picker.Item label="Casa" value="casa" />
-                  <Picker.Item
-                    label="Casa en condominio"
-                    value="casa-condominio"
-                  />
-                  <Picker.Item label="Departamento" value="departamento" />
-                  <Picker.Item label="Edificio" value="edificio" />
-                  <Picker.Item label="Terreno" value="terreno" />
-                </Picker>
-              </View>
-            </View>
-            )
-             : (
+            ) : (
               <View>
-              <Text style={styles.subtitle}>
-                ¿Qué tipo de propiedad te interesa?
-              </Text>
-              <View style={{ flexDirection: 'row' }}>
-                <TouchableOpacity style={styles.btnNoActive} onPress={handlePropertyTypeSelected} >
-                  <Text
-                    style={{ color: '#3F19F9', fontWeight: '700', fontSize: 17 }}>
-                    Habitacional
-                  </Text>
-                </TouchableOpacity>
-                <TouchableOpacity style={styles.btnActivate}>
-                  <Text
-                    style={{
-                      color: '#fff',
-                      fontWeight: '700',
-                      fontSize: 17,
-                    }}>
-                    Comercial
-                  </Text>
-                </TouchableOpacity>
+                <Text style={styles.subtitle}>
+                  ¿Qué tipo de propiedad te interesa?
+                </Text>
+                <View style={{ flexDirection: 'row' }}>
+                  <TouchableOpacity
+                    style={styles.btnNoActive}
+                    onPress={handlePropertyTypeSelected}>
+                    <Text
+                      style={{
+                        color: '#3F19F9',
+                        fontWeight: '700',
+                        fontSize: 17,
+                      }}>
+                      Habitacional
+                    </Text>
+                  </TouchableOpacity>
+                  <TouchableOpacity style={styles.btnActivate}>
+                    <Text
+                      style={{
+                        color: '#fff',
+                        fontWeight: '700',
+                        fontSize: 17,
+                      }}>
+                      Comercial
+                    </Text>
+                  </TouchableOpacity>
+                </View>
+                <View style={styles.picker}>
+                  <Picker
+                    selectedValue={propertyType}
+                    onValueChange={(itemValue, itemIndex) =>
+                      setPropertyType(itemValue)
+                    }>
+                    <Picker.Item label="Casa" value="casa" />
+                    <Picker.Item
+                      label="Casa en condominio"
+                      value="casa-condominio"
+                    />
+                    <Picker.Item label="Departamento" value="departamento" />
+                    <Picker.Item label="Edificio" value="edificio" />
+                    <Picker.Item label="Terreno" value="terreno" />
+                  </Picker>
+                </View>
               </View>
-              <View style={styles.picker}>
-                <Picker
-                  selectedValue={propertyType}
-                  onValueChange={(itemValue, itemIndex) =>
-                    setPropertyType(itemValue)
-                  }>
-                  <Picker.Item label="Casa" value="casa" />
-                  <Picker.Item
-                    label="Casa en condominio"
-                    value="casa-condominio"
-                  />
-                  <Picker.Item label="Departamento" value="departamento" />
-                  <Picker.Item label="Edificio" value="edificio" />
-                  <Picker.Item label="Terreno" value="terreno" />
-                </Picker>
-              </View>
-            </View>
-             )
-               }
-           
+            )}
 
             <View style={{ flexDirection: 'row' }}>
               <Text style={styles.subtitle}>¿Cuál es tu presupuesto?</Text>
