@@ -61,6 +61,7 @@ const PaymentsScreen = () => {
             </View>
           )}
           keyExtractor={item => item.id}
+          showsVerticalScrollIndicator={false}
         />
       </View>
     </View>

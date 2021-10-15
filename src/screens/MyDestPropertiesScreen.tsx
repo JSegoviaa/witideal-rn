@@ -53,6 +53,7 @@ const MyDestPropertiesScreen = () => {
             <MyDestPropertiesList inmueble={item} />
           )}
           keyExtractor={item => item.id}
+          showsVerticalScrollIndicator={false}
         />
       </View>
     </SafeAreaView>

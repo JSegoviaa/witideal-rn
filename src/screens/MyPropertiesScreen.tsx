@@ -53,6 +53,7 @@ const MyPropertiesScreen = () => {
           data={inmuebles}
           renderItem={({ item }: any) => <MyPropertiesList inmueble={item} />}
           keyExtractor={item => item.id}
+          showsVerticalScrollIndicator={false}
         />
       </View>
     </SafeAreaView>

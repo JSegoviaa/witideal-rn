@@ -53,6 +53,7 @@ const MyFavoritesScreen = () => {
           data={favoritos}
           renderItem={({ item }: any) => <MyFavoritesList favoritos={item} />}
           keyExtractor={item => item.id}
+          showsVerticalScrollIndicator={false}
         />
       </View>
     </SafeAreaView>
