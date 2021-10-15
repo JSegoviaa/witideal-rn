@@ -1,11 +1,18 @@
 import React from 'react';
-import { Text, View } from 'react-native';
+import { ScrollView, View } from 'react-native';
+import Description from '../components/PropertyDetailScreen/Description';
+import Images from '../components/PropertyDetailScreen/Images';
+import SpecificDetails from '../components/PropertyDetailScreen/SpecificDetails';
 
 const PropertyDetailScreen = () => {
   return (
-    <View>
-      <Text>Detalles de la propiedad</Text>
-    </View>
+    <ScrollView>
+      <View style={{ backgroundColor: '#fff' }}>
+        <Images />
+        <Description />
+        <SpecificDetails />
+      </View>
+    </ScrollView>
   );
 };
 
