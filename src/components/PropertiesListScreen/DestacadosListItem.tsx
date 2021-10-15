@@ -1,5 +1,5 @@
 import React from 'react';
-import { Image, StyleSheet, Text, View } from 'react-native';
+import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
 interface Props {
   id: Number;
@@ -13,17 +13,20 @@ const DestacadosListItem = ({ item }: Props) => {
   return (
     <View style={styles.container}>
       <View style={styles.card}>
-        <Image
-          source={{ uri: item.img }}
-          style={{
-            width: 300,
-            height: 200,
-          }}
-        />
-
-        <Text style={styles.title}>{item.title}</Text>
-        <Text style={styles.description}>{item.description}</Text>
-        <Text style={styles.precio}> ${item.price} MXN</Text>
+        <TouchableOpacity>
+          <Image
+            source={{ uri: item.img }}
+            style={{
+              width: 300,
+              height: 200,
+            }}
+          />
+          <View style={{ paddingVertical: 10 }}>
+            <Text style={styles.title}>{item.title}</Text>
+            <Text style={styles.description}>{item.description}</Text>
+            <Text style={styles.precio}> ${item.price} MXN</Text>
+          </View>
+        </TouchableOpacity>
       </View>
     </View>
   );
