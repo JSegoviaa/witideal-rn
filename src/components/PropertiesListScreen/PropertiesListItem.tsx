@@ -20,6 +20,7 @@ const PropertiesListItem = ({ inmueble }: Props) => {
           }}
         />
         <Text style={styles.textCenter}>{inmueble.title}</Text>
+        <Text style={styles.textCenter}>${inmueble.precio} MXN</Text>
 
         <Text style={styles.subtitle}>{inmueble.desc}</Text>
       </TouchableOpacity>
