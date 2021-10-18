@@ -5,6 +5,7 @@ import MyPropertiesScreen from '../screens/MyPropertiesScreen';
 import MyDestPropertiesScreen from '../screens/MyDestPropertiesScreen';
 import SearchStackNavigation from './SearchStackNavigation';
 import StackNavigation from './StackNavigation';
+import PropertyDetailScreen from '../screens/PropertyDetailScreen';
 
 const Tab = createBottomTabNavigator();
 
@@ -47,7 +48,7 @@ const TabsNavigation = () => {
       <Tab.Screen
         name="MyPropertiesScreen"
         options={{ title: 'Mis propiedades', headerShown: false }}
-        component={MyPropertiesScreen}
+        component={PropertyDetailScreen}
       />
       <Tab.Screen
         name="ProfileScreen"
