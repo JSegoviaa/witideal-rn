@@ -7,7 +7,15 @@ import StackNavigation from './StackNavigation';
 import LoginStackNavigation from './LoginStackNavigation';
 import MyPropertiesScreen from '../screens/MyPropertiesScreen';
 
-const Tab = createBottomTabNavigator();
+export type RootTabsNavigation = {
+  HomeScreenNavigation: undefined;
+  LoginStackScreen: undefined;
+  MyDestPropertiesScreen: undefined;
+  MyPropertiesScreen: undefined;
+  ProfileScreen: undefined;
+};
+
+const Tab = createBottomTabNavigator<RootTabsNavigation>();
 
 // Componente que se muestra si no tengo sesión iniciada
 
@@ -98,7 +106,7 @@ const TabLogin = () => {
 };
 
 const TabsNavigation = () => {
-  const [mostrar, setMostrar] = useState(false);
+  const [mostrar, setMostrar] = useState(true);
 
   return <>{mostrar ? <TabLogin /> : <TabNoLogin />}</>;
 };

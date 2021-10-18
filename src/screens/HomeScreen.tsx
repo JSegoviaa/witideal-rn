@@ -1,4 +1,3 @@
-import { useNavigation } from '@react-navigation/core';
 import React from 'react';
 import {
   Image,
@@ -8,12 +7,16 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
+import { StackScreenProps } from '@react-navigation/stack';
 import { appStyles } from '../theme/appTheme';
+import { RootSearchStackNavigation } from '../navigation/SearchStackNavigation';
+
+interface Props
+  extends StackScreenProps<RootSearchStackNavigation, 'HomeScreen'> {}
 
 const image = { uri: 'https://i.imgur.com/QxTLA6l.jpg' };
 
-const HomeScreen = () => {
-  const navigation = useNavigation();
+const HomeScreen = ({navigation}:Props) => {
 
   return (
     <ScrollView contentContainerStyle={{ flexGrow: 1 }}>

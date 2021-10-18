@@ -3,7 +3,12 @@ import React from 'react';
 import HomeScreen from '../screens/HomeScreen';
 import SearchScreen from '../screens/SearchScreen';
 
-const Stack = createStackNavigator();
+export type RootSearchStackNavigation = {
+  HomeScreen: undefined;
+  SearchScreen: undefined;
+};
+
+const Stack = createStackNavigator<RootSearchStackNavigation>();
 
 const SearchStackNavigation = () => {
   return (

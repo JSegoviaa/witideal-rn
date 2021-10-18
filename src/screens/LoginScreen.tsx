@@ -8,18 +8,20 @@ import {
   Image,
   ScrollView,
 } from 'react-native';
-import { useNavigation } from '@react-navigation/core';
 import Icon from 'react-native-vector-icons/Ionicons';
+import { StackScreenProps } from '@react-navigation/stack';
 import { useForm } from '../hooks/useForm';
 import { appStyles } from '../theme/appTheme';
+import { LoginRootStackNavigation } from '../navigation/LoginStackNavigation';
 
-const LoginScreen = () => {
+interface Props
+  extends StackScreenProps<LoginRootStackNavigation, 'LoginScreen'> {}
+
+const LoginScreen = ({ navigation }: Props) => {
   const { form, onChange } = useForm({
     email: '',
     password: '',
   });
-
-  const navigation = useNavigation();
 
   return (
     <View style={styles.background}>
