@@ -1,5 +1,6 @@
 import React from 'react';
 import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { useNavigation } from '@react-navigation/core';
 
 interface Props {
   id: Number;
@@ -10,15 +11,17 @@ interface Props {
 }
 
 const DestacadosListItem = ({ item }: Props) => {
+  const navigation = useNavigation();
   return (
     <View style={styles.container}>
       <View style={styles.card}>
-        <TouchableOpacity>
+        <TouchableOpacity
+          onPress={() => navigation.navigate('PropertyDetailScreen')}>
           <Image
             source={{ uri: item.img }}
             style={{
-              width: 300,
-              height: 200,
+              width: 200,
+              height: 130,
             }}
           />
           <View style={{ paddingVertical: 10 }}>

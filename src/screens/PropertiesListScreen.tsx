@@ -1,5 +1,6 @@
-import React from 'react';
-import { FlatList, StyleSheet,  View } from 'react-native';
+import React, { useEffect } from 'react';
+import { FlatList, StyleSheet, View } from 'react-native';
+import { useNavigation } from '@react-navigation/core';
 import Destacados from '../components/PropertiesListScreen/Destacados';
 import PropertiesList from '../components/PropertiesListScreen/PropertiesList';
 import { appStyles } from '../theme/appTheme';
@@ -51,6 +52,12 @@ const inmuebles = [
 ];
 
 const PropertiesListScreen = () => {
+  const navigation = useNavigation();
+
+  useEffect(() => {
+    navigation.setOptions({ headerShown: true, headerTransparent: true });
+  }, []);
+
   return (
     <>
       <Destacados />

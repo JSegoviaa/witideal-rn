@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   Text,
   View,
@@ -38,6 +38,13 @@ const SearchScreen = ({ navigation }: Props) => {
   const handleActionTypeSelected = () => setActionSelected(!actionSelected);
   const handlePropertyTypeSelected = () =>
     setPropertyTypeSelected(!propertyTypeSelected);
+
+  useEffect(() => {
+    navigation.setOptions({
+      headerShown: true,
+      headerTransparent: true,
+    });
+  }, []);
 
   return (
     <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
