@@ -236,7 +236,7 @@ const SearchScreen = () => {
                 style={styles.btnFiltros}
                 onPress={handleFilters}>
                 <Text style={{ color: '#3F19F9', fontSize: 15 }}>
-                  Agregar más filtros
+                  {showFilters ? 'Ocultar filtros' : 'Agregar más filtros'}
                 </Text>
               </TouchableOpacity>
               <TouchableOpacity style={styles.btnFiltros}>
