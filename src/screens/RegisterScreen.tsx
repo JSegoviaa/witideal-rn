@@ -1,4 +1,3 @@
-import { useNavigation } from '@react-navigation/core';
 import React from 'react';
 import {
   Image,
@@ -8,12 +7,15 @@ import {
   TouchableOpacity,
   ScrollView,
 } from 'react-native';
+import { StackScreenProps } from '@react-navigation/stack';
 import Icon from 'react-native-vector-icons/Ionicons';
+import { LoginRootStackNavigation } from '../navigation/LoginStackNavigation';
 import { appStyles } from '../theme/appTheme';
 
-const RegisterScreen = () => {
-  const navigation = useNavigation();
+interface Props
+  extends StackScreenProps<LoginRootStackNavigation, 'RegisterScreen'> {}
 
+const RegisterScreen = ({ navigation }: Props) => {
   return (
     <ScrollView>
       <View style={styles.background}>

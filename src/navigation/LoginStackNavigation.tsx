@@ -4,13 +4,13 @@ import RegisterForm from '../components/RegisterScreen/RegisterForm';
 import LoginScreen from '../screens/LoginScreen';
 import RegisterScreen from '../screens/RegisterScreen';
 
-export type LoginStackNavigation = {
+export type LoginRootStackNavigation = {
   LoginScreen: undefined;
   RegisterScreen: undefined;
-  RegisterForm: undefined;
+  RegisterForm: { id: string };
 };
 
-const Stack = createStackNavigator<LoginStackNavigation>();
+const Stack = createStackNavigator<LoginRootStackNavigation>();
 
 const LoginStackNavigation = () => {
   return (

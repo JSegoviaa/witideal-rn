@@ -11,11 +11,9 @@ const PersonalInfo = () => {
         <View style={styles.avatarContainer}>
           <Image
             style={styles.avatar}
-            source={
-              {
+            source={{
               uri: 'https://medgoldresources.com/wp-content/uploads/2018/02/avatar-placeholder.gif',
-            }
-          }
+            }}
           />
         </View>
         <Text style={styles.center}>¡Hola!</Text>

@@ -98,7 +98,7 @@ const TabLogin = () => {
 };
 
 const TabsNavigation = () => {
-  const [mostrar, setMostrar] = useState(true);
+  const [mostrar, setMostrar] = useState(false);
 
   return <>{mostrar ? <TabLogin /> : <TabNoLogin />}</>;
 };

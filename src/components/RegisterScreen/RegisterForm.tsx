@@ -9,10 +9,15 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
+import { StackScreenProps } from '@react-navigation/stack';
 import { useForm } from '../../hooks/useForm';
+import { LoginRootStackNavigation } from '../../navigation/LoginStackNavigation';
 import { appStyles } from '../../theme/appTheme';
 
-const RegisterForm = () => {
+interface Props
+  extends StackScreenProps<LoginRootStackNavigation, 'RegisterScreen'> {}
+
+const RegisterForm = ({ route }: Props) => {
   const { form, onChange } = useForm({
     nombre: '',
     apellido: '',
@@ -23,6 +28,8 @@ const RegisterForm = () => {
     password: '',
     password2: '',
   });
+
+  const params = route.params;
 
   return (
     <SafeAreaView>
@@ -50,11 +57,14 @@ const RegisterForm = () => {
           keyboardType="numeric"
           onChangeText={value => onChange(value, 'tel')}
         />
-        <TextInput
-          placeholder="Empresa"
-          style={styles.input}
-          onChangeText={value => onChange(value, 'empresa')}
-        />
+
+        {params?.id === 'promotor' && (
+          <TextInput
+            placeholder="Empresa"
+            style={styles.input}
+            onChangeText={value => onChange(value, 'empresa')}
+          />
+        )}
         <TextInput
           placeholder="Correo electrónico"
           keyboardType="email-address"
