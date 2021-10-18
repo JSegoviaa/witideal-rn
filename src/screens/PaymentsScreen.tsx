@@ -79,9 +79,7 @@ const Payments = () => {
 };
 
 const PaymentsScreen = () => {
-  const [payments, setPayments] = useState(true);
-
-  return <>{payments ? <Payments /> : <NoPayments />}</>;
+  return <>{pagos.length > 0 ? <Payments /> : <NoPayments />}</>;
 };
 
 const styles = StyleSheet.create({

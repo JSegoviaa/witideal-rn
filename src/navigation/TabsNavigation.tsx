@@ -4,7 +4,6 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import MyDestPropertiesScreen from '../screens/MyDestPropertiesScreen';
 import SearchStackNavigation from './SearchStackNavigation';
 import StackNavigation from './StackNavigation';
-import RegisterForm from '../components/RegisterScreen/RegisterForm';
 import LoginStackNavigation from './LoginStackNavigation';
 import MyPropertiesScreen from '../screens/MyPropertiesScreen';
 

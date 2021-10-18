@@ -3,7 +3,6 @@ import { FlatList, SafeAreaView, StyleSheet, Text, View } from 'react-native';
 import MyFavoritesList from '../components/MyFavoritesScreen/MyFavoritesList';
 import { appStyles } from '../theme/appTheme';
 
-
 const favoritos = [
   {
     id: 1,
@@ -43,8 +42,17 @@ const favoritos = [
   },
 ];
 
+// Componente que se muestra si aún no tienes favoritos
+const NoFavorites = () => {
+  return (
+    <View>
+      <Text style={styles.title} >Aún no tienes favoritos</Text>
+    </View>
+  );
+};
 
-const MyFavoritesScreen = () => {
+//Componente que se muestra si tienes favoritos
+const Favorites = () => {
   return (
     <SafeAreaView style={{ backgroundColor: '#fff' }}>
       <View style={appStyles.container}>
@@ -60,6 +68,10 @@ const MyFavoritesScreen = () => {
   );
 };
 
+const MyFavoritesScreen = () => {
+  return <>{favoritos.length > 0 ? <Favorites /> : <NoFavorites />}</>;
+};
+
 const styles = StyleSheet.create({
   textCenter: {
     textAlign: 'center',
@@ -67,6 +79,12 @@ const styles = StyleSheet.create({
     fontSize: 30,
     fontWeight: '700',
     padding: 15,
+  },
+  title: {
+    textAlign: 'center',
+    fontSize: 20,
+    fontWeight: '700',
+    color: '#1C006F',
   },
 });
 
