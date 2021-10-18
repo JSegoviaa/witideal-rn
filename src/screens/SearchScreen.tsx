@@ -12,10 +12,15 @@ import { Picker } from '@react-native-picker/picker';
 import { appStyles } from '../theme/appTheme';
 import { useForm } from '../hooks/useForm';
 import Filters from '../components/SearchScreen.tsx/Filters';
+import { StackScreenProps } from '@react-navigation/stack';
+import { RootSearchStackNavigation } from '../navigation/SearchStackNavigation';
 
 const image = { uri: 'https://i.imgur.com/QxTLA6l.jpg' };
 
-const SearchScreen = () => {
+interface Props
+  extends StackScreenProps<RootSearchStackNavigation, 'SearchScreen'> {}
+
+const SearchScreen = ({ navigation }: Props) => {
   const { form, onChange } = useForm({
     desde: '',
     hasta: '',
@@ -240,7 +245,11 @@ const SearchScreen = () => {
                 </Text>
               </TouchableOpacity>
               <TouchableOpacity style={styles.btnFiltros}>
-                <Text style={{ color: '#3F19F9', fontSize: 15 }}>
+                <Text
+                  style={{ color: '#3F19F9', fontSize: 15 }}
+                  onPress={() => {
+                    navigation.navigate('PropertiesListScreen');
+                  }}>
                   Mostrar inmuebles
                 </Text>
               </TouchableOpacity>
