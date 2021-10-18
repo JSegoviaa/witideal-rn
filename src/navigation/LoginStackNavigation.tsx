@@ -2,7 +2,6 @@ import { createStackNavigator } from '@react-navigation/stack';
 import React from 'react';
 import RegisterForm from '../components/RegisterScreen/RegisterForm';
 import LoginScreen from '../screens/LoginScreen';
-import MyFavoritesScreen from '../screens/MyFavoritesScreen';
 import RegisterScreen from '../screens/RegisterScreen';
 
 export type LoginStackNavigation = {
@@ -35,7 +34,7 @@ const LoginStackNavigation = () => {
       />
       <Stack.Screen
         name="RegisterForm"
-        options={{ title: 'Mis favoritos' }}
+        options={{ title: 'Registrarse' }}
         component={RegisterForm}
       />
     </Stack.Navigator>

@@ -1,5 +1,5 @@
 import React from 'react';
-import { FlatList, Image, Text, View } from 'react-native';
+import { FlatList, View } from 'react-native';
 import DestacadosList from './DestacadosList';
 
 const destacados = [

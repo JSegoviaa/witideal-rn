@@ -1,5 +1,5 @@
-import { useNavigation } from '@react-navigation/core';
 import React from 'react';
+import { useNavigation } from '@react-navigation/core';
 import { TouchableOpacity, Text, View, StyleSheet } from 'react-native';
 import { appStyles } from '../../theme/appTheme';
 

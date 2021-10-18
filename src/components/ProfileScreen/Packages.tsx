@@ -1,5 +1,5 @@
 import React from 'react';
-import {  StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
 const Packages = () => {
   return (
@@ -22,7 +22,7 @@ const Packages = () => {
 
 const styles = StyleSheet.create({
   container: {
-      flex:1,
+    flex: 1,
     width: '90%',
     height: '98%',
     marginLeft: 'auto',
@@ -36,7 +36,7 @@ const styles = StyleSheet.create({
     backgroundColor: 'blue',
     padding: 10,
     textAlign: 'center',
-    alignItems:'center',
+    alignItems: 'center',
     justifyContent: 'center',
   },
 });

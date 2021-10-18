@@ -1,4 +1,3 @@
-import { StackScreenProps } from '@react-navigation/stack';
 import React from 'react';
 import {
   Image,
