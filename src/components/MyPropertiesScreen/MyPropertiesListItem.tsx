@@ -1,5 +1,6 @@
 import React from 'react';
 import { Image, StyleSheet, Text, View, TouchableOpacity } from 'react-native';
+import { useNavigation } from '@react-navigation/core';
 
 interface Props {
   id: Number;
@@ -8,10 +9,17 @@ interface Props {
 }
 
 const MyPropertiesListItem = ({ inmueble }: Props) => {
+  const navigation = useNavigation();
+
   return (
     <>
       <View style={styles.card}>
-        <TouchableOpacity>
+        <TouchableOpacity
+          onPress={() => {
+            navigation.navigate('HomeScreenNavigation', {
+              screen: 'PropertyDetailScreen',
+            });
+          }}>
           <Image
             width={500}
             height={50}
@@ -24,8 +32,8 @@ const MyPropertiesListItem = ({ inmueble }: Props) => {
 
           <Text style={styles.subtitle}>{inmueble.desc}</Text>
 
-          <View style={{ flexDirection: 'row',padding:10 }}>
-            <TouchableOpacity style={styles.btnActivate} >
+          <View style={{ flexDirection: 'row', padding: 10 }}>
+            <TouchableOpacity style={styles.btnActivate}>
               <Text style={{ color: 'white' }}>Activar inmueble</Text>
             </TouchableOpacity>
 
@@ -46,7 +54,7 @@ const styles = StyleSheet.create({
     borderRadius: 50,
     flex: 1,
     padding: 7,
-    marginRight:10
+    marginRight: 10,
   },
   btnDest: {
     padding: 7,
@@ -55,8 +63,7 @@ const styles = StyleSheet.create({
     borderColor: '#63C5FA',
     borderRadius: 50,
     borderWidth: 1,
-    marginLeft:10
-
+    marginLeft: 10,
   },
   card: {
     elevation: 1,

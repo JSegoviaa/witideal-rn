@@ -16,7 +16,9 @@ const DestacadosListItem = ({ item }: Props) => {
     <View style={styles.container}>
       <View style={styles.card}>
         <TouchableOpacity
-          onPress={() => navigation.navigate('PropertyDetailScreen')}>
+          onPress={() => {
+            navigation.navigate('PropertyDetailScreen');
+          }}>
           <Image
             source={{ uri: item.img }}
             style={{

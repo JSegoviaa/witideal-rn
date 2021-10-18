@@ -1,3 +1,4 @@
+import { useNavigation } from '@react-navigation/core';
 import React from 'react';
 import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
@@ -8,9 +9,14 @@ interface Props {
 }
 
 const PropertiesListItem = ({ inmueble }: Props) => {
+  const navigation = useNavigation();
+
   return (
     <View style={styles.card}>
-      <TouchableOpacity>
+      <TouchableOpacity
+        onPress={() => {
+          navigation.navigate('PropertyDetailScreen');
+        }}>
         <Image
           width={500}
           height={50}

@@ -1,3 +1,4 @@
+import { useNavigation } from '@react-navigation/core';
 import React from 'react';
 import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
@@ -8,9 +9,16 @@ interface Props {
 }
 
 const MyFavoristListItem = ({ favoritos }: Props) => {
+  const navigation = useNavigation();
+
   return (
     <View style={styles.card}>
-      <TouchableOpacity>
+      <TouchableOpacity
+        onPress={() => {
+          navigation.navigate('HomeScreenNavigation', {
+            screen: 'PropertyDetailScreen',
+          });
+        }}>
         <Image
           width={500}
           height={50}
