@@ -13,7 +13,7 @@ const PropertyDetailScreen = () => {
         <Images />
         <Description />
         <SpecificDetails />
-        <Map/>
+        {/* <Map/> */}
         <OwnerInfo/>
       </View>
     </ScrollView>

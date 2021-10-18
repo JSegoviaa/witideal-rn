@@ -56,8 +56,7 @@ const LoginScreen = () => {
             </TouchableOpacity>
           </View>
           <Text style={styles.center}></Text>
-          <TouchableOpacity
-            onPress={() => navigation.navigate('MyDestPropertiesScreen')}>
+          <TouchableOpacity onPress={() => navigation.navigate('RegisterScreen')}>
             <Text style={styles.textCenter}>
               No tengo cuenta, quiero registrarme
             </Text>
@@ -84,7 +83,7 @@ const LoginScreen = () => {
 const styles = StyleSheet.create({
   background: { backgroundColor: '#fff', flex: 1 },
   center: { alignItems: 'center' },
-  google: { fontSize: 20, color: '#000', padding:15 },
+  google: { fontSize: 20, color: '#000', padding: 15 },
   input: {
     height: 40,
     margin: 12,
