@@ -10,7 +10,6 @@ const inmuebles = [
     desc: 'Descripción 1',
     img: 'https://firebasestorage.googleapis.com/v0/b/witideal-b1f99.appspot.com/o/witideal%2FJ7idPjx6jVMlYtzQVF3RbfiWre72%2FAdHaIDPSe3a2BGl5EdzB%2Fthumb%401100_488011_4.jpg?alt=media',
   },
-
   {
     id: 2,
     title: 'Inmueble 2',
@@ -43,7 +42,15 @@ const inmuebles = [
   },
 ];
 
-const MyPropertiesScreen = () => {
+const NoProperties = () => {
+  return (
+    <SafeAreaView>
+      <Text style={styles.title}>No tienes propiedades</Text>
+    </SafeAreaView>
+  );
+};
+
+const MyProperties = () => {
   return (
     <SafeAreaView style={{ backgroundColor: '#fff' }}>
       <View style={appStyles.container}>
@@ -60,6 +67,10 @@ const MyPropertiesScreen = () => {
   );
 };
 
+const MyPropertiesScreen = () => {
+  return <>{inmuebles.length > 0 ? <MyProperties /> : <NoProperties />}</>;
+};
+
 const styles = StyleSheet.create({
   textCenter: {
     textAlign: 'center',
@@ -67,6 +78,12 @@ const styles = StyleSheet.create({
     fontSize: 30,
     fontWeight: '700',
     padding: 15,
+  },
+  title: {
+    textAlign: 'center',
+    fontWeight: '700',
+    fontSize: 20,
+    color: '#1C006F',
   },
 });
 

@@ -42,7 +42,7 @@ const destacados = [
   },
 ];
 
-const MyDestPropertiesScreen = () => {
+const Destacados = () => {
   return (
     <SafeAreaView style={{ backgroundColor: '#fff' }}>
       <View style={appStyles.container}>
@@ -60,6 +60,18 @@ const MyDestPropertiesScreen = () => {
   );
 };
 
+const NoDestacados = () => {
+  return (
+    <SafeAreaView>
+      <Text style={styles.title}>Aún no has agregado destacados</Text>
+    </SafeAreaView>
+  );
+};
+
+const MyDestPropertiesScreen = () => {
+  return <>{destacados.length > 0 ? <Destacados /> : <NoDestacados />}</>;
+};
+
 const styles = StyleSheet.create({
   textCenter: {
     textAlign: 'center',
@@ -67,6 +79,12 @@ const styles = StyleSheet.create({
     fontSize: 30,
     fontWeight: '700',
     padding: 15,
+  },
+  title: {
+    textAlign: 'center',
+    fontSize: 20,
+    fontWeight: '700',
+    color: '#1C006F',
   },
 });
 
