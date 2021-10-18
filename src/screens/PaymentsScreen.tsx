@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { FlatList, StyleSheet, Text, View } from 'react-native';
 import { appStyles } from '../theme/appTheme';
 
@@ -34,7 +34,17 @@ const pagos: any = [
   { id: 10, inicio: '01/05/21', fin: '01/06/21', pagoId: 9634, cantidad: 1500 },
 ];
 
-const PaymentsScreen = () => {
+//Este componente se va a mostrar si no ha realizado pagos
+const NoPayments = () => {
+  return (
+    <View style={appStyles.container}>
+      <Text style={styles.noPayments}>Aún no has realizado ningún pago</Text>
+    </View>
+  );
+};
+
+//Este componente se muestra si tiene por lo menos un pago realizdo
+const Payments = () => {
   return (
     <View>
       <View style={appStyles.container}>
@@ -68,6 +78,12 @@ const PaymentsScreen = () => {
   );
 };
 
+const PaymentsScreen = () => {
+  const [payments, setPayments] = useState(true);
+
+  return <>{payments ? <Payments /> : <NoPayments />}</>;
+};
+
 const styles = StyleSheet.create({
   border: {
     borderLeftColor: '#32FFD2',
@@ -82,18 +98,24 @@ const styles = StyleSheet.create({
     marginTop: 10,
     marginBottom: 10,
   },
-  title: {
-    color: 'black',
-    fontWeight: '700',
-    textAlign: 'center',
-  },
   description: {
     color: '#1E0E9D',
+    textAlign: 'center',
+  },
+  noPayments: {
+    color: '#1C006F',
+    fontSize: 20,
+    fontWeight: '700',
     textAlign: 'center',
   },
   padding: {
     paddingTop: 10,
     paddingBottom: 10,
+  },
+  title: {
+    color: 'black',
+    fontWeight: '700',
+    textAlign: 'center',
   },
 });
 
