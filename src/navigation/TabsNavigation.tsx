@@ -6,6 +6,7 @@ import SearchStackNavigation from './SearchStackNavigation';
 import StackNavigation from './StackNavigation';
 import RegisterForm from '../components/RegisterScreen/RegisterForm';
 import LoginStackNavigation from './LoginStackNavigation';
+import MyPropertiesScreen from '../screens/MyPropertiesScreen';
 
 const Tab = createBottomTabNavigator();
 
@@ -86,7 +87,7 @@ const TabLogin = () => {
       <Tab.Screen
         name="MyPropertiesScreen"
         options={{ title: 'Mis propiedades', headerShown: false }}
-        component={RegisterForm}
+        component={MyPropertiesScreen}
       />
       <Tab.Screen
         name="ProfileScreen"
@@ -98,7 +99,7 @@ const TabLogin = () => {
 };
 
 const TabsNavigation = () => {
-  const [mostrar, setMostrar] = useState(false);
+  const [mostrar, setMostrar] = useState(true);
 
   return <>{mostrar ? <TabLogin /> : <TabNoLogin />}</>;
 };
