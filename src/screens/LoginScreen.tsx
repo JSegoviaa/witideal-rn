@@ -28,9 +28,7 @@ const LoginScreen = () => {
           <View style={appStyles.logoContainer}>
             <Image
               style={appStyles.logo}
-              source={{
-                uri: 'https://i.imgur.com/nACtLME.png',
-              }}
+              source={require('../assets/logo-brand.png')}
             />
           </View>
 
@@ -56,7 +54,8 @@ const LoginScreen = () => {
             </TouchableOpacity>
           </View>
           <Text style={styles.center}></Text>
-          <TouchableOpacity onPress={() => navigation.navigate('RegisterScreen')}>
+          <TouchableOpacity
+            onPress={() => navigation.navigate('RegisterScreen')}>
             <Text style={styles.textCenter}>
               No tengo cuenta, quiero registrarme
             </Text>

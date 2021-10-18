@@ -21,9 +21,7 @@ const RegisterScreen = () => {
           <View style={appStyles.logoContainer}>
             <Image
               style={appStyles.logo}
-              source={{
-                uri: 'https://i.imgur.com/nACtLME.png',
-              }}
+              source={require('../assets/logo-brand.png')}
             />
           </View>
           <Text style={styles.title}>Empecemos con tu cuenta</Text>

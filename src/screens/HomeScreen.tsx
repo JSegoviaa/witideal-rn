@@ -1,5 +1,5 @@
-import React from 'react';
 import { useNavigation } from '@react-navigation/core';
+import React from 'react';
 import {
   Image,
   ImageBackground,
@@ -23,9 +23,7 @@ const HomeScreen = () => {
             <View style={appStyles.logoContainer}>
               <Image
                 style={appStyles.logo}
-                source={{
-                  uri: 'https://i.imgur.com/nACtLME.png',
-                }}
+                source={require('../assets/logo-brand.png')}
               />
             </View>
           </View>
