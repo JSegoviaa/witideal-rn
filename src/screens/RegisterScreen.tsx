@@ -1,3 +1,4 @@
+import { useNavigation } from '@react-navigation/core';
 import React from 'react';
 import {
   Image,
@@ -11,6 +12,8 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import { appStyles } from '../theme/appTheme';
 
 const RegisterScreen = () => {
+  const navigation = useNavigation();
+
   return (
     <ScrollView>
       <View style={styles.background}>
@@ -30,7 +33,11 @@ const RegisterScreen = () => {
             <Text style={styles.subtitle}>
               Crea una cuenta para buscar propiedades
             </Text>
-            <TouchableOpacity style={appStyles.btnRegister}>
+            <TouchableOpacity
+              style={appStyles.btnRegister}
+              onPress={() => {
+                navigation.navigate('RegisterForm', { id: 'buscador' });
+              }}>
               <Text style={{ color: '#41B8F9', textAlign: 'center' }}>
                 Buscador
               </Text>
@@ -42,7 +49,11 @@ const RegisterScreen = () => {
               Crea una cuenta para anunciar propiedades
             </Text>
 
-            <TouchableOpacity style={appStyles.btnRegister}>
+            <TouchableOpacity
+              style={appStyles.btnRegister}
+              onPress={() => {
+                navigation.navigate('RegisterForm', { id: 'promotor' });
+              }}>
               <Text style={{ color: '#41B8F9', textAlign: 'center' }}>
                 Promotor
               </Text>
@@ -68,7 +79,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     color: '#1E0E6F',
     fontWeight: '700',
-    padding:10
+    padding: 10,
   },
   subtitle: {
     fontSize: 20,
