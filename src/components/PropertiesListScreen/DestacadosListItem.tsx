@@ -1,6 +1,8 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { useNavigation } from '@react-navigation/core';
+import ImageColors from 'react-native-image-colors';
+import { GradientContext } from '../../context/gradient/GradientContext';
 
 interface Props {
   id: Number;
@@ -12,6 +14,14 @@ interface Props {
 
 const DestacadosListItem = ({ item }: Props) => {
   const navigation = useNavigation();
+
+  const { setMainColors } = useContext(GradientContext);
+
+  const getImageColors = async(index:number) => {
+    
+  }
+
+
   return (
     <View style={styles.container}>
       <View style={styles.card}>
