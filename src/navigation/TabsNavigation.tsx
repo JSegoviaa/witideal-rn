@@ -23,7 +23,11 @@ const TabNoLogin = () => {
   return (
     <Tab.Navigator
       screenOptions={({ route }) => ({
-        tabBarIcon: () => {
+        tabBarActiveTintColor: '#3f19f9',
+        tabBarInactiveTintColor: '#000',
+        // tabBarInactiveBackgroundColor:'#d9d9d9',
+        tabBarLabelStyle: { fontSize: 12, textAlign: 'center' },
+        tabBarIcon: ({ focused }) => {
           let iconName: string = '';
           switch (route.name) {
             case 'HomeScreenNavigation':
@@ -35,7 +39,13 @@ const TabNoLogin = () => {
               break;
           }
 
-          return <Icon name={iconName} size={20} />;
+          return (
+            <Icon
+              name={iconName}
+              size={25}
+              color={focused ? '#3f19f9' : 'black'}
+            />
+          );
         },
       })}>
       <Tab.Screen
@@ -59,7 +69,11 @@ const TabLogin = () => {
   return (
     <Tab.Navigator
       screenOptions={({ route }) => ({
-        tabBarIcon: () => {
+        tabBarActiveTintColor: '#3f19f9',
+        tabBarInactiveTintColor: '#000',
+        // tabBarInactiveBackgroundColor:'#d9d9d9',
+        tabBarLabelStyle: { fontSize: 12, textAlign: 'center' },
+        tabBarIcon: ({ focused }) => {
           let iconName: string = '';
           switch (route.name) {
             case 'HomeScreenNavigation':
@@ -78,7 +92,13 @@ const TabLogin = () => {
               break;
           }
 
-          return <Icon name={iconName} size={20} />;
+          return (
+            <Icon
+              name={iconName}
+              size={25}
+              color={focused ? '#3f19f9' : 'black'}
+            />
+          );
         },
       })}>
       <Tab.Screen

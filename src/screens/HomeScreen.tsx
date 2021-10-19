@@ -26,7 +26,7 @@ const HomeScreen = ({navigation}:Props) => {
             <View style={appStyles.logoContainer}>
               <Image
                 style={appStyles.logo}
-                source={require('../assets/logo-brand.png')}
+                source={require('../assets/witideal-logo.png')}
               />
             </View>
           </View>

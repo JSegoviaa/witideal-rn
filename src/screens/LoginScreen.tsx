@@ -93,7 +93,7 @@ const styles = StyleSheet.create({
     borderRadius: 50,
     backgroundColor: '#f6f6f6',
   },
-  textCenter: { textAlign: 'center' },
+  textCenter: { textAlign: 'center',color:'#000' },
   title: {
     textAlign: 'center',
     fontSize: 25,

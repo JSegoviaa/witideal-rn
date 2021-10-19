@@ -143,6 +143,7 @@ const SearchScreen = ({ navigation }: Props) => {
                 <View style={styles.picker}>
                   <Picker
                     selectedValue={propertyType}
+                    style={{ color: '#000' }}
                     onValueChange={(itemValue, itemIndex) =>
                       setPropertyType(itemValue)
                     }>
@@ -189,6 +190,7 @@ const SearchScreen = ({ navigation }: Props) => {
                 <View style={styles.picker}>
                   <Picker
                     selectedValue={propertyType}
+                    style={{ color: '#000' }}
                     onValueChange={(itemValue, itemIndex) =>
                       setPropertyType(itemValue)
                     }>
@@ -212,11 +214,13 @@ const SearchScreen = ({ navigation }: Props) => {
             <View style={{ flexDirection: 'row' }}>
               <TextInput
                 placeholder="Desde"
+                placeholderTextColor="#ccc"
                 style={styles.input}
                 onChangeText={value => onChange(value, 'desde')}
               />
               <TextInput
                 placeholder="Hasta"
+                placeholderTextColor="#ccc"
                 style={styles.input}
                 onChangeText={value => onChange(value, 'hasta')}
               />
@@ -224,6 +228,7 @@ const SearchScreen = ({ navigation }: Props) => {
             <View style={styles.picker}>
               <Picker
                 selectedValue={currency}
+                style={{ color: '#000' }}
                 onValueChange={(itemValue, itemIndex) =>
                   setCurrency(itemValue)
                 }>
@@ -237,6 +242,7 @@ const SearchScreen = ({ navigation }: Props) => {
             <View>
               <TextInput
                 placeholder="Ubicación"
+                placeholderTextColor="#ccc"
                 style={styles.ubicacion}
                 onChangeText={value => onChange(value, 'ubicacion')}
               />
@@ -307,6 +313,7 @@ const styles = StyleSheet.create({
     borderColor: '#63C5FA',
     borderRadius: 50,
     borderWidth: 1,
+    color: '#000',
     flex: 1,
     height: 40,
     padding: 11,
@@ -320,6 +327,7 @@ const styles = StyleSheet.create({
     borderRadius: 50,
     borderWidth: 1,
     marginTop: 15,
+    color: '#000',
   },
   subtitle: {
     color: '#000',
@@ -341,6 +349,7 @@ const styles = StyleSheet.create({
     borderColor: '#CED4DA',
     borderRadius: 3,
     borderWidth: 1,
+    color: '#000',
     height: 40,
     marginRight: 10,
     padding: 11,

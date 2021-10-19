@@ -11,7 +11,7 @@ const Filters = () => {
   });
 
   const [conservacion, setConservacion] = useState();
-  const [antiguedad, setAntiguedad] = useState()
+  const [antiguedad, setAntiguedad] = useState();
 
   return (
     <View style={styles.container}>
@@ -21,11 +21,13 @@ const Filters = () => {
         <View style={{ flexDirection: 'row' }}>
           <TextInput
             placeholder="Desde"
+            placeholderTextColor="#ccc"
             style={styles.input}
             onChangeText={value => onChange(value, 'desde')}
           />
           <TextInput
             placeholder="Hasta"
+            placeholderTextColor="#ccc"
             style={styles.input}
             onChangeText={value => onChange(value, 'hasta')}
           />
@@ -33,6 +35,7 @@ const Filters = () => {
         <Text style={styles.subtitle}>Características físicas</Text>
         <TextInput
           placeholder="Niveles construidos"
+          placeholderTextColor="#ccc"
           style={styles.input}
           keyboardType="numeric"
           onChangeText={value => onChange(value, 'niveles')}
@@ -41,6 +44,7 @@ const Filters = () => {
         <View style={styles.picker}>
           <Picker
             selectedValue={conservacion}
+            style={{ color: '#000' }}
             onValueChange={(itemValue, itemIndex) =>
               setConservacion(itemValue)
             }>
@@ -55,9 +59,8 @@ const Filters = () => {
         <View style={styles.picker}>
           <Picker
             selectedValue={antiguedad}
-            onValueChange={(itemValue, itemIndex) =>
-                setAntiguedad(itemValue)
-            }>
+            style={{ color: '#000' }}
+            onValueChange={(itemValue, itemIndex) => setAntiguedad(itemValue)}>
             <Picker.Item label="0-5" value="0-5" />
             <Picker.Item label="5-10" value="5-10" />
             <Picker.Item label="10-25" value="10-25" />
@@ -79,6 +82,7 @@ const styles = StyleSheet.create({
     borderColor: '#63C5FA',
     borderRadius: 50,
     borderWidth: 1,
+    color: '#000',
     flex: 1,
     height: 40,
     padding: 11,
