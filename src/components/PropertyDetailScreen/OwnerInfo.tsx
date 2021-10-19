@@ -11,7 +11,7 @@ const OwnerInfo = () => {
   };
 
   return (
-    <View>
+    <View style={{ paddingTop: 30 }}>
       {showOwnerInfo ? (
         <>
           <Text style={styles.title}>Rentar Casa</Text>
