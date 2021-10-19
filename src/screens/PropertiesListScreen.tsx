@@ -61,7 +61,8 @@ const PropertiesListScreen = () => {
   return (
     <>
       <Destacados />
-      <View style={{ backgroundColor: '#fff', paddingBottom: 30 }}>
+{/* 
+      <View style={{ backgroundColor: 'transparent', paddingBottom: 30 }}>
         <View style={appStyles.container}>
           <FlatList
             data={inmuebles}
@@ -70,7 +71,7 @@ const PropertiesListScreen = () => {
             showsVerticalScrollIndicator={false}
           />
         </View>
-      </View>
+      </View> */}
     </>
   );
 };

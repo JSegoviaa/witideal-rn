@@ -1,6 +1,10 @@
-import React from 'react';
-import { FlatList, View } from 'react-native';
+import React, { useContext, useEffect } from 'react';
+import { Dimensions, View } from 'react-native';
+import Carousel from 'react-native-snap-carousel';
+import { GradientContext } from '../../context/gradient/GradientContext';
+import { getImageColors } from '../../helpers/getColores';
 import DestacadosList from './DestacadosList';
+import {GradientBackground} from './GradientBackground';
 
 const destacados = [
   {
@@ -96,17 +100,38 @@ const destacados = [
   },
 ];
 
+const { width: windowWidth } = Dimensions.get('window');
+
 const Destacados = () => {
+  const { setMainColors } = useContext(GradientContext);
+
+  const getDestColors = async (index: number) => {
+    const destacado = destacados[index];
+    const uri = destacados[index].img;
+
+    const [primary = 'green', secondary = 'orange'] = await getImageColors(uri);
+    setMainColors({ primary, secondary });
+  };
+
+  useEffect(() => {
+    if (destacados.length > 0) {
+      getDestColors(0);
+    }
+  }, [destacados]);
+
   return (
-    <View>
-      <FlatList
-        data={destacados}
-        horizontal={true}
-        renderItem={({ item }: any) => <DestacadosList item={item} />}
-        keyExtractor={item => item.id}
-        showsHorizontalScrollIndicator={false}
-      />
-    </View>
+    <GradientBackground>
+      <View style={{ height: 300 }}>
+        <Carousel
+          data={destacados}
+          renderItem={({ item }: any) => <DestacadosList item={item} />}
+          sliderWidth={windowWidth}
+          itemWidth={300}
+          inactiveSlideOpacity={0.9}
+          onSnapToItem={index => getDestColors(index)}
+        />
+      </View>
+    </GradientBackground>
   );
 };
 

@@ -24,12 +24,12 @@ const SearchStackNavigation = () => {
       />
       <Stack.Screen
         name="SearchScreen"
-        options={{ title:'' }}
+        options={{ title: '' }}
         component={SearchScreen}
       />
       <Stack.Screen
         name="PropertiesListScreen"
-        options={{ title:'' }}
+        options={{ title: '', cardStyle:{backgroundColor:'transparent'} }}
         component={PropertiesListScreen}
       />
       <Stack.Screen

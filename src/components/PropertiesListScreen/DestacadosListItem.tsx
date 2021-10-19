@@ -15,12 +15,7 @@ interface Props {
 const DestacadosListItem = ({ item }: Props) => {
   const navigation = useNavigation();
 
-  const { setMainColors } = useContext(GradientContext);
-
-  const getImageColors = async(index:number) => {
-    
-  }
-
+ 
 
   return (
     <View style={styles.container}>
@@ -32,8 +27,8 @@ const DestacadosListItem = ({ item }: Props) => {
           <Image
             source={{ uri: item.img }}
             style={{
-              width: 200,
-              height: 130,
+              width: 260,
+              height: 150,
             }}
           />
           <View style={{ paddingVertical: 10 }}>
@@ -54,9 +49,7 @@ const styles = StyleSheet.create({
     elevation: 3,
     margin: 20,
   },
-  container: {
-    backgroundColor: '#3F19F9',
-  },
+
   description: {
     color: '#000',
     fontSize: 18,
