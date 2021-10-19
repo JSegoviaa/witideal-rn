@@ -9,11 +9,7 @@ interface Props {
 }
 
 const PropertiesList = ({ inmueble }: Props) => {
-  return (
-    <View>
-      <PropertiesListItem inmueble={inmueble} />
-    </View>
-  );
+  return <PropertiesListItem inmueble={inmueble} />;
 };
 
 export default PropertiesList;

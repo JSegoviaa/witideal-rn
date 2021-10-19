@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { FlatList, StyleSheet, View } from 'react-native';
+import { FlatList, ScrollView, StyleSheet, View } from 'react-native';
 import { useNavigation } from '@react-navigation/core';
 import Destacados from '../components/PropertiesListScreen/Destacados';
 import PropertiesList from '../components/PropertiesListScreen/PropertiesList';
@@ -60,19 +60,20 @@ const PropertiesListScreen = () => {
   }, []);
 
   return (
-    <GradientBackground>
-      <Destacados />
-      <View style={{ backgroundColor: 'transparent', paddingBottom: 30 }}>
-        <View style={appStyles.container}>
-          <FlatList
-            data={inmuebles}
-            renderItem={({ item }: any) => <PropertiesList inmueble={item} />}
-            keyExtractor={item => item.id}
-            showsVerticalScrollIndicator={false}
-          />
-        </View>
-      </View>
-    </GradientBackground>
+    <>
+      <GradientBackground>
+        <ScrollView>
+          <Destacados />
+          <View style={{ backgroundColor: 'transparent' }}>
+            <View style={appStyles.container}>
+              {inmuebles.map(item => (
+                <PropertiesList inmueble={item} />
+              ))}
+            </View>
+          </View>
+        </ScrollView>
+      </GradientBackground>
+    </>
   );
 };
 

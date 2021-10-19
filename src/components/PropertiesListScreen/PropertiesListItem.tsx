@@ -37,6 +37,7 @@ const PropertiesListItem = ({ inmueble }: Props) => {
 const styles = StyleSheet.create({
   card: {
     elevation: 1,
+    backgroundColor: '#fff',
     borderRadius: 2,
     marginBottom: 10,
     marginTop: 10,

@@ -1,5 +1,5 @@
 import React, { FC, useContext, useEffect } from 'react';
-import { Animated, StyleSheet, View } from 'react-native';
+import { Animated, ScrollView, StyleSheet, View } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import { GradientContext } from '../../context/gradient/GradientContext';
 import useFade from '../../hooks/useFade';
