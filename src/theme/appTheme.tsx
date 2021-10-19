@@ -46,7 +46,7 @@ export const appStyles = StyleSheet.create({
     marginTop: 'auto',
     borderRadius: 10,
   },
-  logo: { width: 204, height: 50 },
+  logo: { width: 204, height: 40, marginTop:10 },
   logoContainer: { alignItems: 'center', paddingBottom: 20, paddingTop: 20 },
   textCenter: {
     textAlign: 'center',

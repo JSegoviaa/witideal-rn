@@ -1,5 +1,12 @@
 import React from 'react';
-import { FlatList, SafeAreaView, StyleSheet, Text, View } from 'react-native';
+import {
+  FlatList,
+  Image,
+  SafeAreaView,
+  StyleSheet,
+  Text,
+  View,
+} from 'react-native';
 import MyDestPropertiesList from '../components/MyDestPropertiesScreen/MyDestPropertiesList';
 import { appStyles } from '../theme/appTheme';
 
@@ -45,6 +52,12 @@ const destacados = [
 const Destacados = () => {
   return (
     <SafeAreaView style={{ backgroundColor: '#fff' }}>
+      <View style={appStyles.logoContainer}>
+        <Image
+          source={require('../assets/logo-brand.png')}
+          style={appStyles.logo}
+        />
+      </View>
       <View style={appStyles.container}>
         <Text style={styles.textCenter}>Mis destacados</Text>
         <FlatList
@@ -79,6 +92,7 @@ const styles = StyleSheet.create({
     fontSize: 30,
     fontWeight: '700',
     padding: 15,
+    marginTop:70
   },
   title: {
     textAlign: 'center',

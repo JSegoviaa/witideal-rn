@@ -1,5 +1,12 @@
 import React from 'react';
-import { FlatList, SafeAreaView, StyleSheet, Text, View } from 'react-native';
+import {
+  FlatList,
+  Image,
+  SafeAreaView,
+  StyleSheet,
+  Text,
+  View,
+} from 'react-native';
 import MyPropertiesList from '../components/MyPropertiesScreen/MyPropertiesList';
 import { appStyles } from '../theme/appTheme';
 
@@ -53,6 +60,12 @@ const NoProperties = () => {
 const MyProperties = () => {
   return (
     <SafeAreaView style={{ backgroundColor: '#fff' }}>
+      <View style={appStyles.logoContainer}>
+        <Image
+          source={require('../assets/logo-brand.png')}
+          style={appStyles.logo}
+        />
+      </View>
       <View style={appStyles.container}>
         <Text style={styles.textCenter}>Mis inmuebles</Text>
 
@@ -78,6 +91,7 @@ const styles = StyleSheet.create({
     fontSize: 30,
     fontWeight: '700',
     padding: 15,
+    marginTop: 70,
   },
   title: {
     textAlign: 'center',
