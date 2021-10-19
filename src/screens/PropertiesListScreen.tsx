@@ -1,6 +1,5 @@
-import React, { useEffect } from 'react';
-import { FlatList, ScrollView, StyleSheet, View } from 'react-native';
-import { useNavigation } from '@react-navigation/core';
+import React from 'react';
+import { ScrollView,  View } from 'react-native';
 import Destacados from '../components/PropertiesListScreen/Destacados';
 import PropertiesList from '../components/PropertiesListScreen/PropertiesList';
 import { appStyles } from '../theme/appTheme';
@@ -53,38 +52,20 @@ const inmuebles = [
 ];
 
 const PropertiesListScreen = () => {
-  const navigation = useNavigation();
-
-  useEffect(() => {
-    navigation.setOptions({ headerShown: true, headerTransparent: true });
-  }, []);
-
   return (
-    <>
+    <ScrollView>
       <GradientBackground>
-        <ScrollView>
-          <Destacados />
-          <View style={{ backgroundColor: 'transparent' }}>
-            <View style={appStyles.container}>
-              {inmuebles.map(item => (
-                <PropertiesList key={item.id} inmueble={item} />
-              ))}
-            </View>
-          </View>
-        </ScrollView>
+        <Destacados />
       </GradientBackground>
-    </>
+      <View style={{ backgroundColor: '#fff' }}>
+        <View style={appStyles.container}>
+          {inmuebles.map(item => (
+            <PropertiesList key={item.id} inmueble={item} />
+          ))}
+        </View>
+      </View>
+    </ScrollView>
   );
 };
-
-const styles = StyleSheet.create({
-  textCenter: {
-    textAlign: 'center',
-    color: '#1E0E6F',
-    fontSize: 30,
-    fontWeight: '700',
-    padding: 15,
-  },
-});
 
 export default PropertiesListScreen;

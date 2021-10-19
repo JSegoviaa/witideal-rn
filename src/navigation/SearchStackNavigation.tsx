@@ -1,5 +1,6 @@
 import { createStackNavigator } from '@react-navigation/stack';
 import React from 'react';
+import { Image, StyleSheet } from 'react-native';
 import HomeScreen from '../screens/HomeScreen';
 import PropertiesListScreen from '../screens/PropertiesListScreen';
 import PropertyDetailScreen from '../screens/PropertyDetailScreen';
@@ -29,7 +30,18 @@ const SearchStackNavigation = () => {
       />
       <Stack.Screen
         name="PropertiesListScreen"
-        options={{ title: '', cardStyle:{backgroundColor:'transparent'} }}
+        options={{
+          title: 'Witideal',
+          headerTintColor: '#fff',
+          headerTitleAlign: 'center',
+          headerStyle: { backgroundColor: '#3f19f9' },
+          headerTitle: () => (
+            <Image
+              source={require('../assets/witideal-logo.png')}
+              style={{ width: 200, height: 39 }}
+            />
+          ),
+        }}
         component={PropertiesListScreen}
       />
       <Stack.Screen
