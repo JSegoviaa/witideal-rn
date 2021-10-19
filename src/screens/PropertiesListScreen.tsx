@@ -67,7 +67,7 @@ const PropertiesListScreen = () => {
           <View style={{ backgroundColor: 'transparent' }}>
             <View style={appStyles.container}>
               {inmuebles.map(item => (
-                <PropertiesList inmueble={item} />
+                <PropertiesList key={item.id} inmueble={item} />
               ))}
             </View>
           </View>
