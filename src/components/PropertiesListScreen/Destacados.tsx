@@ -126,16 +126,22 @@ const Destacados = () => {
   }, [destacados]);
 
   return (
-    <View style={{ height: 300 }}>
-      <Carousel
-        data={destacados}
-        renderItem={({ item }: any) => <DestacadosList item={item} />}
-        sliderWidth={windowWidth}
-        itemWidth={300}
-        inactiveSlideOpacity={0.9}
-        onSnapToItem={index => getDestColors(index)}
-      />
-    </View>
+    <>
+      {destacados.length > 0 && (
+        <View style={{ height: 300 }}>
+          <Carousel
+            data={destacados}
+            autoplay
+            loop
+            renderItem={({ item }: any) => <DestacadosList item={item} />}
+            sliderWidth={windowWidth}
+            itemWidth={300}
+            inactiveSlideOpacity={0.9}
+            onSnapToItem={index => getDestColors(index)}
+          />
+        </View>
+      )}
+    </>
   );
 };
 
