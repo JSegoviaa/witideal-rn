@@ -1,14 +1,10 @@
-import React, { useContext, useEffect } from 'react';
+import React, { FC, useContext, useEffect } from 'react';
 import { Animated, StyleSheet, View } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import { GradientContext } from '../../context/gradient/GradientContext';
 import useFade from '../../hooks/useFade';
 
-interface Props {
-  children: JSX.Element | JSX.Element[];
-}
-
-export const GradientBackground = ({ children }: Props) => {
+const GradientBackground: FC = ({ children }) => {
   const { colors, prevColors, setPrevMainColors } = useContext(GradientContext);
 
   const { opacity, fadeIn, fadeOut } = useFade();
@@ -46,3 +42,5 @@ export const GradientBackground = ({ children }: Props) => {
     </View>
   );
 };
+
+export default GradientBackground;

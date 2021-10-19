@@ -4,9 +4,15 @@ import Carousel from 'react-native-snap-carousel';
 import { GradientContext } from '../../context/gradient/GradientContext';
 import { getImageColors } from '../../helpers/getColores';
 import DestacadosList from './DestacadosList';
-import {GradientBackground} from './GradientBackground';
 
 const destacados = [
+  {
+    id: 0,
+    title: 'Destacado 0',
+    description: 'descripcion 0',
+    price: 12345,
+    img: 'https://firebasestorage.googleapis.com/v0/b/witideal-b1f99.appspot.com/o/witideal%2FT92IPz6HeNS1VCQZSL5CNajQc7H2%2FCDN40HhWS7MVulsrFDar%2Fthumb%401100_166686_RENTA%20DE%20RECA%CC%81MARAS.png?alt=media',
+  },
   {
     id: 1,
     title: 'Destacado 1',
@@ -120,18 +126,16 @@ const Destacados = () => {
   }, [destacados]);
 
   return (
-    <GradientBackground>
-      <View style={{ height: 300 }}>
-        <Carousel
-          data={destacados}
-          renderItem={({ item }: any) => <DestacadosList item={item} />}
-          sliderWidth={windowWidth}
-          itemWidth={300}
-          inactiveSlideOpacity={0.9}
-          onSnapToItem={index => getDestColors(index)}
-        />
-      </View>
-    </GradientBackground>
+    <View style={{ height: 300 }}>
+      <Carousel
+        data={destacados}
+        renderItem={({ item }: any) => <DestacadosList item={item} />}
+        sliderWidth={windowWidth}
+        itemWidth={300}
+        inactiveSlideOpacity={0.9}
+        onSnapToItem={index => getDestColors(index)}
+      />
+    </View>
   );
 };
 

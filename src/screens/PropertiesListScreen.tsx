@@ -4,6 +4,7 @@ import { useNavigation } from '@react-navigation/core';
 import Destacados from '../components/PropertiesListScreen/Destacados';
 import PropertiesList from '../components/PropertiesListScreen/PropertiesList';
 import { appStyles } from '../theme/appTheme';
+import GradientBackground from '../components/PropertiesListScreen/GradientBackground';
 
 const inmuebles = [
   {
@@ -59,9 +60,8 @@ const PropertiesListScreen = () => {
   }, []);
 
   return (
-    <>
+    <GradientBackground>
       <Destacados />
-{/* 
       <View style={{ backgroundColor: 'transparent', paddingBottom: 30 }}>
         <View style={appStyles.container}>
           <FlatList
@@ -71,8 +71,8 @@ const PropertiesListScreen = () => {
             showsVerticalScrollIndicator={false}
           />
         </View>
-      </View> */}
-    </>
+      </View>
+    </GradientBackground>
   );
 };
 
