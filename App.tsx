@@ -11,7 +11,8 @@ const App = () => {
       <GradientProvider>
         <StatusBar
           barStyle={'dark-content'}
-          backgroundColor={'transparent'} translucent={true}
+          backgroundColor={'transparent'}
+          translucent={true}
         />
         <TabsNavigation />
       </GradientProvider>

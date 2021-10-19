@@ -1,5 +1,5 @@
 import React from 'react';
-import { ScrollView,  View } from 'react-native';
+import { ScrollView, View } from 'react-native';
 import Destacados from '../components/PropertiesListScreen/Destacados';
 import PropertiesList from '../components/PropertiesListScreen/PropertiesList';
 import { appStyles } from '../theme/appTheme';

@@ -334,6 +334,7 @@ const styles = StyleSheet.create({
     fontWeight: '700',
     padding: 20,
     textAlign: 'center',
+    marginVertical: 25,
   },
   ubicacion: {
     backgroundColor: '#fff',
