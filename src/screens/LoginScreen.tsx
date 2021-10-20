@@ -102,6 +102,7 @@ const styles = StyleSheet.create({
     padding: 10,
     borderRadius: 50,
     backgroundColor: '#f6f6f6',
+    color:'#000'
   },
   textCenter: { textAlign: 'center', color: '#000' },
   title: {
