@@ -6,6 +6,7 @@ interface ContextProps {
   loading: Boolean;
   signIn: (email: string, password: string) => void;
   logOut: () => void;
+  signInWithGoogle: () => void;
 }
 
 export const AuthContext = createContext({} as ContextProps);
@@ -30,12 +31,15 @@ export const AuthProvider: FC = ({ children }) => {
     await auth().signInWithEmailAndPassword(email, password);
   };
 
-  const logOut = async () => {
-    await auth().signOut();
+  const logOut = async () => await auth().signOut();
+
+  const signInWithGoogle = () => {
+    console.log('Inicio de sesión con google');
   };
 
   return (
-    <AuthContext.Provider value={{ signIn, loading, user, logOut }}>
+    <AuthContext.Provider
+      value={{ signIn, loading, user, logOut, signInWithGoogle }}>
       {children}
     </AuthContext.Provider>
   );

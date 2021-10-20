@@ -26,7 +26,7 @@ const LoginScreen = ({ navigation }: Props) => {
 
   const { email, password } = form;
 
-  const { signIn } = useContext(AuthContext);
+  const { signIn, signInWithGoogle } = useContext(AuthContext);
 
   return (
     <View style={styles.background}>
@@ -78,7 +78,10 @@ const LoginScreen = ({ navigation }: Props) => {
             style={{ borderBottomWidth: 1, borderBottomColor: '#000' }}></View>
 
           <Text style={styles.center}></Text>
-          <TouchableOpacity>
+          <TouchableOpacity
+            onPress={() => {
+              signInWithGoogle();
+            }}>
             <View style={styles.center}>
               <Text style={styles.google}>
                 <Icon name="logo-google" size={20} /> Inicia sesión con google
@@ -102,7 +105,7 @@ const styles = StyleSheet.create({
     padding: 10,
     borderRadius: 50,
     backgroundColor: '#f6f6f6',
-    color:'#000'
+    color: '#000',
   },
   textCenter: { textAlign: 'center', color: '#000' },
   title: {
