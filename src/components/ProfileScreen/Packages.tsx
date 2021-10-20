@@ -12,7 +12,7 @@ const Packages = () => {
           Destaca tus inmuebles con nuestra publicidad y vende tus inmuebles más
           rápido
         </Text>
-        <TouchableOpacity onPress={() => console.log('')} style={styles.btn}>
+        <TouchableOpacity style={styles.btn}>
           <Text>Agregar paquete</Text>
         </TouchableOpacity>
       </View>

@@ -1,12 +1,19 @@
-import React from 'react';
-import { Text, View } from 'react-native';
+import React, { createContext, FC, useEffect, useState } from 'react';
+import firebase from 'firebase/compat/app';
+import { auth } from '../../firebase/firebase';
 
-const AuthContext = () => {
-  return (
-    <View>
-      <Text>Auth Context</Text>
-    </View>
-  );
+export const AuthContext = createContext<firebase.User | null>(null);
+
+export const AuthProvider: FC = ({ children }) => {
+  const [user, setUser] = useState<firebase.User | null>(null);
+
+  useEffect(() => {
+    const unsubscribe = auth.onAuthStateChanged(firebaseUser => {
+      setUser(firebaseUser);
+    });
+
+    return unsubscribe;
+  }, []);
+
+  return <AuthContext.Provider value={user}>{children}</AuthContext.Provider>;
 };
-
-export default AuthContext;

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import {
   Text,
   View,
@@ -13,6 +13,7 @@ import { StackScreenProps } from '@react-navigation/stack';
 import { useForm } from '../hooks/useForm';
 import { appStyles } from '../theme/appTheme';
 import { LoginRootStackNavigation } from '../navigation/LoginStackNavigation';
+import { auth } from '../firebase/firebase';
 
 interface Props
   extends StackScreenProps<LoginRootStackNavigation, 'LoginScreen'> {}
@@ -22,6 +23,16 @@ const LoginScreen = ({ navigation }: Props) => {
     email: '',
     password: '',
   });
+
+  const { email, password } = form;
+
+  const signIn = async () => {
+    try {
+      await auth.signInWithEmailAndPassword(email, password);
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
   return (
     <View style={styles.background}>
@@ -51,7 +62,7 @@ const LoginScreen = ({ navigation }: Props) => {
           />
 
           <View style={styles.center}>
-            <TouchableOpacity style={appStyles.btnPrimary}>
+            <TouchableOpacity style={appStyles.btnPrimary} onPress={signIn}>
               <Text style={appStyles.textCenter}>Iniciar sesión</Text>
             </TouchableOpacity>
           </View>
@@ -93,7 +104,7 @@ const styles = StyleSheet.create({
     borderRadius: 50,
     backgroundColor: '#f6f6f6',
   },
-  textCenter: { textAlign: 'center',color:'#000' },
+  textCenter: { textAlign: 'center', color: '#000' },
   title: {
     textAlign: 'center',
     fontSize: 25,
