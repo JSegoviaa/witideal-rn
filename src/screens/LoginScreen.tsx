@@ -54,7 +54,6 @@ const LoginScreen = ({ navigation }: Props) => {
             placeholder="Contraseña"
             secureTextEntry
             placeholderTextColor="#ccc"
-            
             style={styles.input}
             onChangeText={value => onChange(value, 'password')}
           />
