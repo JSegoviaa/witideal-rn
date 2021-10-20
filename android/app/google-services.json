@@ -1,0 +1,143 @@
+{
+  "project_info": {
+    "project_number": "643219863964",
+    "firebase_url": "https://witideal-b1f99.firebaseio.com",
+    "project_id": "witideal-b1f99",
+    "storage_bucket": "witideal-b1f99.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:643219863964:android:78a643a89de49cd3",
+        "android_client_info": {
+          "package_name": "com.ard.witideal"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "643219863964-0el7mm3pp2n03toim5i2j36uf7mba68o.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.ard.witideal",
+            "certificate_hash": "e03978d16b177e97e0265871e59c7330247485b1"
+          }
+        },
+        {
+          "client_id": "643219863964-ssclk7bm6lteftjmu4b33t82t7vou3ov.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.ard.witideal",
+            "certificate_hash": "bb7a203be3c67b5edde1df702c79228fd9e2dc5c"
+          }
+        },
+        {
+          "client_id": "643219863964-3ne34usc5iikprcms6mtcgpu1l308tcf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBSSutbKUo3T-_7oT5TCx6BzcsBBYacJ0Y"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "643219863964-3ne34usc5iikprcms6mtcgpu1l308tcf.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "643219863964-jtaapol6t8falh1jgokubqbguqhrd934.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.ard.witidealios"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:643219863964:android:c62e6695a934131fda3059",
+        "android_client_info": {
+          "package_name": "com.ard.witidealcms"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "643219863964-m9rb74l4p2m55fd4iqq7hvd4gkra9ggr.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.ard.witidealcms",
+            "certificate_hash": "a5df13503eaefd30bb78dc8240b70afb4943be45"
+          }
+        },
+        {
+          "client_id": "643219863964-3ne34usc5iikprcms6mtcgpu1l308tcf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBSSutbKUo3T-_7oT5TCx6BzcsBBYacJ0Y"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "643219863964-3ne34usc5iikprcms6mtcgpu1l308tcf.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "643219863964-jtaapol6t8falh1jgokubqbguqhrd934.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.ard.witidealios"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:643219863964:android:23c216f0081df440da3059",
+        "android_client_info": {
+          "package_name": "com.witidealapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "643219863964-3ne34usc5iikprcms6mtcgpu1l308tcf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBSSutbKUo3T-_7oT5TCx6BzcsBBYacJ0Y"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "643219863964-3ne34usc5iikprcms6mtcgpu1l308tcf.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "643219863964-jtaapol6t8falh1jgokubqbguqhrd934.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.ard.witidealios"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

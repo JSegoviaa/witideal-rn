@@ -6,7 +6,7 @@ import SearchStackNavigation from './SearchStackNavigation';
 import StackNavigation from './StackNavigation';
 import LoginStackNavigation from './LoginStackNavigation';
 import MyPropertiesScreen from '../screens/MyPropertiesScreen';
-import { AuthContext } from '../context/auth/AuthContext';
+// import { AuthContext } from '../context/auth/AuthContext';
 
 export type RootTabsNavigation = {
   HomeScreenNavigation: undefined;
@@ -129,12 +129,12 @@ const TabLogin = () => {
 const TabsNavigation = () => {
 
 
- const user = useContext(AuthContext)
+//  const user = useContext(AuthContext)
 
 
-  const [mostrar, setMostrar] = useState(false);
+  const [mostrar, setMostrar] = useState(true);
 
-  return <>{user ? <TabLogin /> : <TabNoLogin />}</>;
+  return <>{mostrar ? <TabLogin /> : <TabNoLogin />}</>;
 };
 
 export default TabsNavigation;

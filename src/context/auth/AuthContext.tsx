@@ -1,21 +1,42 @@
 import React, { createContext, FC, useEffect, useState } from 'react';
-import firebase from 'firebase/compat/app';
-import { auth } from '../../firebase/firebase';
+import auth, { FirebaseAuthTypes } from '@react-native-firebase/auth';
 
+interface ContextProps {
+  user: FirebaseAuthTypes.User | null;
+  loading: Boolean;
+  signIn: (email: string, password: string) => void;
+  logOut: () => void;
+}
 
-
-export const AuthContext = createContext<firebase.User | null>(null);
+export const AuthContext = createContext({} as ContextProps);
 
 export const AuthProvider: FC = ({ children }) => {
-  const [user, setUser] = useState<firebase.User | null>(null);
+  const [user, setUser] = useState<FirebaseAuthTypes.User | null>(null);
+  const [loading, setLoading] = useState<Boolean>(true);
+
+  const onAuthStateChanged = (user: FirebaseAuthTypes.User | null) => {
+    setUser(user);
+    if (loading) setLoading(false);
+  };
 
   useEffect(() => {
-    const unsubscribe = auth.onAuthStateChanged(firebaseUser => {
-      setUser(firebaseUser);
-    });
-
-    return unsubscribe;
+    const susbcriber = auth().onAuthStateChanged(onAuthStateChanged);
+    return susbcriber;
   }, []);
 
-  return <AuthContext.Provider value={user}>{children}</AuthContext.Provider>;
+  if (loading) return null;
+
+  const signIn = async (email: string, password: string) => {
+    await auth().signInWithEmailAndPassword(email, password);
+  };
+
+  const logOut = async () => {
+    await auth().signOut();
+  };
+
+  return (
+    <AuthContext.Provider value={{ signIn, loading, user, logOut }}>
+      {children}
+    </AuthContext.Provider>
+  );
 };
