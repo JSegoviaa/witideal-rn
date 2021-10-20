@@ -41,6 +41,7 @@ export const AuthProvider: FC = ({ children }) => {
 
   const signInWithGoogle = () => {
     console.log('Inicio de sesión con google');
+    
   };
 
   const register = async (

@@ -47,16 +47,19 @@ const RegisterForm = ({ route }: Props) => {
         <Text style={styles.title}>Ingrese los siguientes datos</Text>
         <TextInput
           placeholder="Nombre"
+          placeholderTextColor="#ccc"
           style={styles.input}
           onChangeText={value => onChange(value, 'nombre')}
         />
         <TextInput
           placeholder="Apellido"
+          placeholderTextColor="#ccc"
           style={styles.input}
           onChangeText={value => onChange(value, 'apellido')}
         />
         <TextInput
           placeholder="Teléfono"
+          placeholderTextColor="#ccc"
           style={styles.input}
           keyboardType="numeric"
           onChangeText={value => onChange(value, 'tel')}
@@ -65,30 +68,35 @@ const RegisterForm = ({ route }: Props) => {
         {params?.id === 'promotor' && (
           <TextInput
             placeholder="Empresa"
+            placeholderTextColor="#ccc"
             style={styles.input}
             onChangeText={value => onChange(value, 'empresa')}
           />
         )}
         <TextInput
           placeholder="Correo electrónico"
+          placeholderTextColor="#ccc"
           keyboardType="email-address"
           style={styles.input}
           onChangeText={value => onChange(value, 'correo')}
         />
         <TextInput
           placeholder="Confirme su correo electrónico"
+          placeholderTextColor="#ccc"
           keyboardType="email-address"
           style={styles.input}
           onChangeText={value => onChange(value, 'correo2')}
         />
         <TextInput
           placeholder="Contraseña"
+          placeholderTextColor="#ccc"
           secureTextEntry
           style={styles.input}
           onChangeText={value => onChange(value, 'password')}
         />
         <TextInput
           placeholder="Confirme su contraseña"
+          placeholderTextColor="#ccc"
           secureTextEntry
           style={styles.input}
           onChangeText={value => onChange(value, 'password2')}
@@ -130,6 +138,7 @@ const styles = StyleSheet.create({
     borderColor: '#41B8F9',
     borderRadius: 5,
     borderWidth: 1,
+    color: '#000',
     height: 40,
     margin: 12,
     padding: 10,
