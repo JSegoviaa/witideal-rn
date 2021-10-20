@@ -30,7 +30,7 @@ const RegisterForm = ({ route }: Props) => {
     password2: '',
   });
 
-  const { correo, password, nombre } = form;
+  const { correo, password, nombre, apellido } = form;
   const params = route.params;
 
   const { register } = useContext(AuthContext);
@@ -102,7 +102,7 @@ const RegisterForm = ({ route }: Props) => {
           <TouchableOpacity
             style={appStyles.btnPrimary}
             onPress={() => {
-              register(correo, password, nombre);
+              register(correo, password, nombre, apellido);
             }}>
             <Text
               style={{
