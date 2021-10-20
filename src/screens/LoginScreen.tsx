@@ -46,12 +46,15 @@ const LoginScreen = ({ navigation }: Props) => {
           <TextInput
             placeholder="Coreo electrónico"
             keyboardType="email-address"
+            placeholderTextColor="#ccc"
             style={styles.input}
             onChangeText={value => onChange(value, 'email')}
           />
           <TextInput
             placeholder="Contraseña"
             secureTextEntry
+            placeholderTextColor="#ccc"
+            
             style={styles.input}
             onChangeText={value => onChange(value, 'password')}
           />
