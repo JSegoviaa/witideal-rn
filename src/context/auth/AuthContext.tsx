@@ -7,6 +7,7 @@ interface ContextProps {
   signIn: (email: string, password: string) => void;
   logOut: () => void;
   signInWithGoogle: () => void;
+  register: (email: string, password: string, name: string) => void;
 }
 
 export const AuthContext = createContext({} as ContextProps);
@@ -37,9 +38,17 @@ export const AuthProvider: FC = ({ children }) => {
     console.log('Inicio de sesión con google');
   };
 
+  const register = async (email: string, password: string, name: string) => {
+    const { user } = await auth().createUserWithEmailAndPassword(
+      email,
+      password,
+    );
+    await user.updateProfile({ displayName: name });
+  };
+
   return (
     <AuthContext.Provider
-      value={{ signIn, loading, user, logOut, signInWithGoogle }}>
+      value={{ signIn, loading, user, logOut, signInWithGoogle, register }}>
       {children}
     </AuthContext.Provider>
   );

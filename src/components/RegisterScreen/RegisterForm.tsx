@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import {
   Image,
   SafeAreaView,
@@ -13,6 +13,7 @@ import { StackScreenProps } from '@react-navigation/stack';
 import { useForm } from '../../hooks/useForm';
 import { LoginRootStackNavigation } from '../../navigation/LoginStackNavigation';
 import { appStyles } from '../../theme/appTheme';
+import { AuthContext } from '../../context/auth/AuthContext';
 
 interface Props
   extends StackScreenProps<LoginRootStackNavigation, 'RegisterScreen'> {}
@@ -29,7 +30,10 @@ const RegisterForm = ({ route }: Props) => {
     password2: '',
   });
 
+  const { correo, password, nombre } = form;
   const params = route.params;
+
+  const { register } = useContext(AuthContext);
 
   return (
     <SafeAreaView>
@@ -95,7 +99,11 @@ const RegisterForm = ({ route }: Props) => {
         </Text>
 
         <View style={{ marginLeft: 'auto', marginRight: 'auto' }}>
-          <TouchableOpacity style={appStyles.btnPrimary}>
+          <TouchableOpacity
+            style={appStyles.btnPrimary}
+            onPress={() => {
+              register(correo, password, nombre);
+            }}>
             <Text
               style={{
                 color: 'white',
