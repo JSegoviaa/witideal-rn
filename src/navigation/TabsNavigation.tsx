@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext } from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Icon from 'react-native-vector-icons/Ionicons';
 import MyDestPropertiesScreen from '../screens/MyDestPropertiesScreen';
@@ -6,7 +6,7 @@ import SearchStackNavigation from './SearchStackNavigation';
 import StackNavigation from './StackNavigation';
 import LoginStackNavigation from './LoginStackNavigation';
 import MyPropertiesScreen from '../screens/MyPropertiesScreen';
-// import { AuthContext } from '../context/auth/AuthContext';
+import { AuthContext } from '../context/auth/AuthContext';
 
 export type RootTabsNavigation = {
   HomeScreenNavigation: undefined;
@@ -127,14 +127,9 @@ const TabLogin = () => {
 };
 
 const TabsNavigation = () => {
+  const { user } = useContext(AuthContext);
 
-
-//  const user = useContext(AuthContext)
-
-
-  const [mostrar, setMostrar] = useState(true);
-
-  return <>{mostrar ? <TabLogin /> : <TabNoLogin />}</>;
+  return <>{user ? <TabLogin /> : <TabNoLogin />}</>;
 };
 
 export default TabsNavigation;

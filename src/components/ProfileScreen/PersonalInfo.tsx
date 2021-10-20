@@ -1,10 +1,13 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import Icon from 'react-native-vector-icons/Ionicons';
+import { AuthContext } from '../../context/auth/AuthContext';
 import { appStyles } from '../../theme/appTheme';
 
 const PersonalInfo = () => {
+  const { user, logOut } = useContext(AuthContext);
+
   return (
     <SafeAreaView>
       <View style={styles.container}>
@@ -18,25 +21,27 @@ const PersonalInfo = () => {
         </View>
         <Text style={styles.center}>¡Hola!</Text>
 
-        <Text style={styles.name}>José Manuel Acosta Segovia</Text>
+        <Text style={styles.name}>{user?.displayName}</Text>
 
         <Text style={styles.center}>Plan RisingStar</Text>
-        <Text style={styles.uid}>UID: asf6546as5f1435sd</Text>
+        <Text style={styles.uid}>UID: {user?.uid} </Text>
 
-        <Text style={styles.center}>
-          <Icon name="call-outline" size={20} />
-          9982626821
-        </Text>
+        {user?.phoneNumber && (
+          <Text style={styles.center}>
+            <Icon name="call-outline" size={20} />
+            {user?.phoneNumber}
+          </Text>
+        )}
 
         <Text style={styles.center}>
           <Icon name="mail-open-outline" size={20} />
-          140300177@ucaribe.edu.mx
+          {user?.email}
         </Text>
         <TouchableOpacity style={appStyles.btnPrimary}>
           <Text style={appStyles.textCenter}>Editar perfil</Text>
         </TouchableOpacity>
         <View style={{ marginTop: 20 }}></View>
-        <TouchableOpacity>
+        <TouchableOpacity onPress={() => logOut()}>
           <Text style={{ color: 'gray' }}>Cerrar sesión</Text>
         </TouchableOpacity>
       </View>

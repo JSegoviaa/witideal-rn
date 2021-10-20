@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import {
   Text,
   View,
@@ -13,6 +13,7 @@ import { StackScreenProps } from '@react-navigation/stack';
 import { useForm } from '../hooks/useForm';
 import { appStyles } from '../theme/appTheme';
 import { LoginRootStackNavigation } from '../navigation/LoginStackNavigation';
+import { AuthContext } from '../context/auth/AuthContext';
 
 interface Props
   extends StackScreenProps<LoginRootStackNavigation, 'LoginScreen'> {}
@@ -25,7 +26,8 @@ const LoginScreen = ({ navigation }: Props) => {
 
   const { email, password } = form;
 
- 
+  const { signIn } = useContext(AuthContext);
+
   return (
     <View style={styles.background}>
       <ScrollView>
@@ -55,7 +57,9 @@ const LoginScreen = ({ navigation }: Props) => {
           />
 
           <View style={styles.center}>
-            <TouchableOpacity style={appStyles.btnPrimary} >
+            <TouchableOpacity
+              style={appStyles.btnPrimary}
+              onPress={() => signIn(email, password)}>
               <Text style={appStyles.textCenter}>Iniciar sesión</Text>
             </TouchableOpacity>
           </View>

@@ -4,11 +4,11 @@ import { NavigationContainer } from '@react-navigation/native';
 import TabsNavigation from './src/navigation/TabsNavigation';
 import { GradientProvider } from './src/context/gradient/GradientContext';
 import { StatusBar } from 'react-native';
-// import { AuthProvider } from './src/context/auth/AuthContext';
+import { AuthProvider } from './src/context/auth/AuthContext';
 
 const App = () => {
   return (
-    // <AuthProvider>
+    <AuthProvider>
       <NavigationContainer>
         <GradientProvider>
           <StatusBar
@@ -19,7 +19,7 @@ const App = () => {
           <TabsNavigation />
         </GradientProvider>
       </NavigationContainer>
-    // </AuthProvider>
+   </AuthProvider> 
   );
 };
 
