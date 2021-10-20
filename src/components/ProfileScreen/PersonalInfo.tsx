@@ -12,18 +12,22 @@ const PersonalInfo = () => {
           <Image
             style={styles.avatar}
             source={{
-              uri: 'https://medgoldresources.com/wp-content/uploads/2018/02/avatar-placeholder.gif',
+              uri: `https://medgoldresources.com/wp-content/uploads/2018/02/avatar-placeholder.gif`,
             }}
           />
         </View>
         <Text style={styles.center}>¡Hola!</Text>
-        <Text style={styles.center}>Plan RisingStar</Text>
+
         <Text style={styles.name}>José Manuel Acosta Segovia</Text>
-        <Text style={styles.uid}>UID: J7idPjx6jVMlYtzQVF3RbfiWre72</Text>
+
+        <Text style={styles.center}>Plan RisingStar</Text>
+        <Text style={styles.uid}>UID: asf6546as5f1435sd</Text>
+
         <Text style={styles.center}>
           <Icon name="call-outline" size={20} />
           9982626821
         </Text>
+
         <Text style={styles.center}>
           <Icon name="mail-open-outline" size={20} />
           140300177@ucaribe.edu.mx

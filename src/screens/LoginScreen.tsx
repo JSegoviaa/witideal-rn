@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import {
   Text,
   View,
@@ -13,7 +13,6 @@ import { StackScreenProps } from '@react-navigation/stack';
 import { useForm } from '../hooks/useForm';
 import { appStyles } from '../theme/appTheme';
 import { LoginRootStackNavigation } from '../navigation/LoginStackNavigation';
-import { auth } from '../firebase/firebase';
 
 interface Props
   extends StackScreenProps<LoginRootStackNavigation, 'LoginScreen'> {}
@@ -26,14 +25,7 @@ const LoginScreen = ({ navigation }: Props) => {
 
   const { email, password } = form;
 
-  const signIn = async () => {
-    try {
-      await auth.signInWithEmailAndPassword(email, password);
-    } catch (error) {
-      console.error(error);
-    }
-  };
-
+ 
   return (
     <View style={styles.background}>
       <ScrollView>
@@ -51,6 +43,7 @@ const LoginScreen = ({ navigation }: Props) => {
           </Text>
           <TextInput
             placeholder="Coreo electrónico"
+            keyboardType="email-address"
             style={styles.input}
             onChangeText={value => onChange(value, 'email')}
           />
@@ -62,7 +55,7 @@ const LoginScreen = ({ navigation }: Props) => {
           />
 
           <View style={styles.center}>
-            <TouchableOpacity style={appStyles.btnPrimary} onPress={signIn}>
+            <TouchableOpacity style={appStyles.btnPrimary} >
               <Text style={appStyles.textCenter}>Iniciar sesión</Text>
             </TouchableOpacity>
           </View>
