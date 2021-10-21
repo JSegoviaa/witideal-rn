@@ -46,7 +46,7 @@ const favoritos = [
 const NoFavorites = () => {
   return (
     <View>
-      <Text style={styles.title} >Aún no tienes favoritos</Text>
+      <Text style={styles.title}>Aún no tienes favoritos</Text>
     </View>
   );
 };

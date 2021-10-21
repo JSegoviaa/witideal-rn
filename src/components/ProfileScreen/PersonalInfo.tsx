@@ -1,12 +1,15 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext } from 'react';
 import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { AuthContext } from '../../context/auth/AuthContext';
 import { appStyles } from '../../theme/appTheme';
+import { useUserInfo } from '../../hooks/useUserInfo';
 
 const PersonalInfo = () => {
   const { user, logOut } = useContext(AuthContext);
+
+  const { userInfo } = useUserInfo(user?.uid!);
 
   return (
     <SafeAreaView>
@@ -20,18 +23,19 @@ const PersonalInfo = () => {
           />
         </View>
         <Text style={styles.center}>¡Hola!</Text>
-
-        <Text style={styles.name}>{user?.displayName}</Text>
+        {userInfo && (
+          <Text style={styles.name}>
+            {userInfo.name} {userInfo.lastname}{' '}
+          </Text>
+        )}
 
         <Text style={styles.center}>Plan RisingStar</Text>
         <Text style={styles.uid}>UID: {user?.uid} </Text>
 
-        {user?.phoneNumber && (
-          <Text style={styles.center}>
-            <Icon name="call-outline" size={20} />
-            {user?.phoneNumber}
-          </Text>
-        )}
+        <Text style={styles.center}>
+          <Icon name="call-outline" size={20} />
+          {userInfo?.phone}
+        </Text>
 
         <Text style={styles.center}>
           <Icon name="mail-open-outline" size={20} />
