@@ -58,6 +58,7 @@ const LoginScreen = ({ navigation }: Props) => {
           <TextInput
             placeholder="Coreo electrónico"
             keyboardType="email-address"
+            autoCapitalize="none"
             placeholderTextColor="#ccc"
             style={styles.input}
             onChangeText={value => onChange(value, 'email')}
