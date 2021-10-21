@@ -1,5 +1,6 @@
 import React, { createContext, FC, useEffect, useState } from 'react';
 import auth, { FirebaseAuthTypes } from '@react-native-firebase/auth';
+import { Alert } from 'react-native';
 
 interface ContextProps {
   user: FirebaseAuthTypes.User | null;
@@ -34,7 +35,14 @@ export const AuthProvider: FC = ({ children }) => {
   if (loading) return null;
 
   const signIn = async (email: string, password: string) => {
-    await auth().signInWithEmailAndPassword(email, password);
+    try {
+      if (email && password) {
+        await auth().signInWithEmailAndPassword(email, password);
+      }
+    } catch (error) {
+      console.log(error);
+      return Alert.alert('', 'Error al iniciar sesión', [{ text: 'Regresar' }]);
+    }
   };
 
   const logOut = async () => await auth().signOut();

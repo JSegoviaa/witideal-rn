@@ -7,6 +7,7 @@ import {
   TouchableOpacity,
   Image,
   ScrollView,
+  Alert,
 } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { StackScreenProps } from '@react-navigation/stack';
@@ -27,6 +28,17 @@ const LoginScreen = ({ navigation }: Props) => {
   const { email, password } = form;
 
   const { signIn, signInWithGoogle } = useContext(AuthContext);
+
+  const handleLogin = () => {
+    if (!email.trim()) {
+      Alert.alert('', 'Correo electrónico obligatorio');
+    }
+    if (!password.trim()) {
+      Alert.alert('', 'Contraseña obligatoria');
+    }
+
+    signIn(email, password);
+  };
 
   return (
     <View style={styles.background}>
@@ -61,7 +73,7 @@ const LoginScreen = ({ navigation }: Props) => {
           <View style={styles.center}>
             <TouchableOpacity
               style={appStyles.btnPrimary}
-              onPress={() => signIn(email, password)}>
+              onPress={handleLogin}>
               <Text style={appStyles.textCenter}>Iniciar sesión</Text>
             </TouchableOpacity>
           </View>
