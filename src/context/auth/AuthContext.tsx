@@ -41,7 +41,8 @@ export const AuthProvider: FC = ({ children }) => {
       }
     } catch (error) {
       console.log(error);
-      return Alert.alert('', 'Error al iniciar sesión', [{ text: 'Regresar' }]);
+      //  Alert.alert('', `${error}`, [{ text: 'Regresar' }]);
+      Alert.alert('Error al iniciar sesión', `Inténtelo de nuevo`, [{ text: 'Regresar' }]);
     }
   };
 
