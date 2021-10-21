@@ -1,5 +1,6 @@
 import React from 'react';
 import {
+  Image,
   ScrollView,
   StyleSheet,
   Text,
@@ -17,6 +18,12 @@ const ProfileScreen = ({ navigation }: Props) => {
   return (
     <ScrollView>
       <View style={styles.container}>
+        <View style={appStyles.logoContainer}>
+          <Image
+            style={appStyles.logo}
+            source={require('../assets/logo-brand.png')}
+          />
+        </View>
         <View>
           <PersonalInfo />
           <View style={styles.container2}>
