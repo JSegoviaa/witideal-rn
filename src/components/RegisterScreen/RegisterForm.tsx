@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
 import {
+  Alert,
   Image,
   SafeAreaView,
   ScrollView,
@@ -30,10 +31,49 @@ const RegisterForm = ({ route }: Props) => {
     password2: '',
   });
 
-  const { correo, password, nombre, apellido } = form;
+  const { correo, correo2, password, password2, nombre, apellido } = form;
   const params = route.params;
 
   const { register } = useContext(AuthContext);
+
+  const handleRegister = () => {
+    if (!nombre.trim()) {
+      Alert.alert('', 'El nombre es obligatorio', [{ text: 'Regresar' }]);
+    }
+    if (!apellido.trim()) {
+      Alert.alert('', 'El apellido es obligatorio', [{ text: 'Regresar' }]);
+    }
+    if (!correo.trim()) {
+      Alert.alert('', 'El correo electrónico es obligatorio', [
+        { text: 'Regresar' },
+      ]);
+    }
+    if (!correo2.trim()) {
+      Alert.alert('', 'Confirme su correo electrónico', [{ text: 'Regresar' }]);
+    }
+    if (!password.trim()) {
+      Alert.alert('', 'La contraseña es obligatoria', [{ text: 'Regresar' }]);
+    }
+    if (!password2.trim()) {
+      Alert.alert('', 'Confirme la contraseña', [{ text: 'Regresar' }]);
+    }
+
+    if (correo !== correo2) {
+      Alert.alert('', 'El correo electrónico ingresado no coincide', [
+        { text: 'Regresar' },
+      ]);
+    }
+
+    if (password !== password2) {
+      Alert.alert('', 'Las contraseñas no coinciden', [{ text: 'Regresar' }]);
+    }
+
+    if (correo === correo2 && password === password2) {
+      register(correo, password, nombre, apellido);
+    }
+    return
+     
+  };
 
   return (
     <SafeAreaView>
@@ -77,6 +117,7 @@ const RegisterForm = ({ route }: Props) => {
           placeholder="Correo electrónico"
           placeholderTextColor="#ccc"
           keyboardType="email-address"
+          autoCapitalize="none"
           style={styles.input}
           onChangeText={value => onChange(value, 'correo')}
         />
@@ -84,6 +125,7 @@ const RegisterForm = ({ route }: Props) => {
           placeholder="Confirme su correo electrónico"
           placeholderTextColor="#ccc"
           keyboardType="email-address"
+          autoCapitalize="none"
           style={styles.input}
           onChangeText={value => onChange(value, 'correo2')}
         />
@@ -109,9 +151,7 @@ const RegisterForm = ({ route }: Props) => {
         <View style={{ marginLeft: 'auto', marginRight: 'auto' }}>
           <TouchableOpacity
             style={appStyles.btnPrimary}
-            onPress={() => {
-              register(correo, password, nombre, apellido);
-            }}>
+            onPress={handleRegister}>
             <Text
               style={{
                 color: 'white',

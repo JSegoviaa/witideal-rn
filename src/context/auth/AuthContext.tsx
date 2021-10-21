@@ -41,7 +41,6 @@ export const AuthProvider: FC = ({ children }) => {
 
   const signInWithGoogle = () => {
     console.log('Inicio de sesión con google');
-    
   };
 
   const register = async (
@@ -50,11 +49,13 @@ export const AuthProvider: FC = ({ children }) => {
     name: string,
     apellido: string,
   ) => {
-    const { user } = await auth().createUserWithEmailAndPassword(
-      email,
-      password,
-    );
-    await user.updateProfile({ displayName: `${name} ${apellido}` });
+    if (email && password && name && apellido) {
+      const { user } = await auth().createUserWithEmailAndPassword(
+        email,
+        password,
+      );
+      await user.updateProfile({ displayName: `${name} ${apellido}` });
+    }
   };
 
   return (
