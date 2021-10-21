@@ -90,10 +90,7 @@ const LoginScreen = ({ navigation }: Props) => {
             style={{ borderBottomWidth: 1, borderBottomColor: '#000' }}></View>
 
           <Text style={styles.center}></Text>
-          <TouchableOpacity
-            onPress={() => {
-              signInWithGoogle();
-            }}>
+          <TouchableOpacity onPress={() => signInWithGoogle()}>
             <View style={styles.center}>
               <Text style={styles.google}>
                 <Icon name="logo-google" size={20} /> Inicia sesión con google

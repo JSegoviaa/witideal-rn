@@ -1,6 +1,7 @@
 import React, { createContext, FC, useEffect, useState } from 'react';
-import auth, { FirebaseAuthTypes } from '@react-native-firebase/auth';
 import { Alert } from 'react-native';
+import auth, { FirebaseAuthTypes } from '@react-native-firebase/auth';
+import { GoogleSignin } from '@react-native-google-signin/google-signin';
 
 interface ContextProps {
   user: FirebaseAuthTypes.User | null;
@@ -15,6 +16,11 @@ interface ContextProps {
     apellido: string,
   ) => void;
 }
+
+GoogleSignin.configure({
+  webClientId:
+    '643219863964-3ne34usc5iikprcms6mtcgpu1l308tcf.apps.googleusercontent.com',
+});
 
 export const AuthContext = createContext({} as ContextProps);
 
@@ -42,14 +48,29 @@ export const AuthProvider: FC = ({ children }) => {
     } catch (error) {
       console.log(error);
       //  Alert.alert('', `${error}`, [{ text: 'Regresar' }]);
-      Alert.alert('Error al iniciar sesión', `Inténtelo de nuevo`, [{ text: 'Regresar' }]);
+      Alert.alert('Error al iniciar sesión', `Inténtelo de nuevo`, [
+        { text: 'Regresar' },
+      ]);
     }
   };
 
   const logOut = async () => await auth().signOut();
 
-  const signInWithGoogle = () => {
+  const signInWithGoogle = async () => {
     console.log('Inicio de sesión con google');
+
+    try {
+      //Get user token id
+      const { idToken } = await GoogleSignin.signIn();
+
+      //Create google credential with token
+      const googleCredential = auth.GoogleAuthProvider.credential(idToken);
+
+      // Sign-in the user with the credential
+      return auth().signInWithCredential(googleCredential);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   const register = async (

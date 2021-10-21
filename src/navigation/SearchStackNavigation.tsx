@@ -38,7 +38,7 @@ const SearchStackNavigation = () => {
           headerTitle: () => (
             <Image
               source={require('../assets/witideal-logo.png')}
-              style={{ width: 192, height: 37.5 }}
+              style={{ width: 179, height: 35 }}
             />
           ),
         }}
