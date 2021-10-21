@@ -1,5 +1,7 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { FlatList, StyleSheet, Text, View } from 'react-native';
+import { AuthContext } from '../context/auth/AuthContext';
+import { useSubscription } from '../hooks/useSubscription';
 import { appStyles } from '../theme/appTheme';
 
 interface Pago {
@@ -79,7 +81,18 @@ const Payments = () => {
 };
 
 const PaymentsScreen = () => {
-  return <>{pagos.length > 0 ? <Payments /> : <NoPayments />}</>;
+  const { user } = useContext(AuthContext);
+  const { subscription } = useSubscription(user?.uid!);
+
+  return (
+    <>
+      {subscription && subscription!.data.length > 0 ? (
+        <Payments />
+      ) : (
+        <NoPayments />
+      )}
+    </>
+  );
 };
 
 const styles = StyleSheet.create({

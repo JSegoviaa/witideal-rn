@@ -1,17 +1,27 @@
-import firestore from '@react-native-firebase/firestore';
 import { useEffect, useState } from 'react';
+import firestore from '@react-native-firebase/firestore';
 
-export const useRole = (uid: string) => {
-  const [subscription, setSubscription] = useState(null);
+interface DocumentData {
+  [key: string]: any;
+}
+
+export const useSubscription = (uid: string) => {
+  const [subscription, setSubscription] = useState<DocumentData | undefined>();
 
   const getSubscription = async () => {
     try {
       const data = await firestore()
         .collection('users')
         .doc(uid)
-        .collection('subscription')
+        .collection('subscriptions')
         .get();
-      console.log(data);
+
+      data.forEach(subscription => {
+        setSubscription({
+          id: subscription.id,
+          data: subscription.data().items,
+        });
+      });
     } catch (error) {
       console.log(error);
     }
@@ -19,29 +29,7 @@ export const useRole = (uid: string) => {
 
   useEffect(() => {
     getSubscription();
-  }, []);
-
-  //   useEffect(() => {
-  //     firestore()
-  //       .collection('users')
-  //       .doc(uid)
-  //       .collection('subscriptions')
-  //       .get()
-  //       .then(snapshot => {
-  //         snapshot.forEach(subscription => {
-  //           setSubscription({
-  //             id: subscription.id,
-  //             role: subscription.data().items[0].price.product.metadata
-  //               .firebaseRole,
-  //             current_period_start:
-  //               subscription.data().current_period_start.seconds,
-
-  //             current_period_end: subscription.data().current_period_end.seconds,
-  //             price: subscription.data().items[0].price,
-  //           });
-  //         });
-  //       });
-  //   }, [db, uId]);
+  }, [uid]);
 
   return { subscription };
 };
