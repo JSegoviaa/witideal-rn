@@ -87,7 +87,6 @@ const TabLogin = () => {
             case 'MyPropertiesScreen':
               iconName = 'business-outline';
               break;
-
             case 'ProfileScreen':
               iconName = 'person-circle-outline';
               break;
