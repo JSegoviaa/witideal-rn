@@ -54,7 +54,7 @@ const destacados = [
 
 const Destacados = () => {
   const { user } = useContext(AuthContext);
-  const { destProperties, loading } = useDestProperties(user?.uid!);
+  const { loading } = useDestProperties(user?.uid!);
 
   return (
     <SafeAreaView style={{ backgroundColor: '#fff' }}>
@@ -92,7 +92,18 @@ const NoDestacados = () => {
 };
 
 const MyDestPropertiesScreen = () => {
-  return <>{destacados.length > 0 ? <Destacados /> : <NoDestacados />}</>;
+  const { user } = useContext(AuthContext);
+  const { destProperties } = useDestProperties(user?.uid!);
+
+  return (
+    <>
+      {destProperties && destProperties.length > 0 ? (
+        <Destacados />
+      ) : (
+        <NoDestacados />
+      )}
+    </>
+  );
 };
 
 const styles = StyleSheet.create({
