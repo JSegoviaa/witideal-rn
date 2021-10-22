@@ -57,8 +57,7 @@ const NoFavorites = () => {
 //Componente que se muestra si tienes favoritos
 const Favorites = () => {
   const { user } = useContext(AuthContext);
-  const { favorites, loading } = useFavorites(user?.uid!);
-  favorites && console.log(favorites);
+  const { loading } = useFavorites(user?.uid!);
   return (
     <SafeAreaView style={{ backgroundColor: '#fff' }}>
       <View style={appStyles.container}>
@@ -79,7 +78,12 @@ const Favorites = () => {
 };
 
 const MyFavoritesScreen = () => {
-  return <>{favoritos.length > 0 ? <Favorites /> : <NoFavorites />}</>;
+  const { user } = useContext(AuthContext);
+  const { favorites } = useFavorites(user?.uid!);
+
+  return (
+    <>{favorites && favorites.length > 0 ? <Favorites /> : <NoFavorites />}</>
+  );
 };
 
 const styles = StyleSheet.create({
