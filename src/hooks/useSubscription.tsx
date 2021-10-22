@@ -12,16 +12,20 @@ export const useSubscription = (uid: string) => {
   const getSubscription = async () => {
     try {
       const data = await firestore()
-      .collection('users')
-      .doc(uid)
-      .collection('subscriptions')
-      .get();
-      
-      setLoading(false)
+        .collection('users')
+        .doc(uid)
+        .collection('subscriptions')
+        .get();
+
+      setLoading(false);
       data.forEach(subscription => {
         setSubscription({
           id: subscription.id,
           data: subscription.data().items,
+          end: subscription.data().current_period_end,
+          start: subscription.data().current_period_start,
+          role: subscription.data().items[0].price.product.metadata
+            .firebaseRole,
         });
       });
     } catch (error) {
@@ -33,5 +37,5 @@ export const useSubscription = (uid: string) => {
     getSubscription();
   }, [uid]);
 
-  return { subscription,loading };
+  return { subscription, loading };
 };

@@ -49,39 +49,41 @@ const NoPayments = () => {
 //Este componente se muestra si tiene por lo menos un pago realizdo
 const Payments = () => {
   const { user } = useContext(AuthContext);
-  const { loading } = useSubscription(user?.uid!);
-
+  const { loading, subscription } = useSubscription(user?.uid!);
   return (
     <View>
       <View style={appStyles.container}>
         {loading ? (
           <Loading size="large" color="#1E0E9D" />
         ) : (
-          <FlatList
-            data={pagos}
-            renderItem={({ item }: any) => (
-              <View style={styles.border}>
-                <View>
-                  <Text style={styles.title}>Inicio:</Text>
-                  <Text style={styles.description}>{item.inicio}</Text>
-                </View>
-                <View>
-                  <Text style={styles.title}>Fin:</Text>
-                  <Text style={styles.description}> {item.fin} </Text>
-                </View>
-                <View>
-                  <Text style={styles.title}>Orden de pago:</Text>
-                  <Text style={styles.description}> {item.pagoId} </Text>
-                </View>
-                <View>
-                  <Text style={styles.title}>Cantidad:</Text>
-                  <Text style={styles.description}> ${item.cantidad} MXN </Text>
-                </View>
-              </View>
-            )}
-            keyExtractor={item => item.id}
-            showsVerticalScrollIndicator={false}
-          />
+          <View style={styles.border}>
+            <View>
+              <Text style={styles.title}>Inicio:</Text>
+              <Text style={styles.description}>
+                {subscription && subscription.id}
+              </Text>
+            </View>
+            <View>
+              <Text style={styles.title}>Fin:</Text>
+              <Text style={styles.description}>
+                {' '}
+                {subscription && subscription.id}{' '}
+              </Text>
+            </View>
+            <View>
+              <Text style={styles.title}>Orden de pago:</Text>
+              <Text style={styles.description}>
+                {' '}
+                {subscription && subscription.id}{' '}
+              </Text>
+            </View>
+            <View>
+              <Text style={styles.title}>Cantidad:</Text>
+              <Text style={styles.description}>
+                ${subscription && subscription.id} MXN
+              </Text>
+            </View>
+          </View>
         )}
       </View>
     </View>
@@ -92,15 +94,7 @@ const PaymentsScreen = () => {
   const { user } = useContext(AuthContext);
   const { subscription } = useSubscription(user?.uid!);
 
-  return (
-    <>
-      {subscription && subscription!.data.length > 0 ? (
-        <Payments />
-      ) : (
-        <NoPayments />
-      )}
-    </>
-  );
+  return <>{subscription && 1 > 0 ? <Payments /> : <NoPayments />}</>;
 };
 
 const styles = StyleSheet.create({
