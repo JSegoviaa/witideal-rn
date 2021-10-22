@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import {
   FlatList,
   Image,
@@ -8,6 +8,9 @@ import {
   View,
 } from 'react-native';
 import MyDestPropertiesList from '../components/MyDestPropertiesScreen/MyDestPropertiesList';
+import Loading from '../components/ui/Loading';
+import { AuthContext } from '../context/auth/AuthContext';
+import { useDestProperties } from '../hooks/useDestProperties';
 import { appStyles } from '../theme/appTheme';
 
 const destacados = [
@@ -50,6 +53,9 @@ const destacados = [
 ];
 
 const Destacados = () => {
+  const { user } = useContext(AuthContext);
+  const { destProperties, loading } = useDestProperties(user?.uid!);
+
   return (
     <SafeAreaView style={{ backgroundColor: '#fff' }}>
       <View style={appStyles.logoContainer}>
@@ -60,14 +66,18 @@ const Destacados = () => {
       </View>
       <View style={appStyles.container}>
         <Text style={styles.textCenter}>Mis destacados</Text>
-        <FlatList
-          data={destacados}
-          renderItem={({ item }: any) => (
-            <MyDestPropertiesList inmueble={item} />
-          )}
-          keyExtractor={item => item.id}
-          showsVerticalScrollIndicator={false}
-        />
+        {loading ? (
+          <Loading size="large" color="#1E0E9D" />
+        ) : (
+          <FlatList
+            data={destacados}
+            renderItem={({ item }: any) => (
+              <MyDestPropertiesList inmueble={item} />
+            )}
+            keyExtractor={item => item.id}
+            showsVerticalScrollIndicator={false}
+          />
+        )}
       </View>
     </SafeAreaView>
   );
