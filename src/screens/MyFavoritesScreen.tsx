@@ -45,7 +45,7 @@ const favoritos = [
 // Componente que se muestra si aún no tienes favoritos
 const NoFavorites = () => {
   return (
-    <View>
+    <View style={{ flex: 1, justifyContent: 'center' }}>
       <Text style={styles.title}>Aún no tienes favoritos</Text>
     </View>
   );
