@@ -62,7 +62,7 @@ const NoProperties = () => {
 
 const MyProperties = () => {
   const { user } = useContext(AuthContext);
-  const { properties, loading } = useMyProperties(user?.uid!);
+  const { loading } = useMyProperties(user?.uid!);
   return (
     <SafeAreaView style={{ backgroundColor: '#fff' }}>
       <View style={appStyles.logoContainer}>
@@ -94,7 +94,18 @@ const MyProperties = () => {
 };
 
 const MyPropertiesScreen = () => {
-  return <>{inmuebles.length > 0 ? <MyProperties /> : <NoProperties />}</>;
+  const { user } = useContext(AuthContext);
+  const { properties } = useMyProperties(user?.uid!);
+
+  return (
+    <>
+      {properties && properties.length > 0 ? (
+        <MyProperties />
+      ) : (
+        <NoProperties />
+      )}
+    </>
+  );
 };
 
 const styles = StyleSheet.create({
