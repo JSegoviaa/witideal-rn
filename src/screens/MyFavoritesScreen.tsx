@@ -1,6 +1,9 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { FlatList, SafeAreaView, StyleSheet, Text, View } from 'react-native';
 import MyFavoritesList from '../components/MyFavoritesScreen/MyFavoritesList';
+import Loading from '../components/ui/Loading';
+import { AuthContext } from '../context/auth/AuthContext';
+import { useFavorites } from '../hooks/useFavorites';
 import { appStyles } from '../theme/appTheme';
 
 const favoritos = [
@@ -53,16 +56,23 @@ const NoFavorites = () => {
 
 //Componente que se muestra si tienes favoritos
 const Favorites = () => {
+  const { user } = useContext(AuthContext);
+  const { favorites, loading } = useFavorites(user?.uid!);
+ favorites && console.log(favorites);
   return (
     <SafeAreaView style={{ backgroundColor: '#fff' }}>
       <View style={appStyles.container}>
         <Text style={styles.textCenter}>Mis favoritos</Text>
-        <FlatList
-          data={favoritos}
-          renderItem={({ item }: any) => <MyFavoritesList favoritos={item} />}
-          keyExtractor={item => item.id}
-          showsVerticalScrollIndicator={false}
-        />
+        {loading ? (
+          <Loading size="large" color="#1E0E9D" />
+        ) : (
+          <FlatList
+            data={favoritos}
+            renderItem={({ item }: any) => <MyFavoritesList favoritos={item} />}
+            keyExtractor={item => item.id}
+            showsVerticalScrollIndicator={false}
+          />
+        )}
       </View>
     </SafeAreaView>
   );
