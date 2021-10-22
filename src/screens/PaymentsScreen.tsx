@@ -1,46 +1,14 @@
 import React, { useContext } from 'react';
-import { FlatList, StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
 import Loading from '../components/ui/Loading';
 import { AuthContext } from '../context/auth/AuthContext';
 import { useSubscription } from '../hooks/useSubscription';
 import { appStyles } from '../theme/appTheme';
 
-interface Pago {
-  [index: number]: {
-    id: Number;
-    inicio: String;
-    fin: String;
-    pagoId: Number;
-    cantidad: Number;
-  };
-}
-
-interface Props {
-  id: Number;
-  inicio: String;
-  fin: String;
-  pagoId: Number;
-  cantidad: Number;
-}
-
-//Cambiar el any
-const pagos: any = [
-  { id: 1, inicio: '01/01/21', fin: '01/02/21', pagoId: 1234, cantidad: 1500 },
-  { id: 2, inicio: '01/02/21', fin: '01/03/21', pagoId: 1235, cantidad: 1500 },
-  { id: 3, inicio: '01/03/21', fin: '01/04/21', pagoId: 1485, cantidad: 1500 },
-  { id: 4, inicio: '01/04/21', fin: '01/05/21', pagoId: 3226, cantidad: 1500 },
-  { id: 5, inicio: '01/05/21', fin: '01/06/21', pagoId: 9634, cantidad: 1500 },
-  { id: 6, inicio: '01/05/21', fin: '01/06/21', pagoId: 9634, cantidad: 1500 },
-  { id: 7, inicio: '01/05/21', fin: '01/06/21', pagoId: 9634, cantidad: 1500 },
-  { id: 8, inicio: '01/05/21', fin: '01/06/21', pagoId: 9634, cantidad: 1500 },
-  { id: 9, inicio: '01/05/21', fin: '01/06/21', pagoId: 9634, cantidad: 1500 },
-  { id: 10, inicio: '01/05/21', fin: '01/06/21', pagoId: 9634, cantidad: 1500 },
-];
-
 //Este componente se va a mostrar si no ha realizado pagos
 const NoPayments = () => {
   return (
-    <View style={appStyles.container}>
+    <View style={{ flex: 1, justifyContent: 'center' }}>
       <Text style={styles.noPayments}>Aún no has realizado ningún pago</Text>
     </View>
   );
