@@ -6,9 +6,12 @@ import { AuthContext } from '../../context/auth/AuthContext';
 import { appStyles } from '../../theme/appTheme';
 import { useUserInfo } from '../../hooks/useUserInfo';
 import Loading from '../ui/Loading';
+import { useSubscription } from '../../hooks/useSubscription';
+import { risingStar, rockStar, superStar } from '../../constant/role';
 
 const PersonalInfo = () => {
   const { user, logOut } = useContext(AuthContext);
+  const { subscription } = useSubscription(user?.uid!);
   const { userInfo } = useUserInfo(user?.uid!);
 
   return (
@@ -32,8 +35,20 @@ const PersonalInfo = () => {
                 {userInfo.name} {userInfo.lastname}{' '}
               </Text>
             )}
+            {subscription && (
+              <Text style={styles.center}>
+                {subscription && subscription.role === risingStar
+                  ? 'Plan Rising Star'
+                  : ''}
+                {subscription && subscription.role === rockStar
+                  ? 'Plan Rock Star'
+                  : ''}
+                {subscription && subscription.role === superStar
+                  ? 'Plan Super Star'
+                  : ''}
+              </Text>
+            )}
 
-            <Text style={styles.center}>Plan RisingStar</Text>
             <Text style={styles.uid}>UID: {user?.uid} </Text>
 
             <Text style={styles.center}>
