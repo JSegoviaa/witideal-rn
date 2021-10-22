@@ -75,7 +75,7 @@ const Destacados = () => {
 
 const NoDestacados = () => {
   return (
-    <SafeAreaView>
+    <SafeAreaView style={{ flex: 1, justifyContent: 'center' }}>
       <Text style={styles.title}>Aún no has agregado destacados</Text>
     </SafeAreaView>
   );
@@ -92,7 +92,7 @@ const styles = StyleSheet.create({
     fontSize: 30,
     fontWeight: '700',
     padding: 15,
-    marginTop:70
+    marginTop: 70,
   },
   title: {
     textAlign: 'center',
