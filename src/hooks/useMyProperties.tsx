@@ -10,18 +10,22 @@ export const useMyProperties = (uid: string) => {
   const [loading, setLoading] = useState(true);
 
   const getProperties = async () => {
-    const data = await firestore()
-      .collection('production')
-      .doc('Users')
-      .collection(uid)
-      .doc('properties')
-      .collection('ownedProperties')
-      .get();
+    try {
+      const data = await firestore()
+        .collection('production')
+        .doc('Users')
+        .collection(uid)
+        .doc('properties')
+        .collection('ownedProperties')
+        .get();
 
-    data.docs.forEach(snapshot => {
-      setProperties({ data: snapshot.data(), id: snapshot.id });
-    });
-    setLoading(false);
+      data.docs.forEach(snapshot => {
+        setProperties({ data: snapshot.data(), id: snapshot.id });
+      });
+      setLoading(false);
+    } catch (error) {
+      console.log(error);
+    }
   };
   useEffect(() => {
     getProperties();

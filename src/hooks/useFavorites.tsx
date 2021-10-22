@@ -18,13 +18,12 @@ export const useFavorites = (uid: string) => {
         .doc('properties')
         .get();
 
+      setLoading(false);
       data.data()!.favProperties.forEach(snapshot => {
         snapshot.get().then(snap => {
           setFavorites([{ id: snap.id, ...snap.data() }]);
         });
       });
-
-      setLoading(false);
     } catch (error) {
       console.log(error);
     }

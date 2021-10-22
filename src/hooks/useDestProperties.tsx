@@ -18,13 +18,12 @@ export const useDestProperties = (uid: string) => {
         .doc('properties')
         .get();
 
+      setLoading(false);
       data.data()!.destProperties.forEach(snapshot => {
         snapshot.get().then(snap => {
           setDestProperties([{ id: snap.id, ...snap.data() }]);
         });
       });
-
-      setLoading(false);
     } catch (error) {
       console.log(error);
     }
