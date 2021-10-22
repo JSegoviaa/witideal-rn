@@ -58,7 +58,7 @@ const NoFavorites = () => {
 const Favorites = () => {
   const { user } = useContext(AuthContext);
   const { favorites, loading } = useFavorites(user?.uid!);
- favorites && console.log(favorites);
+  favorites && console.log(favorites);
   return (
     <SafeAreaView style={{ backgroundColor: '#fff' }}>
       <View style={appStyles.container}>
