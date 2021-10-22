@@ -7,15 +7,17 @@ interface DocumentData {
 
 export const useSubscription = (uid: string) => {
   const [subscription, setSubscription] = useState<DocumentData | undefined>();
+  const [loading, setLoading] = useState(true);
 
   const getSubscription = async () => {
     try {
       const data = await firestore()
-        .collection('users')
-        .doc(uid)
-        .collection('subscriptions')
-        .get();
-
+      .collection('users')
+      .doc(uid)
+      .collection('subscriptions')
+      .get();
+      
+      setLoading(false)
       data.forEach(subscription => {
         setSubscription({
           id: subscription.id,
@@ -31,5 +33,5 @@ export const useSubscription = (uid: string) => {
     getSubscription();
   }, [uid]);
 
-  return { subscription };
+  return { subscription,loading };
 };
