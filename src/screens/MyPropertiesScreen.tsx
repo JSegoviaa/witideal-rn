@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import {
   FlatList,
   Image,
@@ -8,6 +8,9 @@ import {
   View,
 } from 'react-native';
 import MyPropertiesList from '../components/MyPropertiesScreen/MyPropertiesList';
+import Loading from '../components/ui/Loading';
+import { AuthContext } from '../context/auth/AuthContext';
+import { useMyProperties } from '../hooks/useMyProperties';
 import { appStyles } from '../theme/appTheme';
 
 const inmuebles = [
@@ -58,6 +61,8 @@ const NoProperties = () => {
 };
 
 const MyProperties = () => {
+  const { user } = useContext(AuthContext);
+  const { properties, loading } = useMyProperties(user?.uid!);
   return (
     <SafeAreaView style={{ backgroundColor: '#fff' }}>
       <View style={appStyles.logoContainer}>
@@ -69,12 +74,20 @@ const MyProperties = () => {
       <View style={appStyles.container}>
         <Text style={styles.textCenter}>Mis inmuebles</Text>
 
-        <FlatList
-          data={inmuebles}
-          renderItem={({ item }: any) => <MyPropertiesList inmueble={item} />}
-          keyExtractor={item => item.id}
-          showsVerticalScrollIndicator={false}
-        />
+        {loading ? (
+          <Loading size="large" color="#1E0E9D" />
+        ) : (
+          <>
+            <FlatList
+              data={inmuebles}
+              renderItem={({ item }: any) => (
+                <MyPropertiesList inmueble={item} />
+              )}
+              keyExtractor={item => item.id}
+              showsVerticalScrollIndicator={false}
+            />
+          </>
+        )}
       </View>
     </SafeAreaView>
   );

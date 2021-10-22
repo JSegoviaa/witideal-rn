@@ -17,9 +17,11 @@ export const useMyProperties = (uid: string) => {
       .doc('properties')
       .collection('ownedProperties')
       .get();
-    setLoading(false);
 
-    console.log(data);
+    data.docs.forEach(snapshot => {
+      setProperties({ data: snapshot.data(), id: snapshot.id });
+    });
+    setLoading(false);
   };
   useEffect(() => {
     getProperties();
