@@ -51,7 +51,7 @@ const inmuebles = [
 
 const NoProperties = () => {
   return (
-    <SafeAreaView>
+    <SafeAreaView style={{ flex: 1, justifyContent: 'center' }}>
       <Text style={styles.title}>No tienes propiedades</Text>
     </SafeAreaView>
   );
