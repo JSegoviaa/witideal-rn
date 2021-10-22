@@ -17,7 +17,6 @@ export const useSubscription = (uid: string) => {
         .collection('subscriptions')
         .get();
 
-      setLoading(false);
       data.forEach(subscription => {
         setSubscription({
           id: subscription.id,
@@ -28,6 +27,7 @@ export const useSubscription = (uid: string) => {
             .firebaseRole,
         });
       });
+      setLoading(false);
     } catch (error) {
       console.log(error);
     }
