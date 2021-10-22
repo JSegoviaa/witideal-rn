@@ -5,10 +5,10 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import { AuthContext } from '../../context/auth/AuthContext';
 import { appStyles } from '../../theme/appTheme';
 import { useUserInfo } from '../../hooks/useUserInfo';
+import Loading from '../ui/Loading';
 
 const PersonalInfo = () => {
   const { user, logOut } = useContext(AuthContext);
-
   const { userInfo } = useUserInfo(user?.uid!);
 
   return (
@@ -23,24 +23,31 @@ const PersonalInfo = () => {
           />
         </View>
         <Text style={styles.center}>¡Hola!</Text>
-        {userInfo && (
-          <Text style={styles.name}>
-            {userInfo.name} {userInfo.lastname}{' '}
-          </Text>
+        {!userInfo ? (
+          <Loading size="large" color="#1E0E9D" />
+        ) : (
+          <>
+            {userInfo && (
+              <Text style={styles.name}>
+                {userInfo.name} {userInfo.lastname}{' '}
+              </Text>
+            )}
+
+            <Text style={styles.center}>Plan RisingStar</Text>
+            <Text style={styles.uid}>UID: {user?.uid} </Text>
+
+            <Text style={styles.center}>
+              <Icon name="call-outline" size={20} />
+              {userInfo?.phone}
+            </Text>
+
+            <Text style={styles.center}>
+              <Icon name="mail-open-outline" size={20} />
+              {user?.email}
+            </Text>
+          </>
         )}
 
-        <Text style={styles.center}>Plan RisingStar</Text>
-        <Text style={styles.uid}>UID: {user?.uid} </Text>
-
-        <Text style={styles.center}>
-          <Icon name="call-outline" size={20} />
-          {userInfo?.phone}
-        </Text>
-
-        <Text style={styles.center}>
-          <Icon name="mail-open-outline" size={20} />
-          {user?.email}
-        </Text>
         <TouchableOpacity style={appStyles.btnPrimary}>
           <Text style={appStyles.textCenter}>Editar perfil</Text>
         </TouchableOpacity>
