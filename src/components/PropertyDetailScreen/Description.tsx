@@ -1,32 +1,47 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
+import { useProperty } from '../../hooks/useProperty';
 
 const Description = () => {
+  const { property } = useProperty();
+
   return (
-    <View style={styles.container}>
-      <Text style={styles.title}>Dirección</Text>
-      <Text style={styles.description}>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque, harum?
-      </Text>
-      <Text style={styles.title}>Título del inmueble</Text>
-      <Text style={styles.description}>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque, harum?
-      </Text>
-      <Text style={styles.title}>Descripción general</Text>
-      <Text style={styles.description}>
-        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Veritatis,
-        mollitia aut. Atque, tempore numquam provident quas fuga temporibus eius
-        quo beatae quasi dolore illum autem natus, ea voluptates repellat, ut
-        veniam. Eius eaque at accusamus voluptate quod, error sunt rem omnis
-        tenetur veritatis. Quos porro maxime officia et odit aliquam maiores
-        tempore, facilis voluptate id laudantium eius consequatur vel ea sit
-        facere dignissimos culpa sapiente beatae incidunt cupiditate laborum
-        quibusdam nemo! Inventore voluptatum voluptas recusandae fugit a
-        perferendis maiores saepe ullam obcaecati excepturi maxime, commodi vero
-        fugiat voluptatem. Mollitia ab dignissimos corporis consequuntur beatae
-        maiores quasi eveniet fuga laboriosam. Incidunt.
-      </Text>
-    </View>
+    <>
+      {property && (
+        <View style={styles.container}>
+          <Text style={styles.title}>Dirección</Text>
+          <Text style={styles.description}>
+            {property!.route && `${property!.route} `}
+            {property!.street_number && `${property!.street_number} `}
+            {property!.int_number && `${property!.int_number}`}
+            {property!.sublocality_level_1 &&
+              `, ${property!.sublocality_level_1}`}
+            {property!.administrative_area_level_2_3 &&
+              `, ${property!.administrative_area_level_2_3}`}
+            {property!.postal_code && `, ${property!.postal_code}`}
+            {property!.administrative_area_level_1 &&
+              `, ${property!.administrative_area_level_1}`}
+          </Text>
+
+          {property!.specificData.propertyTitle && (
+            <>
+              <Text style={styles.title}>Título del inmueble</Text>
+              <Text style={styles.description}>
+                {property!.specificData.propertyTitle}
+              </Text>
+            </>
+          )}
+          {property!.specificData.propertyDescription && (
+            <>
+              <Text style={styles.title}>Descripción general</Text>
+              <Text style={styles.description}>
+                {property!.specificData.propertyDescription}
+              </Text>
+            </>
+          )}
+        </View>
+      )}
+    </>
   );
 };
 
