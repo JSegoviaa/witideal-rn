@@ -1,5 +1,6 @@
 import React from 'react';
 import { Image, StyleSheet, Text, View } from 'react-native';
+import Icon from 'react-native-vector-icons/Ionicons';
 import { useProperty } from '../../hooks/useProperty';
 
 const SpecificDetails = () => {
@@ -67,9 +68,13 @@ const SpecificDetails = () => {
               <View style={styles.specificaDataContainer}>
                 <Text style={styles.specificaDataInfo}>Área de lavado</Text>
                 {property.specificData.laundry ? (
-                  <Text style={styles.specificaDataInfo}>Sí</Text>
+                  <View style={{ marginLeft: 'auto', marginRight: 'auto' }}>
+                    <Icon name="checkmark-outline" size={20} color="#000" />
+                  </View>
                 ) : (
-                  <Text style={styles.specificaDataInfo}>No</Text>
+                  <View style={{ marginLeft: 'auto', marginRight: 'auto' }}>
+                    <Icon name="close-outline" size={20} color="#000" />
+                  </View>
                 )}
               </View>
             )}
@@ -131,9 +136,13 @@ const SpecificDetails = () => {
                   Mantenimiento incluido (solo renta)
                 </Text>
                 {property.specificData.isMantainceIncluded ? (
-                  <Text style={styles.specificaDataInfo}>Sí</Text>
+                  <View style={{ marginLeft: 'auto', marginRight: 'auto' }}>
+                    <Icon name="checkmark-outline" size={20} color="#000" />
+                  </View>
                 ) : (
-                  <Text style={styles.specificaDataInfo}>No</Text>
+                  <View style={{ marginLeft: 'auto', marginRight: 'auto' }}>
+                    <Icon name="close-outline" size={20} color="#000" />
+                  </View>
                 )}
               </View>
             )}
@@ -169,9 +178,13 @@ const SpecificDetails = () => {
               <View style={styles.specificaDataContainer}>
                 <Text style={styles.specificaDataInfo}>CCTV</Text>
                 {property.specificData.cctv ? (
-                  <Text style={styles.specificaDataInfo}>Sí</Text>
+                  <View style={{ marginLeft: 'auto', marginRight: 'auto' }}>
+                    <Icon name="checkmark-outline" size={20} color="#000" />
+                  </View>
                 ) : (
-                  <Text style={styles.specificaDataInfo}>No</Text>
+                  <View style={{ marginLeft: 'auto', marginRight: 'auto' }}>
+                    <Icon name="close-outline" size={20} color="#000" />
+                  </View>
                 )}
               </View>
             )}
@@ -180,9 +193,13 @@ const SpecificDetails = () => {
               <View style={styles.specificaDataContainer}>
                 <Text style={styles.specificaDataInfo}>Elevador</Text>
                 {property.specificData.elevator ? (
-                  <Text style={styles.specificaDataInfo}>Sí</Text>
+                  <View style={{ marginLeft: 'auto', marginRight: 'auto' }}>
+                    <Icon name="checkmark-outline" size={20} color="#000" />
+                  </View>
                 ) : (
-                  <Text style={styles.specificaDataInfo}>No</Text>
+                  <View style={{ marginLeft: 'auto', marginRight: 'auto' }}>
+                    <Icon name="close-outline" size={20} color="#000" />
+                  </View>
                 )}
               </View>
             )}
@@ -209,9 +226,13 @@ const SpecificDetails = () => {
               <View style={styles.specificaDataContainer}>
                 <Text style={styles.specificaDataInfo}>Alberca</Text>
                 {property.specificData.pool ? (
-                  <Text style={styles.specificaDataInfo}>Sí</Text>
+                  <View style={{ marginLeft: 'auto', marginRight: 'auto' }}>
+                    <Icon name="checkmark-outline" size={20} color="#000" />
+                  </View>
                 ) : (
-                  <Text style={styles.specificaDataInfo}>No</Text>
+                  <View style={{ marginLeft: 'auto', marginRight: 'auto' }}>
+                    <Icon name="close-outline" size={20} color="#000" />
+                  </View>
                 )}
               </View>
             )}
@@ -220,9 +241,13 @@ const SpecificDetails = () => {
               <View style={styles.specificaDataContainer}>
                 <Text style={styles.specificaDataInfo}>Juegos infantiles</Text>
                 {property.specificData.playground ? (
-                  <Text style={styles.specificaDataInfo}>Sí</Text>
+                  <View style={{ marginLeft: 'auto', marginRight: 'auto' }}>
+                    <Icon name="checkmark-outline" size={20} color="#000" />
+                  </View>
                 ) : (
-                  <Text style={styles.specificaDataInfo}>No</Text>
+                  <View style={{ marginLeft: 'auto', marginRight: 'auto' }}>
+                    <Icon name="close-outline" size={20} color="#000" />
+                  </View>
                 )}
               </View>
             )}
@@ -231,9 +256,13 @@ const SpecificDetails = () => {
               <View style={styles.specificaDataContainer}>
                 <Text style={styles.specificaDataInfo}>Centro de negocios</Text>
                 {property.specificData.bussinessCentre ? (
-                  <Text style={styles.specificaDataInfo}>Sí</Text>
+                  <View style={{ marginLeft: 'auto', marginRight: 'auto' }}>
+                    <Icon name="checkmark-outline" size={20} color="#000" />
+                  </View>
                 ) : (
-                  <Text style={styles.specificaDataInfo}>No</Text>
+                  <View style={{ marginLeft: 'auto', marginRight: 'auto' }}>
+                    <Icon name="close-outline" size={20} color="#000" />
+                  </View>
                 )}
               </View>
             )}
@@ -242,9 +271,13 @@ const SpecificDetails = () => {
               <View style={styles.specificaDataContainer}>
                 <Text style={styles.specificaDataInfo}>Balcón</Text>
                 {property.specificData.balcony ? (
-                  <Text style={styles.specificaDataInfo}>Sí</Text>
+                  <View style={{ marginLeft: 'auto', marginRight: 'auto' }}>
+                    <Icon name="checkmark-outline" size={20} color="#000" />
+                  </View>
                 ) : (
-                  <Text style={styles.specificaDataInfo}>No</Text>
+                  <View style={{ marginLeft: 'auto', marginRight: 'auto' }}>
+                    <Icon name="close-outline" size={20} color="#000" />
+                  </View>
                 )}
               </View>
             )}
@@ -253,9 +286,13 @@ const SpecificDetails = () => {
               <View style={styles.specificaDataContainer}>
                 <Text style={styles.specificaDataInfo}>Gym</Text>
                 {property.specificData.gym ? (
-                  <Text style={styles.specificaDataInfo}>Sí</Text>
+                  <View style={{ marginLeft: 'auto', marginRight: 'auto' }}>
+                    <Icon name="checkmark-outline" size={20} color="#000" />
+                  </View>
                 ) : (
-                  <Text style={styles.specificaDataInfo}>No</Text>
+                  <View style={{ marginLeft: 'auto', marginRight: 'auto' }}>
+                    <Icon name="close-outline" size={20} color="#000" />
+                  </View>
                 )}
               </View>
             )}
@@ -284,9 +321,13 @@ const SpecificDetails = () => {
               <View style={styles.specificaDataContainer}>
                 <Text style={styles.specificaDataInfo}>Calle cerrada</Text>
                 {property.specificData.closedStreet ? (
-                  <Text style={styles.specificaDataInfo}>Sí</Text>
+                  <View style={{ marginLeft: 'auto', marginRight: 'auto' }}>
+                    <Icon name="checkmark-outline" size={20} color="#000" />
+                  </View>
                 ) : (
-                  <Text style={styles.specificaDataInfo}>No</Text>
+                  <View style={{ marginLeft: 'auto', marginRight: 'auto' }}>
+                    <Icon name="close-outline" size={20} color="#000" />
+                  </View>
                 )}
               </View>
             )}
@@ -295,9 +336,13 @@ const SpecificDetails = () => {
               <View style={styles.specificaDataContainer}>
                 <Text style={styles.specificaDataInfo}>Salón de fiestas</Text>
                 {property.specificData.partyRoom ? (
-                  <Text style={styles.specificaDataInfo}>Sí</Text>
+                  <View style={{ marginLeft: 'auto', marginRight: 'auto' }}>
+                    <Icon name="checkmark-outline" size={20} color="#000" />
+                  </View>
                 ) : (
-                  <Text style={styles.specificaDataInfo}>No</Text>
+                  <View style={{ marginLeft: 'auto', marginRight: 'auto' }}>
+                    <Icon name="close-outline" size={20} color="#000" />
+                  </View>
                 )}
               </View>
             )}
@@ -315,9 +360,13 @@ const SpecificDetails = () => {
               <View style={styles.specificaDataContainer}>
                 <Text style={styles.specificaDataInfo}>Vigilancia 24/7</Text>
                 {property.specificData.security247 ? (
-                  <Text style={styles.specificaDataInfo}>Sí</Text>
+                  <View style={{ marginLeft: 'auto', marginRight: 'auto' }}>
+                    <Icon name="checkmark-outline" size={20} color="#000" />
+                  </View>
                 ) : (
-                  <Text style={styles.specificaDataInfo}>No</Text>
+                  <View style={{ marginLeft: 'auto', marginRight: 'auto' }}>
+                    <Icon name="close-outline" size={20} color="#000" />
+                  </View>
                 )}
               </View>
             )}
