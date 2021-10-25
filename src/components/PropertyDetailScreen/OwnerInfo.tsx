@@ -2,12 +2,15 @@ import React, { useState } from 'react';
 import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { useProperty } from '../../hooks/useProperty';
 import { useUserInfo } from '../../hooks/useUserInfo';
+import Loading from '../ui/Loading';
 
 const OwnerInfo = () => {
   const [showOwnerInfo, setShowOwnerInfo] = useState<Boolean>(true);
   const { property } = useProperty();
-  const { userInfo } = useUserInfo(property?.uId);
-  userInfo && console.log(userInfo, 'asfasdf');
+  const { userInfo, loading } = useUserInfo(property?.uId);
+
+  userInfo && console.log(userInfo);
+
   const handleOwnerInfo = () => setShowOwnerInfo(!showOwnerInfo);
 
   const image = {
@@ -20,7 +23,9 @@ const OwnerInfo = () => {
         <View style={{ paddingTop: 30 }}>
           {showOwnerInfo ? (
             <>
-              <Text style={styles.title}>Rentar Casa</Text>
+              <Text style={styles.title}>
+                {property.action} {property.propertyType}
+              </Text>
               {property.price && (
                 <Text style={styles.precio}>${property.price} MXN</Text>
               )}
@@ -32,23 +37,32 @@ const OwnerInfo = () => {
             </>
           ) : (
             <>
-              <View>
-                <View
-                  style={{ flexDirection: 'row', justifyContent: 'center' }}>
-                  <View style={styles.avatarContainer}>
-                    <Image style={styles.avatar} source={image} />
-                    <Text style={styles.title}>
-                      {}
-                      RE/MAX Del Norte
-                    </Text>
+              {loading ? (
+                <Loading size="large" />
+              ) : (
+                <View>
+                  <View
+                    style={{ flexDirection: 'row', justifyContent: 'center' }}>
+                    <View style={styles.avatarContainer}>
+                      <Image style={styles.avatar} source={image} />
+                      {userInfo && (
+                        <>
+                          <Text style={styles.title}>{userInfo.name}</Text>
+                          <Text style={styles.title}>{userInfo.lastname}</Text>
+                        </>
+                      )}
+                    </View>
                   </View>
+                  <Text style={styles.precio}>
+                    Teléfono {userInfo && userInfo.phone}
+                  </Text>
+                  <Text style={styles.precio}>{userInfo && userInfo.mail}</Text>
                 </View>
-                <Text style={styles.precio}>
-                  Teléfono {userInfo && userInfo.phone}
-                </Text>
-                <Text style={styles.precio}>{userInfo && userInfo.mail}</Text>
-              </View>
-              <Text style={styles.title}>Rentar Casa</Text>
+              )}
+
+              <Text style={styles.title}>
+                {property.action} {property.propertyType}
+              </Text>
               {property.price && (
                 <Text style={styles.precio}>${property.price} MXN</Text>
               )}

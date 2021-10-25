@@ -11,9 +11,7 @@ import Loading from '../components/ui/Loading';
 
 const PropertyDetailScreen = () => {
   const navigation = useNavigation();
-  const { loading, property } = useProperty();
-
-  property && console.log(property);
+  const { loading } = useProperty();
 
   useEffect(() => {
     navigation.setOptions({ headerShown: true, headerTransparent: true });

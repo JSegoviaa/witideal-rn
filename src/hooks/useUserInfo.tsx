@@ -7,6 +7,7 @@ interface DocumentData {
 
 export const useUserInfo = (uid: string) => {
   const [userInfo, setUserInfo] = useState<DocumentData | undefined>();
+  const [loading, setLoading] = useState<Boolean>(true);
 
   const getData = async () => {
     try {
@@ -16,6 +17,7 @@ export const useUserInfo = (uid: string) => {
         .collection(uid)
         .doc('generalInfo')
         .get();
+      setLoading(false);
       if (data.data()) {
         setUserInfo(data.data());
       }
@@ -28,5 +30,5 @@ export const useUserInfo = (uid: string) => {
     getData();
   }, []);
 
-  return { userInfo };
+  return { userInfo, loading };
 };
