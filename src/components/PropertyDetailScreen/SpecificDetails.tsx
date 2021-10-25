@@ -70,11 +70,11 @@ const SpecificDetails = () => {
                 <Text style={styles.specificaDataInfo}>Área de lavado</Text>
                 {property.specificData.laundry ? (
                   <View style={{ marginLeft: 'auto', marginRight: 'auto' }}>
-                    <Icon name="checkmark-outline" size={20} color="#000" />
+                    <Icon name="checkmark-outline" size={20} color="#160A53" />
                   </View>
                 ) : (
                   <View style={{ marginLeft: 'auto', marginRight: 'auto' }}>
-                    <Icon name="close-outline" size={20} color="#000" />
+                    <Icon name="close-outline" size={20} color="#160A53" />
                   </View>
                 )}
               </View>
@@ -138,11 +138,11 @@ const SpecificDetails = () => {
                 </Text>
                 {property.specificData.isMantainceIncluded ? (
                   <View style={{ marginLeft: 'auto', marginRight: 'auto' }}>
-                    <Icon name="checkmark-outline" size={20} color="#000" />
+                    <Icon name="checkmark-outline" size={20} color="#160A53" />
                   </View>
                 ) : (
                   <View style={{ marginLeft: 'auto', marginRight: 'auto' }}>
-                    <Icon name="close-outline" size={20} color="#000" />
+                    <Icon name="close-outline" size={20} color="#160A53" />
                   </View>
                 )}
               </View>
@@ -180,11 +180,11 @@ const SpecificDetails = () => {
                 <Text style={styles.specificaDataInfo}>CCTV</Text>
                 {property.specificData.cctv ? (
                   <View style={{ marginLeft: 'auto', marginRight: 'auto' }}>
-                    <Icon name="checkmark-outline" size={20} color="#000" />
+                    <Icon name="checkmark-outline" size={20} color="#160A53" />
                   </View>
                 ) : (
                   <View style={{ marginLeft: 'auto', marginRight: 'auto' }}>
-                    <Icon name="close-outline" size={20} color="#000" />
+                    <Icon name="close-outline" size={20} color="#160A53" />
                   </View>
                 )}
               </View>
@@ -195,11 +195,11 @@ const SpecificDetails = () => {
                 <Text style={styles.specificaDataInfo}>Elevador</Text>
                 {property.specificData.elevator ? (
                   <View style={{ marginLeft: 'auto', marginRight: 'auto' }}>
-                    <Icon name="checkmark-outline" size={20} color="#000" />
+                    <Icon name="checkmark-outline" size={20} color="#160A53" />
                   </View>
                 ) : (
                   <View style={{ marginLeft: 'auto', marginRight: 'auto' }}>
-                    <Icon name="close-outline" size={20} color="#000" />
+                    <Icon name="close-outline" size={20} color="#160A53" />
                   </View>
                 )}
               </View>
@@ -228,11 +228,11 @@ const SpecificDetails = () => {
                 <Text style={styles.specificaDataInfo}>Alberca</Text>
                 {property.specificData.pool ? (
                   <View style={{ marginLeft: 'auto', marginRight: 'auto' }}>
-                    <Icon name="checkmark-outline" size={20} color="#000" />
+                    <Icon name="checkmark-outline" size={20} color="#160A53" />
                   </View>
                 ) : (
                   <View style={{ marginLeft: 'auto', marginRight: 'auto' }}>
-                    <Icon name="close-outline" size={20} color="#000" />
+                    <Icon name="close-outline" size={20} color="#160A53" />
                   </View>
                 )}
               </View>
@@ -243,11 +243,11 @@ const SpecificDetails = () => {
                 <Text style={styles.specificaDataInfo}>Juegos infantiles</Text>
                 {property.specificData.playground ? (
                   <View style={{ marginLeft: 'auto', marginRight: 'auto' }}>
-                    <Icon name="checkmark-outline" size={20} color="#000" />
+                    <Icon name="checkmark-outline" size={20} color="#160A53" />
                   </View>
                 ) : (
                   <View style={{ marginLeft: 'auto', marginRight: 'auto' }}>
-                    <Icon name="close-outline" size={20} color="#000" />
+                    <Icon name="close-outline" size={20} color="#160A53" />
                   </View>
                 )}
               </View>
@@ -258,11 +258,11 @@ const SpecificDetails = () => {
                 <Text style={styles.specificaDataInfo}>Centro de negocios</Text>
                 {property.specificData.bussinessCentre ? (
                   <View style={{ marginLeft: 'auto', marginRight: 'auto' }}>
-                    <Icon name="checkmark-outline" size={20} color="#000" />
+                    <Icon name="checkmark-outline" size={20} color="#160A53" />
                   </View>
                 ) : (
                   <View style={{ marginLeft: 'auto', marginRight: 'auto' }}>
-                    <Icon name="close-outline" size={20} color="#000" />
+                    <Icon name="close-outline" size={20} color="#160A53" />
                   </View>
                 )}
               </View>
@@ -273,11 +273,11 @@ const SpecificDetails = () => {
                 <Text style={styles.specificaDataInfo}>Balcón</Text>
                 {property.specificData.balcony ? (
                   <View style={{ marginLeft: 'auto', marginRight: 'auto' }}>
-                    <Icon name="checkmark-outline" size={20} color="#000" />
+                    <Icon name="checkmark-outline" size={20} color="#160A53" />
                   </View>
                 ) : (
                   <View style={{ marginLeft: 'auto', marginRight: 'auto' }}>
-                    <Icon name="close-outline" size={20} color="#000" />
+                    <Icon name="close-outline" size={20} color="#160A53" />
                   </View>
                 )}
               </View>
@@ -288,11 +288,11 @@ const SpecificDetails = () => {
                 <Text style={styles.specificaDataInfo}>Gym</Text>
                 {property.specificData.gym ? (
                   <View style={{ marginLeft: 'auto', marginRight: 'auto' }}>
-                    <Icon name="checkmark-outline" size={20} color="#000" />
+                    <Icon name="checkmark-outline" size={20} color="#160A53" />
                   </View>
                 ) : (
                   <View style={{ marginLeft: 'auto', marginRight: 'auto' }}>
-                    <Icon name="close-outline" size={20} color="#000" />
+                    <Icon name="close-outline" size={20} color="#160A53" />
                   </View>
                 )}
               </View>
@@ -323,11 +323,11 @@ const SpecificDetails = () => {
                 <Text style={styles.specificaDataInfo}>Calle cerrada</Text>
                 {property.specificData.closedStreet ? (
                   <View style={{ marginLeft: 'auto', marginRight: 'auto' }}>
-                    <Icon name="checkmark-outline" size={20} color="#000" />
+                    <Icon name="checkmark-outline" size={20} color="#160A53" />
                   </View>
                 ) : (
                   <View style={{ marginLeft: 'auto', marginRight: 'auto' }}>
-                    <Icon name="close-outline" size={20} color="#000" />
+                    <Icon name="close-outline" size={20} color="#160A53" />
                   </View>
                 )}
               </View>
@@ -338,11 +338,11 @@ const SpecificDetails = () => {
                 <Text style={styles.specificaDataInfo}>Salón de fiestas</Text>
                 {property.specificData.partyRoom ? (
                   <View style={{ marginLeft: 'auto', marginRight: 'auto' }}>
-                    <Icon name="checkmark-outline" size={20} color="#000" />
+                    <Icon name="checkmark-outline" size={20} color="#160A53" />
                   </View>
                 ) : (
                   <View style={{ marginLeft: 'auto', marginRight: 'auto' }}>
-                    <Icon name="close-outline" size={20} color="#000" />
+                    <Icon name="close-outline" size={20} color="#160A53" />
                   </View>
                 )}
               </View>
@@ -362,11 +362,11 @@ const SpecificDetails = () => {
                 <Text style={styles.specificaDataInfo}>Vigilancia 24/7</Text>
                 {property.specificData.security247 ? (
                   <View style={{ marginLeft: 'auto', marginRight: 'auto' }}>
-                    <Icon name="checkmark-outline" size={20} color="#000" />
+                    <Icon name="checkmark-outline" size={20} color="#160A53" />
                   </View>
                 ) : (
                   <View style={{ marginLeft: 'auto', marginRight: 'auto' }}>
-                    <Icon name="close-outline" size={20} color="#000" />
+                    <Icon name="close-outline" size={20} color="#160A53" />
                   </View>
                 )}
               </View>
