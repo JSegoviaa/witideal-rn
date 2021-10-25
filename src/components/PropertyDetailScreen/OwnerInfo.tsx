@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import urlTranslator from '../../helpers/urlTranslator';
 import { useProperty } from '../../hooks/useProperty';
 import { useUserInfo } from '../../hooks/useUserInfo';
 import Loading from '../ui/Loading';
@@ -8,8 +9,6 @@ const OwnerInfo = () => {
   const [showOwnerInfo, setShowOwnerInfo] = useState<Boolean>(true);
   const { property } = useProperty();
   const { userInfo, loading } = useUserInfo(property?.uId);
-
-  userInfo && console.log(userInfo);
 
   const handleOwnerInfo = () => setShowOwnerInfo(!showOwnerInfo);
 
@@ -24,7 +23,8 @@ const OwnerInfo = () => {
           {showOwnerInfo ? (
             <>
               <Text style={styles.title}>
-                {property.action} {property.propertyType}
+                {urlTranslator(property.action)}{' '}
+                {urlTranslator(property.propertyType)}
               </Text>
               {property.price && (
                 <Text style={styles.precio}>${property.price} MXN</Text>
@@ -61,7 +61,8 @@ const OwnerInfo = () => {
               )}
 
               <Text style={styles.title}>
-                {property.action} {property.propertyType}
+                {urlTranslator(property.action)}{' '}
+                {urlTranslator(property.propertyType)}
               </Text>
               {property.price && (
                 <Text style={styles.precio}>${property.price} MXN</Text>
