@@ -18,7 +18,7 @@ export const useProperty = () => {
         .doc('apartment')
         .collection('rent')
         // .doc('AdHaIDPSe3a2BGl5EdzB')
-        .doc('037efduir2R9bghU7mU5')
+        .doc('GT591BurVp9wQx9OzuVk')
         .get();
 
       setLoading(false);

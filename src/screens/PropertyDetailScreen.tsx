@@ -13,7 +13,7 @@ const PropertyDetailScreen = () => {
   const navigation = useNavigation();
   const { loading, property } = useProperty();
 
-  property && console.log(property, 'propiedad');
+  property && console.log(property);
 
   useEffect(() => {
     navigation.setOptions({ headerShown: true, headerTransparent: true });
