@@ -12,48 +12,49 @@ const SpecificDetails = () => {
         <View>
           {property.specificData.m2Build && (
             <View style={styles.box}>
-              {/* <Image
-            width={50}
-            height={50}
-            style={styles.image}
-            
-          /> */}
+              <Image
+                width={75}
+                height={75}
+                style={styles.image}
+                source={require('../../assets/build.png')}
+              />
+
               <Text style={styles.data}>{property.specificData.m2Build}</Text>
               <Text style={styles.info}>M2 construidos</Text>
             </View>
           )}
           {property.specificData.room && (
             <View style={styles.box}>
-              {/* <Image
-            width={50}
-            height={50}
-            style={styles.image}
-            
-          /> */}
+              <Image
+                width={75}
+                height={75}
+                style={styles.image}
+                source={require('../../assets/rooms.png')}
+              />
               <Text style={styles.data}>{property.specificData.room}</Text>
               <Text style={styles.info}>Recamaras</Text>
             </View>
           )}
           {property.specificData.bath && (
             <View style={styles.box}>
-              {/* <Image
-            width={50}
-            height={50}
-            style={styles.image}
-            
-          /> */}
+              <Image
+                width={75}
+                height={75}
+                style={styles.image}
+                source={require('../../assets/baths.png')}
+              />
               <Text style={styles.data}>{property.specificData.bath}</Text>
               <Text style={styles.info}>Baños completos</Text>
             </View>
           )}
           {property.specificData.parkingSlots && (
             <View style={styles.box}>
-              {/* <Image
-            width={50}
-            height={50}
-            style={styles.image}
-            
-          /> */}
+              <Image
+                width={75}
+                height={75}
+                style={styles.image}
+                source={require('../../assets/parking.png')}
+              />
               <Text style={styles.data}>
                 {property.specificData.parkingSlots}
               </Text>
@@ -400,8 +401,8 @@ const styles = StyleSheet.create({
     fontSize: 18,
   },
   image: {
-    width: 50,
-    height: 50,
+    width: 75,
+    height: 75,
   },
   title: {
     color: '#160A53',
