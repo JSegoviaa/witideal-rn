@@ -38,7 +38,7 @@ const OwnerInfo = () => {
           ) : (
             <>
               {loading ? (
-                <Loading size="large" />
+                <Loading size="large" color="#1E0E9D" />
               ) : (
                 <View>
                   <View
