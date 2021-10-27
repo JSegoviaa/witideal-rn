@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import { Image, StyleSheet, Text, View } from 'react-native';
 import Loading from '../components/ui/Loading';
+import { risingStar, rockStar, superStar } from '../constant/role';
 import { AuthContext } from '../context/auth/AuthContext';
 import { useSubscription } from '../hooks/useSubscription';
 import { appStyles } from '../theme/appTheme';
@@ -29,40 +30,55 @@ const NoPayments = () => {
 const Payments = () => {
   const { user } = useContext(AuthContext);
   const { loading, subscription } = useSubscription(user?.uid!);
+  subscription && console.log(subscription);
   return (
     <View>
       <View style={appStyles.container}>
         {loading ? (
           <Loading size="large" color="#1E0E9D" />
         ) : (
-          <View style={styles.border}>
-            <View>
-              <Text style={styles.title}>Inicio:</Text>
-              <Text style={styles.description}>
-                {subscription && subscription.id}
-              </Text>
-            </View>
-            <View>
-              <Text style={styles.title}>Fin:</Text>
-              <Text style={styles.description}>
-                {' '}
-                {subscription && subscription.id}{' '}
-              </Text>
-            </View>
-            <View>
-              <Text style={styles.title}>Orden de pago:</Text>
-              <Text style={styles.description}>
-                {' '}
-                {subscription && subscription.id}{' '}
-              </Text>
-            </View>
-            <View>
-              <Text style={styles.title}>Cantidad:</Text>
-              <Text style={styles.description}>
-                ${subscription && subscription.id} MXN
-              </Text>
-            </View>
-          </View>
+          <>
+            {subscription &&
+              subscription.map(subscription => (
+                <View key={subscription.id} style={styles.border}>
+
+                  <View>
+                    <Text style={styles.title}>Inicio:</Text>
+                    <Text style={styles.description}>
+                      {subscription && subscription.current_period_start}
+                    </Text>
+                  </View>
+
+                  <View>
+                    <Text style={styles.title}>Fin:</Text>
+                    <Text style={styles.description}>
+                      {subscription && subscription.current_period_end}
+                    </Text>
+                  </View>
+                  
+                  <View>
+                    <Text style={styles.title}>Orden de pago:</Text>
+                    <Text style={styles.description}>
+                      {subscription && subscription.id}
+                    </Text>
+                  </View>
+                  <View>
+                    <Text style={styles.title}>Cantidad:</Text>
+                    <Text style={styles.description}>
+                      {subscription && subscription.data.role == risingStar
+                        ? '$1,500 MXN'
+                        : ''}
+                      {subscription && subscription.data.role == superStar
+                        ? '$1990 MXN'
+                        : ''}
+                      {subscription && subscription.data.role == rockStar
+                        ? '$2500 MXN'
+                        : ''}
+                    </Text>
+                  </View>
+                </View>
+              ))}
+          </>
         )}
       </View>
     </View>
