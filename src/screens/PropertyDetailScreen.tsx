@@ -28,7 +28,7 @@ const PropertyDetailScreen = () => {
             <Description />
             <SpecificDetails />
             {/* <Map/> */}
-            <OwnerInfo />
+            {/* <OwnerInfo /> */}
           </View>
         </ScrollView>
       )}

@@ -1,13 +1,15 @@
 import React, { useState } from 'react';
 import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import urlTranslator from '../../helpers/urlTranslator';
-import { useProperty } from '../../hooks/useProperty';
 import { useUserInfo } from '../../hooks/useUserInfo';
 import Loading from '../ui/Loading';
 
-const OwnerInfo = () => {
+interface Props {
+  property: any;
+}
+
+const OwnerInfo = ({ property }: Props) => {
   const [showOwnerInfo, setShowOwnerInfo] = useState<Boolean>(true);
-  const { property } = useProperty();
   const { userInfo, loading } = useUserInfo(property?.uId);
 
   const handleOwnerInfo = () => setShowOwnerInfo(!showOwnerInfo);

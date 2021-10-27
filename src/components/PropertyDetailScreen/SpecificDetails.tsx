@@ -2,6 +2,7 @@ import React from 'react';
 import { Image, StyleSheet, Text, View } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { useProperty } from '../../hooks/useProperty';
+import OwnerInfo from './OwnerInfo';
 
 const SpecificDetails = () => {
   const { property } = useProperty();
@@ -372,6 +373,10 @@ const SpecificDetails = () => {
               </View>
             )}
           </View>
+
+
+          {/* Muestra la información del dueño de la propiedad */}
+          <OwnerInfo property={property} />
         </View>
       )}
     </>
