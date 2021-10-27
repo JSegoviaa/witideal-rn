@@ -23,11 +23,11 @@ const MyPropertiesListItem = ({ inmueble }: any) => {
             }}
           />
 
-          {inmueble.data.specificData.propertyTitle && (
+          {/* {inmueble.data.specificData.propertyTitle && (
             <Text style={styles.textCenter}>
               {inmueble.data.specificData.propertyTitle}
             </Text>
-          )}
+          )} */}
 
           <Text style={styles.subtitle}>{inmueble.desc}</Text>
 

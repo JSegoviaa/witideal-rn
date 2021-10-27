@@ -20,11 +20,13 @@ export const useMyProperties = (uid: string) => {
 
     return data.onSnapshot(querySnapshot => {
       querySnapshot.forEach(doc => {
-        const data = doc.data();
-        list.push({
-          id: doc.id,
-          data,
-        });
+        if (doc.exists) {
+          const data = doc.data;
+          list.push({
+            id: doc.id,
+            data,
+          });
+        }
       });
       if (loading) {
         setLoading(false);
@@ -32,6 +34,7 @@ export const useMyProperties = (uid: string) => {
       setProperties(list);
     });
   };
+
   useEffect(() => {
     getMyProperties();
   }, []);
