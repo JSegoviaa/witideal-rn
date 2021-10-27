@@ -30,7 +30,6 @@ const NoPayments = () => {
 const Payments = () => {
   const { user } = useContext(AuthContext);
   const { loading, subscription } = useSubscription(user?.uid!);
-  subscription && console.log(subscription);
   return (
     <View>
       <View style={appStyles.container}>
@@ -41,7 +40,6 @@ const Payments = () => {
             {subscription &&
               subscription.map(subscription => (
                 <View key={subscription.id} style={styles.border}>
-
                   <View>
                     <Text style={styles.title}>Inicio:</Text>
                     <Text style={styles.description}>
@@ -55,7 +53,7 @@ const Payments = () => {
                       {subscription && subscription.current_period_end}
                     </Text>
                   </View>
-                  
+
                   <View>
                     <Text style={styles.title}>Orden de pago:</Text>
                     <Text style={styles.description}>
@@ -89,7 +87,11 @@ const PaymentsScreen = () => {
   const { user } = useContext(AuthContext);
   const { subscription } = useSubscription(user?.uid!);
 
-  return <>{subscription && 1 > 0 ? <Payments /> : <NoPayments />}</>;
+  return (
+    <>
+      {subscription && subscription.length > 0 ? <Payments /> : <NoPayments />}
+    </>
+  );
 };
 
 const styles = StyleSheet.create({
