@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { Image, StyleSheet, Text, View } from 'react-native';
 import Loading from '../components/ui/Loading';
 import { AuthContext } from '../context/auth/AuthContext';
 import { useSubscription } from '../hooks/useSubscription';
@@ -9,6 +9,17 @@ import { appStyles } from '../theme/appTheme';
 const NoPayments = () => {
   return (
     <View style={{ flex: 1, justifyContent: 'center' }}>
+      <Image
+        width={10}
+        height={10}
+        style={{
+          width: 200,
+          height: 200,
+          marginLeft: 'auto',
+          marginRight: 'auto',
+        }}
+        source={require('../assets/warning.png')}
+      />
       <Text style={styles.noPayments}>Aún no has realizado ningún pago</Text>
     </View>
   );

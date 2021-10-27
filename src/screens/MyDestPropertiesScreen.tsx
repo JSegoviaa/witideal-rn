@@ -86,6 +86,17 @@ const Destacados = () => {
 const NoDestacados = () => {
   return (
     <SafeAreaView style={{ flex: 1, justifyContent: 'center' }}>
+      <Image
+        width={10}
+        height={10}
+        style={{
+          width: 200,
+          height: 200,
+          marginLeft: 'auto',
+          marginRight: 'auto',
+        }}
+        source={require('../assets/warning.png')}
+      />
       <Text style={styles.title}>Aún no has agregado destacados</Text>
     </SafeAreaView>
   );

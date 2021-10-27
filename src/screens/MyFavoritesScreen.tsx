@@ -1,5 +1,12 @@
 import React, { useContext } from 'react';
-import { FlatList, SafeAreaView, StyleSheet, Text, View } from 'react-native';
+import {
+  FlatList,
+  Image,
+  SafeAreaView,
+  StyleSheet,
+  Text,
+  View,
+} from 'react-native';
 import MyFavoritesList from '../components/MyFavoritesScreen/MyFavoritesList';
 import Loading from '../components/ui/Loading';
 import { AuthContext } from '../context/auth/AuthContext';
@@ -49,6 +56,17 @@ const favoritos = [
 const NoFavorites = () => {
   return (
     <View style={{ flex: 1, justifyContent: 'center' }}>
+      <Image
+        width={10}
+        height={10}
+        style={{
+          width: 200,
+          height: 200,
+          marginLeft: 'auto',
+          marginRight: 'auto',
+        }}
+        source={require('../assets/warning.png')}
+      />
       <Text style={styles.title}>Aún no tienes favoritos</Text>
     </View>
   );
