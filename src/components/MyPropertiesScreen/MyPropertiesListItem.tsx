@@ -2,13 +2,7 @@ import React from 'react';
 import { Image, StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 import { useNavigation } from '@react-navigation/core';
 
-interface Props {
-  id: Number;
-  title: String;
-  img: String;
-}
-
-const MyPropertiesListItem = ({ inmueble }: Props) => {
+const MyPropertiesListItem = ({ inmueble }: any) => {
   const navigation = useNavigation();
 
   return (
@@ -25,10 +19,15 @@ const MyPropertiesListItem = ({ inmueble }: Props) => {
             height={50}
             style={{ width: '100%', height: 200 }}
             source={{
-              uri: `${inmueble.img}`,
+              uri: `${inmueble.data.principalPhotoPath}`,
             }}
           />
-          <Text style={styles.textCenter}>{inmueble.title}</Text>
+
+          {inmueble.data.specificData.propertyTitle && (
+            <Text style={styles.textCenter}>
+              {inmueble.data.specificData.propertyTitle}
+            </Text>
+          )}
 
           <Text style={styles.subtitle}>{inmueble.desc}</Text>
 

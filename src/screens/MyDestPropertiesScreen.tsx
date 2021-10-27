@@ -54,7 +54,8 @@ const destacados = [
 
 const Destacados = () => {
   const { user } = useContext(AuthContext);
-  const { loading } = useDestProperties(user?.uid!);
+  const { loading,destProperties } = useDestProperties(user?.uid!);
+destProperties && console.log(destProperties,'dsfd');
 
   return (
     <SafeAreaView style={{ backgroundColor: '#fff' }}>

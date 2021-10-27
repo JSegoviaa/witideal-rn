@@ -6,29 +6,34 @@ interface DocumentData {
 }
 
 export const useMyProperties = (uid: string) => {
-  const [properties, setProperties] = useState<DocumentData | null>();
-  const [loading, setLoading] = useState(true);
+  const [properties, setProperties] = useState<DocumentData>([]);
+  const [loading, setLoading] = useState<Boolean>(true);
 
-  const getProperties = async () => {
-    try {
-      const data = await firestore()
-        .collection('production')
-        .doc('Users')
-        .collection(uid)
-        .doc('properties')
-        .collection('ownedProperties')
-        .get();
+  const getMyProperties = () => {
+    const data = firestore()
+      .collection('production')
+      .doc('Users')
+      .collection(uid)
+      .doc('properties')
+      .collection('ownedProperties');
+    const list: DocumentData = [];
 
-      data.docs.forEach(snapshot => {
-        setProperties({ data: snapshot.data(), id: snapshot.id });
+    return data.onSnapshot(querySnapshot => {
+      querySnapshot.forEach(doc => {
+        const data = doc.data();
+        list.push({
+          id: doc.id,
+          data,
+        });
       });
-      setLoading(false);
-    } catch (error) {
-      console.log(error);
-    }
+      if (loading) {
+        setLoading(false);
+      }
+      setProperties(list);
+    });
   };
   useEffect(() => {
-    getProperties();
+    getMyProperties();
   }, []);
 
   return { properties, loading };

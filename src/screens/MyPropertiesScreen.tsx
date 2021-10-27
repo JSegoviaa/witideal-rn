@@ -73,7 +73,8 @@ const NoProperties = () => {
 
 const MyProperties = () => {
   const { user } = useContext(AuthContext);
-  const { loading } = useMyProperties(user?.uid!);
+  const { loading,properties } = useMyProperties(user?.uid!);
+
   return (
     <SafeAreaView style={{ backgroundColor: '#fff' }}>
       <View style={appStyles.logoContainer}>
@@ -90,7 +91,7 @@ const MyProperties = () => {
         ) : (
           <>
             <FlatList
-              data={inmuebles}
+              data={properties}
               renderItem={({ item }: any) => (
                 <MyPropertiesList inmueble={item} />
               )}
