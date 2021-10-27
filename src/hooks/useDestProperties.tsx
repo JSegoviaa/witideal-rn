@@ -6,7 +6,7 @@ interface DocumentData {
 }
 
 export const useDestProperties = (uid: string) => {
-  const [destProperties, setDestProperties] = useState<DocumentData | null>();
+  const [destProperties, setDestProperties] = useState<DocumentData | null>([]);
   const [loading, setLoading] = useState(true);
 
   const getDestProperties = async () => {

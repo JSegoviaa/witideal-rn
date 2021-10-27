@@ -6,13 +6,13 @@ import { AuthContext } from '../../context/auth/AuthContext';
 import { appStyles } from '../../theme/appTheme';
 import { useUserInfo } from '../../hooks/useUserInfo';
 import Loading from '../ui/Loading';
-import { useSubscription } from '../../hooks/useSubscription';
 import { risingStar, rockStar, superStar } from '../../constant/role';
+import { useRole } from '../../hooks/useRole';
 
 const PersonalInfo = () => {
   const { user, logOut } = useContext(AuthContext);
-  const { subscription } = useSubscription(user?.uid!);
   const { userInfo } = useUserInfo(user?.uid!);
+  const { role } = useRole(user?.uid!);
 
   return (
     <SafeAreaView>
@@ -21,7 +21,11 @@ const PersonalInfo = () => {
           <Image
             style={styles.avatar}
             source={{
-              uri: `https://medgoldresources.com/wp-content/uploads/2018/02/avatar-placeholder.gif`,
+              uri: `${
+                userInfo && userInfo.photo
+                  ? userInfo.photo
+                  : require('../../assets/profile_pic.png')
+              }`,
             }}
           />
         </View>
@@ -35,17 +39,11 @@ const PersonalInfo = () => {
                 {userInfo.name} {userInfo.lastname}{' '}
               </Text>
             )}
-            {subscription && (
+            {role && (
               <Text style={styles.center}>
-                {subscription && subscription.role === risingStar
-                  ? 'Plan Rising Star'
-                  : ''}
-                {subscription && subscription.role === rockStar
-                  ? 'Plan Rock Star'
-                  : ''}
-                {subscription && subscription.role === superStar
-                  ? 'Plan Super Star'
-                  : ''}
+                {role && role.role === risingStar ? 'Plan Rising Star' : ''}
+                {role && role.role === rockStar ? 'Plan Rock Star' : ''}
+                {role && role.role === superStar ? 'Plan Super Star' : ''}
               </Text>
             )}
 
