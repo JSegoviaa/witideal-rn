@@ -80,7 +80,6 @@ const styles = StyleSheet.create({
   avatar: {
     width: 150,
     height: 150,
-    borderRadius: 100,
   },
   center: {
     textAlign: 'center',
