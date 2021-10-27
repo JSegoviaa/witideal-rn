@@ -17,18 +17,29 @@ const PersonalInfo = () => {
   return (
     <SafeAreaView>
       <View style={styles.container}>
-        <View style={styles.avatarContainer}>
-          <Image
-            style={styles.avatar}
-            source={{
-              uri: `${
-                userInfo && userInfo.photo
-                  ? userInfo.photo
-                  : require('../../assets/profile_pic.png')
-              }`,
-            }}
-          />
-        </View>
+        {userInfo && (
+          <>
+            {userInfo.photo ? (
+              <View style={styles.avatarContainer}>
+                <Image
+                  style={styles.avatar}
+                  source={{
+                    uri: `${userInfo.photo}`,
+                  }}
+                />
+              </View>
+            ) : (
+              <View style={styles.avatarContainer}>
+                <Image
+                  style={styles.avatar}
+                  source={{
+                    uri: `https://firebasestorage.googleapis.com/v0/b/witideal-b1f99.appspot.com/o/assets%2Ficons%2Fthumb%401100_profile_pic.png?alt=media&token=6050df5b-d889-4a21-9d77-e9e33511e376`,
+                  }}
+                />
+              </View>
+            )}
+          </>
+        )}
         <Text style={styles.center}>¡Hola!</Text>
         {!userInfo ? (
           <Loading size="large" color="#1E0E9D" />
