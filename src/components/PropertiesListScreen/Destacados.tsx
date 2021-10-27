@@ -1,8 +1,9 @@
 import React, { useContext, useEffect } from 'react';
-import { Dimensions, View } from 'react-native';
+import { Dimensions, Text, View } from 'react-native';
 import Carousel from 'react-native-snap-carousel';
 import { GradientContext } from '../../context/gradient/GradientContext';
 import { getImageColors } from '../../helpers/getColores';
+import { useDestacados } from '../../hooks/useDestacados';
 import DestacadosList from './DestacadosList';
 
 const destacados = [
@@ -110,6 +111,7 @@ const { width: windowWidth } = Dimensions.get('window');
 
 const Destacados = () => {
   const { setMainColors } = useContext(GradientContext);
+  const { allDestacados } = useDestacados();
 
   const getDestColors = async (index: number) => {
     const destacado = destacados[index];
@@ -120,18 +122,21 @@ const Destacados = () => {
   };
 
   useEffect(() => {
-    if (destacados.length > 0) {
+    if (allDestacados.length > 0) {
       getDestColors(0);
     }
-  }, [destacados]);
+  }, [allDestacados]);
+
+  allDestacados && console.log(allDestacados);
 
   return (
     <>
       {destacados.length > 0 && (
         <View style={{ height: 300 }}>
+          <Text>{allDestacados.id}</Text>
           <Carousel
             data={destacados}
-            autoplay
+            // autoplay
             loop
             renderItem={({ item }: any) => <DestacadosList item={item} />}
             sliderWidth={windowWidth}
