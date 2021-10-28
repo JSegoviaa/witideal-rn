@@ -1,24 +1,13 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { useNavigation } from '@react-navigation/core';
-import ImageColors from 'react-native-image-colors';
-import { GradientContext } from '../../context/gradient/GradientContext';
+import { StackNavigationProp } from '@react-navigation/stack';
 
-interface Props {
-  id: Number;
-  title: String;
-  img: String;
-  price: Number;
-  description: String;
-}
-
-const DestacadosListItem = ({ item }: Props) => {
-  const navigation = useNavigation();
-
- 
+const DestacadosListItem = ({ item }: any) => {
+  const navigation = useNavigation<StackNavigationProp<any, any>>();
 
   return (
-    <View style={styles.container}>
+    <View>
       <View style={styles.card}>
         <TouchableOpacity
           onPress={() => {
@@ -49,7 +38,6 @@ const styles = StyleSheet.create({
     elevation: 3,
     margin: 20,
   },
-
   description: {
     color: '#000',
     fontSize: 18,
