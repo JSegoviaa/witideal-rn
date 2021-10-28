@@ -13,6 +13,11 @@ import { StackScreenProps } from '@react-navigation/stack';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { LoginRootStackNavigation } from '../navigation/LoginStackNavigation';
 import { appStyles } from '../theme/appTheme';
+import {
+  independenBroker,
+  inmobiliaria,
+  owner,
+} from '../constant/promoterType';
 
 interface Props
   extends StackScreenProps<LoginRootStackNavigation, 'RegisterScreen'> {}
@@ -24,17 +29,17 @@ const RegisterScreen = ({ navigation }: Props) => {
 
   const handleToInmobiliaria = () => {
     setModalVisible(false);
-    navigation.navigate('RegisterForm', { id: 'Inmobiliaria' });
+    navigation.navigate('RegisterForm', { id: inmobiliaria });
   };
 
   const handleToIndependent = () => {
     setModalVisible(false);
-    navigation.navigate('RegisterForm', { id: 'Independiente' });
+    navigation.navigate('RegisterForm', { id: independenBroker });
   };
 
   const handleToOwner = () => {
     setModalVisible(false);
-    navigation.navigate('RegisterForm', { id: 'Dueño' });
+    navigation.navigate('RegisterForm', { id: owner });
   };
 
   return (

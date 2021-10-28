@@ -15,6 +15,11 @@ import { LoginRootStackNavigation } from '../../navigation/LoginStackNavigation'
 import { useForm } from '../../hooks/useForm';
 import { appStyles } from '../../theme/appTheme';
 import { AuthContext } from '../../context/auth/AuthContext';
+import {
+  independenBroker,
+  inmobiliaria,
+  owner,
+} from '../../constant/promoterType';
 
 interface Props
   extends StackScreenProps<LoginRootStackNavigation, 'RegisterScreen'> {}
@@ -29,6 +34,7 @@ const RegisterForm = ({ route }: Props) => {
     correo2: '',
     password: '',
     password2: '',
+    promoterType: route.params!.id,
   });
 
   const { correo, correo2, password, password2, nombre, apellido } = form;
@@ -135,6 +141,45 @@ const RegisterForm = ({ route }: Props) => {
           style={styles.input}
           onChangeText={value => onChange(value, 'password2')}
         />
+
+        {params.id === independenBroker && (
+          <TextInput
+            value={params.id}
+            placeholderTextColor="#ccc"
+            editable={false}
+            style={styles.input}
+            onChangeText={value => onChange(value, 'promoterType')}
+          />
+        )}
+
+        {params.id === inmobiliaria && (
+          <>
+            <TextInput
+              value={params.id}
+              placeholderTextColor="#ccc"
+              editable={false}
+              style={styles.input}
+              onChangeText={value => onChange(value, 'promoterType')}
+            />
+            <TextInput
+              placeholder="Nombre de la empresa"
+              placeholderTextColor="#ccc"
+              style={styles.input}
+              onChangeText={value => onChange(value, 'empresa')}
+            />
+          </>
+        )}
+
+        {params.id === owner && (
+          <TextInput
+            value={params.id}
+            placeholderTextColor="#ccc"
+            editable={false}
+            style={styles.input}
+            onChangeText={value => onChange(value, 'promoterType')}
+          />
+        )}
+
         <Text style={styles.info}>
           Al registrarse estás aceptando nuestros{' '}
           <Text style={styles.tos}>términos y condiciones</Text>
