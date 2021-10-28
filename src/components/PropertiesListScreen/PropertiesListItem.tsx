@@ -1,15 +1,10 @@
 import { useNavigation } from '@react-navigation/core';
+import { StackNavigationProp } from '@react-navigation/stack';
 import React from 'react';
 import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
-interface Props {
-  id: Number;
-  title: String;
-  img: String;
-}
-
-const PropertiesListItem = ({ inmueble }: Props) => {
-  const navigation = useNavigation();
+const PropertiesListItem = ({ inmueble }: any) => {
+  const navigation = useNavigation<StackNavigationProp<any, any>>();
 
   return (
     <View style={styles.card}>
