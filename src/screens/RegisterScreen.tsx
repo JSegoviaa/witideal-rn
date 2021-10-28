@@ -94,17 +94,17 @@ const RegisterScreen = ({ navigation }: Props) => {
               <TouchableOpacity
                 style={styles.toRegister}
                 onPress={handleToOwner}>
-                <Text>Soy dueño de propiedad</Text>
+                <Text style={{color:'black'}} >Soy dueño de propiedad</Text>
               </TouchableOpacity>
               <TouchableOpacity
                 style={styles.toRegister}
                 onPress={handleToInmobiliaria}>
-                <Text>Soy una inmobiliaria</Text>
+                <Text style={{color:'black'}} >Soy una inmobiliaria</Text>
               </TouchableOpacity>
               <TouchableOpacity
                 style={styles.toRegister}
                 onPress={handleToIndependent}>
-                <Text>Soy independiente</Text>
+                <Text style={{color:'black'}} >Soy independiente</Text>
               </TouchableOpacity>
               <Pressable
                 style={[styles.button, styles.buttonClose]}
