@@ -62,7 +62,7 @@ const RegisterScreen = ({ navigation }: Props) => {
             <TouchableOpacity
               style={appStyles.btnRegister}
               onPress={() => {
-                navigation.navigate('RegisterForm');
+                navigation.navigate('RegisterForm', { id: '' });
               }}>
               <Text style={{ color: '#41B8F9', textAlign: 'center' }}>
                 Buscador
@@ -157,7 +157,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     marginTop: 22,
-    backgroundColor: 'rgba(128,128,128,0.5)',
+    backgroundColor: 'rgba(255,255,255,0.7)',
   },
   modalView: {
     margin: 20,
