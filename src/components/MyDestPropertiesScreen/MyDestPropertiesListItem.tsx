@@ -1,15 +1,12 @@
 import { useNavigation } from '@react-navigation/core';
+import { StackNavigationProp } from '@react-navigation/stack';
 import React from 'react';
 import { Image, StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 
-interface Props {
-  id: Number;
-  title: String;
-  img: String;
-}
 
-const MyDestPropertiesListItem = ({ inmueble }: Props) => {
-  const navigation = useNavigation();
+
+const MyDestPropertiesListItem = ({ inmueble }: any) => {
+  const navigation = useNavigation<StackNavigationProp<any,any>>();
 
   return (
     <>
