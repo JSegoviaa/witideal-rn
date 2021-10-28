@@ -42,7 +42,8 @@ const MyPropertiesListItem = ({ inmueble }: any) => {
           )}
 
           {inmueble.data && (
-            <Text style={styles.textCenter}>
+            <Text
+              style={isEnable ? styles.textCenter : styles.textCenterDisabled}>
               {inmueble.data.sublocality_level_1 !== undefined
                 ? inmueble.data.sublocality_level_1 + ','
                 : ''}{' '}
@@ -143,6 +144,14 @@ const styles = StyleSheet.create({
     color: '#1e0e6f',
     fontWeight: '700',
     padding: 5,
+  },
+  textCenterDisabled: {
+    textAlign: 'center',
+    fontSize: 18,
+    color: '#1e0e6f',
+    fontWeight: '700',
+    padding: 5,
+    opacity: 0.5,
   },
 });
 
