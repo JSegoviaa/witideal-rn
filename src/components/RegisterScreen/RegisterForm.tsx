@@ -162,7 +162,7 @@ const RegisterForm = ({ route }: Props) => {
               onChangeText={value => onChange(value, 'promoterType')}
             />
             <TextInput
-              placeholder="Nombre de la empresa"
+              placeholder="Nombre de la inmobiliaria"
               placeholderTextColor="#ccc"
               style={styles.input}
               onChangeText={value => onChange(value, 'empresa')}
