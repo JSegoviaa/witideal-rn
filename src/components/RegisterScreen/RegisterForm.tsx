@@ -10,12 +10,16 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
+import { StackScreenProps } from '@react-navigation/stack';
+import { LoginRootStackNavigation } from '../../navigation/LoginStackNavigation';
 import { useForm } from '../../hooks/useForm';
 import { appStyles } from '../../theme/appTheme';
 import { AuthContext } from '../../context/auth/AuthContext';
 
+interface Props
+  extends StackScreenProps<LoginRootStackNavigation, 'RegisterScreen'> {}
 
-const RegisterForm = () => {
+const RegisterForm = ({ route }: Props) => {
   const { form, onChange } = useForm({
     nombre: '',
     apellido: '',
@@ -28,6 +32,8 @@ const RegisterForm = () => {
   });
 
   const { correo, correo2, password, password2, nombre, apellido } = form;
+
+  const params = route.params;
 
   const { register } = useContext(AuthContext);
 
@@ -66,8 +72,7 @@ const RegisterForm = () => {
     if (correo === correo2 && password === password2) {
       register(correo, password, nombre, apellido);
     }
-    return
-     
+    return;
   };
 
   return (

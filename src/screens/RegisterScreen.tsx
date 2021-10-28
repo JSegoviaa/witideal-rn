@@ -24,17 +24,17 @@ const RegisterScreen = ({ navigation }: Props) => {
 
   const handleToInmobiliaria = () => {
     setModalVisible(false);
-    navigation.navigate('RegisterForm');
+    navigation.navigate('RegisterForm', { id: 'Inmobiliaria' });
   };
 
   const handleToIndependent = () => {
     setModalVisible(false);
-    navigation.navigate('RegisterForm');
+    navigation.navigate('RegisterForm', { id: 'Independiente' });
   };
 
   const handleToOwner = () => {
     setModalVisible(false);
-    navigation.navigate('RegisterForm');
+    navigation.navigate('RegisterForm', { id: 'Dueño' });
   };
 
   return (
@@ -94,17 +94,17 @@ const RegisterScreen = ({ navigation }: Props) => {
               <TouchableOpacity
                 style={styles.toRegister}
                 onPress={handleToOwner}>
-                <Text style={{color:'black'}} >Soy dueño de propiedad</Text>
+                <Text style={{ color: 'black' }}>Soy dueño de propiedad</Text>
               </TouchableOpacity>
               <TouchableOpacity
                 style={styles.toRegister}
                 onPress={handleToInmobiliaria}>
-                <Text style={{color:'black'}} >Soy una inmobiliaria</Text>
+                <Text style={{ color: 'black' }}>Soy una inmobiliaria</Text>
               </TouchableOpacity>
               <TouchableOpacity
                 style={styles.toRegister}
                 onPress={handleToIndependent}>
-                <Text style={{color:'black'}} >Soy independiente</Text>
+                <Text style={{ color: 'black' }}>Soy independiente</Text>
               </TouchableOpacity>
               <Pressable
                 style={[styles.button, styles.buttonClose]}
