@@ -7,7 +7,7 @@ import RegisterScreen from '../screens/RegisterScreen';
 export type LoginRootStackNavigation = {
   LoginScreen: undefined;
   RegisterScreen: undefined;
-  RegisterForm: { id: string };
+  RegisterForm: undefined
 };
 
 const Stack = createStackNavigator<LoginRootStackNavigation>();

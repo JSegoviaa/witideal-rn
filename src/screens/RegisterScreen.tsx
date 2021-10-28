@@ -1,11 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   Image,
+  Modal,
   StyleSheet,
   Text,
   View,
   TouchableOpacity,
   ScrollView,
+  Pressable,
 } from 'react-native';
 import { StackScreenProps } from '@react-navigation/stack';
 import Icon from 'react-native-vector-icons/Ionicons';
@@ -16,6 +18,25 @@ interface Props
   extends StackScreenProps<LoginRootStackNavigation, 'RegisterScreen'> {}
 
 const RegisterScreen = ({ navigation }: Props) => {
+  const [modalVisible, setModalVisible] = useState(false);
+
+  const handleModal = () => setModalVisible(true);
+
+  const handleToInmobiliaria = () => {
+    setModalVisible(false);
+    navigation.navigate('RegisterForm');
+  };
+
+  const handleToIndependent = () => {
+    setModalVisible(false);
+    navigation.navigate('RegisterForm');
+  };
+
+  const handleToOwner = () => {
+    setModalVisible(false);
+    navigation.navigate('RegisterForm');
+  };
+
   return (
     <ScrollView>
       <View style={styles.background}>
@@ -36,7 +57,7 @@ const RegisterScreen = ({ navigation }: Props) => {
             <TouchableOpacity
               style={appStyles.btnRegister}
               onPress={() => {
-                navigation.navigate('RegisterForm', { id: 'buscador' });
+                navigation.navigate('RegisterForm');
               }}>
               <Text style={{ color: '#41B8F9', textAlign: 'center' }}>
                 Buscador
@@ -51,15 +72,49 @@ const RegisterScreen = ({ navigation }: Props) => {
 
             <TouchableOpacity
               style={appStyles.btnRegister}
-              onPress={() => {
-                navigation.navigate('RegisterForm', { id: 'promotor' });
-              }}>
+              onPress={handleModal}>
               <Text style={{ color: '#41B8F9', textAlign: 'center' }}>
                 Promotor
               </Text>
             </TouchableOpacity>
           </View>
         </View>
+
+        {/* Modal  */}
+        <Modal
+          animationType="fade"
+          statusBarTranslucent={true}
+          transparent={true}
+          visible={modalVisible}
+          onRequestClose={() => {
+            setModalVisible(!modalVisible);
+          }}>
+          <View style={styles.centeredView}>
+            <View style={styles.modalView}>
+              <TouchableOpacity
+                style={styles.toRegister}
+                onPress={handleToOwner}>
+                <Text>Soy dueño de propiedad</Text>
+              </TouchableOpacity>
+              <TouchableOpacity
+                style={styles.toRegister}
+                onPress={handleToInmobiliaria}>
+                <Text>Soy una inmobiliaria</Text>
+              </TouchableOpacity>
+              <TouchableOpacity
+                style={styles.toRegister}
+                onPress={handleToIndependent}>
+                <Text>Soy independiente</Text>
+              </TouchableOpacity>
+              <Pressable
+                style={[styles.button, styles.buttonClose]}
+                onPress={() => setModalVisible(!modalVisible)}>
+                <Text style={{ color: 'white' }}>Cerrar</Text>
+              </Pressable>
+            </View>
+          </View>
+        </Modal>
+        {/* Se acaba el modal */}
       </View>
     </ScrollView>
   );
@@ -91,6 +146,41 @@ const styles = StyleSheet.create({
   iconColor: {
     color: '#3F19F9',
     padding: 5,
+  },
+  centeredView: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginTop: 22,
+    backgroundColor: 'rgba(128,128,128,0.5)',
+  },
+  modalView: {
+    margin: 20,
+    backgroundColor: 'white',
+    borderRadius: 20,
+    padding: 35,
+    alignItems: 'center',
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 4,
+    elevation: 5,
+  },
+  button: {
+    borderRadius: 20,
+    paddingHorizontal: 30,
+    paddingVertical: 8,
+    elevation: 2,
+    marginTop: 10,
+  },
+  buttonClose: {
+    backgroundColor: '#3F19F9',
+  },
+  toRegister: {
+    paddingVertical: 5,
   },
 });
 
