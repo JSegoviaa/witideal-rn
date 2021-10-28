@@ -2,9 +2,10 @@ import React, { useState } from 'react';
 import { Image, StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 import { useNavigation } from '@react-navigation/core';
 import { toggleEnable } from '../../helpers/enableProperty';
+import { StackNavigationProp } from '@react-navigation/stack';
 
 const MyPropertiesListItem = ({ inmueble }: any) => {
-  const navigation = useNavigation();
+  const navigation = useNavigation<StackNavigationProp<any, any>>();
   const [isEnable, setIsEnable] = useState(inmueble.data.isEnabled);
 
   const handleEnable = () => {
