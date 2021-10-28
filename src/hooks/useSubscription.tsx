@@ -18,11 +18,13 @@ export const useSubscription = (uid: string) => {
     const list: DocumentData = [];
     return data.onSnapshot(querySnapshot => {
       querySnapshot.forEach(doc => {
-        const data = doc.data();
-        list.push({
-          id: doc.id,
-          data,
-        });
+        if (doc.exists) {
+          const data = doc.data();
+          list.push({
+            id: doc.id,
+            data,
+          });
+        }
       });
       if (loading) {
         setLoading(false);

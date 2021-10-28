@@ -21,7 +21,7 @@ export const useMyProperties = (uid: string) => {
     return data.onSnapshot(querySnapshot => {
       querySnapshot.forEach(doc => {
         if (doc.exists) {
-          const data = doc.data;
+          const data = doc.data();
           list.push({
             id: doc.id,
             data,
