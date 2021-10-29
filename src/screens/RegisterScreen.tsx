@@ -96,25 +96,53 @@ const RegisterScreen = ({ navigation }: Props) => {
           }}>
           <View style={styles.centeredView}>
             <View style={styles.modalView}>
+              <Text style={styles.modalTitle}>Selecciona una opción</Text>
+
               <TouchableOpacity
                 style={styles.toRegister}
                 onPress={handleToOwner}>
-                <Text style={{ color: 'black' }}>Soy dueño de propiedad</Text>
+                <Text style={styles.modalOptions}>
+                  <Icon
+                    name="checkmark-circle-outline"
+                    size={20}
+                    color="#3F19F9"
+                  />
+                  {'  '}
+                  Soy dueño de propiedad
+                </Text>
               </TouchableOpacity>
               <TouchableOpacity
                 style={styles.toRegister}
                 onPress={handleToInmobiliaria}>
-                <Text style={{ color: 'black' }}>Soy una inmobiliaria</Text>
+                <Text style={styles.modalOptions}>
+                  <Icon
+                    name="checkmark-circle-outline"
+                    size={20}
+                    color="#3F19F9"
+                  />
+                  {'  '}
+                  Soy una inmobiliaria
+                </Text>
               </TouchableOpacity>
               <TouchableOpacity
                 style={styles.toRegister}
                 onPress={handleToIndependent}>
-                <Text style={{ color: 'black' }}>Soy independiente</Text>
+                <Text style={styles.modalOptions}>
+                  <Icon
+                    name="checkmark-circle-outline"
+                    size={20}
+                    color="#3F19F9"
+                  />
+                  {'  '}
+                  Soy independiente
+                </Text>
               </TouchableOpacity>
               <Pressable
                 style={[styles.button, styles.buttonClose]}
                 onPress={() => setModalVisible(!modalVisible)}>
-                <Text style={{ color: 'white' }}>Cerrar</Text>
+                <Text style={{ color: 'white', textAlign: 'center' }}>
+                  Cerrar
+                </Text>
               </Pressable>
             </View>
           </View>
@@ -164,7 +192,6 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
     borderRadius: 20,
     padding: 35,
-    alignItems: 'center',
     shadowColor: '#000',
     shadowOffset: {
       width: 0,
@@ -186,6 +213,18 @@ const styles = StyleSheet.create({
   },
   toRegister: {
     paddingVertical: 5,
+  },
+  modalTitle: {
+    fontSize: 25,
+    textAlign: 'center',
+    color: '#1E0E6F',
+    fontWeight: '700',
+    padding: 10,
+  },
+  modalOptions: {
+    color: 'black',
+    paddingVertical: 15,
+    fontSize: 18,
   },
 });
 
