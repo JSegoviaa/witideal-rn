@@ -10,11 +10,21 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
+import { StackScreenProps } from '@react-navigation/stack';
+import { LoginRootStackNavigation } from '../../navigation/LoginStackNavigation';
 import { useForm } from '../../hooks/useForm';
 import { appStyles } from '../../theme/appTheme';
 import { AuthContext } from '../../context/auth/AuthContext';
+import {
+  independenBroker,
+  inmobiliaria,
+  owner,
+} from '../../constant/promoterType';
 
-const RegisterForm = () => {
+interface Props
+  extends StackScreenProps<LoginRootStackNavigation, 'RegisterScreen'> {}
+
+const RegisterPromoterForm = ({ route }: Props) => {
   const { form, onChange } = useForm({
     name: '',
     lastname: '',
@@ -24,7 +34,8 @@ const RegisterForm = () => {
     correo2: '',
     password: '',
     password2: '',
-    isPromoter: false,
+    promoterType: route.params!.id,
+    isPromoter: true,
   });
 
   const {
@@ -36,8 +47,11 @@ const RegisterForm = () => {
     lastname,
     companyName,
     phone,
+    promoterType,
     isPromoter,
   } = form;
+
+  const params = route.params;
 
   const { register } = useContext(AuthContext);
 
@@ -80,6 +94,7 @@ const RegisterForm = () => {
       phone,
       password,
       companyName,
+      promoterType,
       isPromoter,
     };
     if (mail === correo2 && password === password2) {
@@ -149,6 +164,46 @@ const RegisterForm = () => {
           onChangeText={value => onChange(value, 'password2')}
         />
 
+        {params.id === independenBroker && (
+          <TextInput
+            placeholder={
+              params.id === independenBroker ? 'Soy independiente' : ''
+            }
+            placeholderTextColor="#ccc"
+            editable={false}
+            style={styles.inputFalse}
+            onChangeText={value => onChange(value, 'promoterType')}
+          />
+        )}
+
+        {params.id === inmobiliaria && (
+          <>
+            <TextInput
+              placeholder={params.id === inmobiliaria ? 'Inmobiliaria' : ''}
+              placeholderTextColor="#ccc"
+              editable={false}
+              style={styles.inputFalse}
+              onChangeText={value => onChange(value, 'promoterType')}
+            />
+            <TextInput
+              placeholder="Nombre de la inmobiliaria"
+              placeholderTextColor="#ccc"
+              style={styles.input}
+              onChangeText={value => onChange(value, 'companyName')}
+            />
+          </>
+        )}
+
+        {params.id === owner && (
+          <TextInput
+            placeholder={params.id === owner ? 'Dueño de propiedad' : ''}
+            placeholderTextColor="#ccc"
+            editable={false}
+            style={styles.inputFalse}
+            onChangeText={value => onChange(value, 'promoterType')}
+          />
+        )}
+
         <Text style={styles.info}>
           Al registrarse estás aceptando nuestros{' '}
           <Text style={styles.tos}>términos y condiciones</Text>
@@ -210,4 +265,4 @@ const styles = StyleSheet.create({
     color: '#3F19F9',
   },
 });
-export default RegisterForm;
+export default RegisterPromoterForm;

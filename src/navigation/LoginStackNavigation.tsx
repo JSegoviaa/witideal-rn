@@ -1,13 +1,15 @@
 import { createStackNavigator } from '@react-navigation/stack';
 import React from 'react';
 import RegisterForm from '../components/RegisterScreen/RegisterForm';
+import RegisterPromoterForm from '../components/RegisterScreen/RegisterPromoterForm';
 import LoginScreen from '../screens/LoginScreen';
 import RegisterScreen from '../screens/RegisterScreen';
 
 export type LoginRootStackNavigation = {
   LoginScreen: undefined;
   RegisterScreen: undefined;
-  RegisterForm?: { id: string | undefined};
+  RegisterForm: undefined;
+  RegisterPromoterForm: { id: string | undefined };
 };
 
 const Stack = createStackNavigator<LoginRootStackNavigation>();
@@ -36,6 +38,11 @@ const LoginStackNavigation = () => {
         name="RegisterForm"
         options={{ title: 'Registrarse' }}
         component={RegisterForm}
+      />
+      <Stack.Screen
+        name="RegisterPromoterForm"
+        options={{ title: 'Registrarse' }}
+        component={RegisterPromoterForm}
       />
     </Stack.Navigator>
   );

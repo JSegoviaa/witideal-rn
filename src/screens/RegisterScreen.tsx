@@ -29,17 +29,17 @@ const RegisterScreen = ({ navigation }: Props) => {
 
   const handleToInmobiliaria = () => {
     setModalVisible(false);
-    navigation.navigate('RegisterForm', { id: inmobiliaria });
+    navigation.navigate('RegisterPromoterForm', { id: inmobiliaria });
   };
 
   const handleToIndependent = () => {
     setModalVisible(false);
-    navigation.navigate('RegisterForm', { id: independenBroker });
+    navigation.navigate('RegisterPromoterForm', { id: independenBroker });
   };
 
   const handleToOwner = () => {
     setModalVisible(false);
-    navigation.navigate('RegisterForm', { id: owner });
+    navigation.navigate('RegisterPromoterForm', { id: owner });
   };
 
   return (
