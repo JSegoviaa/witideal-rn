@@ -26,31 +26,41 @@ interface Props
 
 const RegisterForm = ({ route }: Props) => {
   const { form, onChange } = useForm({
-    nombre: '',
-    apellido: '',
-    tel: '',
-    empresa: '',
-    correo: '',
+    name: '',
+    lastname: '',
+    phone: '',
+    companyName: '',
+    mail: '',
     correo2: '',
     password: '',
     password2: '',
     promoterType: route.params!.id,
   });
 
-  const { correo, correo2, password, password2, nombre, apellido } = form;
+  const {
+    mail,
+    correo2,
+    password,
+    password2,
+    name,
+    lastname,
+    companyName,
+    phone,
+    promoterType,
+  } = form;
 
   const params = route.params;
 
   const { register } = useContext(AuthContext);
 
   const handleRegister = () => {
-    if (!nombre.trim()) {
+    if (!name.trim()) {
       Alert.alert('', 'El nombre es obligatorio', [{ text: 'Regresar' }]);
     }
-    if (!apellido.trim()) {
+    if (!lastname.trim()) {
       Alert.alert('', 'El apellido es obligatorio', [{ text: 'Regresar' }]);
     }
-    if (!correo.trim()) {
+    if (!mail.trim()) {
       Alert.alert('', 'El correo electrónico es obligatorio', [
         { text: 'Regresar' },
       ]);
@@ -65,7 +75,7 @@ const RegisterForm = ({ route }: Props) => {
       Alert.alert('', 'Confirme la contraseña', [{ text: 'Regresar' }]);
     }
 
-    if (correo !== correo2) {
+    if (mail !== correo2) {
       Alert.alert('', 'El correo electrónico ingresado no coincide', [
         { text: 'Regresar' },
       ]);
@@ -75,8 +85,17 @@ const RegisterForm = ({ route }: Props) => {
       Alert.alert('', 'Las contraseñas no coinciden', [{ text: 'Regresar' }]);
     }
 
-    if (correo === correo2 && password === password2) {
-      register(correo, password, nombre, apellido);
+    const data = {
+      name,
+      lastname,
+      mail,
+      phone,
+      password,
+      companyName,
+      promoterType,
+    };
+    if (mail === correo2 && password === password2) {
+      register(data);
     }
     return;
   };
@@ -95,20 +114,20 @@ const RegisterForm = ({ route }: Props) => {
           placeholder="Nombre"
           placeholderTextColor="#ccc"
           style={styles.input}
-          onChangeText={value => onChange(value, 'nombre')}
+          onChangeText={value => onChange(value, 'name')}
         />
         <TextInput
           placeholder="Apellido"
           placeholderTextColor="#ccc"
           style={styles.input}
-          onChangeText={value => onChange(value, 'apellido')}
+          onChangeText={value => onChange(value, 'lastname')}
         />
         <TextInput
           placeholder="Teléfono"
           placeholderTextColor="#ccc"
           style={styles.input}
           keyboardType="numeric"
-          onChangeText={value => onChange(value, 'tel')}
+          onChangeText={value => onChange(value, 'phone')}
         />
 
         <TextInput
@@ -117,7 +136,7 @@ const RegisterForm = ({ route }: Props) => {
           keyboardType="email-address"
           autoCapitalize="none"
           style={styles.input}
-          onChangeText={value => onChange(value, 'correo')}
+          onChangeText={value => onChange(value, 'mail')}
         />
         <TextInput
           placeholder="Confirme su correo electrónico"
@@ -165,7 +184,7 @@ const RegisterForm = ({ route }: Props) => {
               placeholder="Nombre de la inmobiliaria"
               placeholderTextColor="#ccc"
               style={styles.input}
-              onChangeText={value => onChange(value, 'empresa')}
+              onChangeText={value => onChange(value, 'companyName')}
             />
           </>
         )}

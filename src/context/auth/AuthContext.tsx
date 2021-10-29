@@ -2,6 +2,17 @@ import React, { createContext, FC, useEffect, useState } from 'react';
 import { Alert } from 'react-native';
 import auth, { FirebaseAuthTypes } from '@react-native-firebase/auth';
 import { GoogleSignin } from '@react-native-google-signin/google-signin';
+import firestore from '@react-native-firebase/firestore';
+
+interface RegisterProp {
+  name: string;
+  lastname: string;
+  mail: string;
+  phone: string;
+  password: string;
+  companyName?: string;
+  promoterType?: string;
+}
 
 interface ContextProps {
   user: FirebaseAuthTypes.User | null;
@@ -9,12 +20,7 @@ interface ContextProps {
   signIn: (email: string, password: string) => void;
   logOut: () => void;
   signInWithGoogle: () => void;
-  register: (
-    email: string,
-    password: string,
-    name: string,
-    apellido: string,
-  ) => void;
+  register: (data: RegisterProp) => void;
 }
 
 GoogleSignin.configure({
@@ -73,18 +79,24 @@ export const AuthProvider: FC = ({ children }) => {
     }
   };
 
-  const register = async (
-    email: string,
-    password: string,
-    name: string,
-    apellido: string,
-  ) => {
-    if (email && password && name && apellido) {
+  const register = async (data: RegisterProp) => {
+    const { name, lastname, mail, phone, password, companyName, promoterType } =
+      data;
+
+    if (mail && password && name && lastname) {
       const { user } = await auth().createUserWithEmailAndPassword(
-        email,
+        mail,
         password,
       );
-      await user.updateProfile({ displayName: `${name} ${apellido}` });
+      await user.updateProfile({ displayName: `${name} ${lastname}` });
+
+      const currentUser: any = auth().currentUser;
+      await firestore()
+        .collection('production')
+        .doc('Users')
+        .collection(currentUser.uid)
+        .doc('generalInfo')
+        .set(data);
     }
   };
 
