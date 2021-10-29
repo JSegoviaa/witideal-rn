@@ -10,6 +10,7 @@ interface RegisterProp {
   mail: string;
   phone: string;
   password: string;
+  isPromoter?:boolean;
   companyName?: string;
   promoterType?: string;
 }
@@ -53,7 +54,6 @@ export const AuthProvider: FC = ({ children }) => {
       }
     } catch (error) {
       console.log(error);
-      //  Alert.alert('', `${error}`, [{ text: 'Regresar' }]);
       Alert.alert('Error al iniciar sesión', `Inténtelo de nuevo`, [
         { text: 'Regresar' },
       ]);
@@ -80,8 +80,7 @@ export const AuthProvider: FC = ({ children }) => {
   };
 
   const register = async (data: RegisterProp) => {
-    const { name, lastname, mail, phone, password, companyName, promoterType } =
-      data;
+    const { name, lastname, mail, password } = data;
 
     if (mail && password && name && lastname) {
       const { user } = await auth().createUserWithEmailAndPassword(

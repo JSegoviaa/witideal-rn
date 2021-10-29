@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import {
   Alert,
   Image,
@@ -35,6 +35,7 @@ const RegisterForm = ({ route }: Props) => {
     password: '',
     password2: '',
     promoterType: route.params!.id,
+    isPromoter: false,
   });
 
   const {
@@ -47,6 +48,7 @@ const RegisterForm = ({ route }: Props) => {
     companyName,
     phone,
     promoterType,
+    isPromoter,
   } = form;
 
   const params = route.params;
@@ -93,6 +95,7 @@ const RegisterForm = ({ route }: Props) => {
       password,
       companyName,
       promoterType,
+      isPromoter,
     };
     if (mail === correo2 && password === password2) {
       register(data);
@@ -162,13 +165,15 @@ const RegisterForm = ({ route }: Props) => {
         />
 
         {params.id === independenBroker && (
-          <TextInput
-            value={params.id}
-            placeholderTextColor="#ccc"
-            editable={false}
-            style={styles.input}
-            onChangeText={value => onChange(value, 'promoterType')}
-          />
+          <>
+            <TextInput
+              value={params.id}
+              placeholderTextColor="#ccc"
+              editable={false}
+              style={styles.input}
+              onChangeText={value => onChange(value, 'promoterType')}
+            />
+          </>
         )}
 
         {params.id === inmobiliaria && (
@@ -190,13 +195,15 @@ const RegisterForm = ({ route }: Props) => {
         )}
 
         {params.id === owner && (
-          <TextInput
-            value={params.id}
-            placeholderTextColor="#ccc"
-            editable={false}
-            style={styles.input}
-            onChangeText={value => onChange(value, 'promoterType')}
-          />
+          <>
+            <TextInput
+              value={params.id}
+              placeholderTextColor="#ccc"
+              editable={false}
+              style={styles.input}
+              onChangeText={value => onChange(value, 'promoterType')}
+            />
+          </>
         )}
 
         <Text style={styles.info}>
