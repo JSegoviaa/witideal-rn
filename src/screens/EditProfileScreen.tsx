@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
-import { StyleSheet, Text, TextInput, View } from 'react-native';
+import { Alert, StyleSheet, Text, TextInput, View } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
+import firestore from '@react-native-firebase/firestore';
 import { AuthContext } from '../context/auth/AuthContext';
 import { useForm } from '../hooks/useForm';
 import { useUserInfo } from '../hooks/useUserInfo';
@@ -17,11 +18,23 @@ const EditProfileScreen = () => {
     phone: '',
   });
 
+  const { name, lastname, mail, phone } = form;
+  const data = { name, lastname, mail, phone };
+
+  const handleEditProfile = async () => {
+    await firestore()
+      .collection('production')
+      .doc('Users')
+      .collection(user?.uid!)
+      .doc('generalInfo')
+      .update(data);
+  };
+
   return (
     <View>
       {userInfo && (
         <TextInput
-          placeholder={`${userInfo.name}`}
+          value={userInfo.name}
           placeholderTextColor="#000"
           style={styles.input}
           onChangeText={value => onChange(value, 'name')}
@@ -56,7 +69,9 @@ const EditProfileScreen = () => {
       )}
 
       <View style={{ marginLeft: 'auto', marginRight: 'auto' }}>
-        <TouchableOpacity style={appStyles.btnPrimary}>
+        <TouchableOpacity
+          style={appStyles.btnPrimary}
+          onPress={handleEditProfile}>
           <Text style={appStyles.textCenter}>Actualizar información</Text>
         </TouchableOpacity>
       </View>
