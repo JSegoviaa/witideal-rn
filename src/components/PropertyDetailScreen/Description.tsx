@@ -4,11 +4,12 @@ import { useProperty } from '../../hooks/useProperty';
 
 interface Props {
   id: string;
+  action: string;
+  propertyType: string;
 }
 
-const Description = ({ id }: Props) => {
-  const { property } = useProperty(id);
-  console.log(id, 'desde description');
+const Description = ({ id, action, propertyType }: Props) => {
+  const { property } = useProperty(id, action, propertyType);
   return (
     <>
       {property && (

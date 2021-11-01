@@ -6,11 +6,12 @@ import OwnerInfo from './OwnerInfo';
 
 interface Props {
   id: string;
+  action: string;
+  propertyType: string;
 }
 
-const SpecificDetails = ({ id }: Props) => {
-  const { property } = useProperty(id);
-  console.log(id, 'desde specific details');
+const SpecificDetails = ({ id, action, propertyType }: Props) => {
+  const { property } = useProperty(id, action, propertyType);
 
   return (
     <>

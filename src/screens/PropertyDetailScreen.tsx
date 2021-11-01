@@ -15,8 +15,8 @@ interface Props
 
 const PropertyDetailScreen = ({ route }: Props) => {
   const navigation = useNavigation();
-  const { id } = route.params;
-  const { loading } = useProperty(id);
+  const { id, action, propertyType } = route.params;
+  const { loading } = useProperty(id, action, propertyType);
 
   useEffect(() => {
     navigation.setOptions({ headerShown: true, headerTransparent: true });
@@ -29,9 +29,13 @@ const PropertyDetailScreen = ({ route }: Props) => {
       ) : (
         <ScrollView>
           <View style={{ backgroundColor: '#fff' }}>
-            <Images id={id} />
-            <Description id={id} />
-            <SpecificDetails id={id} />
+            <Images id={id} action={action} propertyType={propertyType} />
+            <Description id={id} action={action} propertyType={propertyType} />
+            <SpecificDetails
+              id={id}
+              action={action}
+              propertyType={propertyType}
+            />
             {/* <Map/> */}
           </View>
         </ScrollView>

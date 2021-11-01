@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { Image, StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 import { useNavigation } from '@react-navigation/core';
-import { toggleEnable } from '../../helpers/enableProperty';
 import { StackNavigationProp } from '@react-navigation/stack';
+import { toggleEnable } from '../../helpers/enableProperty';
 
 const MyPropertiesListItem = ({ inmueble }: any) => {
   const navigation = useNavigation<StackNavigationProp<any, any>>();
@@ -23,7 +23,11 @@ const MyPropertiesListItem = ({ inmueble }: any) => {
       <View style={isEnable ? styles.card : styles.disableCard}>
         <TouchableOpacity
           onPress={() => {
-            navigation.navigate('PropertyDetailScreen', { id: inmueble.id });
+            navigation.navigate('PropertyDetailScreen', {
+              id: inmueble.id,
+              action: inmueble.data.action,
+              propertyType: inmueble.data.propertyType,
+            });
           }}>
           <Image
             width={500}

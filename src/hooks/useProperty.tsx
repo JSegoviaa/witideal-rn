@@ -5,7 +5,11 @@ interface DocumentData {
   [key: string]: any;
 }
 
-export const useProperty = (id: string) => {
+export const useProperty = (
+  id: string,
+  action: string,
+  propertyType: string,
+) => {
   const [property, setProperty] = useState<DocumentData>();
   const [loading, setLoading] = useState(true);
 
@@ -15,12 +19,9 @@ export const useProperty = (id: string) => {
         .collection('production')
         .doc('witideal')
         .collection('genders')
-        .doc('apartment')
-        .collection('rent')
-        // .doc('AdHaIDPSe3a2BGl5EdzB')
+        .doc(propertyType)
+        .collection(action)
         .doc(id)
-        // .doc('GT591BurVp9wQx9OzuVk')
-        // .doc('06DpmIptmmWbb7DXalE5')
         .get();
 
       setLoading(false);
