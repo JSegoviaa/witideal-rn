@@ -4,12 +4,14 @@ import RegisterForm from '../components/RegisterScreen/RegisterForm';
 import RegisterPromoterForm from '../components/RegisterScreen/RegisterPromoterForm';
 import LoginScreen from '../screens/LoginScreen';
 import RegisterScreen from '../screens/RegisterScreen';
+import ToSScreen from '../screens/ToSScreen';
 
 export type RootLoginStackNavigation = {
   LoginScreen: undefined;
   RegisterScreen: undefined;
   RegisterForm: undefined;
   RegisterPromoterForm: { id: string | undefined };
+  TosScreen: undefined;
 };
 
 const Stack = createStackNavigator<RootLoginStackNavigation>();
@@ -43,6 +45,11 @@ const LoginStackNavigation = () => {
         name="RegisterPromoterForm"
         options={{ title: 'Registrarse' }}
         component={RegisterPromoterForm}
+      />
+      <Stack.Screen
+        name="TosScreen"
+        options={{ title: 'Términos y condiciones' }}
+        component={ToSScreen}
       />
     </Stack.Navigator>
   );

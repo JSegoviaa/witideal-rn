@@ -24,7 +24,7 @@ import {
 interface Props
   extends StackScreenProps<RootLoginStackNavigation, 'RegisterPromoterForm'> {}
 
-const RegisterPromoterForm = ({ route }: Props) => {
+const RegisterPromoterForm = ({ route, navigation }: Props) => {
   const params = route.params;
 
   const { form, onChange } = useForm({
@@ -206,7 +206,13 @@ const RegisterPromoterForm = ({ route }: Props) => {
 
         <Text style={styles.info}>
           Al registrarse estás aceptando nuestros{' '}
-          <Text style={styles.tos}>términos y condiciones</Text>
+          <Text
+            style={styles.tos}
+            onPress={() => {
+              navigation.navigate('TosScreen');
+            }}>
+            términos y condiciones
+          </Text>
         </Text>
 
         <View style={{ marginLeft: 'auto', marginRight: 'auto' }}>
@@ -230,9 +236,11 @@ const RegisterPromoterForm = ({ route }: Props) => {
 
 const styles = StyleSheet.create({
   info: {
+    color: '#757575',
     fontSize: 13,
     fontWeight: '500',
     paddingHorizontal: 13,
+    paddingVertical: 20,
   },
   input: {
     backgroundColor: '#f6f6f6',

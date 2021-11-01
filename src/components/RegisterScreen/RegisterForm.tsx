@@ -10,11 +10,16 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
+import { StackScreenProps } from '@react-navigation/stack';
 import { useForm } from '../../hooks/useForm';
 import { appStyles } from '../../theme/appTheme';
 import { AuthContext } from '../../context/auth/AuthContext';
+import { RootLoginStackNavigation } from '../../navigation/LoginStackNavigation';
 
-const RegisterForm = () => {
+interface Props
+  extends StackScreenProps<RootLoginStackNavigation, 'RegisterPromoterForm'> {}
+
+const RegisterForm = ({ navigation }: Props) => {
   const { form, onChange } = useForm({
     name: '',
     lastname: '',
@@ -151,7 +156,13 @@ const RegisterForm = () => {
 
         <Text style={styles.info}>
           Al registrarse estás aceptando nuestros{' '}
-          <Text style={styles.tos}>términos y condiciones</Text>
+          <Text
+            style={styles.tos}
+            onPress={() => {
+              navigation.navigate('TosScreen');
+            }}>
+            términos y condiciones
+          </Text>
         </Text>
 
         <View style={{ marginLeft: 'auto', marginRight: 'auto' }}>
@@ -175,9 +186,11 @@ const RegisterForm = () => {
 
 const styles = StyleSheet.create({
   info: {
+    color: '#757575',
     fontSize: 13,
     fontWeight: '500',
     paddingHorizontal: 13,
+    paddingVertical:20
   },
   input: {
     backgroundColor: '#f6f6f6',
