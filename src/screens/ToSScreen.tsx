@@ -146,7 +146,38 @@ const ToSScreen = ({ navigation }: Props) => {
         <Text style={styles.title}>
           4. Política de comisiones, cobros y devoluciones
         </Text>
-        <Text>Falta por redactar esta parte</Text>
+        <Text style={styles.text}>
+          Witideal ofrece 3 planes Paquete Rising Star / 3 propiedades
+          destacadas (vigencia 30 dias) / Campaña de Facebook / Instagram Ads en
+          la fanpage de Witideal Paquete Rockstar / 5 propiedades destacada
+          (vigencia 30 dias) / Campaña de Facebook / Instagram Ads en la fanpage
+          de Witideal + Post en redes sociales Luis Ramirez y rematecasas
+          Paquete Superstar / 10 propiedades destacada (vigencia 30 dias) /
+          Campaña de Facebook / Instagram Ads en la fanpage de Witideal + Post
+          en redes sociales Luis Ramirez y rematecasas + Mención en el programa
+          de mundo inmobiliario de Luis Ramirez
+        </Text>
+        <Text style={styles.text}>
+          Devoluciones. Como regla general, Witideal no hará devolución de
+          recursos que correspondan a servicios (i) efectivamente prestados al
+          usuario y (i) que no hayan sido debidamente desacreditados por el
+          usuario en los términos del párrafo siguiente.
+        </Text>
+        <Text style={styles.text}>
+          Witideal informará al usuario de forma mensual y a través de la
+          plataforma, el estado de movimientos y cargos de su cuenta. El usuario
+          podrá presentar sus reclamaciones dentro de los primeros 5 días
+          hábiles del mes siguiente a aquel al que correspondan los movimientos,
+          a través de un correo electrónico dirigido a Witideal para tal efecto.
+          En su caso, el usuario deberá incluir en el correo cualquier
+          argumento, documento o soporte que permitan fundamentar su
+          reclamación. Witideal contará con un plazo de 10 días hábiles para
+          responder lo que a su derecho convenga y para determinar la
+          procedencia o improcedencia de la reclamación. La falta de
+          presentación de una reclamación dentro del plazo antes referido se
+          entenderá como una aceptación irrevocable a los movimientos realizados
+          en su cuenta.
+        </Text>
       </View>
 
       <View>
