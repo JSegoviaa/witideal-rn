@@ -11,7 +11,7 @@ import {
   View,
 } from 'react-native';
 import { StackScreenProps } from '@react-navigation/stack';
-import { LoginRootStackNavigation } from '../../navigation/LoginStackNavigation';
+import { RootLoginStackNavigation } from '../../navigation/LoginStackNavigation';
 import { useForm } from '../../hooks/useForm';
 import { appStyles } from '../../theme/appTheme';
 import { AuthContext } from '../../context/auth/AuthContext';
@@ -22,9 +22,11 @@ import {
 } from '../../constant/promoterType';
 
 interface Props
-  extends StackScreenProps<LoginRootStackNavigation, 'RegisterScreen'> {}
+  extends StackScreenProps<RootLoginStackNavigation, 'RegisterPromoterForm'> {}
 
 const RegisterPromoterForm = ({ route }: Props) => {
+  const params = route.params;
+
   const { form, onChange } = useForm({
     name: '',
     lastname: '',
@@ -34,7 +36,7 @@ const RegisterPromoterForm = ({ route }: Props) => {
     correo2: '',
     password: '',
     password2: '',
-    promoterType: route.params!.id,
+    promoterType: params.id,
     isPromoter: true,
   });
 
@@ -50,8 +52,6 @@ const RegisterPromoterForm = ({ route }: Props) => {
     promoterType,
     isPromoter,
   } = form;
-
-  const params = route.params;
 
   const { register } = useContext(AuthContext);
 

@@ -5,14 +5,14 @@ import RegisterPromoterForm from '../components/RegisterScreen/RegisterPromoterF
 import LoginScreen from '../screens/LoginScreen';
 import RegisterScreen from '../screens/RegisterScreen';
 
-export type LoginRootStackNavigation = {
+export type RootLoginStackNavigation = {
   LoginScreen: undefined;
   RegisterScreen: undefined;
   RegisterForm: undefined;
   RegisterPromoterForm: { id: string | undefined };
 };
 
-const Stack = createStackNavigator<LoginRootStackNavigation>();
+const Stack = createStackNavigator<RootLoginStackNavigation>();
 
 const LoginStackNavigation = () => {
   return (
