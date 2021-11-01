@@ -146,12 +146,17 @@ const ToSScreen = ({ navigation }: Props) => {
         <Text style={styles.title}>
           4. Política de comisiones, cobros y devoluciones
         </Text>
+        <Text style={styles.text}>Witideal ofrece 3 planes</Text>
         <Text style={styles.text}>
-          Witideal ofrece 3 planes Paquete Rising Star / 3 propiedades
-          destacadas (vigencia 30 dias) / Campaña de Facebook / Instagram Ads en
-          la fanpage de Witideal Paquete Rockstar / 5 propiedades destacada
-          (vigencia 30 dias) / Campaña de Facebook / Instagram Ads en la fanpage
-          de Witideal + Post en redes sociales Luis Ramirez y rematecasas
+          Paquete Rising Star / 3 propiedades destacadas (vigencia 30 dias) /
+          Campaña de Facebook / Instagram Ads en la fanpage de Witideal
+        </Text>
+        <Text style={styles.text}>
+          Paquete Rockstar / 5 propiedades destacada (vigencia 30 dias) /
+          Campaña de Facebook / Instagram Ads en la fanpage de Witideal + Post
+          en redes sociales Luis Ramirez y rematecasas
+        </Text>
+        <Text style={styles.text}>
           Paquete Superstar / 10 propiedades destacada (vigencia 30 dias) /
           Campaña de Facebook / Instagram Ads en la fanpage de Witideal + Post
           en redes sociales Luis Ramirez y rematecasas + Mención en el programa
