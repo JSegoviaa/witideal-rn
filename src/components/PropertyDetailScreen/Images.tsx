@@ -2,9 +2,14 @@ import React from 'react';
 import { FlatList, Image, useWindowDimensions, View } from 'react-native';
 import { useProperty } from '../../hooks/useProperty';
 
-const Images = () => {
+interface Props {
+  id: string;
+}
+
+const Images = ({id}: Props) => {
   const { width } = useWindowDimensions();
   const { property } = useProperty();
+  console.log(id, 'desde iamges');
 
   return (
     <View>

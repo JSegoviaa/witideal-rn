@@ -4,8 +4,13 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import { useProperty } from '../../hooks/useProperty';
 import OwnerInfo from './OwnerInfo';
 
-const SpecificDetails = () => {
+interface Props {
+  id: string;
+}
+
+const SpecificDetails = ({ id }: Props) => {
   const { property } = useProperty();
+  console.log(id, 'desde specific details');
 
   return (
     <>
@@ -373,7 +378,6 @@ const SpecificDetails = () => {
               </View>
             )}
           </View>
-
 
           {/* Muestra la información del dueño de la propiedad */}
           <OwnerInfo property={property} />

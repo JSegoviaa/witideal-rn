@@ -10,7 +10,7 @@ export type RootSearchStackNavigation = {
   HomeScreen: undefined;
   SearchScreen: undefined;
   PropertiesListScreen: undefined;
-  PropertyDetailScreen: undefined;
+  PropertyDetailScreen: { id: string };
 };
 
 const Stack = createStackNavigator<RootSearchStackNavigation>();

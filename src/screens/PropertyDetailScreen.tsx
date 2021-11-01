@@ -1,16 +1,22 @@
 import React, { useEffect } from 'react';
 import { ScrollView, View } from 'react-native';
 import { useNavigation } from '@react-navigation/core';
+import { StackScreenProps } from '@react-navigation/stack';
 import Description from '../components/PropertyDetailScreen/Description';
 import Images from '../components/PropertyDetailScreen/Images';
 // import Map from '../components/PropertyDetailScreen/Map';
 import SpecificDetails from '../components/PropertyDetailScreen/SpecificDetails';
 import { useProperty } from '../hooks/useProperty';
 import Loading from '../components/ui/Loading';
+import { RootSearchStackNavigation } from '../navigation/SearchStackNavigation';
 
-const PropertyDetailScreen = () => {
+interface Props
+  extends StackScreenProps<RootSearchStackNavigation, 'PropertyDetailScreen'> {}
+
+const PropertyDetailScreen = ({ route }: Props) => {
   const navigation = useNavigation();
   const { loading } = useProperty();
+  const { id } = route.params;
 
   useEffect(() => {
     navigation.setOptions({ headerShown: true, headerTransparent: true });
@@ -23,9 +29,9 @@ const PropertyDetailScreen = () => {
       ) : (
         <ScrollView>
           <View style={{ backgroundColor: '#fff' }}>
-            <Images />
-            <Description />
-            <SpecificDetails />
+            <Images id={id} />
+            <Description id={id} />
+            <SpecificDetails id={id} />
             {/* <Map/> */}
           </View>
         </ScrollView>

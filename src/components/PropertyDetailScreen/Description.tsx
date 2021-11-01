@@ -2,9 +2,13 @@ import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { useProperty } from '../../hooks/useProperty';
 
-const Description = () => {
-  const { property } = useProperty();
+interface Props {
+  id: string;
+}
 
+const Description = ({ id }: Props) => {
+  const { property } = useProperty();
+  console.log(id, 'desde description');
   return (
     <>
       {property && (
