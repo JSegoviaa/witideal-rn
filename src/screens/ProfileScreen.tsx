@@ -39,6 +39,22 @@ const ProfileScreen = ({ navigation }: Props) => {
               }}>
               <Text style={appStyles.btnSecondary}>Mis favoritos</Text>
             </TouchableOpacity>
+            <TouchableOpacity
+              onPress={() => {
+                navigation.navigate('TosScreen');
+              }}>
+              <Text style={{ color: '#757575', paddingVertical: 10 }}>
+                Términos y condiciones
+              </Text>
+            </TouchableOpacity>
+            <TouchableOpacity
+              onPress={() => {
+                navigation.navigate('NoPScreen');
+              }}>
+              <Text style={{ color: '#757575', paddingVertical: 10 }}>
+                Aviso de privacidad
+              </Text>
+            </TouchableOpacity>
           </View>
         </View>
       </View>
