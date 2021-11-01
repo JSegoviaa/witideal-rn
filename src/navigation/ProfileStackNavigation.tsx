@@ -5,6 +5,7 @@ import MyFavoritesScreen from '../screens/MyFavoritesScreen';
 import NoPScreen from '../screens/NoPScreen';
 import PaymentsScreen from '../screens/PaymentsScreen';
 import ProfileScreen from '../screens/ProfileScreen';
+import PropertyDetailScreen from '../screens/PropertyDetailScreen';
 import ToSScreen from '../screens/ToSScreen';
 
 export type RootProfileStackNavigation = {
@@ -14,6 +15,7 @@ export type RootProfileStackNavigation = {
   EditProfileScreen: undefined;
   TosScreen: undefined;
   NoPScreen: undefined;
+  FavoriteDetailScreen:undefined
 };
 
 const Stack = createStackNavigator<RootProfileStackNavigation>();
@@ -61,6 +63,11 @@ const ProfileStackNavigation = () => {
           headerTitleAlign: 'center',
         }}
         component={NoPScreen}
+      />
+      <Stack.Screen
+        name="FavoriteDetailScreen"
+        options={{ headerShown: false }}
+        component={PropertyDetailScreen}
       />
     </Stack.Navigator>
   );

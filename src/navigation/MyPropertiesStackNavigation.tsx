@@ -5,7 +5,11 @@ import PropertyDetailScreen from '../screens/PropertyDetailScreen';
 
 export type RootMyPropertiesStackNavigation = {
   MyPropertiesScreen: undefined;
-  MyPropertiesScreenDetail: undefined;
+  MyPropertiesScreenDetail: {
+    id: string;
+    action: string;
+    propertyType: string;
+  };
 };
 
 const Stack = createStackNavigator<RootMyPropertiesStackNavigation>();

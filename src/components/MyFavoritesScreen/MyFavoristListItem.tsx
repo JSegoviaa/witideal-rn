@@ -2,17 +2,19 @@ import { useNavigation } from '@react-navigation/core';
 import { StackNavigationProp } from '@react-navigation/stack';
 import React from 'react';
 import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { RootProfileStackNavigation } from '../../navigation/ProfileStackNavigation';
 
 const MyFavoristListItem = ({ favoritos }: any) => {
-  const navigation = useNavigation<StackNavigationProp<any, any>>();
+  const navigation =
+    useNavigation<
+      StackNavigationProp<RootProfileStackNavigation, 'MyFavoritesScreen'>
+    >();
 
   return (
     <View style={styles.card}>
       <TouchableOpacity
         onPress={() => {
-          navigation.navigate('HomeScreenNavigation', {
-            screen: 'PropertyDetailScreen',
-          });
+          navigation.navigate('FavoriteDetailScreen');
         }}>
         <Image
           width={500}

@@ -13,7 +13,10 @@ import { StackNavigationProp } from '@react-navigation/stack';
 import { RootProfileStackNavigation } from '../../navigation/ProfileStackNavigation';
 
 const PersonalInfo = () => {
-  const navigation = useNavigation<StackNavigationProp<RootProfileStackNavigation, 'ProfileScreen'>>();
+  const navigation =
+    useNavigation<
+      StackNavigationProp<RootProfileStackNavigation, 'ProfileScreen'>
+    >();
   const { user, logOut } = useContext(AuthContext);
   const { userInfo } = useUserInfo(user?.uid!);
   const { role } = useRole(user?.uid!);

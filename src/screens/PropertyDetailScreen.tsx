@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
 import { Image, ScrollView, StyleSheet, Text, View } from 'react-native';
-import { useNavigation } from '@react-navigation/core';
 import { StackScreenProps } from '@react-navigation/stack';
 import Description from '../components/PropertyDetailScreen/Description';
 import Images from '../components/PropertyDetailScreen/Images';
@@ -37,8 +36,7 @@ const NoEnable = () => {
 };
 
 //Este componente se muestra cuando la propiedad está activada
-const PropertyDetailScreen = ({ route }: Props) => {
-  const navigation = useNavigation();
+const PropertyDetailScreen = ({ route, navigation }: Props) => {
   const { id, action, propertyType } = route.params;
   const { loading, property } = useProperty(id, action, propertyType);
 

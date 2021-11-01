@@ -3,9 +3,16 @@ import { Image, StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 import { useNavigation } from '@react-navigation/core';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { toggleEnable } from '../../helpers/enableProperty';
+import { RootMyPropertiesStackNavigation } from '../../navigation/MyPropertiesStackNavigation';
 
 const MyPropertiesListItem = ({ inmueble }: any) => {
-  const navigation = useNavigation<StackNavigationProp<any, any>>();
+  const navigation =
+    useNavigation<
+      StackNavigationProp<
+        RootMyPropertiesStackNavigation,
+        'MyPropertiesScreenDetail'
+      >
+    >();
   const [isEnable, setIsEnable] = useState(inmueble.data.isEnabled);
 
   const handleEnable = () => {
