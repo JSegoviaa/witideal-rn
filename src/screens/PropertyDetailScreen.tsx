@@ -15,8 +15,8 @@ interface Props
 
 const PropertyDetailScreen = ({ route }: Props) => {
   const navigation = useNavigation();
-  const { loading } = useProperty();
   const { id } = route.params;
+  const { loading } = useProperty(id);
 
   useEffect(() => {
     navigation.setOptions({ headerShown: true, headerTransparent: true });

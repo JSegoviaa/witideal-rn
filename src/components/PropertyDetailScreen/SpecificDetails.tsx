@@ -9,7 +9,7 @@ interface Props {
 }
 
 const SpecificDetails = ({ id }: Props) => {
-  const { property } = useProperty();
+  const { property } = useProperty(id);
   console.log(id, 'desde specific details');
 
   return (

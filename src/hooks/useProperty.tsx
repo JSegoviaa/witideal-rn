@@ -5,7 +5,7 @@ interface DocumentData {
   [key: string]: any;
 }
 
-export const useProperty = () => {
+export const useProperty = (id: string) => {
   const [property, setProperty] = useState<DocumentData>();
   const [loading, setLoading] = useState(true);
 
@@ -18,7 +18,8 @@ export const useProperty = () => {
         .doc('apartment')
         .collection('rent')
         // .doc('AdHaIDPSe3a2BGl5EdzB')
-        .doc('GT591BurVp9wQx9OzuVk')
+        .doc(id)
+        // .doc('GT591BurVp9wQx9OzuVk')
         // .doc('06DpmIptmmWbb7DXalE5')
         .get();
 

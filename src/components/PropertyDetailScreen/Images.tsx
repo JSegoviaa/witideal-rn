@@ -8,7 +8,7 @@ interface Props {
 
 const Images = ({id}: Props) => {
   const { width } = useWindowDimensions();
-  const { property } = useProperty();
+  const { property } = useProperty(id);
   console.log(id, 'desde iamges');
 
   return (

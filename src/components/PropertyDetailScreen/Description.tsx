@@ -7,7 +7,7 @@ interface Props {
 }
 
 const Description = ({ id }: Props) => {
-  const { property } = useProperty();
+  const { property } = useProperty(id);
   console.log(id, 'desde description');
   return (
     <>
