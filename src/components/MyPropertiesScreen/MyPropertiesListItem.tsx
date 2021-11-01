@@ -23,7 +23,7 @@ const MyPropertiesListItem = ({ inmueble }: any) => {
       <View style={isEnable ? styles.card : styles.disableCard}>
         <TouchableOpacity
           onPress={() => {
-            navigation.navigate('PropertyDetailScreen', {
+            navigation.navigate('MyPropertiesScreenDetail', {
               id: inmueble.id,
               action: inmueble.data.action,
               propertyType: inmueble.data.propertyType,

@@ -5,14 +5,14 @@ import MyDestPropertiesScreen from '../screens/MyDestPropertiesScreen';
 import SearchStackNavigation from './SearchStackNavigation';
 import StackNavigation from './StackNavigation';
 import LoginStackNavigation from './LoginStackNavigation';
-import MyPropertiesScreen from '../screens/MyPropertiesScreen';
 import { AuthContext } from '../context/auth/AuthContext';
+import MyPropertiesStackNavigation from './MyPropertiesStackNavigation';
 
 export type RootTabsNavigation = {
   HomeScreenNavigation: undefined;
   LoginStackScreen: undefined;
   MyDestPropertiesScreen: undefined;
-  MyPropertiesScreen: undefined;
+  MyPropertiesScreenStack: undefined;
   ProfileScreen: undefined;
 };
 
@@ -84,7 +84,7 @@ const TabLogin = () => {
             case 'MyDestPropertiesScreen':
               iconName = 'star-outline';
               break;
-            case 'MyPropertiesScreen':
+            case 'MyPropertiesScreenStack':
               iconName = 'business-outline';
               break;
             case 'ProfileScreen':
@@ -112,9 +112,9 @@ const TabLogin = () => {
         component={MyDestPropertiesScreen}
       />
       <Tab.Screen
-        name="MyPropertiesScreen"
+        name="MyPropertiesScreenStack"
         options={{ title: 'Mis propiedades', headerShown: false }}
-        component={MyPropertiesScreen}
+        component={MyPropertiesStackNavigation}
       />
       <Tab.Screen
         name="ProfileScreen"
