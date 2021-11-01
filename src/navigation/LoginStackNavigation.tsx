@@ -48,7 +48,11 @@ const LoginStackNavigation = () => {
       />
       <Stack.Screen
         name="TosScreen"
-        options={{ title: 'Términos y condiciones' }}
+        options={{
+          title: 'Términos y condiciones',
+          headerTintColor: '#1E0E6F',
+          headerTitleAlign:'center'
+        }}
         component={ToSScreen}
       />
     </Stack.Navigator>
