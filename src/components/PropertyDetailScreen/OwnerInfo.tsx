@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { currencyFormat } from '../../helpers/currencyFormat';
 import urlTranslator from '../../helpers/urlTranslator';
 import { useUserInfo } from '../../hooks/useUserInfo';
 import Loading from '../ui/Loading';
@@ -29,7 +30,9 @@ const OwnerInfo = ({ property }: Props) => {
                 {urlTranslator(property.propertyType)}
               </Text>
               {property.price && (
-                <Text style={styles.precio}>${property.price} MXN</Text>
+                <Text style={styles.precio}>
+                  {currencyFormat(property.price)} MXN
+                </Text>
               )}
               <TouchableOpacity
                 style={styles.btnInfo}
@@ -67,7 +70,7 @@ const OwnerInfo = ({ property }: Props) => {
                 {urlTranslator(property.propertyType)}
               </Text>
               {property.price && (
-                <Text style={styles.precio}>${property.price} MXN</Text>
+                <Text style={styles.precio}>{ currencyFormat(property.price) } MXN</Text>
               )}
               <TouchableOpacity
                 style={styles.btnInfo}
