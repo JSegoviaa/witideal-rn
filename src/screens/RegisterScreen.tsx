@@ -11,7 +11,7 @@ import {
 } from 'react-native';
 import { StackScreenProps } from '@react-navigation/stack';
 import Icon from 'react-native-vector-icons/Ionicons';
-import { LoginRootStackNavigation } from '../navigation/LoginStackNavigation';
+import { RootLoginStackNavigation } from '../navigation/LoginStackNavigation';
 import { appStyles } from '../theme/appTheme';
 import {
   independenBroker,
@@ -20,7 +20,7 @@ import {
 } from '../constant/promoterType';
 
 interface Props
-  extends StackScreenProps<LoginRootStackNavigation, 'RegisterScreen'> {}
+  extends StackScreenProps<RootLoginStackNavigation, 'RegisterScreen'> {}
 
 const RegisterScreen = ({ navigation }: Props) => {
   const [modalVisible, setModalVisible] = useState(false);
@@ -62,7 +62,7 @@ const RegisterScreen = ({ navigation }: Props) => {
             <TouchableOpacity
               style={appStyles.btnRegister}
               onPress={() => {
-                navigation.navigate('RegisterForm', { id: '' });
+                navigation.navigate('RegisterForm');
               }}>
               <Text style={{ color: '#41B8F9', textAlign: 'center' }}>
                 Buscador

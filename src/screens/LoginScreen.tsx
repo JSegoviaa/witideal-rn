@@ -13,11 +13,11 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import { StackScreenProps } from '@react-navigation/stack';
 import { useForm } from '../hooks/useForm';
 import { appStyles } from '../theme/appTheme';
-import { LoginRootStackNavigation } from '../navigation/LoginStackNavigation';
+import { RootLoginStackNavigation } from '../navigation/LoginStackNavigation';
 import { AuthContext } from '../context/auth/AuthContext';
 
 interface Props
-  extends StackScreenProps<LoginRootStackNavigation, 'LoginScreen'> {}
+  extends StackScreenProps<RootLoginStackNavigation, 'LoginScreen'> {}
 
 const LoginScreen = ({ navigation }: Props) => {
   const { form, onChange } = useForm({
