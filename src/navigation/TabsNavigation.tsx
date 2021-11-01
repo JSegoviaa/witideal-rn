@@ -3,17 +3,17 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Icon from 'react-native-vector-icons/Ionicons';
 import MyDestPropertiesScreen from '../screens/MyDestPropertiesScreen';
 import SearchStackNavigation from './SearchStackNavigation';
-import StackNavigation from './StackNavigation';
 import LoginStackNavigation from './LoginStackNavigation';
 import { AuthContext } from '../context/auth/AuthContext';
 import MyPropertiesStackNavigation from './MyPropertiesStackNavigation';
+import ProfileStackNavigation from './ProfileStackNavigation';
 
 export type RootTabsNavigation = {
-  HomeScreenNavigation: undefined;
+  SearchStackNavigation: undefined;
   LoginStackScreen: undefined;
   MyDestPropertiesScreen: undefined;
   MyPropertiesScreenStack: undefined;
-  ProfileScreen: undefined;
+  ProfileStackNavigation: undefined;
 };
 
 const Tab = createBottomTabNavigator<RootTabsNavigation>();
@@ -31,7 +31,7 @@ const TabNoLogin = () => {
         tabBarIcon: ({ focused }) => {
           let iconName: string = '';
           switch (route.name) {
-            case 'HomeScreenNavigation':
+            case 'SearchStackNavigation':
               iconName = 'home-outline';
               break;
 
@@ -50,7 +50,7 @@ const TabNoLogin = () => {
         },
       })}>
       <Tab.Screen
-        name="HomeScreenNavigation"
+        name="SearchStackNavigation"
         options={{ title: 'Inicio', headerShown: false }}
         component={SearchStackNavigation}
       />
@@ -77,7 +77,7 @@ const TabLogin = () => {
         tabBarIcon: ({ focused }) => {
           let iconName: string = '';
           switch (route.name) {
-            case 'HomeScreenNavigation':
+            case 'SearchStackNavigation':
               iconName = 'home-outline';
               break;
 
@@ -87,7 +87,7 @@ const TabLogin = () => {
             case 'MyPropertiesScreenStack':
               iconName = 'business-outline';
               break;
-            case 'ProfileScreen':
+            case 'ProfileStackNavigation':
               iconName = 'person-circle-outline';
               break;
           }
@@ -102,7 +102,7 @@ const TabLogin = () => {
         },
       })}>
       <Tab.Screen
-        name="HomeScreenNavigation"
+        name="SearchStackNavigation"
         options={{ title: 'Inicio', headerShown: false }}
         component={SearchStackNavigation}
       />
@@ -117,9 +117,9 @@ const TabLogin = () => {
         component={MyPropertiesStackNavigation}
       />
       <Tab.Screen
-        name="ProfileScreen"
+        name="ProfileStackNavigation"
         options={{ title: 'Mi perfil', headerShown: false }}
-        component={StackNavigation}
+        component={ProfileStackNavigation}
       />
     </Tab.Navigator>
   );

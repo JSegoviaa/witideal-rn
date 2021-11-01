@@ -9,10 +9,10 @@ import {
 } from 'react-native';
 import { StackScreenProps } from '@react-navigation/stack';
 import PersonalInfo from '../components/ProfileScreen/PersonalInfo';
-import { RootStackNavigation } from '../navigation/StackNavigation';
 import { appStyles } from '../theme/appTheme';
+import { RootProfileStackNavigation } from '../navigation/ProfileStackNavigation';
 
-interface Props extends StackScreenProps<RootStackNavigation, 'Profile'> {}
+interface Props extends StackScreenProps<RootProfileStackNavigation, 'ProfileScreen'> {}
 
 const ProfileScreen = ({ navigation }: Props) => {
   return (
@@ -29,13 +29,13 @@ const ProfileScreen = ({ navigation }: Props) => {
           <View style={styles.container2}>
             <TouchableOpacity
               onPress={() => {
-                navigation.navigate('Payments');
+                navigation.navigate('PaymentsScreen');
               }}>
               <Text style={appStyles.btnSecondary}>Mis pagos</Text>
             </TouchableOpacity>
             <TouchableOpacity
               onPress={() => {
-                navigation.navigate('MyFavorites');
+                navigation.navigate('MyFavoritesScreen');
               }}>
               <Text style={appStyles.btnSecondary}>Mis favoritos</Text>
             </TouchableOpacity>

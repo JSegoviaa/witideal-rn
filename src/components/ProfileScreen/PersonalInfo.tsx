@@ -10,9 +10,10 @@ import { risingStar, rockStar, superStar } from '../../constant/role';
 import { useRole } from '../../hooks/useRole';
 import { useNavigation } from '@react-navigation/core';
 import { StackNavigationProp } from '@react-navigation/stack';
+import { RootProfileStackNavigation } from '../../navigation/ProfileStackNavigation';
 
 const PersonalInfo = () => {
-  const navigation = useNavigation<StackNavigationProp<any, any>>();
+  const navigation = useNavigation<StackNavigationProp<RootProfileStackNavigation, 'ProfileScreen'>>();
   const { user, logOut } = useContext(AuthContext);
   const { userInfo } = useUserInfo(user?.uid!);
   const { role } = useRole(user?.uid!);
@@ -77,7 +78,7 @@ const PersonalInfo = () => {
 
         <TouchableOpacity
           style={appStyles.btnPrimary}
-          onPress={() => navigation.navigate('EditProfile')}>
+          onPress={() => navigation.navigate('EditProfileScreen')}>
           <Text style={appStyles.textCenter}>Editar perfil</Text>
         </TouchableOpacity>
         <View style={{ marginTop: 20 }}></View>

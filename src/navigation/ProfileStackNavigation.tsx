@@ -7,40 +7,40 @@ import PaymentsScreen from '../screens/PaymentsScreen';
 import ProfileScreen from '../screens/ProfileScreen';
 import ToSScreen from '../screens/ToSScreen';
 
-export type RootStackNavigation = {
-  Profile: undefined;
-  Payments: undefined;
-  MyFavorites: undefined;
-  EditProfile: undefined;
+export type RootProfileStackNavigation = {
+  ProfileScreen: undefined;
+  PaymentsScreen: undefined;
+  MyFavoritesScreen: undefined;
+  EditProfileScreen: undefined;
   TosScreen: undefined;
   NoPScreen: undefined;
 };
 
-const Stack = createStackNavigator<RootStackNavigation>();
+const Stack = createStackNavigator<RootProfileStackNavigation>();
 
-const StackNavigation = () => {
+const ProfileStackNavigation = () => {
   return (
     <Stack.Navigator
       screenOptions={{
         cardStyle: { backgroundColor: 'white' },
       }}>
       <Stack.Screen
-        name="Profile"
+        name="ProfileScreen"
         options={{ headerShown: false }}
         component={ProfileScreen}
       />
       <Stack.Screen
-        name="Payments"
+        name="PaymentsScreen"
         options={{ title: 'Mis pagos' }}
         component={PaymentsScreen}
       />
       <Stack.Screen
-        name="MyFavorites"
+        name="MyFavoritesScreen"
         options={{ title: 'Mis favoritos' }}
         component={MyFavoritesScreen}
       />
       <Stack.Screen
-        name="EditProfile"
+        name="EditProfileScreen"
         options={{ title: 'Editar perfil' }}
         component={EditProfileScreen}
       />
@@ -66,4 +66,4 @@ const StackNavigation = () => {
   );
 };
 
-export default StackNavigation;
+export default ProfileStackNavigation;
