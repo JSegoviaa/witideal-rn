@@ -70,7 +70,9 @@ const OwnerInfo = ({ property }: Props) => {
                 {urlTranslator(property.propertyType)}
               </Text>
               {property.price && (
-                <Text style={styles.precio}>{ currencyFormat(property.price) } MXN</Text>
+                <Text style={styles.precio}>
+                  {currencyFormat(property.price)} MXN
+                </Text>
               )}
               <TouchableOpacity
                 style={styles.btnInfo}
