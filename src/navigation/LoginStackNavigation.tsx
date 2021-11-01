@@ -3,6 +3,7 @@ import React from 'react';
 import RegisterForm from '../components/RegisterScreen/RegisterForm';
 import RegisterPromoterForm from '../components/RegisterScreen/RegisterPromoterForm';
 import LoginScreen from '../screens/LoginScreen';
+import NoPScreen from '../screens/NoPScreen';
 import RegisterScreen from '../screens/RegisterScreen';
 import ToSScreen from '../screens/ToSScreen';
 
@@ -12,6 +13,7 @@ export type RootLoginStackNavigation = {
   RegisterForm: undefined;
   RegisterPromoterForm: { id: string | undefined };
   TosScreen: undefined;
+  NoPScreen: undefined;
 };
 
 const Stack = createStackNavigator<RootLoginStackNavigation>();
@@ -51,9 +53,18 @@ const LoginStackNavigation = () => {
         options={{
           title: 'Términos y condiciones',
           headerTintColor: '#1E0E6F',
-          headerTitleAlign:'center'
+          headerTitleAlign: 'center',
         }}
         component={ToSScreen}
+      />
+      <Stack.Screen
+        name="NoPScreen"
+        options={{
+          title: 'Términos y condiciones',
+          headerTintColor: '#1E0E6F',
+          headerTitleAlign: 'center',
+        }}
+        component={NoPScreen}
       />
     </Stack.Navigator>
   );
