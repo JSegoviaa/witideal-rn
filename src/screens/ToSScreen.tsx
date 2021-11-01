@@ -1,11 +1,5 @@
 import React from 'react';
-import {
-  Text,
-  View,
-  ScrollView,
-  StyleSheet,
-  TouchableOpacity,
-} from 'react-native';
+import { Text, View, ScrollView, StyleSheet } from 'react-native';
 import { StackScreenProps } from '@react-navigation/stack';
 import { RootLoginStackNavigation } from '../navigation/LoginStackNavigation';
 import { appStyles } from '../theme/appTheme';
