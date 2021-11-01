@@ -190,7 +190,7 @@ const styles = StyleSheet.create({
     fontSize: 13,
     fontWeight: '500',
     paddingHorizontal: 13,
-    paddingVertical:20
+    paddingVertical: 20,
   },
   input: {
     backgroundColor: '#f6f6f6',
