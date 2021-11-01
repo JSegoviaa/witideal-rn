@@ -60,7 +60,7 @@ const LoginStackNavigation = () => {
       <Stack.Screen
         name="NoPScreen"
         options={{
-          title: 'Términos y condiciones',
+          title: 'Aviso de privacidad',
           headerTintColor: '#1E0E6F',
           headerTitleAlign: 'center',
         }}

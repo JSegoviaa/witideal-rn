@@ -1,8 +1,19 @@
 import React from 'react';
-import { Text, View, ScrollView, StyleSheet } from 'react-native';
+import {
+  Text,
+  View,
+  ScrollView,
+  StyleSheet,
+  TouchableOpacity,
+} from 'react-native';
+import { StackScreenProps } from '@react-navigation/stack';
+import { RootLoginStackNavigation } from '../navigation/LoginStackNavigation';
 import { appStyles } from '../theme/appTheme';
 
-const ToSScreen = () => {
+interface Props
+  extends StackScreenProps<RootLoginStackNavigation, 'TosScreen'> {}
+
+const ToSScreen = ({ navigation }: Props) => {
   return (
     <ScrollView style={appStyles.container}>
       <View>
@@ -37,7 +48,13 @@ const ToSScreen = () => {
           El uso de cualquiera de los Servicios ofrecidos por Witideal implica
           la aceptación de (i) las presentes Condiciones y (ii) el aviso de
           privacidad de Witideal, disponible para su consulta{' '}
-          <Text style={styles.aqui}>aquí</Text> (el “Aviso de Privacidad”).
+          <Text
+            style={styles.aqui}
+            onPress={() => {
+              navigation.navigate('NoPScreen');
+            }}>
+            aquí
+          </Text>
         </Text>
         <Text style={styles.text}>
           Witideal se reserva el derecho de cambiar, modificar y/o remplazar las
@@ -180,7 +197,15 @@ const ToSScreen = () => {
           conocimiento que los datos personales que recaba en relación con los
           Servicios serán tratados de conformidad con lo dispuesto en el Aviso
           de Privacidad, disponible para su consulta
-          <Text style={styles.aqui}> aquí</Text>.
+          <Text
+            style={styles.aqui}
+            onPress={() => {
+              navigation.navigate('NoPScreen');
+            }}>
+            {' '}
+            aquí
+          </Text>
+          .
         </Text>
       </View>
 
