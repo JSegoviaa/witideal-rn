@@ -15,10 +15,6 @@ const OwnerInfo = ({ property }: Props) => {
 
   const handleOwnerInfo = () => setShowOwnerInfo(!showOwnerInfo);
 
-  const image = {
-    uri: 'https://medgoldresources.com/wp-content/uploads/2018/02/avatar-placeholder.gif',
-  };
-
   return (
     <>
       {property && (
@@ -49,7 +45,19 @@ const OwnerInfo = ({ property }: Props) => {
                   <View
                     style={{ flexDirection: 'row', justifyContent: 'center' }}>
                     <View style={styles.avatarContainer}>
-                      <Image style={styles.avatar} source={image} />
+                      {userInfo && userInfo.photo ? (
+                        <Image
+                          style={styles.avatar}
+                          source={{ uri: userInfo.photo }}
+                        />
+                      ) : (
+                        <Image
+                          style={styles.avatar}
+                          source={{
+                            uri: 'https://firebasestorage.googleapis.com/v0/b/witideal-b1f99.appspot.com/o/assets%2Ficons%2Fthumb%401100_profile_pic.png?alt=media&token=6050df5b-d889-4a21-9d77-e9e33511e376',
+                          }}
+                        />
+                      )}
                       {userInfo && (
                         <>
                           <Text style={styles.title}>{userInfo.name}</Text>
@@ -95,9 +103,8 @@ const styles = StyleSheet.create({
     paddingBottom: 20,
   },
   avatar: {
-    width: 70,
-    height: 70,
-    borderRadius: 100,
+    width: 120,
+    height: 120,
   },
   btnInfo: {
     backgroundColor: '#3F19F9',
