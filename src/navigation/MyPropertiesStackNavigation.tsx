@@ -1,5 +1,6 @@
 import { createStackNavigator } from '@react-navigation/stack';
 import React from 'react';
+import MapScreen from '../screens/MapScreen';
 import MyPropertiesScreen from '../screens/MyPropertiesScreen';
 import PropertyDetailScreen from '../screens/PropertyDetailScreen';
 
@@ -10,6 +11,7 @@ export type RootMyPropertiesStackNavigation = {
     action: string;
     propertyType: string;
   };
+  MapScreen: { latitude: number; longitude: number; isExactLocation: boolean };
 };
 
 const Stack = createStackNavigator<RootMyPropertiesStackNavigation>();
@@ -26,6 +28,11 @@ const MyPropertiesStackNavigation = () => {
         options={{ title: '', headerShown: false }}
         name="MyPropertiesScreenDetail"
         component={PropertyDetailScreen}
+      />
+      <Stack.Screen
+        options={{ title: '', headerShown: false }}
+        name="MapScreen"
+        component={MapScreen}
       />
     </Stack.Navigator>
   );
