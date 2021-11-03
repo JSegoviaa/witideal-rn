@@ -1,5 +1,8 @@
 package com.witidealapp;
 
+import org.devio.rn.splashscreen.SplashScreenReactPackage;
+
+
 import android.app.Application;
 import android.content.Context;
 import com.facebook.react.PackageList;
@@ -25,7 +28,8 @@ public class MainApplication extends Application implements ReactApplication {
           @SuppressWarnings("UnnecessaryLocalVariable")
           List<ReactPackage> packages = new PackageList(this).getPackages();
           // Packages that cannot be autolinked yet can be added manually here, for example:
-          // packages.add(new MyReactNativePackage());
+          // packages.add(new SplashScreenReactPackage());
+          
           return packages;
         }
 
