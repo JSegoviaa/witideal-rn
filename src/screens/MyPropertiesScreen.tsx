@@ -32,25 +32,20 @@ const NoProperties = () => {
   );
 };
 
-const MyProperties = () => {
-  const { user } = useContext(AuthContext);
-  const { loading, properties } = useMyProperties(user?.uid!);
-
+const MyProperties = ({ properties }: any) => {
   return (
-    <SafeAreaView style={{ backgroundColor: '#fff' }}>
-      <View style={appStyles.logoContainer}>
-        <Image
-          source={require('../assets/logo-brand.png')}
-          style={appStyles.logo}
-        />
-      </View>
-      <View style={appStyles.container}>
-        <Text style={styles.textCenter}>Mis inmuebles</Text>
+    <>
+      {properties.length > 0 ? (
+        <SafeAreaView style={{ backgroundColor: '#fff' }}>
+          <View style={appStyles.logoContainer}>
+            <Image
+              source={require('../assets/logo-brand.png')}
+              style={appStyles.logo}
+            />
+          </View>
+          <View style={appStyles.container}>
+            <Text style={styles.textCenter}>Mis inmuebles</Text>
 
-        {loading ? (
-          <Loading size="large" color="#1E0E9D" />
-        ) : (
-          <>
             <FlatList
               data={properties}
               renderItem={({ item }: any) => (
@@ -59,23 +54,25 @@ const MyProperties = () => {
               keyExtractor={item => item.id}
               showsVerticalScrollIndicator={false}
             />
-          </>
-        )}
-      </View>
-    </SafeAreaView>
+          </View>
+        </SafeAreaView>
+      ) : (
+        <NoProperties />
+      )}
+    </>
   );
 };
 
 const MyPropertiesScreen = () => {
   const { user } = useContext(AuthContext);
-  const { properties } = useMyProperties(user?.uid!);
+  const { loading, properties } = useMyProperties(user?.uid!);
 
   return (
     <>
-      {properties && properties.length > 0 ? (
-        <MyProperties />
+      {loading ? (
+        <Loading size="large" color="#1E0E9D" />
       ) : (
-        <NoProperties />
+        <MyProperties properties={properties} />
       )}
     </>
   );
