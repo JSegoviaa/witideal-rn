@@ -1,3 +1,3 @@
-export const independenBroker = 'independenBroker';
-export const inmobiliaria = 'inmobiliaria';
-export const owner = 'owner';
+export const independenBroker: string = 'independenBroker';
+export const inmobiliaria: string = 'inmobiliaria';
+export const owner: string = 'owner';
