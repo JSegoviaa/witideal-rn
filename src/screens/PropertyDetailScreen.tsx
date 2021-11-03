@@ -69,21 +69,23 @@ const PropertyDetailScreen = ({ route, navigation }: Props) => {
                   action={action}
                   propertyType={propertyType}
                 />
-                <View style={{ marginRight: 'auto', marginLeft: 'auto' }}>
-                  <TouchableOpacity
-                    style={appStyles.btnPrimary}
-                    onPress={() => {
-                      navigation.navigate('MapScreen', {
-                        latitude: property.lat,
-                        longitude: property.lng,
-                        isExactLocation: property.isExactLocation,
-                      });
-                    }}>
-                    <Text style={{ textAlign: 'center', color: '#fff' }}>
-                      Ver ubicación
-                    </Text>
-                  </TouchableOpacity>
-                </View>
+                {property && (
+                  <View style={{ marginRight: 'auto', marginLeft: 'auto' }}>
+                    <TouchableOpacity
+                      style={appStyles.btnPrimary}
+                      onPress={() => {
+                        navigation.navigate('MapScreen', {
+                          latitude: property.lat,
+                          longitude: property.lng,
+                          isExactLocation: property.isExactLocation,
+                        });
+                      }}>
+                      <Text style={{ textAlign: 'center', color: '#fff' }}>
+                        Ver ubicación
+                      </Text>
+                    </TouchableOpacity>
+                  </View>
+                )}
                 <SpecificDetails
                   id={id}
                   action={action}
