@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   Image,
   StyleSheet,
@@ -12,6 +12,7 @@ import { StackNavigationProp } from '@react-navigation/stack';
 import { toggleEnable } from '../../helpers/enableProperty';
 import { RootMyPropertiesStackNavigation } from '../../navigation/MyPropertiesStackNavigation';
 import { useRole } from '../../hooks/useRole';
+import { deleteProperty } from '../../helpers/deleteProperty';
 
 const MyPropertiesListItem = ({ inmueble }: any) => {
   const navigation =
@@ -40,11 +41,13 @@ const MyPropertiesListItem = ({ inmueble }: any) => {
       {
         text: 'Eliminar',
         onPress: () => {
-          console.log(
-            inmueble.data.action,
-            inmueble.data.propertyType,
-            inmueble.id,
-          );
+          // deleteProperty(
+          //   inmueble.data.propertyType,
+          //   inmueble.data.action,
+          //   inmueble.id,
+          // );
+          // navigation.push('MyPropertiesScreen');
+          console.log('Eliminar');
         },
       },
     ]);
