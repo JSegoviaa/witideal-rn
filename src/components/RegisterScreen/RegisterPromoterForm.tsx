@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import {
   Alert,
   Image,
@@ -11,6 +11,7 @@ import {
   View,
 } from 'react-native';
 import { StackScreenProps } from '@react-navigation/stack';
+import Icon from 'react-native-vector-icons/Ionicons';
 import { RootLoginStackNavigation } from '../../navigation/LoginStackNavigation';
 import { useForm } from '../../hooks/useForm';
 import { appStyles } from '../../theme/appTheme';
@@ -26,6 +27,7 @@ interface Props
 
 const RegisterPromoterForm = ({ route, navigation }: Props) => {
   const params = route.params;
+  const [passwordVisible, setPasswordVisible] = useState(true);
 
   const { form, onChange } = useForm({
     name: '',
@@ -54,6 +56,8 @@ const RegisterPromoterForm = ({ route, navigation }: Props) => {
   } = form;
 
   const { register } = useContext(AuthContext);
+
+  const handleVisiblePassword = () => setPasswordVisible(!passwordVisible);
 
   const handleRegister = () => {
     if (!name.trim()) {
@@ -149,20 +153,42 @@ const RegisterPromoterForm = ({ route, navigation }: Props) => {
           style={styles.input}
           onChangeText={value => onChange(value, 'correo2')}
         />
-        <TextInput
-          placeholder="Contraseña"
-          placeholderTextColor="#ccc"
-          secureTextEntry
-          style={styles.input}
-          onChangeText={value => onChange(value, 'password')}
-        />
-        <TextInput
-          placeholder="Confirme su contraseña"
-          placeholderTextColor="#ccc"
-          secureTextEntry
-          style={styles.input}
-          onChangeText={value => onChange(value, 'password2')}
-        />
+        <View style={styles.passwordSection}>
+          <TextInput
+            placeholder="Contraseña"
+            secureTextEntry={passwordVisible}
+            placeholderTextColor="#ccc"
+            style={styles.passwordInput}
+            onChangeText={value => onChange(value, 'password')}
+          />
+          {passwordVisible ? (
+            <Icon
+              name="eye-outline"
+              size={22}
+              color="#000"
+              onPress={handleVisiblePassword}
+              style={styles.passwordIcon}
+            />
+          ) : (
+            <Icon
+              name="eye-off-outline"
+              size={22}
+              color="#000"
+              onPress={handleVisiblePassword}
+              style={styles.passwordIcon}
+            />
+          )}
+        </View>
+
+        <View style={styles.passwordSection}>
+          <TextInput
+            placeholder="Confirma su contraseña"
+            secureTextEntry={passwordVisible}
+            placeholderTextColor="#ccc"
+            style={styles.passwordInput}
+            onChangeText={value => onChange(value, 'password2')}
+          />
+        </View>
 
         {params.id === independenBroker && (
           <TextInput
@@ -251,6 +277,7 @@ const styles = StyleSheet.create({
     height: 40,
     margin: 12,
     padding: 10,
+    paddingLeft: 20,
   },
   inputFalse: {
     backgroundColor: '#f6f6f6',
@@ -261,6 +288,28 @@ const styles = StyleSheet.create({
     height: 40,
     margin: 12,
     padding: 10,
+    paddingLeft: 20,
+  },
+  passwordSection: {
+    alignItems: 'center',
+    backgroundColor: '#f6f6f6',
+    borderColor: '#41B8F9',
+    borderRadius: 5,
+    borderWidth: 1,
+    flex: 1,
+    flexDirection: 'row',
+    height: 40,
+    justifyContent: 'center',
+    margin: 12,
+  },
+  passwordIcon: { paddingHorizontal: 10 },
+  passwordInput: {
+    height: 40,
+    margin: 12,
+    flex: 1,
+    padding: 10,
+    borderRadius: 50,
+    color: '#000',
   },
   title: {
     color: '#1E0E6F',
