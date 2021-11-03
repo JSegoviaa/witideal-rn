@@ -10,27 +10,31 @@ export const useSubscription = (uid: string) => {
   const [loading, setLoading] = useState(true);
 
   const getSubscription = async () => {
-    const data = firestore()
-      .collection('users')
-      .doc(uid)
-      .collection('subscriptions');
+    try {
+      const data = firestore()
+        .collection('users')
+        .doc(uid)
+        .collection('subscriptions');
 
-    const list: DocumentData = [];
-    return data.onSnapshot(querySnapshot => {
-      querySnapshot.forEach(doc => {
-        if (doc.exists) {
-          const data = doc.data();
-          list.push({
-            id: doc.id,
-            data,
-          });
+      const list: DocumentData = [];
+      return data.onSnapshot(querySnapshot => {
+        querySnapshot.forEach(doc => {
+          if (doc.exists) {
+            const data = doc.data();
+            list.push({
+              id: doc.id,
+              data,
+            });
+          }
+        });
+        if (loading) {
+          setLoading(false);
         }
+        setSubscription(list);
       });
-      if (loading) {
-        setLoading(false);
-      }
-      setSubscription(list);
-    });
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   useEffect(() => {
