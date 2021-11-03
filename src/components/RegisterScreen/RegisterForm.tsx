@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import {
   Alert,
   Image,
@@ -11,6 +11,7 @@ import {
   View,
 } from 'react-native';
 import { StackScreenProps } from '@react-navigation/stack';
+import Icon from 'react-native-vector-icons/Ionicons';
 import { useForm } from '../../hooks/useForm';
 import { appStyles } from '../../theme/appTheme';
 import { AuthContext } from '../../context/auth/AuthContext';
@@ -20,6 +21,8 @@ interface Props
   extends StackScreenProps<RootLoginStackNavigation, 'RegisterPromoterForm'> {}
 
 const RegisterForm = ({ navigation }: Props) => {
+  const [passwordVisible, setPasswordVisible] = useState(true);
+
   const { form, onChange } = useForm({
     name: '',
     lastname: '',
@@ -45,6 +48,8 @@ const RegisterForm = ({ navigation }: Props) => {
   } = form;
 
   const { register } = useContext(AuthContext);
+
+  const handleVisiblePassword = () => setPasswordVisible(!passwordVisible);
 
   const handleRegister = () => {
     if (!name.trim()) {
@@ -139,20 +144,43 @@ const RegisterForm = ({ navigation }: Props) => {
           style={styles.input}
           onChangeText={value => onChange(value, 'correo2')}
         />
-        <TextInput
-          placeholder="Contraseña"
-          placeholderTextColor="#ccc"
-          secureTextEntry
-          style={styles.input}
-          onChangeText={value => onChange(value, 'password')}
-        />
-        <TextInput
-          placeholder="Confirme su contraseña"
-          placeholderTextColor="#ccc"
-          secureTextEntry
-          style={styles.input}
-          onChangeText={value => onChange(value, 'password2')}
-        />
+
+        <View style={styles.passwordSection}>
+          <TextInput
+            placeholder="Contraseña"
+            secureTextEntry={passwordVisible}
+            placeholderTextColor="#ccc"
+            style={styles.passwordInput}
+            onChangeText={value => onChange(value, 'password')}
+          />
+          {passwordVisible ? (
+            <Icon
+              name="eye-outline"
+              size={22}
+              color="#000"
+              onPress={handleVisiblePassword}
+              style={styles.passwordIcon}
+            />
+          ) : (
+            <Icon
+              name="eye-off-outline"
+              size={22}
+              color="#000"
+              onPress={handleVisiblePassword}
+              style={styles.passwordIcon}
+            />
+          )}
+        </View>
+
+        <View style={styles.passwordSection}>
+          <TextInput
+            placeholder="Confirma su contraseña"
+            secureTextEntry={passwordVisible}
+            placeholderTextColor="#ccc"
+            style={styles.passwordInput}
+            onChangeText={value => onChange(value, 'password2')}
+          />
+        </View>
 
         <Text style={styles.info}>
           Al registrarse estás aceptando nuestros{' '}
@@ -211,6 +239,27 @@ const styles = StyleSheet.create({
     height: 40,
     margin: 12,
     padding: 10,
+  },
+  passwordSection: {
+    alignItems: 'center',
+    backgroundColor: '#f6f6f6',
+    borderColor: '#41B8F9',
+    borderRadius: 5,
+    borderWidth: 1,
+    flex: 1,
+    flexDirection: 'row',
+    height: 40,
+    justifyContent: 'center',
+    margin: 12,
+  },
+  passwordIcon: { paddingHorizontal: 10 },
+  passwordInput: {
+    height: 40,
+    margin: 12,
+    flex: 1,
+    padding: 10,
+    borderRadius: 50,
+    color: '#000',
   },
   title: {
     color: '#1E0E6F',
