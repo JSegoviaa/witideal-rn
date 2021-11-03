@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import {
   Text,
   View,
@@ -20,6 +20,7 @@ interface Props
   extends StackScreenProps<RootLoginStackNavigation, 'LoginScreen'> {}
 
 const LoginScreen = ({ navigation }: Props) => {
+  const [passwordVisible, setPasswordVisible] = useState(true);
   const { form, onChange } = useForm({
     email: '',
     password: '',
@@ -39,6 +40,8 @@ const LoginScreen = ({ navigation }: Props) => {
 
     signIn(email, password);
   };
+
+  const handleVisiblePassword = () => setPasswordVisible(!passwordVisible);
 
   return (
     <View style={styles.background}>
@@ -63,13 +66,32 @@ const LoginScreen = ({ navigation }: Props) => {
             style={styles.input}
             onChangeText={value => onChange(value, 'email')}
           />
-          <TextInput
-            placeholder="Contraseña"
-            secureTextEntry
-            placeholderTextColor="#ccc"
-            style={styles.input}
-            onChangeText={value => onChange(value, 'password')}
-          />
+          <View style={styles.passwordSection}>
+            <TextInput
+              placeholder="Contraseña"
+              secureTextEntry={passwordVisible}
+              placeholderTextColor="#ccc"
+              style={styles.passwordInput}
+              onChangeText={value => onChange(value, 'password')}
+            />
+            {passwordVisible ? (
+              <Icon
+                name="eye-outline"
+                size={22}
+                color="#000"
+                onPress={handleVisiblePassword}
+                style={styles.passwordIcon}
+              />
+            ) : (
+              <Icon
+                name="eye-off-outline"
+                size={22}
+                color="#000"
+                onPress={handleVisiblePassword}
+                style={styles.passwordIcon}
+              />
+            )}
+          </View>
 
           <View style={styles.center}>
             <TouchableOpacity
@@ -112,9 +134,30 @@ const styles = StyleSheet.create({
     height: 40,
     margin: 12,
     borderWidth: 1,
+    flex: 1,
     padding: 10,
     borderRadius: 50,
     backgroundColor: '#f6f6f6',
+    color: '#000',
+  },
+  passwordSection: {
+    alignItems: 'center',
+    backgroundColor: '#f6f6f6',
+    borderRadius: 50,
+    borderWidth: 1,
+    flex: 1,
+    flexDirection: 'row',
+    height: 40,
+    justifyContent: 'center',
+    margin: 12,
+  },
+  passwordIcon: { paddingHorizontal: 10 },
+  passwordInput: {
+    height: 40,
+    margin: 12,
+    flex: 1,
+    padding: 10,
+    borderRadius: 50,
     color: '#000',
   },
   textCenter: { textAlign: 'center', color: '#000' },
