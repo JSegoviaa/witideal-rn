@@ -36,22 +36,26 @@ const MyPropertiesListItem = ({ inmueble }: any) => {
   };
 
   const handleDelete = () => {
-    deleteProperty(
-      inmueble.data.propertyType,
-      inmueble.data.action,
-      inmueble.id,
-    );
-
-    deleteMyProperty(inmueble.id, inmueble.data.uId);
-
-    Alert.alert('Se ha eliminado el inmueble', '', [
+    Alert.alert('Eliminar inmueble', '¿Está seguro de eliminar el inmueble?', [
       {
-        text: 'Cerrar',
+        text: 'Cancelar',
         style: 'cancel',
       },
-    ]);
+      {
+        text: 'Eliminar',
+        onPress: () => {
+          deleteProperty(
+            inmueble.data.propertyType,
+            inmueble.data.action,
+            inmueble.id,
+          );
 
-    navigation.push('MyPropertiesScreen');
+          deleteMyProperty(inmueble.id, inmueble.data.uId);
+
+          navigation.push('MyPropertiesScreen');
+        },
+      },
+    ]);
   };
 
   return (
