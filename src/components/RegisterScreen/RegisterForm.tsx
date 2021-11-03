@@ -231,7 +231,6 @@ const styles = StyleSheet.create({
     padding: 10,
     paddingLeft: 20,
   },
-
   passwordSection: {
     alignItems: 'center',
     backgroundColor: '#f6f6f6',
