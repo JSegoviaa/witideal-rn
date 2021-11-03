@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import {
   Image,
   StyleSheet,
@@ -12,7 +12,7 @@ import { StackNavigationProp } from '@react-navigation/stack';
 import { toggleEnable } from '../../helpers/enableProperty';
 import { RootMyPropertiesStackNavigation } from '../../navigation/MyPropertiesStackNavigation';
 import { useRole } from '../../hooks/useRole';
-import { deleteProperty } from '../../helpers/deleteProperty';
+import { deleteMyProperty, deleteProperty } from '../../helpers/deleteProperty';
 
 const MyPropertiesListItem = ({ inmueble }: any) => {
   const navigation =
@@ -36,21 +36,22 @@ const MyPropertiesListItem = ({ inmueble }: any) => {
   };
 
   const handleDelete = () => {
-    Alert.alert('Eliminar inmueble', '¿Está seguro de eliminar?', [
-      { text: 'Cancelar' },
+    deleteProperty(
+      inmueble.data.propertyType,
+      inmueble.data.action,
+      inmueble.id,
+    );
+
+    deleteMyProperty(inmueble.id, inmueble.data.uId);
+
+    Alert.alert('Se ha eliminado el inmueble', '', [
       {
-        text: 'Eliminar',
-        onPress: () => {
-          // deleteProperty(
-          //   inmueble.data.propertyType,
-          //   inmueble.data.action,
-          //   inmueble.id,
-          // );
-          // navigation.push('MyPropertiesScreen');
-          console.log('Eliminar');
-        },
+        text: 'Cerrar',
+        style: 'cancel',
       },
     ]);
+
+    navigation.push('MyPropertiesScreen');
   };
 
   return (

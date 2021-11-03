@@ -20,3 +20,20 @@ export const deleteProperty = async (
     return console.log(error);
   }
 };
+
+export const deleteMyProperty = async (id: string, uid: string) => {
+  try {
+    await firestore()
+      .collection('production')
+      .doc('Users')
+      .collection(uid)
+      .doc('properties')
+      .collection('ownedProperties')
+      .doc(id)
+      .delete();
+    return { status: 'Éxito' };
+  } catch (error) {
+    console.log('error', error);
+    return console.log(error);
+  }
+};
