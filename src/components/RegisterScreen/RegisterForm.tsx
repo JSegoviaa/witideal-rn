@@ -229,17 +229,9 @@ const styles = StyleSheet.create({
     height: 40,
     margin: 12,
     padding: 10,
+    paddingLeft: 20,
   },
-  inputFalse: {
-    backgroundColor: '#f6f6f6',
-    borderColor: '#41B8F9',
-    borderRadius: 5,
-    borderWidth: 1,
-    color: '#ccc',
-    height: 40,
-    margin: 12,
-    padding: 10,
-  },
+
   passwordSection: {
     alignItems: 'center',
     backgroundColor: '#f6f6f6',
