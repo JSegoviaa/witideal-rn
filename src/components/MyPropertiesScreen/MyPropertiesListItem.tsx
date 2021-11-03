@@ -1,5 +1,12 @@
 import React, { useState } from 'react';
-import { Image, StyleSheet, Text, View, TouchableOpacity } from 'react-native';
+import {
+  Image,
+  StyleSheet,
+  Text,
+  View,
+  TouchableOpacity,
+  Alert,
+} from 'react-native';
 import { useNavigation } from '@react-navigation/core';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { toggleEnable } from '../../helpers/enableProperty';
@@ -25,6 +32,22 @@ const MyPropertiesListItem = ({ inmueble }: any) => {
   const handleDisable = () => {
     setIsEnable(!isEnable);
     toggleEnable(!isEnable, inmueble.id, inmueble.data.uId);
+  };
+
+  const handleDelete = () => {
+    Alert.alert('Eliminar inmueble', '¿Está seguro de eliminar?', [
+      { text: 'Cancelar' },
+      {
+        text: 'Eliminar',
+        onPress: () => {
+          console.log(
+            inmueble.data.action,
+            inmueble.data.propertyType,
+            inmueble.id,
+          );
+        },
+      },
+    ]);
   };
 
   return (
@@ -95,7 +118,7 @@ const MyPropertiesListItem = ({ inmueble }: any) => {
             )}
 
             {!isEnable && (
-              <TouchableOpacity style={styles.btnDanger}>
+              <TouchableOpacity style={styles.btnDanger} onPress={handleDelete}>
                 <Text style={{ color: 'white', textAlign: 'center' }}>
                   Eliminar inmueble
                 </Text>
