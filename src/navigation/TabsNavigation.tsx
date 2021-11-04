@@ -1,7 +1,6 @@
 import React, { useContext } from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Icon from 'react-native-vector-icons/Ionicons';
-import MyDestPropertiesScreen from '../screens/MyDestPropertiesScreen';
 import SearchStackNavigation from './SearchStackNavigation';
 import LoginStackNavigation from './LoginStackNavigation';
 import { AuthContext } from '../context/auth/AuthContext';
