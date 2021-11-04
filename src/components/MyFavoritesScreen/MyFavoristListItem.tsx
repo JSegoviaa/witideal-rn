@@ -4,7 +4,7 @@ import React from 'react';
 import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { RootProfileStackNavigation } from '../../navigation/ProfileStackNavigation';
 
-const MyFavoristListItem = ({ favoritos }: any) => {
+const MyFavoristListItem = ({ favorites }: any) => {
   const navigation =
     useNavigation<
       StackNavigationProp<RootProfileStackNavigation, 'MyFavoritesScreen'>
@@ -21,12 +21,12 @@ const MyFavoristListItem = ({ favoritos }: any) => {
           height={50}
           style={{ width: '100%', height: 200 }}
           source={{
-            uri: `${favoritos.img}`,
+            uri: `${favorites.img}`,
           }}
         />
-        <Text style={styles.textCenter}>{favoritos.title}</Text>
+        <Text style={styles.textCenter}>{favorites.title}</Text>
 
-        <Text style={styles.subtitle}>{favoritos.desc}</Text>
+        <Text style={styles.subtitle}>{favorites.desc}</Text>
       </TouchableOpacity>
     </View>
   );
