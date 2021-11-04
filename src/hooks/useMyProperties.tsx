@@ -16,7 +16,8 @@ export const useMyProperties = (uid: string) => {
         .doc('Users')
         .collection(uid)
         .doc('properties')
-        .collection('ownedProperties');
+        .collection('ownedProperties')
+        .orderBy('uploadDate', 'desc');
       const list: DocumentData = [];
 
       return data.onSnapshot(querySnapshot => {
