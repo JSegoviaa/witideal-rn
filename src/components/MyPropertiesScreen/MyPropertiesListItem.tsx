@@ -15,6 +15,8 @@ import { useRole } from '../../hooks/useRole';
 import { deleteMyProperty, deleteProperty } from '../../helpers/deleteProperty';
 
 const MyPropertiesListItem = ({ inmueble }: any) => {
+  const [destacado, setDestacado] = useState(false);
+
   const navigation =
     useNavigation<
       StackNavigationProp<
@@ -37,10 +39,7 @@ const MyPropertiesListItem = ({ inmueble }: any) => {
 
   const handleDelete = () => {
     Alert.alert('Eliminar inmueble', '¿Está seguro de eliminar el inmueble?', [
-      {
-        text: 'Cancelar',
-        style: 'cancel',
-      },
+      { text: 'Cancelar', style: 'cancel' },
       {
         text: 'Eliminar',
         onPress: () => {
@@ -53,6 +52,19 @@ const MyPropertiesListItem = ({ inmueble }: any) => {
           deleteMyProperty(inmueble.id, inmueble.data.uId);
 
           navigation.push('MyPropertiesScreen');
+        },
+      },
+    ]);
+  };
+
+  const handleDestacado = () => {
+    Alert.alert('Destacar inmueble', 'Está seguro de destacar este inmueble?', [
+      { text: 'Cancelar', style: 'cancel' },
+      {
+        text: 'Destacar',
+        onPress: () => {
+          setDestacado(true);
+          console.log('Destacado');
         },
       },
     ]);
@@ -133,14 +145,25 @@ const MyPropertiesListItem = ({ inmueble }: any) => {
               </TouchableOpacity>
             )}
 
-            {isEnable && role ? (
-              <TouchableOpacity style={styles.btnDest}>
+            {isEnable && !destacado && (
+              <TouchableOpacity
+                style={styles.btnDest}
+                onPress={handleDestacado}>
                 <Text style={{ color: '#3F19F9', textAlign: 'center' }}>
                   Destacar inmueble
                 </Text>
               </TouchableOpacity>
-            ) : (
-              <View></View>
+            )}
+
+            {destacado && (
+              <TouchableOpacity
+                disabled
+                style={styles.btnDest}
+                onPress={handleDestacado}>
+                <Text style={{ color: '#c5c5c5', textAlign: 'center' }}>
+                  Propiedad destacada
+                </Text>
+              </TouchableOpacity>
             )}
           </View>
 
