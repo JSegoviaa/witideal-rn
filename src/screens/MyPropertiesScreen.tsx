@@ -53,10 +53,6 @@ const MyProperties = ({ properties }: any) => {
               )}
               keyExtractor={item => item.id}
               showsVerticalScrollIndicator={false}
-              onEndReached={() => {
-                console.log('hola');
-              }}
-              onEndReachedThreshold={0}
             />
           </View>
         </SafeAreaView>
@@ -76,7 +72,7 @@ const MyPropertiesScreen = () => {
       {loading ? (
         <Loading size="large" color="#1E0E9D" />
       ) : (
-        <MyProperties properties={properties} loading={loading} />
+        <MyProperties properties={properties} />
       )}
     </>
   );
