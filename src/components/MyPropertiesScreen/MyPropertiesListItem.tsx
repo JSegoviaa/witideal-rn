@@ -13,13 +13,11 @@ import { toggleEnable } from '../../helpers/enableProperty';
 import { RootMyPropertiesStackNavigation } from '../../navigation/MyPropertiesStackNavigation';
 import { useRole } from '../../hooks/useRole';
 import { deleteMyProperty, deleteProperty } from '../../helpers/deleteProperty';
-// import { updateDestProperty } from '../../helpers/updateDestProperty';
+import { updateDestProperty } from '../../helpers/updateDestProperty';
 
 const MyPropertiesListItem = ({ inmueble }: any) => {
   const [isDestProperty, setIsDestProperty] = useState(
-    inmueble.data.isDestProperty !== undefined
-      ? inmueble.data.isDestPropery
-      : false,
+    inmueble.data.isDestProperty,
   );
 
   const navigation =
@@ -68,8 +66,8 @@ const MyPropertiesListItem = ({ inmueble }: any) => {
       {
         text: 'Destacar',
         onPress: () => {
-          // updateDestProperty(isDestProperty, inmueble.id, inmueble.data.uId);
-          setIsDestProperty(true);
+          setIsDestProperty(!isDestProperty);
+          updateDestProperty(!isDestProperty, inmueble.id, inmueble.data.uId);
           navigation.push('MyPropertiesScreen');
         },
       },
