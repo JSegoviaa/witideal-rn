@@ -53,6 +53,12 @@ const MyProperties = ({ properties }: any) => {
               )}
               keyExtractor={item => item.id}
               showsVerticalScrollIndicator={false}
+              removeClippedSubviews={true}
+              initialNumToRender={6}
+              maxToRenderPerBatch={6}
+              updateCellsBatchingPeriod={100}
+              windowSize={7}
+              onEndReachedThreshold={0.5}
             />
           </View>
         </SafeAreaView>
