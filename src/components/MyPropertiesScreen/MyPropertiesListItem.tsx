@@ -61,17 +61,21 @@ const MyPropertiesListItem = ({ inmueble }: any) => {
   };
 
   const handleDestacado = () => {
-    Alert.alert('Destacar inmueble', 'Está seguro de destacar este inmueble?', [
-      { text: 'Cancelar', style: 'cancel' },
-      {
-        text: 'Destacar',
-        onPress: () => {
-          setIsDestProperty(!isDestProperty);
-          updateDestProperty(!isDestProperty, inmueble.id, inmueble.data.uId);
-          navigation.push('MyPropertiesScreen');
+    Alert.alert(
+      'Destacar inmueble',
+      '¿Está seguro de destacar este inmueble?',
+      [
+        { text: 'Cancelar', style: 'cancel' },
+        {
+          text: 'Destacar',
+          onPress: () => {
+            setIsDestProperty(!isDestProperty);
+            updateDestProperty(!isDestProperty, inmueble.id, inmueble.data.uId);
+            navigation.push('MyPropertiesScreen');
+          },
         },
-      },
-    ]);
+      ],
+    );
   };
 
   return (
