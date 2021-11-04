@@ -27,70 +27,64 @@ const NoPayments = () => {
 };
 
 //Este componente se muestra si tiene por lo menos un pago realizdo
-const Payments = () => {
-  const { user } = useContext(AuthContext);
-  const { loading, subscription } = useSubscription(user?.uid!);
+const Payments = ({ subscription }: any) => {
   return (
-    <View>
-      <View style={appStyles.container}>
-        {loading ? (
-          <Loading size="large" color="#1E0E9D" />
-        ) : (
-          <>
-            {subscription &&
-              subscription.map(subscription => (
-                <View key={subscription.id} style={styles.border}>
-                  <View>
-                    <Text style={styles.title}>Inicio:</Text>
-                    <Text style={styles.description}>
-                      {subscription && subscription.current_period_start}
-                    </Text>
-                  </View>
-
-                  <View>
-                    <Text style={styles.title}>Fin:</Text>
-                    <Text style={styles.description}>
-                      {subscription && subscription.current_period_end}
-                    </Text>
-                  </View>
-
-                  <View>
-                    <Text style={styles.title}>Orden de pago:</Text>
-                    <Text style={styles.description}>
-                      {subscription && subscription.id}
-                    </Text>
-                  </View>
-                  <View>
-                    <Text style={styles.title}>Cantidad:</Text>
-                    <Text style={styles.description}>
-                      {subscription && subscription.data.role == risingStar
-                        ? '$1,500 MXN'
-                        : ''}
-                      {subscription && subscription.data.role == superStar
-                        ? '$1990 MXN'
-                        : ''}
-                      {subscription && subscription.data.role == rockStar
-                        ? '$2500 MXN'
-                        : ''}
-                    </Text>
-                  </View>
+    <View style={appStyles.container}>
+      {subscription && subscription.length > 0 ? (
+        <>
+          {subscription &&
+            subscription.map(subscription => (
+              <View key={subscription.id} style={styles.border}>
+                <View>
+                  <Text style={styles.title}>Inicio:</Text>
+                  <Text style={styles.description}>
+                    {subscription && subscription.current_period_start}
+                  </Text>
                 </View>
-              ))}
-          </>
-        )}
-      </View>
+
+                <View>
+                  <Text style={styles.title}>Fin:</Text>
+                  <Text style={styles.description}>
+                    {subscription && subscription.current_period_end}
+                  </Text>
+                </View>
+
+                <View>
+                  <Text style={styles.title}>Orden de pago:</Text>
+                  <Text style={styles.description}>
+                    {subscription && subscription.id}
+                  </Text>
+                </View>
+                <View>
+                  <Text style={styles.title}>Cantidad:</Text>
+                  <Text style={styles.description}>
+                    {subscription && subscription.data.role == risingStar
+                      ? '$1,500 MXN'
+                      : ''}
+                    {subscription && subscription.data.role == superStar
+                      ? '$1990 MXN'
+                      : ''}
+                    {subscription && subscription.data.role == rockStar
+                      ? '$2500 MXN'
+                      : ''}
+                  </Text>
+                </View>
+              </View>
+            ))}
+        </>
+      ) : (
+        <NoPayments />
+      )}
     </View>
   );
 };
 
 const PaymentsScreen = () => {
   const { user } = useContext(AuthContext);
-  const { subscription } = useSubscription(user?.uid!);
+  const { loading, subscription } = useSubscription(user?.uid!);
 
   return (
-    <>
-      {subscription && subscription.length > 0 ? <Payments /> : <NoPayments />}
-    </>
+    <>{loading ? <Loading /> : <Payments subscription={subscription} />}</>
   );
 };
 
