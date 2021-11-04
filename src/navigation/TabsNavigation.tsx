@@ -7,11 +7,12 @@ import LoginStackNavigation from './LoginStackNavigation';
 import { AuthContext } from '../context/auth/AuthContext';
 import MyPropertiesStackNavigation from './MyPropertiesStackNavigation';
 import ProfileStackNavigation from './ProfileStackNavigation';
+import MyDestPropertiesScreenStack from './MyDestPropertiesScreenStack';
 
 export type RootTabsNavigation = {
   SearchStackNavigation: undefined;
   LoginStackScreen: undefined;
-  MyDestPropertiesScreen: undefined;
+  MyDestPropertiesScreenStack: undefined;
   MyPropertiesScreenStack: undefined;
   ProfileStackNavigation: undefined;
 };
@@ -26,7 +27,6 @@ const TabNoLogin = () => {
       screenOptions={({ route }) => ({
         tabBarActiveTintColor: '#3f19f9',
         tabBarInactiveTintColor: '#000',
-        // tabBarInactiveBackgroundColor:'#d9d9d9',
         tabBarLabelStyle: { fontSize: 12, textAlign: 'center' },
         tabBarIcon: ({ focused }) => {
           let iconName: string = '';
@@ -72,7 +72,6 @@ const TabLogin = () => {
       screenOptions={({ route }) => ({
         tabBarActiveTintColor: '#3f19f9',
         tabBarInactiveTintColor: '#000',
-        // tabBarInactiveBackgroundColor:'#d9d9d9',
         tabBarLabelStyle: { fontSize: 12, textAlign: 'center' },
         tabBarIcon: ({ focused }) => {
           let iconName: string = '';
@@ -81,7 +80,7 @@ const TabLogin = () => {
               iconName = 'home-outline';
               break;
 
-            case 'MyDestPropertiesScreen':
+            case 'MyDestPropertiesScreenStack':
               iconName = 'star-outline';
               break;
             case 'MyPropertiesScreenStack':
@@ -107,9 +106,9 @@ const TabLogin = () => {
         component={SearchStackNavigation}
       />
       <Tab.Screen
-        name="MyDestPropertiesScreen"
+        name="MyDestPropertiesScreenStack"
         options={{ title: 'Mis destacados', headerShown: false }}
-        component={MyDestPropertiesScreen}
+        component={MyDestPropertiesScreenStack}
       />
       <Tab.Screen
         name="MyPropertiesScreenStack"
