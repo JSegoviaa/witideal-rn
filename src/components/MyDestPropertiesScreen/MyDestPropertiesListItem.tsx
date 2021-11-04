@@ -2,17 +2,26 @@ import { useNavigation } from '@react-navigation/core';
 import { StackNavigationProp } from '@react-navigation/stack';
 import React from 'react';
 import { Image, StyleSheet, Text, View, TouchableOpacity } from 'react-native';
+import { RootMyDestPropertiesScreenStack } from '../../navigation/MyDestPropertiesScreenStack';
 
 const MyDestPropertiesListItem = ({ destacado }: any) => {
-  const navigation = useNavigation<StackNavigationProp<any, any>>();
+  const navigation =
+    useNavigation<
+      StackNavigationProp<
+        RootMyDestPropertiesScreenStack,
+        'MyDestPropertiesScreenDetail'
+      >
+    >();
 
   return (
     <>
       <View style={styles.card}>
         <TouchableOpacity
           onPress={() => {
-            navigation.navigate('HomeScreenNavigation', {
-              screen: 'PropertyDetailScreen',
+            navigation.navigate('MyDestPropertiesScreenDetail', {
+              id: destacado.id,
+              action: destacado.data.action,
+              propertyType: destacado.data.propertyType,
             });
           }}>
           <Image

@@ -2,12 +2,11 @@ import { createStackNavigator } from '@react-navigation/stack';
 import React from 'react';
 import MapScreen from '../screens/MapScreen';
 import MyDestPropertiesScreen from '../screens/MyDestPropertiesScreen';
-import MyPropertiesScreen from '../screens/MyPropertiesScreen';
 import PropertyDetailScreen from '../screens/PropertyDetailScreen';
 
 export type RootMyDestPropertiesScreenStack = {
   MyDestPropertiesScreen: undefined;
-  MyPropertiesScreenDetail: {
+  MyDestPropertiesScreenDetail: {
     id: string;
     action: string;
     propertyType: string;
@@ -27,7 +26,7 @@ const MyDestPropertiesScreenStack = () => {
       />
       <Stack.Screen
         options={{ title: '', headerShown: false }}
-        name="MyPropertiesScreenDetail"
+        name="MyDestPropertiesScreenDetail"
         component={PropertyDetailScreen}
       />
       <Stack.Screen
