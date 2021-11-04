@@ -14,7 +14,11 @@ const MyFavoristListItem = ({ favorites }: any) => {
     <View style={styles.card}>
       <TouchableOpacity
         onPress={() => {
-          navigation.navigate('FavoriteDetailScreen');
+          navigation.navigate('FavoriteDetailScreen', {
+            id: favorites.id,
+            action: favorites.data.action,
+            propertyType: favorites.data.propertyType,
+          });
         }}>
         <Image
           width={500}

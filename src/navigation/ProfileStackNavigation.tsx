@@ -15,7 +15,7 @@ export type RootProfileStackNavigation = {
   EditProfileScreen: undefined;
   TosScreen: undefined;
   NoPScreen: undefined;
-  FavoriteDetailScreen:undefined
+  FavoriteDetailScreen: { id: string; action: string; propertyType: string };
 };
 
 const Stack = createStackNavigator<RootProfileStackNavigation>();
