@@ -3,10 +3,8 @@ import { StackNavigationProp } from '@react-navigation/stack';
 import React from 'react';
 import { Image, StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 
-
-
-const MyDestPropertiesListItem = ({ inmueble }: any) => {
-  const navigation = useNavigation<StackNavigationProp<any,any>>();
+const MyDestPropertiesListItem = ({ destacado }: any) => {
+  const navigation = useNavigation<StackNavigationProp<any, any>>();
 
   return (
     <>
@@ -22,12 +20,12 @@ const MyDestPropertiesListItem = ({ inmueble }: any) => {
             height={50}
             style={{ width: '100%', height: 200 }}
             source={{
-              uri: `${inmueble.img}`,
+              uri: `${destacado.img}`,
             }}
           />
-          <Text style={styles.textCenter}>{inmueble.title}</Text>
+          <Text style={styles.textCenter}>{destacado.title}</Text>
 
-          <Text style={styles.subtitle}>{inmueble.desc}</Text>
+          <Text style={styles.subtitle}>{destacado.desc}</Text>
         </TouchableOpacity>
       </View>
     </>
