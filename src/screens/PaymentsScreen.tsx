@@ -3,6 +3,7 @@ import { Image, StyleSheet, Text, View } from 'react-native';
 import Loading from '../components/ui/Loading';
 import { risingStar, rockStar, superStar } from '../constant/role';
 import { AuthContext } from '../context/auth/AuthContext';
+import { toDateTime } from '../helpers/toDateTime';
 import { useSubscription } from '../hooks/useSubscription';
 import { appStyles } from '../theme/appTheme';
 
@@ -38,14 +39,19 @@ const Payments = ({ subscription }: any) => {
                 <View>
                   <Text style={styles.title}>Inicio:</Text>
                   <Text style={styles.description}>
-                    {subscription && subscription.current_period_start}
+                    {toDateTime(
+                      subscription.data.current_period_start.seconds,
+                    ).toLocaleDateString()}
+                    {''}
                   </Text>
                 </View>
 
                 <View>
                   <Text style={styles.title}>Fin:</Text>
                   <Text style={styles.description}>
-                    {subscription && subscription.current_period_end}
+                    {toDateTime(
+                      subscription.data.current_period_end.seconds,
+                    ).toLocaleDateString()}
                   </Text>
                 </View>
 
@@ -61,11 +67,11 @@ const Payments = ({ subscription }: any) => {
                     {subscription && subscription.data.role == risingStar
                       ? '$1,500 MXN'
                       : ''}
-                    {subscription && subscription.data.role == superStar
-                      ? '$1990 MXN'
-                      : ''}
                     {subscription && subscription.data.role == rockStar
-                      ? '$2500 MXN'
+                      ? '$1,990 MXN'
+                      : ''}
+                    {subscription && subscription.data.role == superStar
+                      ? '$2,500 MXN'
                       : ''}
                   </Text>
                 </View>
@@ -81,6 +87,7 @@ const Payments = ({ subscription }: any) => {
 
 const PaymentsScreen = () => {
   const { user } = useContext(AuthContext);
+  // const { loading, subscription } = useSubscription(user?.uid!);
   const { loading, subscription } = useSubscription(user?.uid!);
 
   return (
