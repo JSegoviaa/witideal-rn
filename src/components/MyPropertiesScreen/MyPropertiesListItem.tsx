@@ -13,9 +13,14 @@ import { toggleEnable } from '../../helpers/enableProperty';
 import { RootMyPropertiesStackNavigation } from '../../navigation/MyPropertiesStackNavigation';
 import { useRole } from '../../hooks/useRole';
 import { deleteMyProperty, deleteProperty } from '../../helpers/deleteProperty';
+// import { updateDestProperty } from '../../helpers/updateDestProperty';
 
 const MyPropertiesListItem = ({ inmueble }: any) => {
-  const [destacado, setDestacado] = useState(false);
+  const [isDestProperty, setIsDestProperty] = useState(
+    inmueble.data.isDestProperty !== undefined
+      ? inmueble.data.isDestPropery
+      : false,
+  );
 
   const navigation =
     useNavigation<
@@ -63,8 +68,9 @@ const MyPropertiesListItem = ({ inmueble }: any) => {
       {
         text: 'Destacar',
         onPress: () => {
-          setDestacado(true);
-          console.log('Destacado');
+          // updateDestProperty(isDestProperty, inmueble.id, inmueble.data.uId);
+          setIsDestProperty(true);
+          navigation.push('MyPropertiesScreen');
         },
       },
     ]);
@@ -145,7 +151,7 @@ const MyPropertiesListItem = ({ inmueble }: any) => {
               </TouchableOpacity>
             )}
 
-            {isEnable && !destacado && (
+            {isEnable && !isDestProperty && (
               <TouchableOpacity
                 style={styles.btnDest}
                 onPress={handleDestacado}>
@@ -155,7 +161,7 @@ const MyPropertiesListItem = ({ inmueble }: any) => {
               </TouchableOpacity>
             )}
 
-            {destacado && (
+            {isDestProperty && (
               <TouchableOpacity
                 disabled
                 style={styles.btnDest}
