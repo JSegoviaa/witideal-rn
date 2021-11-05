@@ -6,6 +6,7 @@ import TabsNavigation from './src/navigation/TabsNavigation';
 import { GradientProvider } from './src/context/gradient/GradientContext';
 import { StatusBar } from 'react-native';
 import { AuthProvider } from './src/context/auth/AuthContext';
+import PermissionsProvider from './src/context/permissions/PermissionsContext';
 
 const App = () => {
   useEffect(() => {
@@ -14,16 +15,18 @@ const App = () => {
 
   return (
     <AuthProvider>
-      <NavigationContainer>
-        <GradientProvider>
-          <StatusBar
-            barStyle={'dark-content'}
-            backgroundColor={'transparent'}
-            translucent={true}
-          />
-          <TabsNavigation />
-        </GradientProvider>
-      </NavigationContainer>
+      <PermissionsProvider>
+        <NavigationContainer>
+          <GradientProvider>
+            <StatusBar
+              barStyle={'dark-content'}
+              backgroundColor={'transparent'}
+              translucent={true}
+            />
+            <TabsNavigation />
+          </GradientProvider>
+        </NavigationContainer>
+      </PermissionsProvider>
     </AuthProvider>
   );
 };

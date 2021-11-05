@@ -6,8 +6,14 @@ import {
   Text,
   View,
   TouchableOpacity,
+  Platform,
 } from 'react-native';
 import { StackScreenProps } from '@react-navigation/stack';
+import {
+  PERMISSIONS,
+  PermissionStatus,
+  request,
+} from 'react-native-permissions';
 import Description from '../components/PropertyDetailScreen/Description';
 import Images from '../components/PropertyDetailScreen/Images';
 import SpecificDetails from '../components/PropertyDetailScreen/SpecificDetails';
@@ -54,6 +60,31 @@ const PropertyDetailScreen = ({ route, navigation }: Props) => {
     navigation.setOptions({ headerShown: true, headerTransparent: true });
   }, []);
 
+  //Pedir permisos para acceder al mapa
+  const checkLocationPermission = async () => {
+    let permissionsStatus: PermissionStatus;
+
+    if (Platform.OS === 'android') {
+      permissionsStatus = await request(
+        PERMISSIONS.ANDROID.ACCESS_FINE_LOCATION,
+      );
+    } else {
+      permissionsStatus = await request(PERMISSIONS.IOS.LOCATION_WHEN_IN_USE);
+    }
+  };
+
+  const navigateToMap = () => {
+    navigation.navigate('MapScreen', {
+      latitude: property!.lat,
+      longitude: property!.lng,
+      isExactLocation: property!.isExactLocation,
+    });
+  };
+
+  const handleMapScreen = () => {
+    checkLocationPermission();
+  };
+
   return (
     <>
       {loading ? (
@@ -73,13 +104,7 @@ const PropertyDetailScreen = ({ route, navigation }: Props) => {
                   <View style={{ marginRight: 'auto', marginLeft: 'auto' }}>
                     <TouchableOpacity
                       style={appStyles.btnPrimary}
-                      onPress={() => {
-                        navigation.navigate('MapScreen', {
-                          latitude: property.lat,
-                          longitude: property.lng,
-                          isExactLocation: property.isExactLocation,
-                        });
-                      }}>
+                      onPress={checkLocationPermission}>
                       <Text style={{ textAlign: 'center', color: '#fff' }}>
                         Ver ubicación
                       </Text>
