@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { Text, View } from 'react-native';
+import { Animated, Text, View } from 'react-native';
 import { StackScreenProps } from '@react-navigation/stack';
 import MapView, { Circle, Marker } from 'react-native-maps';
 import { RootMyPropertiesStackNavigation } from '../navigation/MyPropertiesStackNavigation';
@@ -12,13 +12,21 @@ interface Props
 const MapScreen = ({ route, navigation }: Props) => {
   const [iconsVisible, setIconsVisible] = useState(false);
   const { latitude, longitude, isExactLocation } = route.params;
-  const { loading, getCurrentLocation } = useLocation();
+  const {
+    loading,
+    getCurrentLocation,
+    followUserLocation,
+    userLocation,
+    stopFollowUserLocation,
+  } = useLocation();
   const mapViewRef = useRef<MapView>();
+  const following = useRef<boolean>(true);
 
   const toggleMenu = () => setIconsVisible(!iconsVisible);
 
   const centerPosition = async () => {
     const { latitude, longitude } = await getCurrentLocation();
+    following.current = true;
 
     mapViewRef.current?.animateCamera({
       center: { latitude, longitude },
@@ -26,10 +34,31 @@ const MapScreen = ({ route, navigation }: Props) => {
   };
 
   const propertyPosition = () => {
+    following.current = false;
     mapViewRef.current?.animateCamera({
       center: { latitude, longitude },
     });
   };
+
+  useEffect(() => {
+    following.current = false;
+
+    followUserLocation();
+    return () => {
+      stopFollowUserLocation();
+    };
+  }, []);
+
+  useEffect(() => {
+    if (!following.current) return;
+
+    mapViewRef.current?.animateCamera({
+      center: {
+        latitude: userLocation.latitude,
+        longitude: userLocation.longitude,
+      },
+    });
+  }, [userLocation]);
 
   useEffect(() => {
     navigation.setOptions({ headerShown: true, headerTransparent: true });
@@ -41,6 +70,9 @@ const MapScreen = ({ route, navigation }: Props) => {
         <Text>Estamos ubicándote en el mapa</Text>
       ) : (
         <MapView
+          onTouchStart={() => {
+            following.current = false;
+          }}
           ref={e => {
             mapViewRef.current = e!;
           }}
