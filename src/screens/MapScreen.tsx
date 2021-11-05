@@ -45,7 +45,7 @@ const MapScreen = ({ route, navigation }: Props) => {
         </MapView>
       )}
       <Fab
-        iconName="location-outline"
+        iconName="compass-outline"
         onPress={() => {
           console.log('hola');
         }}
