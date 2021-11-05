@@ -13,16 +13,22 @@ interface Props {
   iconName: string;
   onPress: () => void;
   style?: StyleProp<ViewStyle>;
+  iconStyle?: StyleProp<ViewStyle>;
 }
 
-const Fab = ({ iconName, onPress, style = {} }: Props) => {
+const Fab = ({ iconName, onPress, style = {}, iconStyle = {} }: Props) => {
   return (
     <View style={{ ...(style as any) }}>
       <TouchableOpacity
         activeOpacity={0.8}
         onPress={onPress}
         style={styles.blackButton}>
-        <Icon name={iconName} color="#fff" size={32} style={{ left: 1 }} />
+        <Icon
+          name={iconName}
+          color="#fff"
+          size={32}
+          style={{ ...(iconStyle as any) }}
+        />
       </TouchableOpacity>
     </View>
   );

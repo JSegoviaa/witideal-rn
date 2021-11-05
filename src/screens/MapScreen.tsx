@@ -63,14 +63,23 @@ const MapScreen = ({ route, navigation }: Props) => {
         </MapView>
       )}
       <Fab
-        iconName="compass-outline"
-        onPress={centerPosition}
-        style={{ position: 'absolute', bottom: 10, right: 10 }}
+        iconName="navigate-circle-outline"
+        onPress={() => {
+          console.log('crear ruta');
+        }}
+        style={{ position: 'absolute', bottom: 130, right: 10 }}
+        iconStyle={{ left: 1 }}
       />
       <Fab
         iconName="location-outline"
         onPress={propertyPosition}
         style={{ position: 'absolute', bottom: 70, right: 10 }}
+      />
+      <Fab
+        iconName="compass-outline"
+        onPress={centerPosition}
+        style={{ position: 'absolute', bottom: 10, right: 10 }}
+        iconStyle={{ left: 1 }}
       />
     </View>
   );
