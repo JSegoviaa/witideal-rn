@@ -4,6 +4,7 @@ import { StackScreenProps } from '@react-navigation/stack';
 import MapView, { Circle, Marker } from 'react-native-maps';
 import { RootMyPropertiesStackNavigation } from '../navigation/MyPropertiesStackNavigation';
 import { useLocation } from '../hooks/useLocation';
+import Fab from '../components/ui/Fab';
 
 interface Props
   extends StackScreenProps<RootMyPropertiesStackNavigation, 'MapScreen'> {}
@@ -43,6 +44,13 @@ const MapScreen = ({ route, navigation }: Props) => {
           )}
         </MapView>
       )}
+      <Fab
+        iconName="location-outline"
+        onPress={() => {
+          console.log('hola');
+        }}
+        style={{ position: 'absolute', bottom: 10, right: 10 }}
+      />
     </View>
   );
 };
