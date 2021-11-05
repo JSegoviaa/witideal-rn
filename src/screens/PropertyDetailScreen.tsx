@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useContext, useEffect } from 'react';
 import {
   Image,
   ScrollView,
@@ -6,14 +6,8 @@ import {
   Text,
   View,
   TouchableOpacity,
-  Platform,
 } from 'react-native';
 import { StackScreenProps } from '@react-navigation/stack';
-import {
-  PERMISSIONS,
-  PermissionStatus,
-  request,
-} from 'react-native-permissions';
 import Description from '../components/PropertyDetailScreen/Description';
 import Images from '../components/PropertyDetailScreen/Images';
 import SpecificDetails from '../components/PropertyDetailScreen/SpecificDetails';
@@ -21,6 +15,7 @@ import { useProperty } from '../hooks/useProperty';
 import Loading from '../components/ui/Loading';
 import { RootMyPropertiesStackNavigation } from '../navigation/MyPropertiesStackNavigation';
 import { appStyles } from '../theme/appTheme';
+import { PermissionsContext } from '../context/permissions/PermissionsContext';
 
 interface Props
   extends StackScreenProps<
@@ -55,23 +50,12 @@ const NoEnable = () => {
 const PropertyDetailScreen = ({ route, navigation }: Props) => {
   const { id, action, propertyType } = route.params;
   const { loading, property } = useProperty(id, action, propertyType);
+  const { permissions, askLocationPermission } = useContext(PermissionsContext);
+  console.log(permissions);
 
   useEffect(() => {
     navigation.setOptions({ headerShown: true, headerTransparent: true });
   }, []);
-
-  //Pedir permisos para acceder al mapa
-  const checkLocationPermission = async () => {
-    let permissionsStatus: PermissionStatus;
-
-    if (Platform.OS === 'android') {
-      permissionsStatus = await request(
-        PERMISSIONS.ANDROID.ACCESS_FINE_LOCATION,
-      );
-    } else {
-      permissionsStatus = await request(PERMISSIONS.IOS.LOCATION_WHEN_IN_USE);
-    }
-  };
 
   const navigateToMap = () => {
     navigation.navigate('MapScreen', {
@@ -81,8 +65,8 @@ const PropertyDetailScreen = ({ route, navigation }: Props) => {
     });
   };
 
-  const handleMapScreen = () => {
-    checkLocationPermission();
+  const handleNavigateToMap = () => {
+    navigateToMap();
   };
 
   return (
@@ -104,7 +88,7 @@ const PropertyDetailScreen = ({ route, navigation }: Props) => {
                   <View style={{ marginRight: 'auto', marginLeft: 'auto' }}>
                     <TouchableOpacity
                       style={appStyles.btnPrimary}
-                      onPress={checkLocationPermission}>
+                      onPress={handleNavigateToMap}>
                       <Text style={{ textAlign: 'center', color: '#fff' }}>
                         Ver ubicación
                       </Text>
