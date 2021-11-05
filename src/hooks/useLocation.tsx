@@ -8,22 +8,29 @@ interface Location {
 
 export const useLocation = () => {
   const [loading, setLoading] = useState(false);
-  const [initialPosition, setInitialPosition] = useState<Location>();
+  const [userPosition, setInitialPosition] = useState<Location>();
 
   useEffect(() => {
-    Geolocation.getCurrentPosition(
-      ({ coords }) => {
-        setInitialPosition({
-          latitude: coords.latitude,
-          longitude: coords.longitude,
-        });
-
-        setLoading(true);
-      },
-      err => console.log({ err }),
-      { enableHighAccuracy: true },
-    );
+    getCurrentLocation().then(location => {
+      setInitialPosition(location);
+      setLoading(true);
+    });
   }, []);
 
-  return { initialPosition, loading };
+  const getCurrentLocation = (): Promise<Location> => {
+    return new Promise((resolve, reject) => {
+      Geolocation.getCurrentPosition(
+        ({ coords }) => {
+          resolve({
+            latitude: coords.latitude,
+            longitude: coords.longitude,
+          });
+        },
+        err => reject({ err }),
+        { enableHighAccuracy: true },
+      );
+    });
+  };
+
+  return { userPosition, loading, getCurrentLocation };
 };
