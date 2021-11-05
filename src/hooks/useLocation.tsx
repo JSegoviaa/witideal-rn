@@ -13,7 +13,6 @@ export const useLocation = () => {
     longitude: 0,
     latitude: 0,
   });
-
   const watchId = useRef<number>();
 
   useEffect(() => {
@@ -42,11 +41,14 @@ export const useLocation = () => {
   const followUserLocation = () => {
     watchId.current = Geolocation.watchPosition(
       ({ coords }) => {
-        setUserLocation({
+        const location: Location = {
           latitude: coords.latitude,
           longitude: coords.longitude,
-        });
+        };
+
+        setUserLocation(location);
       },
+
       err => console.log(err),
       { enableHighAccuracy: true, distanceFilter: 10 },
     );

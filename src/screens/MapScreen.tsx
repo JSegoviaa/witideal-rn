@@ -1,7 +1,8 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { Animated, Text, View } from 'react-native';
+import { Text, View } from 'react-native';
 import { StackScreenProps } from '@react-navigation/stack';
 import MapView, { Circle, Marker } from 'react-native-maps';
+// import MapViewDirections from 'react-native-maps-directions';
 import { RootMyPropertiesStackNavigation } from '../navigation/MyPropertiesStackNavigation';
 import { useLocation } from '../hooks/useLocation';
 import Fab from '../components/ui/Fab';
@@ -21,7 +22,11 @@ const MapScreen = ({ route, navigation }: Props) => {
   } = useLocation();
   const mapViewRef = useRef<MapView>();
   const following = useRef<boolean>(true);
-
+  // const destination = { latitude, longitude };
+  // const origin = {
+  //   latitude: userLocation.latitude,
+  //   longitude: userLocation.longitude,
+  // };
   const toggleMenu = () => setIconsVisible(!iconsVisible);
 
   const centerPosition = async () => {
@@ -42,7 +47,6 @@ const MapScreen = ({ route, navigation }: Props) => {
 
   useEffect(() => {
     following.current = false;
-
     followUserLocation();
     return () => {
       stopFollowUserLocation();
@@ -86,6 +90,11 @@ const MapScreen = ({ route, navigation }: Props) => {
             latitudeDelta: 0.0142,
             longitudeDelta: 0.0151,
           }}>
+          {/* <MapViewDirections
+            origin={origin}
+            destination={destination}
+            apikey={'AIzaSyAd22YBCutdzEZePBY2wbS2OawTZ1_H7-s'}
+          /> */}
           {isExactLocation ? (
             <Marker coordinate={{ latitude, longitude }} />
           ) : (
@@ -100,14 +109,14 @@ const MapScreen = ({ route, navigation }: Props) => {
 
       {iconsVisible && (
         <>
-          <Fab
+          {/* <Fab
             iconName="navigate-circle-outline"
             onPress={() => {
               console.log('crear ruta');
             }}
             style={{ position: 'absolute', bottom: 190, right: 10 }}
             iconStyle={{ left: 1 }}
-          />
+          /> */}
           <Fab
             iconName="location-outline"
             onPress={propertyPosition}
