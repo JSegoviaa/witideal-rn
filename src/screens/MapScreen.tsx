@@ -15,6 +15,8 @@ const MapScreen = ({ route, navigation }: Props) => {
   const { loading, getCurrentLocation } = useLocation();
   const mapViewRef = useRef<MapView>();
 
+  const toggleMenu = () => setIconsVisible(!iconsVisible);
+
   const centerPosition = async () => {
     const { latitude, longitude } = await getCurrentLocation();
 
@@ -89,9 +91,7 @@ const MapScreen = ({ route, navigation }: Props) => {
       )}
       <Fab
         iconName={!iconsVisible ? 'chevron-up-outline' : 'chevron-down-outline'}
-        onPress={() => {
-          setIconsVisible(!iconsVisible);
-        }}
+        onPress={toggleMenu}
         style={{ position: 'absolute', bottom: 10, right: 10 }}
       />
     </View>
