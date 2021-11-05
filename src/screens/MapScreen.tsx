@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { Text, View } from 'react-native';
 import { StackScreenProps } from '@react-navigation/stack';
 import MapView, { Circle, Marker } from 'react-native-maps';
@@ -11,7 +11,22 @@ interface Props
 
 const MapScreen = ({ route, navigation }: Props) => {
   const { latitude, longitude, isExactLocation } = route.params;
-  const { userPosition, loading } = useLocation();
+  const { loading, getCurrentLocation } = useLocation();
+  const mapViewRef = useRef<MapView>();
+
+  const centerPosition = async () => {
+    const { latitude, longitude } = await getCurrentLocation();
+
+    mapViewRef.current?.animateCamera({
+      center: { latitude, longitude },
+    });
+  };
+
+  const propertyPosition = () => {
+    mapViewRef.current?.animateCamera({
+      center: { latitude, longitude },
+    });
+  };
 
   useEffect(() => {
     navigation.setOptions({ headerShown: true, headerTransparent: true });
@@ -23,6 +38,9 @@ const MapScreen = ({ route, navigation }: Props) => {
         <Text>Estamos ubicándote en el mapa</Text>
       ) : (
         <MapView
+          ref={e => {
+            mapViewRef.current = e!;
+          }}
           style={{
             flex: 1,
           }}
@@ -46,10 +64,13 @@ const MapScreen = ({ route, navigation }: Props) => {
       )}
       <Fab
         iconName="compass-outline"
-        onPress={() => {
-          console.log('hola');
-        }}
+        onPress={centerPosition}
         style={{ position: 'absolute', bottom: 10, right: 10 }}
+      />
+      <Fab
+        iconName="location-outline"
+        onPress={propertyPosition}
+        style={{ position: 'absolute', bottom: 70, right: 10 }}
       />
     </View>
   );
