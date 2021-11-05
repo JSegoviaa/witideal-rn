@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Text, View } from 'react-native';
 import { StackScreenProps } from '@react-navigation/stack';
 import MapView, { Circle, Marker } from 'react-native-maps';
@@ -10,6 +10,7 @@ interface Props
   extends StackScreenProps<RootMyPropertiesStackNavigation, 'MapScreen'> {}
 
 const MapScreen = ({ route, navigation }: Props) => {
+  const [iconsVisible, setIconsVisible] = useState(false);
   const { latitude, longitude, isExactLocation } = route.params;
   const { loading, getCurrentLocation } = useLocation();
   const mapViewRef = useRef<MapView>();
@@ -62,24 +63,36 @@ const MapScreen = ({ route, navigation }: Props) => {
           )}
         </MapView>
       )}
+
+      {iconsVisible && (
+        <>
+          <Fab
+            iconName="navigate-circle-outline"
+            onPress={() => {
+              console.log('crear ruta');
+            }}
+            style={{ position: 'absolute', bottom: 190, right: 10 }}
+            iconStyle={{ left: 1 }}
+          />
+          <Fab
+            iconName="location-outline"
+            onPress={propertyPosition}
+            style={{ position: 'absolute', bottom: 130, right: 10 }}
+          />
+          <Fab
+            iconName="compass-outline"
+            onPress={centerPosition}
+            style={{ position: 'absolute', bottom: 70, right: 10 }}
+            iconStyle={{ left: 1 }}
+          />
+        </>
+      )}
       <Fab
-        iconName="navigate-circle-outline"
+        iconName={!iconsVisible ? 'chevron-up-outline' : 'chevron-down-outline'}
         onPress={() => {
-          console.log('crear ruta');
+          setIconsVisible(!iconsVisible);
         }}
-        style={{ position: 'absolute', bottom: 130, right: 10 }}
-        iconStyle={{ left: 1 }}
-      />
-      <Fab
-        iconName="location-outline"
-        onPress={propertyPosition}
-        style={{ position: 'absolute', bottom: 70, right: 10 }}
-      />
-      <Fab
-        iconName="compass-outline"
-        onPress={centerPosition}
         style={{ position: 'absolute', bottom: 10, right: 10 }}
-        iconStyle={{ left: 1 }}
       />
     </View>
   );
