@@ -2,6 +2,7 @@ import React, { createContext, FC, useEffect, useState } from 'react';
 import { AppState, Platform } from 'react-native';
 import {
   check,
+  openSettings,
   PERMISSIONS,
   PermissionStatus,
   request,
@@ -43,6 +44,10 @@ const PermissionsProvider: FC = ({ children }) => {
       );
     } else {
       permissionsStatus = await request(PERMISSIONS.IOS.LOCATION_WHEN_IN_USE);
+    }
+
+    if (permissionsStatus === 'blocked') {
+      openSettings();
     }
 
     setPermissions({ ...permissions, locationStatus: permissionsStatus });

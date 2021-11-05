@@ -51,7 +51,6 @@ const PropertyDetailScreen = ({ route, navigation }: Props) => {
   const { id, action, propertyType } = route.params;
   const { loading, property } = useProperty(id, action, propertyType);
   const { permissions, askLocationPermission } = useContext(PermissionsContext);
-  console.log(permissions);
 
   useEffect(() => {
     navigation.setOptions({ headerShown: true, headerTransparent: true });
@@ -66,7 +65,10 @@ const PropertyDetailScreen = ({ route, navigation }: Props) => {
   };
 
   const handleNavigateToMap = () => {
-    navigateToMap();
+    askLocationPermission();
+    if (permissions.locationStatus === 'granted') {
+      navigateToMap();
+    }
   };
 
   return (
@@ -90,7 +92,7 @@ const PropertyDetailScreen = ({ route, navigation }: Props) => {
                       style={appStyles.btnPrimary}
                       onPress={handleNavigateToMap}>
                       <Text style={{ textAlign: 'center', color: '#fff' }}>
-                        Ver ubicación
+                        Ver Ubicación
                       </Text>
                     </TouchableOpacity>
                   </View>
