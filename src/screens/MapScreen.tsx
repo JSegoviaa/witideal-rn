@@ -71,8 +71,10 @@ const MapScreen = ({ route, navigation }: Props) => {
   }, [userLocation]);
 
   useEffect(() => {
-    navigation.setOptions({ headerShown: true, headerTransparent: true });
+    navigation.setOptions({ headerTransparent: true });
   }, []);
+
+  const handleGoBack = () => navigation.goBack();
 
   return (
     <View style={{ flex: 1 }}>
@@ -130,18 +132,18 @@ const MapScreen = ({ route, navigation }: Props) => {
           <Fab
             iconName="navigate-circle-outline"
             onPress={createRoute}
-            style={{ position: 'absolute', bottom: 190, left: 10 }}
+            style={{ position: 'absolute', bottom: 210, left: 15 }}
             iconStyle={{ left: 1 }}
           />
           <Fab
             iconName="location-outline"
             onPress={propertyPosition}
-            style={{ position: 'absolute', bottom: 130, left: 10 }}
+            style={{ position: 'absolute', bottom: 150, left: 15 }}
           />
           <Fab
             iconName="compass-outline"
             onPress={centerPosition}
-            style={{ position: 'absolute', bottom: 70, left: 10 }}
+            style={{ position: 'absolute', bottom: 90, left: 15 }}
             iconStyle={{ left: 1 }}
           />
         </>
@@ -149,7 +151,14 @@ const MapScreen = ({ route, navigation }: Props) => {
       <Fab
         iconName={!iconsVisible ? 'chevron-up-outline' : 'chevron-down-outline'}
         onPress={toggleMenu}
-        style={{ position: 'absolute', bottom: 10, left: 10 }}
+        style={{ position: 'absolute', bottom: 30, left: 15 }}
+      />
+      <Icon
+        onPress={handleGoBack}
+        name="arrow-back-outline"
+        size={28}
+        color="#000"
+        style={{ position: 'absolute', top: 60, left: 20 }}
       />
     </View>
   );
