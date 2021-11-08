@@ -27,7 +27,7 @@ const OwnerInfo = ({ property }: Props) => {
               </Text>
               {property.price && (
                 <Text style={styles.precio}>
-                  {currencyFormat(property.price)} MXN
+                  {currencyFormat(property.price)} {property.currency}
                 </Text>
               )}
               <TouchableOpacity
@@ -79,7 +79,7 @@ const OwnerInfo = ({ property }: Props) => {
               </Text>
               {property.price && (
                 <Text style={styles.precio}>
-                  {currencyFormat(property.price)} MXN
+                  {currencyFormat(property.price)} {property.currency}
                 </Text>
               )}
               <TouchableOpacity
