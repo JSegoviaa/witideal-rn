@@ -1,13 +1,12 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { View } from 'react-native';
 import { StackScreenProps } from '@react-navigation/stack';
-import MapView, { Callout, Circle, Marker } from 'react-native-maps';
+import MapView, { Circle, Marker } from 'react-native-maps';
 import MapViewDirections from 'react-native-maps-directions';
 import { RootMyPropertiesStackNavigation } from '../navigation/MyPropertiesStackNavigation';
 import { useLocation } from '../hooks/useLocation';
 import Fab from '../components/ui/Fab';
 import Loading from '../components/ui/Loading';
-import { currencyFormat } from '../helpers/currencyFormat';
 
 interface Props
   extends StackScreenProps<RootMyPropertiesStackNavigation, 'MapScreen'> {}
@@ -15,8 +14,7 @@ interface Props
 const MapScreen = ({ route, navigation }: Props) => {
   const [iconsVisible, setIconsVisible] = useState<Boolean>(false);
   const [routeVisible, setRouteVisible] = useState<Boolean>(false);
-  const { latitude, longitude, isExactLocation, price, currency } =
-    route.params;
+  const { latitude, longitude, isExactLocation } = route.params;
   const {
     loading,
     getCurrentLocation,
@@ -110,13 +108,7 @@ const MapScreen = ({ route, navigation }: Props) => {
           )}
 
           {isExactLocation ? (
-            <Marker coordinate={{ latitude, longitude }}>
-              <Callout tooltip>
-                <Text style={styles.callout}>
-                  {currencyFormat(price)} {currency}
-                </Text>
-              </Callout>
-            </Marker>
+            <Marker coordinate={{ latitude, longitude }} />
           ) : (
             <Circle
               center={{ latitude, longitude }}
@@ -156,16 +148,5 @@ const MapScreen = ({ route, navigation }: Props) => {
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  callout: {
-    color: 'white',
-    fontSize: 16,
-    backgroundColor: '#3F19F9',
-    borderRadius: 20,
-    paddingHorizontal: 20,
-    paddingVertical: 10,
-  },
-});
 
 export default MapScreen;

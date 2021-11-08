@@ -61,8 +61,6 @@ const PropertyDetailScreen = ({ route, navigation }: Props) => {
       latitude: property!.lat,
       longitude: property!.lng,
       isExactLocation: property!.isExactLocation,
-      price: property!.price,
-      currency: property!.currency,
     });
   };
 
