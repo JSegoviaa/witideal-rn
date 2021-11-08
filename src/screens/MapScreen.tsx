@@ -3,11 +3,11 @@ import { View } from 'react-native';
 import { StackScreenProps } from '@react-navigation/stack';
 import MapView, { Circle, Marker } from 'react-native-maps';
 import MapViewDirections from 'react-native-maps-directions';
+import Icon from 'react-native-vector-icons/Ionicons';
 import { RootMyPropertiesStackNavigation } from '../navigation/MyPropertiesStackNavigation';
 import { useLocation } from '../hooks/useLocation';
 import Fab from '../components/ui/Fab';
 import Loading from '../components/ui/Loading';
-import Icon from 'react-native-vector-icons/Ionicons';
 
 interface Props
   extends StackScreenProps<RootMyPropertiesStackNavigation, 'MapScreen'> {}
