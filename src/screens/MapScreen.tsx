@@ -7,6 +7,7 @@ import { RootMyPropertiesStackNavigation } from '../navigation/MyPropertiesStack
 import { useLocation } from '../hooks/useLocation';
 import Fab from '../components/ui/Fab';
 import Loading from '../components/ui/Loading';
+import { currencyFormat } from '../helpers/currencyFormat';
 
 interface Props
   extends StackScreenProps<RootMyPropertiesStackNavigation, 'MapScreen'> {}
@@ -14,7 +15,7 @@ interface Props
 const MapScreen = ({ route, navigation }: Props) => {
   const [iconsVisible, setIconsVisible] = useState<Boolean>(false);
   const [routeVisible, setRouteVisible] = useState<Boolean>(false);
-  const { latitude, longitude, isExactLocation } = route.params;
+  const { latitude, longitude, isExactLocation, price } = route.params;
   const {
     loading,
     getCurrentLocation,
@@ -110,7 +111,7 @@ const MapScreen = ({ route, navigation }: Props) => {
           {isExactLocation ? (
             <Marker coordinate={{ latitude, longitude }}>
               <Callout tooltip>
-                <Text style={styles.callout}>$ 123,123 MXN</Text>
+                <Text style={styles.callout}>{currencyFormat(price)} MXN</Text>
               </Callout>
             </Marker>
           ) : (
@@ -156,7 +157,7 @@ const MapScreen = ({ route, navigation }: Props) => {
 const styles = StyleSheet.create({
   callout: {
     color: 'white',
-    fontSize: 18,
+    fontSize: 16,
     backgroundColor: '#3F19F9',
     borderRadius: 20,
     paddingHorizontal: 20,

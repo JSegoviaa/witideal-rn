@@ -11,7 +11,12 @@ export type RootMyPropertiesStackNavigation = {
     action: string;
     propertyType: string;
   };
-  MapScreen: { latitude: number; longitude: number; isExactLocation: boolean };
+  MapScreen: {
+    latitude: number;
+    longitude: number;
+    isExactLocation: boolean;
+    price: number;
+  };
 };
 
 const Stack = createStackNavigator<RootMyPropertiesStackNavigation>();
