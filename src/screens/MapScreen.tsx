@@ -15,7 +15,8 @@ interface Props
 const MapScreen = ({ route, navigation }: Props) => {
   const [iconsVisible, setIconsVisible] = useState<Boolean>(false);
   const [routeVisible, setRouteVisible] = useState<Boolean>(false);
-  const { latitude, longitude, isExactLocation, price } = route.params;
+  const { latitude, longitude, isExactLocation, price, currency } =
+    route.params;
   const {
     loading,
     getCurrentLocation,
@@ -111,7 +112,9 @@ const MapScreen = ({ route, navigation }: Props) => {
           {isExactLocation ? (
             <Marker coordinate={{ latitude, longitude }}>
               <Callout tooltip>
-                <Text style={styles.callout}>{currencyFormat(price)} MXN</Text>
+                <Text style={styles.callout}>
+                  {currencyFormat(price)} {currency}
+                </Text>
               </Callout>
             </Marker>
           ) : (

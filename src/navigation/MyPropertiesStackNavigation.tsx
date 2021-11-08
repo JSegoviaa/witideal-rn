@@ -16,6 +16,7 @@ export type RootMyPropertiesStackNavigation = {
     longitude: number;
     isExactLocation: boolean;
     price: number;
+    currency: string;
   };
 };
 
