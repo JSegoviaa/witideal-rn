@@ -56,6 +56,10 @@ const MyPropertiesListItem = ({ inmueble }: any) => {
           deleteMyProperty(inmueble.id, inmueble.data.uId);
 
           navigation.push('MyPropertiesScreen');
+          Toast.show({
+            type: 'error',
+            text1: 'La propiedad se ha eliminado con éxito',
+          });
         },
       },
     ]);
