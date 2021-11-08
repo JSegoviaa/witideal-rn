@@ -7,6 +7,7 @@ import { RootMyPropertiesStackNavigation } from '../navigation/MyPropertiesStack
 import { useLocation } from '../hooks/useLocation';
 import Fab from '../components/ui/Fab';
 import Loading from '../components/ui/Loading';
+import Icon from 'react-native-vector-icons/Ionicons';
 
 interface Props
   extends StackScreenProps<RootMyPropertiesStackNavigation, 'MapScreen'> {}
@@ -88,7 +89,6 @@ const MapScreen = ({ route, navigation }: Props) => {
           style={{
             flex: 1,
           }}
-          showsUserLocation
           initialRegion={{
             latitude,
             longitude,
@@ -106,7 +106,13 @@ const MapScreen = ({ route, navigation }: Props) => {
           ) : (
             <></>
           )}
-
+          <Marker
+            coordinate={{
+              latitude: userLocation.latitude,
+              longitude: userLocation.longitude,
+            }}>
+            <Icon name="car-sharp" size={28} color="#3F19F9" />
+          </Marker>
           {isExactLocation ? (
             <Marker coordinate={{ latitude, longitude }} />
           ) : (
