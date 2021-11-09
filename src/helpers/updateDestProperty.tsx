@@ -1,4 +1,5 @@
 import firestore from '@react-native-firebase/firestore';
+import Toast from 'react-native-toast-message';
 
 export const updateDestProperty = async (
   enabled: boolean,
@@ -14,8 +15,16 @@ export const updateDestProperty = async (
       .collection('ownedProperties')
       .doc(propId)
       .update({ isDestProperty: enabled });
-    return { status: 'Éxito' };
+    return Toast.show({
+      type: 'success',
+      text1: 'La propiedad se ha destacado con éxito',
+    });
   } catch (error) {
     console.log('error', error);
+    return Toast.show({
+      type: 'error',
+      text1: 'Hubo un error al destacar la propiedad',
+      text2: 'Inténtelo nuevamente',
+    });
   }
 };

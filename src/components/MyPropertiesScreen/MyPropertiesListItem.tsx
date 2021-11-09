@@ -52,9 +52,7 @@ const MyPropertiesListItem = ({ inmueble }: any) => {
             inmueble.data.action,
             inmueble.id,
           );
-
           deleteMyProperty(inmueble.id, inmueble.data.uId);
-
           navigation.push('MyPropertiesScreen');
         },
       },
@@ -73,10 +71,6 @@ const MyPropertiesListItem = ({ inmueble }: any) => {
             setIsDestProperty(!isDestProperty);
             updateDestProperty(!isDestProperty, inmueble.id, inmueble.data.uId);
             navigation.push('MyPropertiesScreen');
-            Toast.show({
-              type: 'success',
-              text1: 'La propiedad se ha destacado con éxito',
-            });
           },
         },
       ],
