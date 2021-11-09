@@ -1,4 +1,5 @@
 import storage from '@react-native-firebase/storage';
+import firestore from '@react-native-firebase/firestore';
 import Toast from 'react-native-toast-message';
 
 export const updateProfilePicture = async (
@@ -9,6 +10,18 @@ export const updateProfilePicture = async (
   try {
     if (fileName) {
       await storage().ref(`witideal/${uid}/${fileName}`).putFile(uri);
+
+      const photo = await storage()
+        .ref(`witideal/${uid}/${fileName}`)
+        .getDownloadURL();
+
+      await firestore()
+        .collection('production')
+        .doc('Users')
+        .collection(uid)
+        .doc('generalInfo')
+        .set({ photo });
+
       return Toast.show({
         type: 'success',
         text1: 'Tu foto de perfil se ha actualizado con éxito',

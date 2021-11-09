@@ -23,7 +23,7 @@ const PersonalInfo = () => {
   const { userInfo } = useUserInfo(user?.uid!);
   const { role } = useRole(user?.uid!);
   const [tempUri, setTempUri] = useState<string>('');
-  const [fileName, setFileName] = useState('');
+  const [fileName, setFileName] = useState<string>('');
 
   const takePhotoFromGallery = () => {
     launchImageLibrary(
@@ -37,7 +37,6 @@ const PersonalInfo = () => {
         setTempUri(resp.assets![0].uri);
         setFileName(resp.assets![0].fileName!);
         updateProfilePicture(tempUri, fileName, user?.uid!);
-        navigation.push('ProfileScreen');
       },
     );
   };
