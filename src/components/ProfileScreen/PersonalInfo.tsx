@@ -1,15 +1,15 @@
 import React, { useContext } from 'react';
 import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { StackNavigationProp } from '@react-navigation/stack';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import Icon from 'react-native-vector-icons/Ionicons';
+import { useNavigation } from '@react-navigation/core';
 import { AuthContext } from '../../context/auth/AuthContext';
 import { appStyles } from '../../theme/appTheme';
 import { useUserInfo } from '../../hooks/useUserInfo';
 import Loading from '../ui/Loading';
 import { risingStar, rockStar, superStar } from '../../constant/role';
 import { useRole } from '../../hooks/useRole';
-import { useNavigation } from '@react-navigation/core';
-import { StackNavigationProp } from '@react-navigation/stack';
 import { RootProfileStackNavigation } from '../../navigation/ProfileStackNavigation';
 
 const PersonalInfo = () => {
@@ -21,11 +21,15 @@ const PersonalInfo = () => {
   const { userInfo } = useUserInfo(user?.uid!);
   const { role } = useRole(user?.uid!);
 
+  const handleUploadProfilePicture = () => {
+    console.log('hola');
+  };
+
   return (
     <SafeAreaView>
       <View style={styles.container}>
         {userInfo && (
-          <>
+          <TouchableOpacity onPress={handleUploadProfilePicture}>
             {userInfo.photo ? (
               <View style={styles.avatarContainer}>
                 <Image
@@ -45,7 +49,7 @@ const PersonalInfo = () => {
                 />
               </View>
             )}
-          </>
+          </TouchableOpacity>
         )}
         <Text style={styles.center}>¡Hola!</Text>
         {!userInfo ? (
