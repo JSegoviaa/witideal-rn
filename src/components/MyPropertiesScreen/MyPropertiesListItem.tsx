@@ -9,7 +9,6 @@ import {
 } from 'react-native';
 import { useNavigation } from '@react-navigation/core';
 import { StackNavigationProp } from '@react-navigation/stack';
-import Toast from 'react-native-toast-message';
 import { toggleEnable } from '../../helpers/enableProperty';
 import { RootMyPropertiesStackNavigation } from '../../navigation/MyPropertiesStackNavigation';
 import { useRole } from '../../hooks/useRole';
