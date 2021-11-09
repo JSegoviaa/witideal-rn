@@ -73,13 +73,11 @@ const PersonalInfo = () => {
             <Text style={styles.uid}>UID: {user?.uid} </Text>
 
             <Text style={styles.center}>
-              <Icon name="call-outline" size={20} />
-              {userInfo?.phone}
+              <Icon name="call" size={20} /> {userInfo?.phone}
             </Text>
 
             <Text style={styles.center}>
-              <Icon name="mail-open-outline" size={20} />
-              {user?.email}
+              <Icon name="mail" size={20} /> {user?.email}
             </Text>
           </>
         )}
