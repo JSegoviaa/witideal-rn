@@ -3,6 +3,7 @@ import { Alert, StyleSheet, Text, TextInput, View } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import firestore from '@react-native-firebase/firestore';
 import { StackScreenProps } from '@react-navigation/stack';
+import Toast from 'react-native-toast-message';
 import { AuthContext } from '../context/auth/AuthContext';
 import { useForm } from '../hooks/useForm';
 import { useUserInfo } from '../hooks/useUserInfo';
@@ -39,14 +40,27 @@ const EditProfileScreen = ({ navigation }: Props) => {
     }
 
     if (name.length > 0 && lastname.length > 0 && phone.length > 0) {
-      await firestore()
-        .collection('production')
-        .doc('Users')
-        .collection(user?.uid!)
-        .doc('generalInfo')
-        .update(data);
+      try {
+        await firestore()
+          .collection('production')
+          .doc('Users')
+          .collection(user?.uid!)
+          .doc('generalInfo')
+          .update(data);
 
-      navigation.push('ProfileScreen');
+        navigation.push('ProfileScreen');
+        Toast.show({
+          type: 'success',
+          text1: 'Tus datos se han actualizado con éxito',
+        });
+      } catch (error) {
+        Toast.show({
+          type: 'error',
+          text1: 'Hubo un error al editar tus datos',
+          text2: 'Inténtalo nuevamente',
+        });
+        console.log(error);
+      }
     }
   };
 
