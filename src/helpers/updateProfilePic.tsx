@@ -1,17 +1,19 @@
-import { utils } from '@react-native-firebase/app';
 import storage from '@react-native-firebase/storage';
 import Toast from 'react-native-toast-message';
 
-export const updateProfilePicture = async (uid: string) => {
+export const updateProfilePicture = async (
+  uri: string,
+  fileName: string,
+  uid: string,
+) => {
   try {
-    console.log('Hola desde ', uid);
-    const reference = storage().ref(`/witideal/${uid}/`);
-    const pathToFile = `${utils.FilePath.PICTURES_DIRECTORY}/`;
-    // await reference.putFile(pathToFile);
-    return Toast.show({
-      type: 'success',
-      text1: 'Tu foto de perfil se ha actualizado con éxito',
-    });
+    if (fileName) {
+      await storage().ref(`witideal/${uid}/${fileName}`).putFile(uri);
+      return Toast.show({
+        type: 'success',
+        text1: 'Tu foto de perfil se ha actualizado con éxito',
+      });
+    }
   } catch (error) {
     console.log(error);
     return Toast.show({

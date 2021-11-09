@@ -1,9 +1,10 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { useNavigation } from '@react-navigation/core';
+import { launchImageLibrary } from 'react-native-image-picker';
 import { AuthContext } from '../../context/auth/AuthContext';
 import { appStyles } from '../../theme/appTheme';
 import { useUserInfo } from '../../hooks/useUserInfo';
@@ -21,16 +22,31 @@ const PersonalInfo = () => {
   const { user, logOut } = useContext(AuthContext);
   const { userInfo } = useUserInfo(user?.uid!);
   const { role } = useRole(user?.uid!);
+  const [tempUri, setTempUri] = useState<string>('');
+  const [fileName, setFileName] = useState('');
 
-  const handleUploadProfilePicture = () => {
-    updateProfilePicture(user?.uid!);
+  const takePhotoFromGallery = () => {
+    launchImageLibrary(
+      {
+        mediaType: 'photo',
+        quality: 0.5,
+      },
+      resp => {
+        if (resp.didCancel) return;
+        if (!resp.assets![0].uri) return;
+        setTempUri(resp.assets![0].uri);
+        setFileName(resp.assets![0].fileName!);
+        updateProfilePicture(tempUri, fileName, user?.uid!);
+        navigation.push('ProfileScreen');
+      },
+    );
   };
 
   return (
     <SafeAreaView>
       <View style={styles.container}>
         {userInfo && (
-          <TouchableOpacity onPress={handleUploadProfilePicture}>
+          <TouchableOpacity onPress={takePhotoFromGallery}>
             {userInfo.photo ? (
               <View style={styles.avatarContainer}>
                 <Image
