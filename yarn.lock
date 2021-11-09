@@ -1343,6 +1343,11 @@
   resolved "https://registry.yarnpkg.com/@react-native-firebase/firestore/-/firestore-12.9.2.tgz#dbc002985492165f7e1198d1ffb2de8006544478"
   integrity sha512-Nk0rKUH9XB2qKsZpnc23jj58eLk5K8CH/g8L2zATvERWuHIC61DiJ4HHCoOJXoVE9uup82geerVubOt6LeCc0g==
 
+"@react-native-firebase/storage@^13.0.1":
+  version "13.0.1"
+  resolved "https://registry.yarnpkg.com/@react-native-firebase/storage/-/storage-13.0.1.tgz#5be504dc56966bc9b0baafdc0d1c4d8e44e9c86d"
+  integrity sha512-85g8PH4BN15uq7qZ6Ul4w3HdIQV/5H+uVyeKuKt57XtJxVVJRFfwgEekOayLyT2GHnxkjf13oMseZSeaGqTHQQ==
+
 "@react-native-google-signin/google-signin@^7.0.1":
   version "7.0.1"
   resolved "https://registry.yarnpkg.com/@react-native-google-signin/google-signin/-/google-signin-7.0.1.tgz#a03f1a3e43ddb1bb092679bfdd6e38ff6ed819a1"
