@@ -11,6 +11,7 @@ import Loading from '../ui/Loading';
 import { risingStar, rockStar, superStar } from '../../constant/role';
 import { useRole } from '../../hooks/useRole';
 import { RootProfileStackNavigation } from '../../navigation/ProfileStackNavigation';
+import { updateProfilePicture } from '../../helpers/updateProfilePic';
 
 const PersonalInfo = () => {
   const navigation =
@@ -22,7 +23,7 @@ const PersonalInfo = () => {
   const { role } = useRole(user?.uid!);
 
   const handleUploadProfilePicture = () => {
-    console.log('hola');
+    updateProfilePicture(user?.uid!);
   };
 
   return (
