@@ -36,7 +36,7 @@ const PersonalInfo = () => {
         if (!resp.assets![0].uri) return;
         setTempUri(resp.assets![0].uri);
         setFileName(resp.assets![0].fileName!);
-        updateProfilePicture(tempUri, fileName, user?.uid!);
+        updateProfilePicture(tempUri, 'thumb@1100_' + fileName, user?.uid!);
       },
     );
   };

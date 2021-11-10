@@ -20,7 +20,7 @@ export const updateProfilePicture = async (
         .doc('Users')
         .collection(uid)
         .doc('generalInfo')
-        .set({ photo });
+        .update({ photo });
 
       return Toast.show({
         type: 'success',
