@@ -9,11 +9,13 @@ import {
   TextInput,
 } from 'react-native';
 import { Picker } from '@react-native-picker/picker';
+import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete';
+import { StackScreenProps } from '@react-navigation/stack';
 import { appStyles } from '../theme/appTheme';
 import { useForm } from '../hooks/useForm';
 import Filters from '../components/SearchScreen.tsx/Filters';
-import { StackScreenProps } from '@react-navigation/stack';
 import { RootSearchStackNavigation } from '../navigation/SearchStackNavigation';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 const image = { uri: 'https://i.imgur.com/QxTLA6l.jpg' };
 
@@ -240,11 +242,16 @@ const SearchScreen = ({ navigation }: Props) => {
               <Text style={styles.subtitle}>¿Dónde te gustaría buscar?</Text>
             </View>
             <View>
-              <TextInput
-                placeholder="Ubicación"
-                placeholderTextColor="#ccc"
-                style={styles.ubicacion}
-                onChangeText={value => onChange(value, 'ubicacion')}
+              <GooglePlacesAutocomplete
+                placeholder="Buscar"
+                onPress={(data, details = null) => {
+                  // 'details' is provided when fetchDetails = true
+                  console.log(data, details);
+                }}
+                query={{
+                  key: 'AIzaSyAd22YBCutdzEZePBY2wbS2OawTZ1_H7-s',
+                  language: 'es',
+                }}
               />
             </View>
             {showFilters && <Filters />}
