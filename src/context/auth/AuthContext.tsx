@@ -1,5 +1,4 @@
 import React, { createContext, FC, useEffect, useState } from 'react';
-import { Alert } from 'react-native';
 import auth, { FirebaseAuthTypes } from '@react-native-firebase/auth';
 import { GoogleSignin } from '@react-native-google-signin/google-signin';
 import firestore from '@react-native-firebase/firestore';
