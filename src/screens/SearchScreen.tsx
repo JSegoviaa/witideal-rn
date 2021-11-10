@@ -15,7 +15,6 @@ import { appStyles } from '../theme/appTheme';
 import { useForm } from '../hooks/useForm';
 import Filters from '../components/SearchScreen.tsx/Filters';
 import { RootSearchStackNavigation } from '../navigation/SearchStackNavigation';
-import { SafeAreaView } from 'react-native-safe-area-context';
 
 const image = { uri: 'https://i.imgur.com/QxTLA6l.jpg' };
 
@@ -241,7 +240,7 @@ const SearchScreen = ({ navigation }: Props) => {
             <View>
               <Text style={styles.subtitle}>¿Dónde te gustaría buscar?</Text>
             </View>
-            <View>
+            <View style={styles.ubicacion}>
               <GooglePlacesAutocomplete
                 placeholder="Buscar"
                 onPress={(data, details = null) => {
@@ -357,10 +356,7 @@ const styles = StyleSheet.create({
     borderRadius: 3,
     borderWidth: 1,
     color: '#000',
-    height: 40,
     marginRight: 10,
-    padding: 11,
-    textAlign: 'center',
     width: '100%',
   },
 });
