@@ -12,7 +12,8 @@ import PersonalInfo from '../components/ProfileScreen/PersonalInfo';
 import { appStyles } from '../theme/appTheme';
 import { RootProfileStackNavigation } from '../navigation/ProfileStackNavigation';
 
-interface Props extends StackScreenProps<RootProfileStackNavigation, 'ProfileScreen'> {}
+interface Props
+  extends StackScreenProps<RootProfileStackNavigation, 'ProfileScreen'> {}
 
 const ProfileScreen = ({ navigation }: Props) => {
   return (
