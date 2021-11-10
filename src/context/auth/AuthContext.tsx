@@ -3,6 +3,7 @@ import { Alert } from 'react-native';
 import auth, { FirebaseAuthTypes } from '@react-native-firebase/auth';
 import { GoogleSignin } from '@react-native-google-signin/google-signin';
 import firestore from '@react-native-firebase/firestore';
+import Toast from 'react-native-toast-message';
 
 interface RegisterProp {
   name: string;
@@ -10,7 +11,7 @@ interface RegisterProp {
   mail: string;
   phone: string;
   password: string;
-  isPromoter?:boolean;
+  isPromoter?: boolean;
   companyName?: string;
   promoterType?: string;
 }
@@ -54,25 +55,20 @@ export const AuthProvider: FC = ({ children }) => {
       }
     } catch (error) {
       console.log(error);
-      Alert.alert('Error al iniciar sesión', `Inténtelo de nuevo`, [
-        { text: 'Regresar' },
-      ]);
+      Toast.show({
+        type: 'error',
+        text1: 'Error al iniciar sesión',
+        text2: 'Inténtelo nuevamente',
+      });
     }
   };
 
   const logOut = async () => await auth().signOut();
 
   const signInWithGoogle = async () => {
-    console.log('Inicio de sesión con google');
-
     try {
-      //Get user token id
       const { idToken } = await GoogleSignin.signIn();
-
-      //Create google credential with token
       const googleCredential = auth.GoogleAuthProvider.credential(idToken);
-
-      // Sign-in the user with the credential
       return auth().signInWithCredential(googleCredential);
     } catch (error) {
       console.log(error);
