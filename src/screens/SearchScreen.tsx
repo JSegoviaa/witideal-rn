@@ -13,7 +13,7 @@ import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplet
 import { StackScreenProps } from '@react-navigation/stack';
 import { appStyles } from '../theme/appTheme';
 import { useForm } from '../hooks/useForm';
-import Filters from '../components/SearchScreen.tsx/Filters';
+// import Filters from '../components/SearchScreen.tsx/Filters';
 import { RootSearchStackNavigation } from '../navigation/SearchStackNavigation';
 
 const image = { uri: 'https://i.imgur.com/QxTLA6l.jpg' };
@@ -30,12 +30,12 @@ const SearchScreen = ({ navigation }: Props) => {
 
   const [propertyType, setPropertyType] = useState();
   const [currency, setCurrency] = useState();
-  const [showFilters, setShowFilters] = useState<Boolean>(false);
+  // const [showFilters, setShowFilters] = useState<Boolean>(false);
   const [actionSelected, setActionSelected] = useState<Boolean>(false);
   const [propertyTypeSelected, setPropertyTypeSelected] =
     useState<Boolean>(false);
 
-  const handleFilters = () => setShowFilters(!showFilters);
+  // const handleFilters = () => setShowFilters(!showFilters);
   const handleActionTypeSelected = () => setActionSelected(!actionSelected);
   const handlePropertyTypeSelected = () =>
     setPropertyTypeSelected(!propertyTypeSelected);
@@ -48,7 +48,9 @@ const SearchScreen = ({ navigation }: Props) => {
   }, []);
 
   return (
-    <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
+    <ScrollView
+      keyboardShouldPersistTaps={'always'}
+      contentContainerStyle={{ flexGrow: 1 }}>
       <ImageBackground source={image} resizeMode="cover">
         <View style={appStyles.container}>
           <Text style={styles.title}>¡Hola! Bievenido a Witideal</Text>
@@ -243,24 +245,38 @@ const SearchScreen = ({ navigation }: Props) => {
             <View style={styles.ubicacion}>
               <GooglePlacesAutocomplete
                 placeholder="Buscar"
+                fetchDetails
+                GooglePlacesSearchQuery={{
+                  rankby: 'distance',
+                }}
                 onPress={(data, details = null) => {
-                  // 'details' is provided when fetchDetails = true
-                  console.log(data, details);
+                  // console.log(details?.geometry.location.lat, 'latitud');
+                  // console.log(details?.geometry.location.lng, 'longitud');
                 }}
                 query={{
                   key: 'AIzaSyAd22YBCutdzEZePBY2wbS2OawTZ1_H7-s',
                   language: 'es',
+                  components: 'country:mx',
                 }}
               />
             </View>
-            {showFilters && <Filters />}
+            {/* {showFilters && <Filters />} */}
 
             <View style={{ flexDirection: 'row' }}>
-              <TouchableOpacity
+              {/* <TouchableOpacity
                 style={styles.btnFiltros}
                 onPress={handleFilters}>
                 <Text style={{ color: '#3F19F9', fontSize: 15 }}>
                   {showFilters ? 'Ocultar filtros' : 'Agregar más filtros'}
+                </Text>
+              </TouchableOpacity> */}
+              <TouchableOpacity style={styles.btnFiltros}>
+                <Text
+                  style={{ color: '#3F19F9', fontSize: 15 }}
+                  onPress={() => {
+                    navigation.navigate('PropertiesListScreen');
+                  }}>
+                  Mostrar inmuebles
                 </Text>
               </TouchableOpacity>
               <TouchableOpacity style={styles.btnFiltros}>
@@ -269,7 +285,7 @@ const SearchScreen = ({ navigation }: Props) => {
                   onPress={() => {
                     navigation.navigate('PropertiesListScreen');
                   }}>
-                  Mostrar inmuebles
+                  Mostrar en el mapa
                 </Text>
               </TouchableOpacity>
             </View>
