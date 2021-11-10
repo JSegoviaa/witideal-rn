@@ -111,6 +111,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "643219863964-bc9ht6a8chlf9fa0evmcn2jukvs1f7lb.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.witidealapp",
+            "certificate_hash": "5e8f16062ea3cd2c4a0d547876baa6f38cabf625"
+          }
+        },
+        {
           "client_id": "643219863964-3ne34usc5iikprcms6mtcgpu1l308tcf.apps.googleusercontent.com",
           "client_type": 3
         }
