@@ -246,6 +246,10 @@ const SearchScreen = ({ navigation }: Props) => {
               <GooglePlacesAutocomplete
                 placeholder="Buscar"
                 fetchDetails
+                styles={{
+                  textInput: { color: 'black' },
+                  description: { color: 'black' },
+                }}
                 GooglePlacesSearchQuery={{
                   rankby: 'distance',
                 }}
