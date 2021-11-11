@@ -9,8 +9,7 @@ interface Props
   extends StackScreenProps<RootSearchStackNavigation, 'PropertiesMapScreen'> {}
 
 const PropertiesMapScreen = ({ navigation, route }: Props) => {
-  const { latitude, longitude } = route.params;
-
+  const { latitude, longitude, propertyType } = route.params;
   const handleGoBack = () => navigation.goBack();
 
   return (

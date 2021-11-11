@@ -1,6 +1,6 @@
 import { createStackNavigator } from '@react-navigation/stack';
 import React from 'react';
-import { Image, StyleSheet } from 'react-native';
+import { Image } from 'react-native';
 import HomeScreen from '../screens/HomeScreen';
 import PropertiesListScreen from '../screens/PropertiesListScreen';
 import PropertiesMapScreen from '../screens/PropertiesMapScreen';
@@ -15,6 +15,7 @@ export type RootSearchStackNavigation = {
   PropertiesMapScreen: {
     latitude: number;
     longitude: number;
+    propertyType: string;
   };
 };
 

@@ -14,6 +14,16 @@ import { StackScreenProps } from '@react-navigation/stack';
 import { appStyles } from '../theme/appTheme';
 import { useForm } from '../hooks/useForm';
 import { RootSearchStackNavigation } from '../navigation/SearchStackNavigation';
+import {
+  aparment,
+  building,
+  condoHouse,
+  local,
+  office,
+  singleHouse,
+  terrain,
+  warehouse,
+} from '../constant/propertyType';
 
 const image = { uri: 'https://i.imgur.com/QxTLA6l.jpg' };
 
@@ -36,15 +46,22 @@ const SearchScreen = ({ navigation }: Props) => {
     longitude: 0,
     latitude: 0,
   });
-  const [propertyType, setPropertyType] = useState();
+  const [propertyType, setPropertyType] = useState(singleHouse);
   const [currency, setCurrency] = useState();
   const [actionSelected, setActionSelected] = useState<Boolean>(false);
   const [propertyTypeSelected, setPropertyTypeSelected] =
     useState<Boolean>(false);
 
   const handleActionTypeSelected = () => setActionSelected(!actionSelected);
-  const handlePropertyTypeSelected = () =>
+  const handlePropertyTypeSelected = () => {
     setPropertyTypeSelected(!propertyTypeSelected);
+    if (!propertyTypeSelected) {
+      setPropertyType(office);
+    }
+    if (propertyTypeSelected) {
+      setPropertyType(singleHouse);
+    }
+  };
 
   useEffect(() => {
     navigation.setOptions({
@@ -159,14 +176,14 @@ const SearchScreen = ({ navigation }: Props) => {
                     onValueChange={(itemValue, itemIndex) =>
                       setPropertyType(itemValue)
                     }>
-                    <Picker.Item label="Casa" value="singleHouse" />
+                    <Picker.Item label="Casa" value={singleHouse} />
                     <Picker.Item
                       label="Casa en condominio"
-                      value="condoHouse"
+                      value={condoHouse}
                     />
-                    <Picker.Item label="Departamento" value="aparment" />
-                    <Picker.Item label="Edificio" value="building" />
-                    <Picker.Item label="Terreno" value="terrain" />
+                    <Picker.Item label="Departamento" value={aparment} />
+                    <Picker.Item label="Edificio" value={building} />
+                    <Picker.Item label="Terreno" value={terrain} />
                   </Picker>
                 </View>
               </View>
@@ -206,14 +223,9 @@ const SearchScreen = ({ navigation }: Props) => {
                     onValueChange={(itemValue, itemIndex) =>
                       setPropertyType(itemValue)
                     }>
-                    <Picker.Item label="Casa" value="casa" />
-                    <Picker.Item
-                      label="Casa en condominio"
-                      value="casa-condominio"
-                    />
-                    <Picker.Item label="Departamento" value="departamento" />
-                    <Picker.Item label="Edificio" value="edificio" />
-                    <Picker.Item label="Terreno" value="terreno" />
+                    <Picker.Item label="Oficina" value={office} />
+                    <Picker.Item label="Local" value={local} />
+                    <Picker.Item label="Bodega" value={warehouse} />
                   </Picker>
                 </View>
               </View>
@@ -295,6 +307,7 @@ const SearchScreen = ({ navigation }: Props) => {
                   navigation.navigate('PropertiesMapScreen', {
                     latitude: coordinates.latitude,
                     longitude: coordinates.longitude,
+                    propertyType,
                   });
                 }}>
                 <Text style={{ color: '#3F19F9', fontSize: 15 }}>
