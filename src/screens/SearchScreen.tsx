@@ -13,10 +13,14 @@ import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplet
 import { StackScreenProps } from '@react-navigation/stack';
 import { appStyles } from '../theme/appTheme';
 import { useForm } from '../hooks/useForm';
-// import Filters from '../components/SearchScreen.tsx/Filters';
 import { RootSearchStackNavigation } from '../navigation/SearchStackNavigation';
 
 const image = { uri: 'https://i.imgur.com/QxTLA6l.jpg' };
+
+interface Location {
+  latitude: number | undefined;
+  longitude: number | undefined;
+}
 
 interface Props
   extends StackScreenProps<RootSearchStackNavigation, 'SearchScreen'> {}
@@ -28,14 +32,16 @@ const SearchScreen = ({ navigation }: Props) => {
     ubicacion: '',
   });
 
+  const [coordinates, setCoordinates] = useState<Location>({
+    longitude: 0,
+    latitude: 0,
+  });
   const [propertyType, setPropertyType] = useState();
   const [currency, setCurrency] = useState();
-  // const [showFilters, setShowFilters] = useState<Boolean>(false);
   const [actionSelected, setActionSelected] = useState<Boolean>(false);
   const [propertyTypeSelected, setPropertyTypeSelected] =
     useState<Boolean>(false);
 
-  // const handleFilters = () => setShowFilters(!showFilters);
   const handleActionTypeSelected = () => setActionSelected(!actionSelected);
   const handlePropertyTypeSelected = () =>
     setPropertyTypeSelected(!propertyTypeSelected);
@@ -47,9 +53,12 @@ const SearchScreen = ({ navigation }: Props) => {
     });
   }, []);
 
+  console.log(coordinates, 'coorendadas');
+
   return (
     <ScrollView
       keyboardShouldPersistTaps={'always'}
+      nestedScrollEnabled
       contentContainerStyle={{ flexGrow: 1 }}>
       <ImageBackground source={image} resizeMode="cover">
         <View style={appStyles.container}>
@@ -244,6 +253,7 @@ const SearchScreen = ({ navigation }: Props) => {
             </View>
             <View style={styles.ubicacion}>
               <GooglePlacesAutocomplete
+                textInputProps={{ placeholderTextColor: '#000' }}
                 placeholder="Buscar"
                 fetchDetails
                 styles={{
@@ -254,8 +264,14 @@ const SearchScreen = ({ navigation }: Props) => {
                   rankby: 'distance',
                 }}
                 onPress={(data, details = null) => {
-                  // console.log(details?.geometry.location.lat, 'latitud');
-                  // console.log(details?.geometry.location.lng, 'longitud');
+                  // console.log(details?.address_components);
+                  // console.log(details?.address_components.length);
+                  console.log(details?.geometry.location.lat, 'latitud');
+                  console.log(details?.geometry.location.lng, 'longitud');
+                  setCoordinates({
+                    latitude: details?.geometry.location.lat,
+                    longitude: details?.geometry.location.lng,
+                  });
                 }}
                 query={{
                   key: 'AIzaSyAd22YBCutdzEZePBY2wbS2OawTZ1_H7-s',
@@ -264,16 +280,8 @@ const SearchScreen = ({ navigation }: Props) => {
                 }}
               />
             </View>
-            {/* {showFilters && <Filters />} */}
 
             <View style={{ flexDirection: 'row' }}>
-              {/* <TouchableOpacity
-                style={styles.btnFiltros}
-                onPress={handleFilters}>
-                <Text style={{ color: '#3F19F9', fontSize: 15 }}>
-                  {showFilters ? 'Ocultar filtros' : 'Agregar más filtros'}
-                </Text>
-              </TouchableOpacity> */}
               <TouchableOpacity style={styles.btnFiltros}>
                 <Text
                   style={{ color: '#3F19F9', fontSize: 15 }}
