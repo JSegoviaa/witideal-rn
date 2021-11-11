@@ -3,6 +3,7 @@ import React from 'react';
 import { Image, StyleSheet } from 'react-native';
 import HomeScreen from '../screens/HomeScreen';
 import PropertiesListScreen from '../screens/PropertiesListScreen';
+import PropertiesMapScreen from '../screens/PropertiesMapScreen';
 import PropertyDetailScreen from '../screens/PropertyDetailScreen';
 import SearchScreen from '../screens/SearchScreen';
 
@@ -11,6 +12,7 @@ export type RootSearchStackNavigation = {
   SearchScreen: undefined;
   PropertiesListScreen: undefined;
   PropertyDetailScreen: { id: string; action: string; propertyType: string };
+  PropertiesMapScreen: undefined;
 };
 
 const Stack = createStackNavigator<RootSearchStackNavigation>();
@@ -48,6 +50,11 @@ const SearchStackNavigation = () => {
         name="PropertyDetailScreen"
         options={{ title: '' }}
         component={PropertyDetailScreen}
+      />
+      <Stack.Screen
+        name="PropertiesMapScreen"
+        options={{ title: '' }}
+        component={PropertiesMapScreen}
       />
     </Stack.Navigator>
   );

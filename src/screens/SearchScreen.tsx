@@ -291,12 +291,12 @@ const SearchScreen = ({ navigation }: Props) => {
                   Mostrar inmuebles
                 </Text>
               </TouchableOpacity>
-              <TouchableOpacity style={styles.btnFiltros}>
-                <Text
-                  style={{ color: '#3F19F9', fontSize: 15 }}
-                  onPress={() => {
-                    navigation.navigate('PropertiesListScreen');
-                  }}>
+              <TouchableOpacity
+                style={styles.btnFiltros}
+                onPress={() => {
+                  navigation.navigate('PropertiesMapScreen');
+                }}>
+                <Text style={{ color: '#3F19F9', fontSize: 15 }}>
                   Mostrar en el mapa
                 </Text>
               </TouchableOpacity>
