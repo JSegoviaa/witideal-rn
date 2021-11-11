@@ -12,7 +12,10 @@ export type RootSearchStackNavigation = {
   SearchScreen: undefined;
   PropertiesListScreen: undefined;
   PropertyDetailScreen: { id: string; action: string; propertyType: string };
-  PropertiesMapScreen: undefined;
+  PropertiesMapScreen: {
+    latitude: number;
+    longitude: number;
+  };
 };
 
 const Stack = createStackNavigator<RootSearchStackNavigation>();
@@ -53,7 +56,7 @@ const SearchStackNavigation = () => {
       />
       <Stack.Screen
         name="PropertiesMapScreen"
-        options={{ title: '' }}
+        options={{ title: '', headerShown: false }}
         component={PropertiesMapScreen}
       />
     </Stack.Navigator>

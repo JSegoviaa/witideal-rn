@@ -18,8 +18,8 @@ import { RootSearchStackNavigation } from '../navigation/SearchStackNavigation';
 const image = { uri: 'https://i.imgur.com/QxTLA6l.jpg' };
 
 interface Location {
-  latitude: number | undefined;
-  longitude: number | undefined;
+  latitude: number;
+  longitude: number;
 }
 
 interface Props
@@ -269,8 +269,8 @@ const SearchScreen = ({ navigation }: Props) => {
                   console.log(details?.geometry.location.lat, 'latitud');
                   console.log(details?.geometry.location.lng, 'longitud');
                   setCoordinates({
-                    latitude: details?.geometry.location.lat,
-                    longitude: details?.geometry.location.lng,
+                    latitude: details?.geometry.location.lat!,
+                    longitude: details?.geometry.location.lng!,
                   });
                 }}
                 query={{
@@ -294,7 +294,10 @@ const SearchScreen = ({ navigation }: Props) => {
               <TouchableOpacity
                 style={styles.btnFiltros}
                 onPress={() => {
-                  navigation.navigate('PropertiesMapScreen');
+                  navigation.navigate('PropertiesMapScreen', {
+                    latitude: coordinates.latitude,
+                    longitude: coordinates.longitude,
+                  });
                 }}>
                 <Text style={{ color: '#3F19F9', fontSize: 15 }}>
                   Mostrar en el mapa
