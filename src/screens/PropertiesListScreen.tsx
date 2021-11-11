@@ -4,6 +4,8 @@ import Destacados from '../components/PropertiesListScreen/Destacados';
 import PropertiesList from '../components/PropertiesListScreen/PropertiesList';
 import { appStyles } from '../theme/appTheme';
 import GradientBackground from '../components/PropertiesListScreen/GradientBackground';
+import { StackScreenProps } from '@react-navigation/stack';
+import { RootSearchStackNavigation } from '../navigation/SearchStackNavigation';
 
 const inmuebles = [
   {
@@ -51,7 +53,13 @@ const inmuebles = [
   },
 ];
 
-const PropertiesListScreen = () => {
+interface Props
+  extends StackScreenProps<RootSearchStackNavigation, 'PropertiesListScreen'> {}
+
+const PropertiesListScreen = ({ route }: Props) => {
+  const { action, currency, isCommercial, propertyType } = route.params;
+  console.log(action, currency, isCommercial, propertyType, ' desde la lista');
+
   return (
     <ScrollView>
       <GradientBackground>

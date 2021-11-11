@@ -17,16 +17,17 @@ interface PropertiesMap {
 }
 
 interface PropertiesList {
-  id: string;
   action: string;
+  currency: string;
+  isCommercial: boolean;
   propertyType: string;
 }
 
 export type RootSearchStackNavigation = {
   HomeScreen: undefined;
   SearchScreen: undefined;
-  PropertiesListScreen: undefined;
-  PropertyDetailScreen: PropertiesList;
+  PropertiesListScreen: PropertiesList;
+  PropertyDetailScreen: undefined;
   PropertiesMapScreen: PropertiesMap;
 };
 

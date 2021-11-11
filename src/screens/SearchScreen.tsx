@@ -314,7 +314,12 @@ const SearchScreen = ({ navigation }: Props) => {
                 <Text
                   style={{ color: '#3F19F9', fontSize: 15 }}
                   onPress={() => {
-                    navigation.navigate('PropertiesListScreen');
+                    navigation.navigate('PropertiesListScreen', {
+                      action,
+                      currency,
+                      isCommercial,
+                      propertyType,
+                    });
                   }}>
                   Mostrar inmuebles
                 </Text>
