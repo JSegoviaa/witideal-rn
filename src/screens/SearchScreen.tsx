@@ -54,7 +54,7 @@ const SearchScreen = ({ navigation }: Props) => {
   }, []);
 
   console.log(coordinates, 'coorendadas');
-
+  console.log(propertyType);
   return (
     <ScrollView
       keyboardShouldPersistTaps={'always'}
@@ -159,14 +159,14 @@ const SearchScreen = ({ navigation }: Props) => {
                     onValueChange={(itemValue, itemIndex) =>
                       setPropertyType(itemValue)
                     }>
-                    <Picker.Item label="Casa" value="casa" />
+                    <Picker.Item label="Casa" value="singleHouse" />
                     <Picker.Item
                       label="Casa en condominio"
-                      value="casa-condominio"
+                      value="condoHouse"
                     />
-                    <Picker.Item label="Departamento" value="departamento" />
-                    <Picker.Item label="Edificio" value="edificio" />
-                    <Picker.Item label="Terreno" value="terreno" />
+                    <Picker.Item label="Departamento" value="aparment" />
+                    <Picker.Item label="Edificio" value="building" />
+                    <Picker.Item label="Terreno" value="terrain" />
                   </Picker>
                 </View>
               </View>
@@ -266,8 +266,6 @@ const SearchScreen = ({ navigation }: Props) => {
                 onPress={(data, details = null) => {
                   // console.log(details?.address_components);
                   // console.log(details?.address_components.length);
-                  console.log(details?.geometry.location.lat, 'latitud');
-                  console.log(details?.geometry.location.lng, 'longitud');
                   setCoordinates({
                     latitude: details?.geometry.location.lat!,
                     longitude: details?.geometry.location.lng!,
