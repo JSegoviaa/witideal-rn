@@ -39,9 +39,8 @@ interface Props
 
 const SearchScreen = ({ navigation }: Props) => {
   const { form, onChange } = useForm({
-    desde: '',
-    hasta: '',
-    ubicacion: '',
+    desde: 0,
+    hasta: 0,
   });
 
   const [coordinates, setCoordinates] = useState<Location>({
@@ -86,10 +85,6 @@ const SearchScreen = ({ navigation }: Props) => {
     });
   }, []);
 
-  console.log(action, 'action');
-  console.log(propertyType);
-  console.log(currency, 'currency');
-  console.log(isCommercial, 'comercial');
   return (
     <ScrollView
       keyboardShouldPersistTaps={'always'}
@@ -257,12 +252,14 @@ const SearchScreen = ({ navigation }: Props) => {
               <TextInput
                 placeholder="Desde"
                 placeholderTextColor="#ccc"
+                keyboardType="numeric"
                 style={styles.input}
                 onChangeText={value => onChange(value, 'desde')}
               />
               <TextInput
                 placeholder="Hasta"
                 placeholderTextColor="#ccc"
+                keyboardType="numeric"
                 style={styles.input}
                 onChangeText={value => onChange(value, 'hasta')}
               />
