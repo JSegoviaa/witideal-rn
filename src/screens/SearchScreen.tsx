@@ -51,6 +51,7 @@ const SearchScreen = ({ navigation }: Props) => {
   const [action, setAction] = useState(rent);
   const [actionSelected, setActionSelected] = useState<Boolean>(false);
   const [currency, setCurrency] = useState(mxn);
+  const [isCommercial, setIsCommercial] = useState(false);
   const [propertyType, setPropertyType] = useState(singleHouse);
   const [propertyTypeSelected, setPropertyTypeSelected] =
     useState<Boolean>(false);
@@ -67,11 +68,14 @@ const SearchScreen = ({ navigation }: Props) => {
 
   const handlePropertyTypeSelected = () => {
     setPropertyTypeSelected(!propertyTypeSelected);
+
     if (!propertyTypeSelected) {
       setPropertyType(office);
+      setIsCommercial(true);
     }
     if (propertyTypeSelected) {
       setPropertyType(singleHouse);
+      setIsCommercial(false);
     }
   };
 
@@ -85,6 +89,7 @@ const SearchScreen = ({ navigation }: Props) => {
   console.log(action, 'action');
   console.log(propertyType);
   console.log(currency, 'currency');
+  console.log(isCommercial, 'comercial');
   return (
     <ScrollView
       keyboardShouldPersistTaps={'always'}
@@ -323,6 +328,7 @@ const SearchScreen = ({ navigation }: Props) => {
                     propertyType,
                     action,
                     currency,
+                    isCommercial,
                   });
                 }}>
                 <Text style={{ color: '#3F19F9', fontSize: 15 }}>
