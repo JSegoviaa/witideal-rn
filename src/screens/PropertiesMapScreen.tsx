@@ -4,6 +4,7 @@ import { StackScreenProps } from '@react-navigation/stack';
 import Icon from 'react-native-vector-icons/Ionicons';
 import MapView from 'react-native-maps';
 import { RootSearchStackNavigation } from '../navigation/SearchStackNavigation';
+import { useProperties } from '../hooks/useProperties';
 
 interface Props
   extends StackScreenProps<RootSearchStackNavigation, 'PropertiesMapScreen'> {}
@@ -13,7 +14,15 @@ const PropertiesMapScreen = ({ navigation, route }: Props) => {
     route.params;
   const handleGoBack = () => navigation.goBack();
 
-  console.log(propertyType, action, currency, isCommercial, 'desde el mapa');
+  // console.log(propertyType, action, currency, isCommercial, 'desde el mapa');
+
+  const { loading, properties } = useProperties(
+    propertyType,
+    action,
+    currency,
+    isCommercial,
+  );
+  console.log(loading, properties, 'funciona');
 
   return (
     <View style={{ flex: 1 }}>

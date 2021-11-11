@@ -5,7 +5,12 @@ interface DocumentData {
   [key: string]: any;
 }
 
-export const useProperties = (propertyType: string, action: string) => {
+export const useProperties = (
+  propertyType: string,
+  action: string,
+  currency: string,
+  isCommercial: boolean,
+) => {
   const [loading, setLoading] = useState<Boolean>(true);
   const [properties, setProperties] = useState<DocumentData>([]);
 
@@ -16,7 +21,9 @@ export const useProperties = (propertyType: string, action: string) => {
         .doc('witideal')
         .collection('genders')
         .doc(propertyType)
-        .collection(action);
+        .collection(action)
+        .where('currency', '==', currency)
+        .where('isCommercial', '==', isCommercial);
 
       const list: DocumentData = [];
 
