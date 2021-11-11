@@ -4,7 +4,6 @@ import { StackNavigationProp } from '@react-navigation/stack';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { useNavigation } from '@react-navigation/core';
-import { launchImageLibrary } from 'react-native-image-picker';
 import { AuthContext } from '../../context/auth/AuthContext';
 import { appStyles } from '../../theme/appTheme';
 import { useUserInfo } from '../../hooks/useUserInfo';
@@ -12,40 +11,25 @@ import Loading from '../ui/Loading';
 import { risingStar, rockStar, superStar } from '../../constant/role';
 import { useRole } from '../../hooks/useRole';
 import { RootProfileStackNavigation } from '../../navigation/ProfileStackNavigation';
-import { updateProfilePicture } from '../../helpers/updateProfilePic';
 
 const PersonalInfo = () => {
   const navigation =
     useNavigation<
       StackNavigationProp<RootProfileStackNavigation, 'ProfileScreen'>
     >();
+
   const { user, logOut } = useContext(AuthContext);
   const { userInfo } = useUserInfo(user?.uid!);
   const { role } = useRole(user?.uid!);
-  const [tempUri, setTempUri] = useState<string>('');
-  const [fileName, setFileName] = useState<string>('');
-
-  const takePhotoFromGallery = () => {
-    launchImageLibrary(
-      {
-        mediaType: 'photo',
-        quality: 0.5,
-      },
-      resp => {
-        if (resp.didCancel) return;
-        if (!resp.assets![0].uri) return;
-        setTempUri(resp.assets![0].uri);
-        setFileName(resp.assets![0].fileName!);
-        updateProfilePicture(tempUri, 'thumb@1100_' + fileName, user?.uid!);
-      },
-    );
-  };
 
   return (
     <SafeAreaView>
       <View style={styles.container}>
         {userInfo && (
-          <TouchableOpacity onPress={takePhotoFromGallery}>
+          <TouchableOpacity
+            onPress={() => {
+              navigation.navigate('EditProfilePicScreen');
+            }}>
             {userInfo.photo ? (
               <View style={styles.avatarContainer}>
                 <Image

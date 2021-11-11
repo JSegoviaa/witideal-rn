@@ -1,5 +1,6 @@
 import { createStackNavigator } from '@react-navigation/stack';
 import React from 'react';
+import EditProfilePicScreen from '../screens/EditProfilePicScreen';
 import EditProfileScreen from '../screens/EditProfileScreen';
 import MyFavoritesScreen from '../screens/MyFavoritesScreen';
 import NoPScreen from '../screens/NoPScreen';
@@ -16,6 +17,7 @@ export type RootProfileStackNavigation = {
   TosScreen: undefined;
   NoPScreen: undefined;
   FavoriteDetailScreen: { id: string; action: string; propertyType: string };
+  EditProfilePicScreen: undefined;
 };
 
 const Stack = createStackNavigator<RootProfileStackNavigation>();
@@ -68,6 +70,11 @@ const ProfileStackNavigation = () => {
         name="FavoriteDetailScreen"
         options={{ headerShown: false }}
         component={PropertyDetailScreen}
+      />
+      <Stack.Screen
+        name="EditProfilePicScreen"
+        options={{ headerShown: false }}
+        component={EditProfilePicScreen}
       />
     </Stack.Navigator>
   );
