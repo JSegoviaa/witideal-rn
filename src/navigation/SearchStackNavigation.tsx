@@ -7,16 +7,25 @@ import PropertiesMapScreen from '../screens/PropertiesMapScreen';
 import PropertyDetailScreen from '../screens/PropertyDetailScreen';
 import SearchScreen from '../screens/SearchScreen';
 
+interface PropertiesMap {
+  action: string;
+  latitude: number;
+  longitude: number;
+  propertyType: string;
+}
+
+interface PropertiesList {
+  id: string;
+  action: string;
+  propertyType: string;
+}
+
 export type RootSearchStackNavigation = {
   HomeScreen: undefined;
   SearchScreen: undefined;
   PropertiesListScreen: undefined;
-  PropertyDetailScreen: { id: string; action: string; propertyType: string };
-  PropertiesMapScreen: {
-    latitude: number;
-    longitude: number;
-    propertyType: string;
-  };
+  PropertyDetailScreen: PropertiesList;
+  PropertiesMapScreen: PropertiesMap;
 };
 
 const Stack = createStackNavigator<RootSearchStackNavigation>();

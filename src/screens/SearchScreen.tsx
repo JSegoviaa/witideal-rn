@@ -24,6 +24,7 @@ import {
   terrain,
   warehouse,
 } from '../constant/propertyType';
+import { buy, rent } from '../constant/action';
 
 const image = { uri: 'https://i.imgur.com/QxTLA6l.jpg' };
 
@@ -46,13 +47,23 @@ const SearchScreen = ({ navigation }: Props) => {
     longitude: 0,
     latitude: 0,
   });
-  const [propertyType, setPropertyType] = useState(singleHouse);
-  const [currency, setCurrency] = useState();
+  const [action, setAction] = useState(rent);
   const [actionSelected, setActionSelected] = useState<Boolean>(false);
+  const [currency, setCurrency] = useState();
+  const [propertyType, setPropertyType] = useState(singleHouse);
   const [propertyTypeSelected, setPropertyTypeSelected] =
     useState<Boolean>(false);
 
-  const handleActionTypeSelected = () => setActionSelected(!actionSelected);
+  const handleActionTypeSelected = () => {
+    setActionSelected(!actionSelected);
+    if (!actionSelected) {
+      setAction(buy);
+    }
+    if (actionSelected) {
+      setAction(rent);
+    }
+  };
+
   const handlePropertyTypeSelected = () => {
     setPropertyTypeSelected(!propertyTypeSelected);
     if (!propertyTypeSelected) {
@@ -70,7 +81,7 @@ const SearchScreen = ({ navigation }: Props) => {
     });
   }, []);
 
-  console.log(coordinates, 'coorendadas');
+  console.log(action, 'action');
   console.log(propertyType);
   return (
     <ScrollView
@@ -308,6 +319,7 @@ const SearchScreen = ({ navigation }: Props) => {
                     latitude: coordinates.latitude,
                     longitude: coordinates.longitude,
                     propertyType,
+                    action,
                   });
                 }}>
                 <Text style={{ color: '#3F19F9', fontSize: 15 }}>
