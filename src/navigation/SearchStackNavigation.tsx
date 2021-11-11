@@ -9,6 +9,7 @@ import SearchScreen from '../screens/SearchScreen';
 
 interface PropertiesMap {
   action: string;
+  currency: string;
   latitude: number;
   longitude: number;
   propertyType: string;

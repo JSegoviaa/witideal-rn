@@ -25,6 +25,7 @@ import {
   warehouse,
 } from '../constant/propertyType';
 import { buy, rent } from '../constant/action';
+import { mxn, usd } from '../constant/currency';
 
 const image = { uri: 'https://i.imgur.com/QxTLA6l.jpg' };
 
@@ -49,7 +50,7 @@ const SearchScreen = ({ navigation }: Props) => {
   });
   const [action, setAction] = useState(rent);
   const [actionSelected, setActionSelected] = useState<Boolean>(false);
-  const [currency, setCurrency] = useState();
+  const [currency, setCurrency] = useState(mxn);
   const [propertyType, setPropertyType] = useState(singleHouse);
   const [propertyTypeSelected, setPropertyTypeSelected] =
     useState<Boolean>(false);
@@ -83,6 +84,7 @@ const SearchScreen = ({ navigation }: Props) => {
 
   console.log(action, 'action');
   console.log(propertyType);
+  console.log(currency, 'currency');
   return (
     <ScrollView
       keyboardShouldPersistTaps={'always'}
@@ -267,8 +269,8 @@ const SearchScreen = ({ navigation }: Props) => {
                 onValueChange={(itemValue, itemIndex) =>
                   setCurrency(itemValue)
                 }>
-                <Picker.Item label="MXN" value="mxn" />
-                <Picker.Item label="USD" value="usd" />
+                <Picker.Item label="MXN" value={mxn} />
+                <Picker.Item label="USD" value={usd} />
               </Picker>
             </View>
             <View>
@@ -320,6 +322,7 @@ const SearchScreen = ({ navigation }: Props) => {
                     longitude: coordinates.longitude,
                     propertyType,
                     action,
+                    currency,
                   });
                 }}>
                 <Text style={{ color: '#3F19F9', fontSize: 15 }}>

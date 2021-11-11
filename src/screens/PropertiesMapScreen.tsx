@@ -9,10 +9,10 @@ interface Props
   extends StackScreenProps<RootSearchStackNavigation, 'PropertiesMapScreen'> {}
 
 const PropertiesMapScreen = ({ navigation, route }: Props) => {
-  const { latitude, longitude, propertyType, action } = route.params;
+  const { latitude, longitude, propertyType, action, currency } = route.params;
   const handleGoBack = () => navigation.goBack();
 
-  console.log(propertyType, action, 'desde el mapa');
+  console.log(propertyType, action, currency, 'desde el mapa');
 
   return (
     <View style={{ flex: 1 }}>
