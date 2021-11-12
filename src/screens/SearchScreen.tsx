@@ -119,11 +119,13 @@ const SearchScreen = ({ navigation }: Props) => {
         locality,
         bath,
         room,
+        petFriendly,
+        conservacion,
       });
     }
   };
 
-  console.log(petFriendly, bath, room, conservacion);
+  console.log(petFriendly, conservacion, room, bath);
 
   return (
     <ScrollView

@@ -22,6 +22,8 @@ const PropertiesMapScreen = ({ navigation, route }: Props) => {
     locality,
     bath,
     room,
+    petFriendly,
+    conservacion,
   } = route.params;
 
   const { loading, properties } = useProperties(
@@ -32,6 +34,8 @@ const PropertiesMapScreen = ({ navigation, route }: Props) => {
     locality,
     bath,
     room,
+    petFriendly,
+    conservacion,
   );
 
   const [showDetails, setShowDetails] = useState(false);

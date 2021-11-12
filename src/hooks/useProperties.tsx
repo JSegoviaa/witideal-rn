@@ -13,6 +13,8 @@ export const useProperties = (
   locality: string,
   bath: number,
   room: number,
+  petFriendly: boolean,
+  conservacion: string,
 ) => {
   const [loading, setLoading] = useState<Boolean>(true);
   const [properties, setProperties] = useState<DocumentData>([]);
@@ -30,8 +32,10 @@ export const useProperties = (
         .where('locality', '==', locality)
         .where('isEnabled', '==', true)
         .where('isExactLocation', '==', true)
-        .where('specificData.bath', '==', bath)
-        .where('specificData.room', '==', room);
+        .where('specificData.bath', '==', Number(bath))
+        .where('specificData.room', '==', Number(room))
+        .where('specificData.petFriendly', '==', petFriendly)
+        .where('specificData.preservationState', '==', conservacion);
 
       const list: DocumentData = [];
 
