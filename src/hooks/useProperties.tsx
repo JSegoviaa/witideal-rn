@@ -10,6 +10,7 @@ export const useProperties = (
   action: string,
   currency: string,
   isCommercial: boolean,
+  locality: string,
 ) => {
   const [loading, setLoading] = useState<Boolean>(true);
   const [properties, setProperties] = useState<DocumentData>([]);
@@ -23,7 +24,8 @@ export const useProperties = (
         .doc(propertyType)
         .collection(action)
         .where('currency', '==', currency)
-        .where('isCommercial', '==', isCommercial);
+        .where('isCommercial', '==', isCommercial)
+        .where('locality', '==', locality);
 
       const list: DocumentData = [];
 

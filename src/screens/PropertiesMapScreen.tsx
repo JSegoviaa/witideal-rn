@@ -11,8 +11,15 @@ interface Props
   extends StackScreenProps<RootSearchStackNavigation, 'PropertiesMapScreen'> {}
 
 const PropertiesMapScreen = ({ navigation, route }: Props) => {
-  const { latitude, longitude, propertyType, action, currency, isCommercial } =
-    route.params;
+  const {
+    latitude,
+    longitude,
+    propertyType,
+    action,
+    currency,
+    isCommercial,
+    locality,
+  } = route.params;
   const handleGoBack = () => navigation.goBack();
 
   const { loading, properties } = useProperties(
@@ -20,6 +27,7 @@ const PropertiesMapScreen = ({ navigation, route }: Props) => {
     action,
     currency,
     isCommercial,
+    locality,
   );
 
   return (

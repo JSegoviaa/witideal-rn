@@ -54,6 +54,7 @@ const SearchScreen = ({ navigation }: Props) => {
   const [propertyType, setPropertyType] = useState(singleHouse);
   const [propertyTypeSelected, setPropertyTypeSelected] =
     useState<Boolean>(false);
+  const [locality, setLocality] = useState('');
 
   const handleActionTypeSelected = () => {
     setActionSelected(!actionSelected);
@@ -291,12 +292,14 @@ const SearchScreen = ({ navigation }: Props) => {
                   rankby: 'distance',
                 }}
                 onPress={(data, details = null) => {
-                  // console.log(details?.address_components);
+                  console.log(details?.address_components);
+                  // console.log(details?.address_components[0].short_name);
                   // console.log(details?.address_components.length);
                   setCoordinates({
                     latitude: details?.geometry.location.lat!,
                     longitude: details?.geometry.location.lng!,
                   });
+                  setLocality(details?.address_components[0].short_name!);
                 }}
                 query={{
                   key: 'AIzaSyAd22YBCutdzEZePBY2wbS2OawTZ1_H7-s',
@@ -331,6 +334,7 @@ const SearchScreen = ({ navigation }: Props) => {
                     action,
                     currency,
                     isCommercial,
+                    locality,
                   });
                 }}>
                 <Text style={{ color: '#3F19F9', fontSize: 15 }}>

@@ -14,6 +14,7 @@ interface PropertiesMap {
   latitude: number;
   longitude: number;
   propertyType: string;
+  locality: string;
 }
 
 interface PropertiesList {
