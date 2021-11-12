@@ -11,6 +11,7 @@ import {
 import { Picker } from '@react-native-picker/picker';
 import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete';
 import { StackScreenProps } from '@react-navigation/stack';
+import Toast from 'react-native-toast-message';
 import { appStyles } from '../theme/appTheme';
 import { useForm } from '../hooks/useForm';
 import { RootSearchStackNavigation } from '../navigation/SearchStackNavigation';
@@ -85,6 +86,26 @@ const SearchScreen = ({ navigation }: Props) => {
       headerTransparent: true,
     });
   }, []);
+
+  const handleNavigateToMap = () => {
+    if (!coordinates.latitude) {
+      Toast.show({
+        type: 'error',
+        text1: 'Escoja un lugar en el cual buscar',
+      });
+    }
+    if (coordinates.latitude) {
+      navigation.navigate('PropertiesMapScreen', {
+        latitude: coordinates.latitude,
+        longitude: coordinates.longitude,
+        propertyType,
+        action,
+        currency,
+        isCommercial,
+        locality,
+      });
+    }
+  };
 
   return (
     <ScrollView
@@ -292,9 +313,6 @@ const SearchScreen = ({ navigation }: Props) => {
                   rankby: 'distance',
                 }}
                 onPress={(data, details = null) => {
-                  console.log(details?.address_components);
-                  // console.log(details?.address_components[0].short_name);
-                  // console.log(details?.address_components.length);
                   setCoordinates({
                     latitude: details?.geometry.location.lat!,
                     longitude: details?.geometry.location.lng!,
@@ -326,17 +344,7 @@ const SearchScreen = ({ navigation }: Props) => {
               </TouchableOpacity>
               <TouchableOpacity
                 style={styles.btnFiltros}
-                onPress={() => {
-                  navigation.navigate('PropertiesMapScreen', {
-                    latitude: coordinates.latitude,
-                    longitude: coordinates.longitude,
-                    propertyType,
-                    action,
-                    currency,
-                    isCommercial,
-                    locality,
-                  });
-                }}>
+                onPress={handleNavigateToMap}>
                 <Text style={{ color: '#3F19F9', fontSize: 15 }}>
                   Mostrar en el mapa
                 </Text>

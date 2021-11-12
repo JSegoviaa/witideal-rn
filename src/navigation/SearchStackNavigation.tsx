@@ -28,7 +28,7 @@ export type RootSearchStackNavigation = {
   HomeScreen: undefined;
   SearchScreen: undefined;
   PropertiesListScreen: PropertiesList;
-  PropertyDetailScreen: undefined;
+  PropertyDetailScreen: { id: string; action: string; propertyType: string };
   PropertiesMapScreen: PropertiesMap;
 };
 
