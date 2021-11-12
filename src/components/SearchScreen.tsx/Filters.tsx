@@ -10,36 +10,41 @@ const Filters = () => {
     niveles: 0,
   });
 
-  const [conservacion, setConservacion] = useState();
-  const [antiguedad, setAntiguedad] = useState();
+  const [conservacion, setConservacion] = useState('');
 
   return (
     <View style={styles.container}>
       <View>
         <Text style={styles.title}>Personaliza tu búsqueda</Text>
-        <Text style={styles.subtitle}>Área en metros cuadrados</Text>
-        <View style={{ flexDirection: 'row' }}>
-          <TextInput
-            placeholder="Desde"
-            placeholderTextColor="#ccc"
-            style={styles.input}
-            onChangeText={value => onChange(value, 'desde')}
-          />
-          <TextInput
-            placeholder="Hasta"
-            placeholderTextColor="#ccc"
-            style={styles.input}
-            onChangeText={value => onChange(value, 'hasta')}
-          />
-        </View>
-        <Text style={styles.subtitle}>Características físicas</Text>
+
+        <Text style={styles.subtitle}>Cantidad de habitaciones</Text>
         <TextInput
-          placeholder="Niveles construidos"
+          placeholder="Habitaciones"
           placeholderTextColor="#ccc"
           style={styles.input}
           keyboardType="numeric"
           onChangeText={value => onChange(value, 'niveles')}
         />
+        <Text style={styles.subtitle}>Cantidad de baños</Text>
+        <TextInput
+          placeholder="Baños"
+          placeholderTextColor="#ccc"
+          style={styles.input}
+          keyboardType="numeric"
+          onChangeText={value => onChange(value, 'niveles')}
+        />
+        <Text style={styles.subtitle}>Pet Friendly</Text>
+        <View style={styles.picker}>
+          <Picker
+            selectedValue={conservacion}
+            style={{ color: '#000' }}
+            onValueChange={(itemValue, itemIndex) =>
+              setConservacion(itemValue)
+            }>
+            <Picker.Item label="Sí" value={true} />
+            <Picker.Item label="No" value={false} />
+          </Picker>
+        </View>
         <Text style={styles.subtitle}>Estado de conservación del inmueble</Text>
         <View style={styles.picker}>
           <Picker
@@ -52,19 +57,6 @@ const Filters = () => {
             <Picker.Item label="Bueno" value="bueno" />
             <Picker.Item label="Regular" value="regular" />
             <Picker.Item label="Remodelar" value="remodelar" />
-          </Picker>
-        </View>
-        <Text style={styles.subtitle}>Tiempo</Text>
-        <Text style={styles.title}>Antigüedad (años)</Text>
-        <View style={styles.picker}>
-          <Picker
-            selectedValue={antiguedad}
-            style={{ color: '#000' }}
-            onValueChange={(itemValue, itemIndex) => setAntiguedad(itemValue)}>
-            <Picker.Item label="0-5" value="0-5" />
-            <Picker.Item label="5-10" value="5-10" />
-            <Picker.Item label="10-25" value="10-25" />
-            <Picker.Item label="25+" value="25+" />
           </Picker>
         </View>
       </View>

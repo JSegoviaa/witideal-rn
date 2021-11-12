@@ -42,16 +42,19 @@ const SearchScreen = ({ navigation }: Props) => {
   const { form, onChange } = useForm({
     desde: 0,
     hasta: 0,
+    room: 1,
+    bath: 1,
   });
+  const { bath, room } = form;
 
   const [coordinates, setCoordinates] = useState<Location>({
     longitude: 0,
     latitude: 0,
   });
   const [action, setAction] = useState(rent);
-  const [bath, setBath] = useState(1);
-  const [room, setRoom] = useState(1);
+
   const [petFriendly, setPetFriendly] = useState(true);
+  const [conservacion, setConservacion] = useState();
   const [actionSelected, setActionSelected] = useState<Boolean>(false);
   const [currency, setCurrency] = useState(mxn);
   const [isCommercial, setIsCommercial] = useState(false);
@@ -113,6 +116,8 @@ const SearchScreen = ({ navigation }: Props) => {
       });
     }
   };
+
+  console.log(petFriendly, bath, room);
 
   return (
     <ScrollView
@@ -333,6 +338,60 @@ const SearchScreen = ({ navigation }: Props) => {
                 }}
               />
             </View>
+            {toggleFilters && (
+              <View style={styles.container}>
+                <View>
+                  <Text style={styles.titleFilters}>
+                    Personaliza tu búsqueda
+                  </Text>
+
+                  <Text style={styles.subtitle}>Cantidad de habitaciones</Text>
+                  <TextInput
+                    placeholder="1"
+                    placeholderTextColor="#ccc"
+                    style={styles.inputFilters}
+                    keyboardType="numeric"
+                    onChangeText={value => onChange(value, 'room')}
+                  />
+                  <Text style={styles.subtitle}>Cantidad de baños</Text>
+                  <TextInput
+                    placeholder="1"
+                    placeholderTextColor="#ccc"
+                    style={styles.inputFilters}
+                    keyboardType="numeric"
+                    onChangeText={value => onChange(value, 'bath')}
+                  />
+                  <Text style={styles.subtitle}>Pet Friendly</Text>
+                  <View style={styles.picker}>
+                    <Picker
+                      selectedValue={petFriendly}
+                      style={{ color: '#000' }}
+                      onValueChange={(itemValue, itemIndex) =>
+                        setPetFriendly(itemValue)
+                      }>
+                      <Picker.Item label="Sí" value={true} />
+                      <Picker.Item label="No" value={false} />
+                    </Picker>
+                  </View>
+                  <Text style={styles.subtitle}>
+                    Estado de conservación del inmueble
+                  </Text>
+                  <View style={styles.picker}>
+                    <Picker
+                      selectedValue={conservacion}
+                      style={{ color: '#000' }}
+                      onValueChange={(itemValue, itemIndex) =>
+                        setConservacion(itemValue)
+                      }>
+                      <Picker.Item label="Excelente" value="excelente" />
+                      <Picker.Item label="Bueno" value="bueno" />
+                      <Picker.Item label="Regular" value="regular" />
+                      <Picker.Item label="Remodelar" value="remodelar" />
+                    </Picker>
+                  </View>
+                </View>
+              </View>
+            )}
 
             <View style={{ flexDirection: 'row' }}>
               {/* <TouchableOpacity style={styles.btnFiltros}>
@@ -349,7 +408,6 @@ const SearchScreen = ({ navigation }: Props) => {
                   Mostrar inmuebles
                 </Text>
               </TouchableOpacity> */}
-
               <TouchableOpacity
                 style={styles.btnFiltros}
                 onPress={handleToggleFilters}>
@@ -407,8 +465,22 @@ const styles = StyleSheet.create({
     elevation: 10,
     padding: 15,
   },
+  container: {
+    backgroundColor: '#F9F7FC',
+    marginTop: 10,
+  },
   input: {
     backgroundColor: '#fff',
+    borderColor: '#63C5FA',
+    borderRadius: 50,
+    borderWidth: 1,
+    color: '#000',
+    flex: 1,
+    height: 40,
+    padding: 11,
+  },
+  inputFilters: {
+    backgroundColor: '#F9F7FC',
     borderColor: '#63C5FA',
     borderRadius: 50,
     borderWidth: 1,
@@ -442,6 +514,11 @@ const styles = StyleSheet.create({
     padding: 20,
     textAlign: 'center',
     marginVertical: 25,
+  },
+  titleFilters: {
+    color: '#1E0E6F',
+    fontSize: 20,
+    fontWeight: '700',
   },
   ubicacion: {
     backgroundColor: '#fff',
