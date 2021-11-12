@@ -37,7 +37,11 @@ const PropertiesMapScreen = ({ navigation, route }: Props) => {
   };
 
   const goToProperty = (id: string, action: string, propertyType: string) => {
-    navigation.navigate('PropertyDetailScreen', { id, action, propertyType });
+    navigation.navigate('PropertySearchDetailScreen', {
+      id,
+      action,
+      propertyType,
+    });
   };
   const handleGoBack = () => navigation.goBack();
 

@@ -4,7 +4,8 @@ import { Image } from 'react-native';
 import HomeScreen from '../screens/HomeScreen';
 import PropertiesListScreen from '../screens/PropertiesListScreen';
 import PropertiesMapScreen from '../screens/PropertiesMapScreen';
-import PropertyDetailScreen from '../screens/PropertyDetailScreen';
+import PropertySearchMapScreen from '../screens/PropertyMapScreen';
+import PropertySearchDetailScreen from '../screens/PropertySearchDetailScreen';
 import SearchScreen from '../screens/SearchScreen';
 
 interface PropertiesMap {
@@ -28,8 +29,17 @@ export type RootSearchStackNavigation = {
   HomeScreen: undefined;
   SearchScreen: undefined;
   PropertiesListScreen: PropertiesList;
-  PropertyDetailScreen: { id: string; action: string; propertyType: string };
+  PropertySearchDetailScreen: {
+    id: string;
+    action: string;
+    propertyType: string;
+  };
   PropertiesMapScreen: PropertiesMap;
+  PropertySearchMapScreen: {
+    latitude: number;
+    longitude: number;
+    isExactLocation: boolean;
+  };
 };
 
 const Stack = createStackNavigator<RootSearchStackNavigation>();
@@ -64,14 +74,19 @@ const SearchStackNavigation = () => {
         component={PropertiesListScreen}
       />
       <Stack.Screen
-        name="PropertyDetailScreen"
+        name="PropertySearchDetailScreen"
         options={{ title: '' }}
-        component={PropertyDetailScreen}
+        component={PropertySearchDetailScreen}
       />
       <Stack.Screen
         name="PropertiesMapScreen"
         options={{ title: '', headerShown: false }}
         component={PropertiesMapScreen}
+      />
+      <Stack.Screen
+        name="PropertySearchMapScreen"
+        options={{ title: '', headerShown: false }}
+        component={PropertySearchMapScreen}
       />
     </Stack.Navigator>
   );
