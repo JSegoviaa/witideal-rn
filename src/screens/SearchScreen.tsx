@@ -125,8 +125,6 @@ const SearchScreen = ({ navigation }: Props) => {
     }
   };
 
-  console.log(petFriendly, conservacion, room, bath);
-
   return (
     <ScrollView
       keyboardShouldPersistTaps={'always'}
