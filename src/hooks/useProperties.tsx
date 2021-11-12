@@ -25,7 +25,9 @@ export const useProperties = (
         .collection(action)
         .where('currency', '==', currency)
         .where('isCommercial', '==', isCommercial)
-        .where('locality', '==', locality);
+        .where('locality', '==', locality)
+        .where('isEnabled', '==', true)
+        .where('isExactLocation', '==', true);
 
       const list: DocumentData = [];
 

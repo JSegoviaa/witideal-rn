@@ -87,7 +87,7 @@ const PropertiesMapScreen = ({ navigation, route }: Props) => {
                       }}>
                       <TouchableOpacity style={styles.bg}>
                         <Text style={styles.text}>
-                          {currencyFormat(property.data.priceMxn)}
+                          {currencyFormat(property.data.price)}
                         </Text>
                       </TouchableOpacity>
                     </Marker>
