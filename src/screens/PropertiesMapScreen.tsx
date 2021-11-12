@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { StackScreenProps } from '@react-navigation/stack';
 import Icon from 'react-native-vector-icons/Ionicons';
@@ -38,12 +38,6 @@ const PropertiesMapScreen = ({ navigation, route }: Props) => {
     conservacion,
   );
 
-  const [showDetails, setShowDetails] = useState(false);
-
-  const handleShowDetails = () => {
-    setShowDetails(!showDetails);
-  };
-
   const goToProperty = (id: string, action: string, propertyType: string) => {
     navigation.navigate('PropertySearchDetailScreen', {
       id,
@@ -71,34 +65,28 @@ const PropertiesMapScreen = ({ navigation, route }: Props) => {
                 longitudeDelta: 0.1,
               }}>
               {properties &&
-                properties
-                  .filter(property => {
-                    return (
-                      property.data.lat !== undefined &&
-                      property.data.lng !== undefined
-                    );
-                  })
-                  .map(property => (
-                    <Marker
-                      onPress={() =>
-                        goToProperty(
-                          property.id,
-                          property.data.action,
-                          property.data.propertyType,
-                        )
-                      }
-                      key={property.id}
-                      coordinate={{
-                        latitude: property.data.lat,
-                        longitude: property.data.lng,
-                      }}>
-                      <TouchableOpacity style={styles.bg}>
-                        <Text style={styles.text}>
-                          {currencyFormat(property.data.price)}
-                        </Text>
-                      </TouchableOpacity>
-                    </Marker>
-                  ))}
+                properties.map(property => (
+                  <Marker
+                    onPress={() =>
+                      goToProperty(
+                        property.id,
+                        property.data.action,
+                        property.data.propertyType,
+                      )
+                    }
+                    key={property.id}
+                    coordinate={{
+                      latitude: property.data.lat,
+                      longitude: property.data.lng,
+                    }}>
+                    <TouchableOpacity style={styles.bg}>
+                      <Text style={styles.text}>
+                        {currencyFormat(property.data.price)}{' '}
+                        {property.data.currency}
+                      </Text>
+                    </TouchableOpacity>
+                  </Marker>
+                ))}
             </MapView>
           )}
           <Icon
