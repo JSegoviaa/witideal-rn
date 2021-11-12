@@ -49,6 +49,9 @@ const SearchScreen = ({ navigation }: Props) => {
     latitude: 0,
   });
   const [action, setAction] = useState(rent);
+  const [bath, setBath] = useState(1);
+  const [room, setRoom] = useState(1);
+  const [petFriendly, setPetFriendly] = useState(true);
   const [actionSelected, setActionSelected] = useState<Boolean>(false);
   const [currency, setCurrency] = useState(mxn);
   const [isCommercial, setIsCommercial] = useState(false);
@@ -56,6 +59,8 @@ const SearchScreen = ({ navigation }: Props) => {
   const [propertyTypeSelected, setPropertyTypeSelected] =
     useState<Boolean>(false);
   const [locality, setLocality] = useState('');
+  const [toggleFilters, setToggleFilters] = useState(false);
+  const handleToggleFilters = () => setToggleFilters(!toggleFilters);
 
   const handleActionTypeSelected = () => {
     setActionSelected(!actionSelected);
@@ -103,6 +108,8 @@ const SearchScreen = ({ navigation }: Props) => {
         currency,
         isCommercial,
         locality,
+        bath,
+        room,
       });
     }
   };
@@ -328,7 +335,7 @@ const SearchScreen = ({ navigation }: Props) => {
             </View>
 
             <View style={{ flexDirection: 'row' }}>
-              <TouchableOpacity style={styles.btnFiltros}>
+              {/* <TouchableOpacity style={styles.btnFiltros}>
                 <Text
                   style={{ color: '#3F19F9', fontSize: 15 }}
                   onPress={() => {
@@ -341,7 +348,16 @@ const SearchScreen = ({ navigation }: Props) => {
                   }}>
                   Mostrar inmuebles
                 </Text>
+              </TouchableOpacity> */}
+
+              <TouchableOpacity
+                style={styles.btnFiltros}
+                onPress={handleToggleFilters}>
+                <Text style={{ color: '#3F19F9', fontSize: 15 }}>
+                  {!toggleFilters ? 'Mostrar filtros' : 'Ocultar filtros'}
+                </Text>
               </TouchableOpacity>
+
               <TouchableOpacity
                 style={styles.btnFiltros}
                 onPress={handleNavigateToMap}>

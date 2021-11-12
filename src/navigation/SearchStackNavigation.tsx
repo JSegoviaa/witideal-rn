@@ -16,6 +16,8 @@ interface PropertiesMap {
   longitude: number;
   propertyType: string;
   locality: string;
+  bath: number;
+  room: number;
 }
 
 interface PropertiesList {

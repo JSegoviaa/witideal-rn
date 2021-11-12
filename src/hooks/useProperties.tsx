@@ -11,6 +11,8 @@ export const useProperties = (
   currency: string,
   isCommercial: boolean,
   locality: string,
+  bath: number,
+  room: number,
 ) => {
   const [loading, setLoading] = useState<Boolean>(true);
   const [properties, setProperties] = useState<DocumentData>([]);
@@ -27,7 +29,9 @@ export const useProperties = (
         .where('isCommercial', '==', isCommercial)
         .where('locality', '==', locality)
         .where('isEnabled', '==', true)
-        .where('isExactLocation', '==', true);
+        .where('isExactLocation', '==', true)
+        .where('specificData.bath', '==', bath)
+        .where('specificData.room', '==', room);
 
       const list: DocumentData = [];
 

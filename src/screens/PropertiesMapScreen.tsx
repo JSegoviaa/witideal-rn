@@ -20,6 +20,8 @@ const PropertiesMapScreen = ({ navigation, route }: Props) => {
     currency,
     isCommercial,
     locality,
+    bath,
+    room,
   } = route.params;
 
   const { loading, properties } = useProperties(
@@ -28,6 +30,8 @@ const PropertiesMapScreen = ({ navigation, route }: Props) => {
     currency,
     isCommercial,
     locality,
+    bath,
+    room,
   );
 
   const [showDetails, setShowDetails] = useState(false);
@@ -67,8 +71,7 @@ const PropertiesMapScreen = ({ navigation, route }: Props) => {
                   .filter(property => {
                     return (
                       property.data.lat !== undefined &&
-                      property.data.lng !== undefined &&
-                      property.data.isEnabled !== false
+                      property.data.lng !== undefined
                     );
                   })
                   .map(property => (
