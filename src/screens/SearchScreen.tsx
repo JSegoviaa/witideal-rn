@@ -27,6 +27,12 @@ import {
 } from '../constant/propertyType';
 import { buy, rent } from '../constant/action';
 import { mxn, usd } from '../constant/currency';
+import {
+  bueno,
+  excelente,
+  regular,
+  remodelar,
+} from '../constant/propertyConvervation';
 
 const image = { uri: 'https://i.imgur.com/QxTLA6l.jpg' };
 
@@ -54,7 +60,7 @@ const SearchScreen = ({ navigation }: Props) => {
   const [action, setAction] = useState(rent);
 
   const [petFriendly, setPetFriendly] = useState(true);
-  const [conservacion, setConservacion] = useState();
+  const [conservacion, setConservacion] = useState(excelente);
   const [actionSelected, setActionSelected] = useState<Boolean>(false);
   const [currency, setCurrency] = useState(mxn);
   const [isCommercial, setIsCommercial] = useState(false);
@@ -117,7 +123,7 @@ const SearchScreen = ({ navigation }: Props) => {
     }
   };
 
-  console.log(petFriendly, bath, room);
+  console.log(petFriendly, bath, room, conservacion);
 
   return (
     <ScrollView
@@ -383,10 +389,10 @@ const SearchScreen = ({ navigation }: Props) => {
                       onValueChange={(itemValue, itemIndex) =>
                         setConservacion(itemValue)
                       }>
-                      <Picker.Item label="Excelente" value="excelente" />
-                      <Picker.Item label="Bueno" value="bueno" />
-                      <Picker.Item label="Regular" value="regular" />
-                      <Picker.Item label="Remodelar" value="remodelar" />
+                      <Picker.Item label="Excelente" value={excelente} />
+                      <Picker.Item label="Bueno" value={bueno} />
+                      <Picker.Item label="Regular" value={regular} />
+                      <Picker.Item label="Remodelar" value={remodelar} />
                     </Picker>
                   </View>
                 </View>
