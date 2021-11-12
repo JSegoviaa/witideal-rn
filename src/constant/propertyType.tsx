@@ -1,4 +1,4 @@
-export const aparment: string = 'aparment';
+export const aparment: string = 'apartment';
 export const building: string = 'building';
 export const condoHouse: string = 'condoHouse';
 export const local: string = 'local';
