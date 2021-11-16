@@ -17,7 +17,7 @@ const SpecificDetails = ({ id, action, propertyType }: Props) => {
     <>
       {property && (
         <View>
-          {property.specificData.m2Build && (
+          {property.specificData.m2Build ? (
             <View style={styles.box}>
               <Image
                 width={75}
@@ -29,8 +29,8 @@ const SpecificDetails = ({ id, action, propertyType }: Props) => {
               <Text style={styles.data}>{property.specificData.m2Build}</Text>
               <Text style={styles.info}>M2 construidos</Text>
             </View>
-          )}
-          {property.specificData.room && (
+          ) : null}
+          {property.specificData.room ? (
             <View style={styles.box}>
               <Image
                 width={75}
@@ -41,8 +41,8 @@ const SpecificDetails = ({ id, action, propertyType }: Props) => {
               <Text style={styles.data}>{property.specificData.room}</Text>
               <Text style={styles.info}>Recamaras</Text>
             </View>
-          )}
-          {property.specificData.bath && (
+          ) : null}
+          {property.specificData.bath ? (
             <View style={styles.box}>
               <Image
                 width={75}
@@ -53,8 +53,8 @@ const SpecificDetails = ({ id, action, propertyType }: Props) => {
               <Text style={styles.data}>{property.specificData.bath}</Text>
               <Text style={styles.info}>Baños completos</Text>
             </View>
-          )}
-          {property.specificData.parkingSlots && (
+          ) : null}
+          {property.specificData.parkingSlots ? (
             <View style={styles.box}>
               <Image
                 width={75}
@@ -67,12 +67,12 @@ const SpecificDetails = ({ id, action, propertyType }: Props) => {
               </Text>
               <Text style={styles.info}>Estacionamientos</Text>
             </View>
-          )}
+          ) : null}
 
           <View>
             <Text style={styles.title}>Datos específicos</Text>
 
-            {property.specificData.laundry && (
+            {property.specificData.laundry ? (
               <View style={styles.specificaDataContainer}>
                 <Text style={styles.specificaDataInfo}>Área de lavado</Text>
                 {property.specificData.laundry ? (
@@ -85,27 +85,27 @@ const SpecificDetails = ({ id, action, propertyType }: Props) => {
                   </View>
                 )}
               </View>
-            )}
+            ) : null}
 
-            {property.specificData.deliverydate && (
+            {property.specificData.deliverydate ? (
               <View style={styles.specificaDataContainer}>
                 <Text style={styles.specificaDataInfo}>Fecha de entrega</Text>
                 <Text style={styles.specificaDataInfo}>
                   {property.specificData.deliverydate}
                 </Text>
               </View>
-            )}
+            ) : null}
 
-            {property.specificData.antiquity && (
+            {property.specificData.antiquity ? (
               <View style={styles.specificaDataContainer}>
                 <Text style={styles.specificaDataInfo}>Antigüedad (años)</Text>
                 <Text style={styles.specificaDataInfo}>
                   {property.specificData.antiquity}
                 </Text>
               </View>
-            )}
+            ) : null}
 
-            {property.specificData.totalBuildingFloors && (
+            {property.specificData.totalBuildingFloors ? (
               <View style={styles.specificaDataContainer}>
                 <Text style={styles.specificaDataInfo}>
                   Niveles del edificio
@@ -114,9 +114,9 @@ const SpecificDetails = ({ id, action, propertyType }: Props) => {
                   {property.specificData.totalBuildingFloors}
                 </Text>
               </View>
-            )}
+            ) : null}
 
-            {property.specificData.preservationState && (
+            {property.specificData.preservationState ? (
               <View style={styles.specificaDataContainer}>
                 <Text style={styles.specificaDataInfo}>
                   Estado de conservación
@@ -125,9 +125,9 @@ const SpecificDetails = ({ id, action, propertyType }: Props) => {
                   {property.specificData.preservationState}
                 </Text>
               </View>
-            )}
+            ) : null}
 
-            {property.specificData.locationInBuilding && (
+            {property.specificData.locationInBuilding ? (
               <View style={styles.specificaDataContainer}>
                 <Text style={styles.specificaDataInfo}>
                   Ubicación en Edificio
@@ -136,9 +136,9 @@ const SpecificDetails = ({ id, action, propertyType }: Props) => {
                   {property.specificData.locationInBuilding}
                 </Text>
               </View>
-            )}
+            ) : null}
 
-            {property.specificData.isMantainceIncluded && (
+            {property.specificData.isMantainceIncluded ? (
               <View style={styles.specificaDataContainer}>
                 <Text style={styles.specificaDataInfo}>
                   Mantenimiento incluido (solo renta)
@@ -153,36 +153,36 @@ const SpecificDetails = ({ id, action, propertyType }: Props) => {
                   </View>
                 )}
               </View>
-            )}
+            ) : null}
 
-            {property.specificData.kitchen && (
+            {property.specificData.kitchen ? (
               <View style={styles.specificaDataContainer}>
                 <Text style={styles.specificaDataInfo}>Cocina</Text>
                 <Text style={styles.specificaDataInfo}>
                   {property.specificData.kitchen}
                 </Text>
               </View>
-            )}
+            ) : null}
 
-            {property.specificData.banks && (
+            {property.specificData.banks ? (
               <View style={styles.specificaDataContainer}>
                 <Text style={styles.specificaDataInfo}>Bancos</Text>
                 <Text style={styles.specificaDataInfo}>
                   {property.specificData.banks}
                 </Text>
               </View>
-            )}
+            ) : null}
 
-            {property.specificData.extras && (
+            {property.specificData.extras ? (
               <View style={styles.specificaDataContainer}>
                 <Text style={styles.specificaDataInfo}>Otros</Text>
                 <Text style={styles.specificaDataInfo}>
                   {property.specificData.extras}
                 </Text>
               </View>
-            )}
+            ) : null}
 
-            {property.specificData.cctv && (
+            {property.specificData.cctv ? (
               <View style={styles.specificaDataContainer}>
                 <Text style={styles.specificaDataInfo}>CCTV</Text>
                 {property.specificData.cctv ? (
@@ -195,9 +195,9 @@ const SpecificDetails = ({ id, action, propertyType }: Props) => {
                   </View>
                 )}
               </View>
-            )}
+            ) : null}
 
-            {property.specificData.elevator && (
+            {property.specificData.elevator ? (
               <View style={styles.specificaDataContainer}>
                 <Text style={styles.specificaDataInfo}>Elevador</Text>
                 {property.specificData.elevator ? (
@@ -210,27 +210,27 @@ const SpecificDetails = ({ id, action, propertyType }: Props) => {
                   </View>
                 )}
               </View>
-            )}
+            ) : null}
 
-            {property.specificData.schools && (
+            {property.specificData.schools ? (
               <View style={styles.specificaDataContainer}>
                 <Text style={styles.specificaDataInfo}>Escuelas</Text>
                 <Text style={styles.specificaDataInfo}>
                   {property.specificData.schools}
                 </Text>
               </View>
-            )}
+            ) : null}
 
-            {property.specificData.mainavs && (
+            {property.specificData.mainavs ? (
               <View style={styles.specificaDataContainer}>
                 <Text style={styles.specificaDataInfo}>Av. Principales</Text>
                 <Text style={styles.specificaDataInfo}>
                   {property.specificData.mainavs}
                 </Text>
               </View>
-            )}
+            ) : null}
 
-            {property.specificData.pool && (
+            {property.specificData.pool ? (
               <View style={styles.specificaDataContainer}>
                 <Text style={styles.specificaDataInfo}>Alberca</Text>
                 {property.specificData.pool ? (
@@ -243,9 +243,9 @@ const SpecificDetails = ({ id, action, propertyType }: Props) => {
                   </View>
                 )}
               </View>
-            )}
+            ) : null}
 
-            {property.specificData.playground && (
+            {property.specificData.playground ? (
               <View style={styles.specificaDataContainer}>
                 <Text style={styles.specificaDataInfo}>Juegos infantiles</Text>
                 {property.specificData.playground ? (
@@ -258,9 +258,9 @@ const SpecificDetails = ({ id, action, propertyType }: Props) => {
                   </View>
                 )}
               </View>
-            )}
+            ) : null}
 
-            {property.specificData.bussinessCentre && (
+            {property.specificData.bussinessCentre ? (
               <View style={styles.specificaDataContainer}>
                 <Text style={styles.specificaDataInfo}>Centro de negocios</Text>
                 {property.specificData.bussinessCentre ? (
@@ -273,9 +273,9 @@ const SpecificDetails = ({ id, action, propertyType }: Props) => {
                   </View>
                 )}
               </View>
-            )}
+            ) : null}
 
-            {property.specificData.balcony && (
+            {property.specificData.balcony ? (
               <View style={styles.specificaDataContainer}>
                 <Text style={styles.specificaDataInfo}>Balcón</Text>
                 {property.specificData.balcony ? (
@@ -288,9 +288,9 @@ const SpecificDetails = ({ id, action, propertyType }: Props) => {
                   </View>
                 )}
               </View>
-            )}
+            ) : null}
 
-            {property.specificData.gym && (
+            {property.specificData.gym ? (
               <View style={styles.specificaDataContainer}>
                 <Text style={styles.specificaDataInfo}>Gym</Text>
                 {property.specificData.gym ? (
@@ -303,9 +303,9 @@ const SpecificDetails = ({ id, action, propertyType }: Props) => {
                   </View>
                 )}
               </View>
-            )}
+            ) : null}
 
-            {property.specificData.floorNumber && (
+            {property.specificData.floorNumber ? (
               <View style={styles.specificaDataContainer}>
                 <Text style={styles.specificaDataInfo}>
                   Nivel en el que se encuentra
@@ -314,18 +314,18 @@ const SpecificDetails = ({ id, action, propertyType }: Props) => {
                   {property.specificData.floorNumber}
                 </Text>
               </View>
-            )}
+            ) : null}
 
-            {property.specificData.gasType && (
+            {property.specificData.gasType ? (
               <View style={styles.specificaDataContainer}>
                 <Text style={styles.specificaDataInfo}>Tipo de gas</Text>
                 <Text style={styles.specificaDataInfo}>
                   {property.specificData.gasType}
                 </Text>
               </View>
-            )}
+            ) : null}
 
-            {property.specificData.closedStreet && (
+            {property.specificData.closedStreet ? (
               <View style={styles.specificaDataContainer}>
                 <Text style={styles.specificaDataInfo}>Calle cerrada</Text>
                 {property.specificData.closedStreet ? (
@@ -338,9 +338,9 @@ const SpecificDetails = ({ id, action, propertyType }: Props) => {
                   </View>
                 )}
               </View>
-            )}
+            ) : null}
 
-            {property.specificData.partyRoom && (
+            {property.specificData.partyRoom ? (
               <View style={styles.specificaDataContainer}>
                 <Text style={styles.specificaDataInfo}>Salón de fiestas</Text>
                 {property.specificData.partyRoom ? (
@@ -353,18 +353,18 @@ const SpecificDetails = ({ id, action, propertyType }: Props) => {
                   </View>
                 )}
               </View>
-            )}
+            ) : null}
 
-            {property.specificData.halfBath && (
+            {property.specificData.halfBath ? (
               <View style={styles.specificaDataContainer}>
                 <Text style={styles.specificaDataInfo}>Medio baños</Text>
                 <Text style={styles.specificaDataInfo}>
                   {property.specificData.halfBath}
                 </Text>
               </View>
-            )}
+            ) : null}
 
-            {property.specificData.security247 && (
+            {property.specificData.security247 ? (
               <View style={styles.specificaDataContainer}>
                 <Text style={styles.specificaDataInfo}>Vigilancia 24/7</Text>
                 {property.specificData.security247 ? (
@@ -377,7 +377,7 @@ const SpecificDetails = ({ id, action, propertyType }: Props) => {
                   </View>
                 )}
               </View>
-            )}
+            ) : null}
           </View>
 
           {/* Muestra la información del dueño de la propiedad */}
