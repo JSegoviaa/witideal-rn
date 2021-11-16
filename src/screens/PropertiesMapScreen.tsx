@@ -1,8 +1,15 @@
-import React, { useEffect, useState } from 'react';
-import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import React, { useState } from 'react';
+import {
+  Image,
+  StyleSheet,
+  Text,
+  Touchable,
+  TouchableOpacity,
+  View,
+} from 'react-native';
 import { StackScreenProps } from '@react-navigation/stack';
 import Icon from 'react-native-vector-icons/Ionicons';
-import MapView, { Marker } from 'react-native-maps';
+import MapView, { Callout, Marker } from 'react-native-maps';
 import { RootSearchStackNavigation } from '../navigation/SearchStackNavigation';
 import { useProperties } from '../hooks/useProperties';
 import Loading from '../components/ui/Loading';
@@ -47,6 +54,7 @@ const PropertiesMapScreen = ({ navigation, route }: Props) => {
       propertyType,
     });
   };
+
   const handleGoBack = () => navigation.goBack();
 
   const showSelectedPlace = (id: string) => {
@@ -71,52 +79,69 @@ const PropertiesMapScreen = ({ navigation, route }: Props) => {
                 longitudeDelta: 0.1,
               }}>
               {properties &&
-                properties.map(property => (
-                  <Marker
-                    onPress={() => {
-                      showSelectedPlace(property.id);
-                    }}
-                    key={property.id}
-                    coordinate={{
-                      latitude: property.data.lat,
-                      longitude: property.data.lng,
-                    }}>
-                    <TouchableOpacity
-                      style={
-                        selectedPlaceId === property.id
-                          ? styles.bgSelected
-                          : styles.bg
-                      }>
-                      <Text
+                properties
+                  .filter(property => {
+                    return (
+                      property.data.lat !== undefined &&
+                      property.data.lng !== undefined
+                    );
+                  })
+                  .map(property => (
+                    <Marker
+                      onPress={() => {
+                        showSelectedPlace(property.id);
+                        console.log('hoa');
+                        // goToProperty(
+                        //   property.id,
+                        //   property.data.action,
+                        //   property.data.propertyType,
+                        // );
+                      }}
+                      key={property.id}
+                      coordinate={{
+                        latitude: property.data.lat,
+                        longitude: property.data.lng,
+                      }}>
+                      {selectedPlaceId === property.id ? (
+                        <PropertyItem
+                          action={property.data.action}
+                          baños={property.data.specificData.bath}
+                          description={
+                            property.data.specificData.propertyDescription
+                          }
+                          habitaciones={property.data.specificData.room}
+                          img={property.data.principalPhotoPath}
+                          propertyType={property.data.propertyType}
+                        />
+                      ) : (
+                        <Text></Text>
+                      )}
+                      <TouchableOpacity
                         style={
                           selectedPlaceId === property.id
-                            ? styles.textSelected
-                            : styles.text
+                            ? styles.bgSelected
+                            : styles.bg
                         }>
-                        {currencyFormat(property.data.price)}{' '}
-                        {property.data.currency}
-                      </Text>
-                    </TouchableOpacity>
-
-                    {selectedPlaceId === property.id ? (
-                      <PropertyItem
-                        action={property.data.action}
-                        baños={property.data.specificData.bath}
-                        description={
-                          property.data.specificData.propertyDescription
-                        }
-                        habitaciones={property.data.specificData.room}
-                        img={property.data.principalPhotoPath}
-                        propertyType={property.data.propertyType}
-                      />
-                    ) : (
-                      <Text></Text>
-                    )}
-                  </Marker>
-                ))}
+                        <Text
+                          style={
+                            selectedPlaceId === property.id
+                              ? styles.textSelected
+                              : styles.text
+                          }>
+                          {currencyFormat(property.data.price)}{' '}
+                          {property.data.currency}{' '}
+                          {property.data.isDestProperty && (
+                            <Image
+                              style={{ width: 18, height: 18 }}
+                              source={require('../assets/logo_1-01.png')}
+                            />
+                          )}
+                        </Text>
+                      </TouchableOpacity>
+                    </Marker>
+                  ))}
             </MapView>
           )}
-
           <Icon
             onPress={handleGoBack}
             name="arrow-back-outline"

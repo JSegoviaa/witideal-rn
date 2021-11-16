@@ -32,8 +32,8 @@ export const useProperties = (
         .where('locality', '==', locality)
         .where('isEnabled', '==', true)
         .where('isExactLocation', '==', true)
-        .where('specificData.bath', '==', Number(bath))
-        .where('specificData.room', '==', Number(room))
+        .where('specificData.bath', '==', bath)
+        .where('specificData.room', '==', room)
         .where('specificData.petFriendly', '==', petFriendly)
         .where('specificData.preservationState', '==', conservacion);
 
