@@ -1,5 +1,12 @@
-import React, { useState } from 'react';
-import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import React, { useRef, useState } from 'react';
+import {
+  FlatList,
+  Image,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from 'react-native';
 import { StackScreenProps } from '@react-navigation/stack';
 import Icon from 'react-native-vector-icons/Ionicons';
 import MapView, { Marker } from 'react-native-maps';
@@ -41,6 +48,18 @@ const PropertiesMapScreen = ({ navigation, route }: Props) => {
     conservacion,
   );
   const [selectedPlaceId, setSelectedPlaceId] = useState('');
+
+  const flatlist = useRef();
+  const map = useRef();
+
+  const propertiesFiltered = properties.filter(property => {
+    return (
+      property.data.lat !== undefined &&
+      property.data.lng !== undefined &&
+      property.data.price >= desde &&
+      property.data.price <= hasta
+    );
+  });
 
   const goToProperty = (id: string, action: string, propertyType: string) => {
     navigation.navigate('PropertySearchDetailScreen', {
@@ -125,6 +144,27 @@ const PropertiesMapScreen = ({ navigation, route }: Props) => {
                   ))}
             </MapView>
           )}
+          <View style={{ position: 'absolute', bottom: 10 }}>
+            <FlatList
+              data={propertiesFiltered}
+              renderItem={({ item }) => (
+                <PropertyItem
+                  action={item.data.action}
+                  baños={item.data.specificData.bath}
+                  description={item.data.specificData.propertyDescription}
+                  habitaciones={item.data.specificData.room}
+                  id={item.id}
+                  img={item.data.principalPhotoPath}
+                  propertyType={item.data.propertyType}
+                  goToProperty={goToProperty}
+                />
+              )}
+              horizontal
+              showsHorizontalScrollIndicator={false}
+              snapToAlignment={'center'}
+              decelerationRate={'fast'}
+            />
+          </View>
           <Icon
             onPress={handleGoBack}
             name="arrow-back-outline"

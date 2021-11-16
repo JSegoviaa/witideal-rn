@@ -13,7 +13,9 @@ interface Props {
   action: string;
   baños: string;
   description: string;
+  goToProperty: (id: string, action: string, propertyType: string) => void;
   habitaciones: string;
+  id: string;
   img: string;
   propertyType: string;
 }
@@ -22,6 +24,8 @@ const PropertyItem = ({
   action,
   baños,
   description,
+  id,
+  goToProperty,
   img,
   habitaciones,
   propertyType,
@@ -29,7 +33,11 @@ const PropertyItem = ({
   const width = useWindowDimensions().width;
 
   return (
-    <TouchableOpacity style={[styles.container, { width }]}>
+    <TouchableOpacity
+      onPress={() => {
+        goToProperty(id, action, propertyType);
+      }}
+      style={[styles.container, { width }]}>
       <View style={styles.innerContainer}>
         <Image style={styles.image} source={{ uri: img }} />
 
