@@ -1,15 +1,8 @@
 import React, { useState } from 'react';
-import {
-  Image,
-  StyleSheet,
-  Text,
-  Touchable,
-  TouchableOpacity,
-  View,
-} from 'react-native';
+import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { StackScreenProps } from '@react-navigation/stack';
 import Icon from 'react-native-vector-icons/Ionicons';
-import MapView, { Callout, Marker } from 'react-native-maps';
+import MapView, { Marker } from 'react-native-maps';
 import { RootSearchStackNavigation } from '../navigation/SearchStackNavigation';
 import { useProperties } from '../hooks/useProperties';
 import Loading from '../components/ui/Loading';
@@ -32,6 +25,8 @@ const PropertiesMapScreen = ({ navigation, route }: Props) => {
     room,
     petFriendly,
     conservacion,
+    desde,
+    hasta,
   } = route.params;
 
   const { loading, properties } = useProperties(
@@ -83,14 +78,16 @@ const PropertiesMapScreen = ({ navigation, route }: Props) => {
                   .filter(property => {
                     return (
                       property.data.lat !== undefined &&
-                      property.data.lng !== undefined
+                      property.data.lng !== undefined &&
+                      property.data.price >= desde &&
+                      property.data.price <= hasta
                     );
                   })
                   .map(property => (
                     <Marker
+                      identifier={property.id}
                       onPress={() => {
                         showSelectedPlace(property.id);
-                        console.log('hoa');
                         // goToProperty(
                         //   property.id,
                         //   property.data.action,
@@ -102,20 +99,6 @@ const PropertiesMapScreen = ({ navigation, route }: Props) => {
                         latitude: property.data.lat,
                         longitude: property.data.lng,
                       }}>
-                      {selectedPlaceId === property.id ? (
-                        <PropertyItem
-                          action={property.data.action}
-                          baños={property.data.specificData.bath}
-                          description={
-                            property.data.specificData.propertyDescription
-                          }
-                          habitaciones={property.data.specificData.room}
-                          img={property.data.principalPhotoPath}
-                          propertyType={property.data.propertyType}
-                        />
-                      ) : (
-                        <Text></Text>
-                      )}
                       <TouchableOpacity
                         style={
                           selectedPlaceId === property.id

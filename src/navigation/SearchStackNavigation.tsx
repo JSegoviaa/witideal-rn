@@ -20,6 +20,8 @@ interface PropertiesMap {
   room: number;
   petFriendly: boolean;
   conservacion: string;
+  desde: number;
+  hasta: number;
 }
 
 interface PropertiesList {

@@ -46,12 +46,12 @@ interface Props
 
 const SearchScreen = ({ navigation }: Props) => {
   const { form, onChange } = useForm({
-    desde: 0,
-    hasta: 0,
+    desde: 5000,
+    hasta: 10000,
     room: 1,
     bath: 1,
   });
-  const { bath, room } = form;
+  const { bath, room, desde, hasta } = form;
 
   const [coordinates, setCoordinates] = useState<Location>({
     longitude: 0,
@@ -121,10 +121,13 @@ const SearchScreen = ({ navigation }: Props) => {
         room,
         petFriendly,
         conservacion,
+        desde,
+        hasta,
       });
     }
   };
 
+  console.log('des', desde, hasta, 'tas');
   return (
     <ScrollView
       keyboardShouldPersistTaps={'always'}
@@ -286,18 +289,17 @@ const SearchScreen = ({ navigation }: Props) => {
 
             <View style={{ flexDirection: 'row' }}>
               <Text style={styles.subtitle}>¿Cuál es tu presupuesto?</Text>
-              <Text style={styles.optional}>Opcional</Text>
             </View>
             <View style={{ flexDirection: 'row' }}>
               <TextInput
-                placeholder="Desde"
+                placeholder="5000"
                 placeholderTextColor="#ccc"
                 keyboardType="numeric"
                 style={styles.input}
                 onChangeText={value => onChange(value, 'desde')}
               />
               <TextInput
-                placeholder="Hasta"
+                placeholder="10000"
                 placeholderTextColor="#ccc"
                 keyboardType="numeric"
                 style={styles.input}
