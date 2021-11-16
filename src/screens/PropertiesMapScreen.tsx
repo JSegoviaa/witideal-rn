@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { StackScreenProps } from '@react-navigation/stack';
 import Icon from 'react-native-vector-icons/Ionicons';
@@ -7,6 +7,7 @@ import { RootSearchStackNavigation } from '../navigation/SearchStackNavigation';
 import { useProperties } from '../hooks/useProperties';
 import Loading from '../components/ui/Loading';
 import { currencyFormat } from '../helpers/currencyFormat';
+import PropertyItem from '../components/SearchScreen.tsx/PropertyItem';
 
 interface Props
   extends StackScreenProps<RootSearchStackNavigation, 'PropertiesMapScreen'> {}
@@ -37,6 +38,7 @@ const PropertiesMapScreen = ({ navigation, route }: Props) => {
     petFriendly,
     conservacion,
   );
+  const [selectedPlaceId, setSelectedPlaceId] = useState('');
 
   const goToProperty = (id: string, action: string, propertyType: string) => {
     navigation.navigate('PropertySearchDetailScreen', {
@@ -46,6 +48,10 @@ const PropertiesMapScreen = ({ navigation, route }: Props) => {
     });
   };
   const handleGoBack = () => navigation.goBack();
+
+  const showSelectedPlace = (id: string) => {
+    setSelectedPlaceId(id);
+  };
 
   return (
     <View style={{ flex: 1 }}>
@@ -67,28 +73,50 @@ const PropertiesMapScreen = ({ navigation, route }: Props) => {
               {properties &&
                 properties.map(property => (
                   <Marker
-                    onPress={() =>
-                      goToProperty(
-                        property.id,
-                        property.data.action,
-                        property.data.propertyType,
-                      )
-                    }
+                    onPress={() => {
+                      showSelectedPlace(property.id);
+                    }}
                     key={property.id}
                     coordinate={{
                       latitude: property.data.lat,
                       longitude: property.data.lng,
                     }}>
-                    <TouchableOpacity style={styles.bg}>
-                      <Text style={styles.text}>
+                    <TouchableOpacity
+                      style={
+                        selectedPlaceId === property.id
+                          ? styles.bgSelected
+                          : styles.bg
+                      }>
+                      <Text
+                        style={
+                          selectedPlaceId === property.id
+                            ? styles.textSelected
+                            : styles.text
+                        }>
                         {currencyFormat(property.data.price)}{' '}
                         {property.data.currency}
                       </Text>
                     </TouchableOpacity>
+
+                    {selectedPlaceId === property.id ? (
+                      <PropertyItem
+                        action={property.data.action}
+                        baños={property.data.specificData.bath}
+                        description={
+                          property.data.specificData.propertyDescription
+                        }
+                        habitaciones={property.data.specificData.room}
+                        img={property.data.principalPhotoPath}
+                        propertyType={property.data.propertyType}
+                      />
+                    ) : (
+                      <Text></Text>
+                    )}
                   </Marker>
                 ))}
             </MapView>
           )}
+
           <Icon
             onPress={handleGoBack}
             name="arrow-back-outline"
