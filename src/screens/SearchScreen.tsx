@@ -127,7 +127,6 @@ const SearchScreen = ({ navigation }: Props) => {
     }
   };
 
-  console.log('des', desde, hasta, 'tas');
   return (
     <ScrollView
       keyboardShouldPersistTaps={'always'}
