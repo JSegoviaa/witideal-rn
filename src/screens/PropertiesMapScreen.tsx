@@ -16,6 +16,7 @@ import { useProperties } from '../hooks/useProperties';
 import Loading from '../components/ui/Loading';
 import { currencyFormat } from '../helpers/currencyFormat';
 import PropertyItem from '../components/SearchScreen.tsx/PropertyItem';
+import Message from '../components/ui/Message';
 
 interface Props
   extends StackScreenProps<RootSearchStackNavigation, 'PropertiesMapScreen'> {}
@@ -159,6 +160,11 @@ const PropertiesMapScreen = ({ navigation, route }: Props) => {
                   ))}
             </MapView>
           )}
+
+          {properties.length === 0 && (
+            <Message title="Aún no hay inmuebles con esas características en esta zona" />
+          )}
+
           <View style={{ position: 'absolute', bottom: 10 }}>
             <FlatList
               ref={flatlist}
