@@ -6,23 +6,34 @@ interface DocumentData {
 }
 
 export const useDestProperties = (uid: string) => {
-  const [destProperties, setDestProperties] = useState<DocumentData | null>([]);
-  const [loading, setLoading] = useState(true);
+  const [destProperties, setDestProperties] = useState<DocumentData>([]);
+  const [loading, setLoading] = useState<Boolean>(true);
 
-  const getDestProperties = async () => {
+  const getMyDestProperties = () => {
     try {
-      const data = await firestore()
+      const data = firestore()
         .collection('production')
         .doc('Users')
         .collection(uid)
         .doc('properties')
-        .get();
+        .collection('ownedProperties')
+        .where('isDestProperty', '==', true);
+      const list: DocumentData = [];
 
-      setLoading(false);
-      data.data()!.destProperties.forEach(snapshot => {
-        snapshot.get().then(snap => {
-          setDestProperties([{ id: snap.id, ...snap.data() }]);
+      return data.onSnapshot(querySnapshot => {
+        querySnapshot.forEach(doc => {
+          if (doc.exists) {
+            const data = doc.data();
+            list.push({
+              id: doc.id,
+              data,
+            });
+          }
         });
+        if (loading) {
+          setLoading(false);
+        }
+        setDestProperties(list);
       });
     } catch (error) {
       console.log(error);
@@ -30,7 +41,7 @@ export const useDestProperties = (uid: string) => {
   };
 
   useEffect(() => {
-    getDestProperties();
+    getMyDestProperties();
   }, []);
 
   return { destProperties, loading };

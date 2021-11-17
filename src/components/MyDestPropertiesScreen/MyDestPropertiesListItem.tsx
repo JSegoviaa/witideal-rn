@@ -29,12 +29,22 @@ const MyDestPropertiesListItem = ({ destacado }: any) => {
             height={50}
             style={{ width: '100%', height: 200 }}
             source={{
-              uri: `${destacado.img}`,
+              uri: `${destacado.data.principalPhotoPath}`,
             }}
           />
-          <Text style={styles.textCenter}>{destacado.title}</Text>
-
-          <Text style={styles.subtitle}>{destacado.desc}</Text>
+          <Text style={styles.textCenter}>
+            {destacado.data!.route && `${destacado.data!.route} `}
+            {destacado.data!.street_number &&
+              `${destacado.data!.street_number} `}
+            {destacado.data!.int_number && `${destacado.data!.int_number}`}
+            {destacado.data!.sublocality_level_1 &&
+              `, ${destacado.data!.sublocality_level_1}`}
+            {destacado.data!.administrative_area_level_2_3 &&
+              `, ${destacado.data!.administrative_area_level_2_3}`}
+            {destacado.data!.postal_code && `, ${destacado.data!.postal_code}`}
+            {destacado.data!.administrative_area_level_1 &&
+              `, ${destacado.data!.administrative_area_level_1}`}
+          </Text>
         </TouchableOpacity>
       </View>
     </>

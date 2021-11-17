@@ -55,6 +55,11 @@ const Destacados = ({ destProperties }: any) => {
               )}
               keyExtractor={item => item.id}
               showsVerticalScrollIndicator={false}
+              initialNumToRender={6}
+              maxToRenderPerBatch={6}
+              updateCellsBatchingPeriod={100}
+              windowSize={7}
+              onEndReachedThreshold={0.5}
             />
           </View>
         </SafeAreaView>
