@@ -127,11 +127,6 @@ const PropertiesMapScreen = ({ navigation, route }: Props) => {
                       identifier={property.id}
                       onPress={() => {
                         showSelectedPlace(property.id);
-                        // goToProperty(
-                        //   property.id,
-                        //   property.data.action,
-                        //   property.data.propertyType,
-                        // );
                       }}
                       key={property.id}
                       coordinate={{
@@ -181,8 +176,9 @@ const PropertiesMapScreen = ({ navigation, route }: Props) => {
                 />
               )}
               horizontal
-              snapToInterval={width}
               showsHorizontalScrollIndicator={false}
+              initialNumToRender={propertiesFiltered.length}
+              snapToInterval={width}
               snapToAlignment={'center'}
               decelerationRate={'fast'}
             />
