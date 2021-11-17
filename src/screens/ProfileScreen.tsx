@@ -34,12 +34,12 @@ const ProfileScreen = ({ navigation }: Props) => {
               }}>
               <Text style={appStyles.btnSecondary}>Mis pagos</Text>
             </TouchableOpacity>
-            <TouchableOpacity
+            {/* <TouchableOpacity
               onPress={() => {
                 navigation.navigate('MyFavoritesScreen');
               }}>
               <Text style={appStyles.btnSecondary}>Mis favoritos</Text>
-            </TouchableOpacity>
+            </TouchableOpacity> */}
             <TouchableOpacity
               onPress={() => {
                 navigation.navigate('TosScreen');
