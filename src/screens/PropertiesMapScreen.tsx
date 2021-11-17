@@ -1,10 +1,11 @@
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import {
   FlatList,
   Image,
   StyleSheet,
   Text,
   TouchableOpacity,
+  useWindowDimensions,
   View,
 } from 'react-native';
 import { StackScreenProps } from '@react-navigation/stack';
@@ -48,9 +49,9 @@ const PropertiesMapScreen = ({ navigation, route }: Props) => {
     conservacion,
   );
   const [selectedPlaceId, setSelectedPlaceId] = useState('');
+  const width = useWindowDimensions().width;
 
-  const flatlist = useRef();
-  const map = useRef();
+  const flatlist = useRef<null>(null);
 
   const propertiesFiltered = properties.filter(property => {
     return (
@@ -74,6 +75,25 @@ const PropertiesMapScreen = ({ navigation, route }: Props) => {
   const showSelectedPlace = (id: string) => {
     setSelectedPlaceId(id);
   };
+
+  useEffect(() => {
+    if (!selectedPlaceId || !flatlist) {
+      return;
+    }
+
+    const index = properties
+      .filter(property => {
+        return (
+          property.data.lat !== undefined &&
+          property.data.lng !== undefined &&
+          property.data.price >= desde &&
+          property.data.price <= hasta
+        );
+      })
+      .findIndex(property => property.id === selectedPlaceId);
+
+    flatlist.current?.scrollToIndex({ index });
+  }, [selectedPlaceId]);
 
   return (
     <View style={{ flex: 1 }}>
@@ -146,6 +166,7 @@ const PropertiesMapScreen = ({ navigation, route }: Props) => {
           )}
           <View style={{ position: 'absolute', bottom: 10 }}>
             <FlatList
+              ref={flatlist}
               data={propertiesFiltered}
               renderItem={({ item }) => (
                 <PropertyItem
@@ -160,6 +181,7 @@ const PropertiesMapScreen = ({ navigation, route }: Props) => {
                 />
               )}
               horizontal
+              snapToInterval={width}
               showsHorizontalScrollIndicator={false}
               snapToAlignment={'center'}
               decelerationRate={'fast'}
