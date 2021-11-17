@@ -52,7 +52,7 @@ const PropertiesMapScreen = ({ navigation, route }: Props) => {
   const [selectedPlaceId, setSelectedPlaceId] = useState('');
   const width = useWindowDimensions().width;
 
-  const flatlist = useRef<null>(null);
+  const flatlist: any = useRef<null>(null);
 
   const propertiesFiltered = properties.filter(property => {
     return (
@@ -165,7 +165,7 @@ const PropertiesMapScreen = ({ navigation, route }: Props) => {
             <Message title="Aún no hay inmuebles con esas características en esta zona" />
           )}
 
-          <View style={{ position: 'absolute', bottom: 10 }}>
+          <View style={{ position: 'absolute', bottom: 25 }}>
             <FlatList
               ref={flatlist}
               data={propertiesFiltered}
