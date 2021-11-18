@@ -7,10 +7,12 @@ import { AuthContext } from '../context/auth/AuthContext';
 import MyPropertiesStackNavigation from './MyPropertiesStackNavigation';
 import ProfileStackNavigation from './ProfileStackNavigation';
 import MyDestPropertiesScreenStack from './MyDestPropertiesScreenStack';
+import AddPropertyScreen from '../screens/AddPropertyScreen';
 
 export type RootTabsNavigation = {
   SearchStackNavigation: undefined;
   LoginStackScreen: undefined;
+  AddPropertyScreen: undefined;
   MyDestPropertiesScreenStack: undefined;
   MyPropertiesScreenStack: undefined;
   ProfileStackNavigation: undefined;
@@ -82,6 +84,9 @@ const TabLogin = () => {
             case 'MyDestPropertiesScreenStack':
               iconName = 'star-outline';
               break;
+            case 'AddPropertyScreen':
+              iconName = 'add-circle-outline';
+              break;
             case 'MyPropertiesScreenStack':
               iconName = 'business-outline';
               break;
@@ -108,6 +113,11 @@ const TabLogin = () => {
         name="MyDestPropertiesScreenStack"
         options={{ title: 'Mis destacados', headerShown: false }}
         component={MyDestPropertiesScreenStack}
+      />
+      <Tab.Screen
+        name="AddPropertyScreen"
+        options={{ title: 'Añadir', headerShown: false }}
+        component={AddPropertyScreen}
       />
       <Tab.Screen
         name="MyPropertiesScreenStack"
