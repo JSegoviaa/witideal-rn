@@ -8,6 +8,7 @@ import MyPropertiesStackNavigation from './MyPropertiesStackNavigation';
 import ProfileStackNavigation from './ProfileStackNavigation';
 import MyDestPropertiesScreenStack from './MyDestPropertiesScreenStack';
 import AddPropertyScreen from '../screens/AddPropertyScreen';
+import { useUserInfo } from '../hooks/useUserInfo';
 
 export type RootTabsNavigation = {
   SearchStackNavigation: undefined;
@@ -68,6 +69,9 @@ const TabNoLogin = () => {
 // Componente que se muestra si tengo sesión iniciada
 
 const TabLogin = () => {
+  const { user } = useContext(AuthContext);
+  const { userInfo } = useUserInfo(user?.uid!);
+
   return (
     <Tab.Navigator
       screenOptions={({ route }) => ({
@@ -114,11 +118,14 @@ const TabLogin = () => {
         options={{ title: 'Mis destacados', headerShown: false }}
         component={MyDestPropertiesScreenStack}
       />
-      <Tab.Screen
-        name="AddPropertyScreen"
-        options={{ title: 'Añadir', headerShown: false }}
-        component={AddPropertyScreen}
-      />
+      {userInfo && userInfo.isPromoter ? (
+        <Tab.Screen
+          name="AddPropertyScreen"
+          options={{ title: 'Añadir', headerShown: false }}
+          component={AddPropertyScreen}
+        />
+      ) : null}
+
       <Tab.Screen
         name="MyPropertiesScreenStack"
         options={{ title: 'Mis propiedades', headerShown: false }}
