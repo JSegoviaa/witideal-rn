@@ -6082,6 +6082,26 @@ react-is@^16.13.0, react-is@^16.7.0, react-is@^16.8.1:
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.13.1.tgz#789729a4dc36de2999dc156dd6c1d9c18cea56a4"
   integrity sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==
 
+react-native-apple-header@^0.1.1:
+  version "0.1.1"
+  resolved "https://registry.yarnpkg.com/react-native-apple-header/-/react-native-apple-header-0.1.1.tgz#aa8bd7eb6b7f75626b7d7e6b348d79db670413b0"
+  integrity sha512-olhk1icxbmX4p320+iE3NunTQOlqBHMxHp/HcQ3XiUpPzekLPhJKK0r5dZfp80LEdcdxnZKhJMJqq0FquIG/VQ==
+
+react-native-bottom-search-bar@^0.1.3:
+  version "0.1.3"
+  resolved "https://registry.yarnpkg.com/react-native-bottom-search-bar/-/react-native-bottom-search-bar-0.1.3.tgz#8a29c838470993d1afb7803af8c8d4ef646bc50a"
+  integrity sha512-im72UyXMBB02AMBDi22Kldlj7JDrUIpWcpb/Gsy2ODttNDdI1EGoOnPtOYhm+HLoCuFADS60w4LxtdUrwC7AQQ==
+
+react-native-bouncy-checkbox@^2.1.7:
+  version "2.1.7"
+  resolved "https://registry.yarnpkg.com/react-native-bouncy-checkbox/-/react-native-bouncy-checkbox-2.1.7.tgz#531b40b82d1ce173509b4af1b2c7b84119f1a876"
+  integrity sha512-0u7u8ES9GJmVk+Pfv/DClCdf5Sjcu3lwqnFoqRkHkw31ZQRmkqJAHgZO7JV+I5lvJD6Kq9Wv9PwQo2YpEOgltQ==
+  dependencies:
+    react-native-apple-header "^0.1.1"
+    react-native-bottom-search-bar "^0.1.3"
+    react-native-dynamic-vector-icons "^1.1.6"
+    react-native-vector-icons "^8.1.0"
+
 react-native-codegen@^0.0.7:
   version "0.0.7"
   resolved "https://registry.yarnpkg.com/react-native-codegen/-/react-native-codegen-0.0.7.tgz#86651c5c5fec67a8077ef7f4e36f7ed459043e14"
@@ -6090,6 +6110,11 @@ react-native-codegen@^0.0.7:
     flow-parser "^0.121.0"
     jscodeshift "^0.11.0"
     nullthrows "^1.1.1"
+
+react-native-dynamic-vector-icons@^1.1.6:
+  version "1.1.6"
+  resolved "https://registry.yarnpkg.com/react-native-dynamic-vector-icons/-/react-native-dynamic-vector-icons-1.1.6.tgz#a032cf647eb6934cbec56562deda772ca073ac67"
+  integrity sha512-tz098Wv/4TI70BRWfshSyVzWsoV4PRdp6fMMA7GRmxsaERfYshEy3Rs3bvD9tVjD+zKUcmM4Ce7bmAoJkGSNdg==
 
 react-native-gesture-handler@^1.10.3:
   version "1.10.3"

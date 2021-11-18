@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { ScrollView, StyleSheet, Text, TextInput, View } from 'react-native';
+import BouncyCheckbox from 'react-native-bouncy-checkbox';
 import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete';
 
 interface Location {
@@ -39,6 +40,17 @@ const Ubicacion = () => {
           key: 'AIzaSyAd22YBCutdzEZePBY2wbS2OawTZ1_H7-s',
           language: 'es',
           components: 'country:mx',
+        }}
+      />
+      <BouncyCheckbox
+        size={25}
+        fillColor="#3F19F9"
+        unfillColor="#FFFFFF"
+        text="Ubicación exacta"
+        iconStyle={{ borderColor: '#3F19F9' }}
+        textStyle={{
+          fontFamily: 'JosefinSans-Regular',
+          textDecorationLine: 'none',
         }}
       />
       <TextInput placeholder="Calle" />

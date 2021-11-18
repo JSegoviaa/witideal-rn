@@ -6,6 +6,7 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
+import BouncyCheckbox from 'react-native-bouncy-checkbox';
 
 const PropertyType = () => {
   return (
@@ -41,6 +42,17 @@ const PropertyType = () => {
         <TextInput placeholder="Precio" />
         <Text>MXN</Text>
         <Text>USD</Text>
+        <BouncyCheckbox
+          size={25}
+          fillColor="#3F19F9"
+          unfillColor="#FFFFFF"
+          text="¿Compartes comisión?"
+          iconStyle={{ borderColor: '#3F19F9' }}
+          textStyle={{
+            fontFamily: 'JosefinSans-Regular',
+            textDecorationLine: 'none',
+          }}
+        />
       </View>
     </>
   );
