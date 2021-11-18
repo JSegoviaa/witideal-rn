@@ -77,7 +77,10 @@ const TabLogin = () => {
       screenOptions={({ route }) => ({
         tabBarActiveTintColor: '#3f19f9',
         tabBarInactiveTintColor: '#000',
-        tabBarLabelStyle: { fontSize: 12, textAlign: 'center' },
+        tabBarLabelStyle: {
+          fontSize: userInfo?.isPromoter ? 11 : 12,
+          textAlign: 'center',
+        },
         tabBarIcon: ({ focused }) => {
           let iconName: string = '';
           switch (route.name) {
