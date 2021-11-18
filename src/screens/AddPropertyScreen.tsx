@@ -1,11 +1,20 @@
 import React from 'react';
-import { SafeAreaView, StyleSheet, Text } from 'react-native';
+import { ScrollView, StyleSheet } from 'react-native';
+import PropertyType from '../components/AddPropertyScreen/PropertyType';
+import SpecificData from '../components/AddPropertyScreen/SpecificData';
+import Summary from '../components/AddPropertyScreen/Summary';
+import Ubicacion from '../components/AddPropertyScreen/Ubicacion';
+import UploadPropertyPictures from '../components/AddPropertyScreen/UploadPropertyPictures';
 
 const AddPropertyScreen = () => {
   return (
-    <SafeAreaView>
-      <Text>Añadir propiedad</Text>
-    </SafeAreaView>
+    <ScrollView>
+      <PropertyType />
+      <Ubicacion />
+      <SpecificData />
+      <UploadPropertyPictures />
+      <Summary />
+    </ScrollView>
   );
 };
 
