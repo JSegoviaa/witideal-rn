@@ -9,29 +9,10 @@ import {
 } from 'react-native';
 import MyDestPropertiesList from '../components/MyDestPropertiesScreen/MyDestPropertiesList';
 import Loading from '../components/ui/Loading';
+import NoProperties from '../components/ui/NoProperties';
 import { AuthContext } from '../context/auth/AuthContext';
 import { useDestProperties } from '../hooks/useDestProperties';
 import { appStyles } from '../theme/appTheme';
-
-//Este es el componente que se muestra si no se tiene propiedades destacadas
-const NoDestacados = () => {
-  return (
-    <SafeAreaView style={{ flex: 1, justifyContent: 'center' }}>
-      <Image
-        width={10}
-        height={10}
-        style={{
-          width: 200,
-          height: 200,
-          marginLeft: 'auto',
-          marginRight: 'auto',
-        }}
-        source={require('../assets/warning.png')}
-      />
-      <Text style={styles.title}>Aún no has agregado destacados</Text>
-    </SafeAreaView>
-  );
-};
 
 //Este es el componente que se muestra si se tiene propiedades destacadas
 const Destacados = ({ destProperties }: any) => {
@@ -64,7 +45,7 @@ const Destacados = ({ destProperties }: any) => {
           </View>
         </SafeAreaView>
       ) : (
-        <NoDestacados />
+        <NoProperties title="Aún no has agregado destacados" />
       )}
     </>
   );
@@ -89,12 +70,6 @@ const styles = StyleSheet.create({
     fontWeight: '700',
     padding: 15,
     marginTop: 70,
-  },
-  title: {
-    textAlign: 'center',
-    fontSize: 20,
-    fontWeight: '700',
-    color: '#1C006F',
   },
 });
 
