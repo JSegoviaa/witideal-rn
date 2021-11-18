@@ -9,28 +9,10 @@ import {
 } from 'react-native';
 import MyPropertiesList from '../components/MyPropertiesScreen/MyPropertiesList';
 import Loading from '../components/ui/Loading';
+import NoProperties from '../components/ui/NoProperties';
 import { AuthContext } from '../context/auth/AuthContext';
 import { useMyProperties } from '../hooks/useMyProperties';
 import { appStyles } from '../theme/appTheme';
-
-const NoProperties = () => {
-  return (
-    <SafeAreaView style={{ flex: 1, justifyContent: 'center' }}>
-      <Image
-        width={10}
-        height={10}
-        style={{
-          width: 200,
-          height: 200,
-          marginLeft: 'auto',
-          marginRight: 'auto',
-        }}
-        source={require('../assets/warning.png')}
-      />
-      <Text style={styles.title}>No tienes propiedades</Text>
-    </SafeAreaView>
-  );
-};
 
 const MyProperties = ({ properties }: any) => {
   return (
@@ -63,7 +45,7 @@ const MyProperties = ({ properties }: any) => {
           </View>
         </SafeAreaView>
       ) : (
-        <NoProperties />
+        <NoProperties title="No tienes propiedades" />
       )}
     </>
   );
@@ -92,12 +74,6 @@ const styles = StyleSheet.create({
     fontWeight: '700',
     padding: 15,
     marginTop: 70,
-  },
-  title: {
-    textAlign: 'center',
-    fontWeight: '700',
-    fontSize: 20,
-    color: '#1C006F',
   },
 });
 
