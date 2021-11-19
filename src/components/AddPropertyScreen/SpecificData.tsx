@@ -12,11 +12,33 @@ import {
 import { exterior, interior } from '../../constant/locationBuilding';
 import { abierta, cerrada } from '../../constant/kitchen';
 import { useForm } from '../../hooks/useForm';
+import { lp, natural, noGas } from '../../constant/gasType';
 
 const SpecificData = () => {
   const { form, onChange } = useForm({
+    banks: '',
+    bath: '',
+    deliverydate: '',
+    extras: '',
+    floorNumber: '',
+    halfBath: '',
+    hospitals: '',
+    m2build: '',
+    mainavs: '',
+    malls: '',
     mantainance: 0,
+    metrobus: '',
+    parkingSlots: '',
+    propertyDescription: '',
+    propertyTitle: '',
+    room: '',
+    schools: '',
+    shops: '',
+    subway: '',
+    totalBuidingFloors: '',
+    totalUnits: '',
   });
+
   const [locationBuilding, setLocationBuilding] = useState<String>(interior);
   const [preservationState, setPreservationState] = useState<String>(excelente);
   const [kitchen, setKitchen] = useState<String>(abierta);
@@ -48,6 +70,10 @@ const SpecificData = () => {
   const [airConditioner, setAirConditioner] = useState<Boolean>(false);
   const [isMantainceIncluded, setIsMantainceIncluded] =
     useState<Boolean>(false);
+  const [gasType, setGasType] = useState(lp);
+  const [petFriendly, setPetFriendly] = useState<Boolean | undefined>(
+    undefined,
+  );
 
   return (
     <View>
@@ -64,17 +90,26 @@ const SpecificData = () => {
 
       <View>
         <Text style={styles.subtitle}>Características Físicas</Text>
-        <TextInput style={appStyles.input} placeholder="M2 construidos" />
         <TextInput
+          onChangeText={value => onChange(value, 'm2build')}
+          style={appStyles.input}
+          placeholder="M2 construidos"
+        />
+        <TextInput
+          onChangeText={value => onChange(value, 'totalUnits')}
           style={appStyles.input}
           placeholder="Total de unidades del conjunto"
         />
-        <TextInput style={appStyles.input} placeholder="Niveles del edificio" />
         <TextInput
+          onChangeText={value => onChange(value, 'totalBuidingFloors')}
+          style={appStyles.input}
+          placeholder="Niveles del edificio"
+        />
+        <TextInput
+          onChangeText={value => onChange(value, 'floorNumber')}
           style={appStyles.input}
           placeholder="Nivel en el que se encuentra"
         />
-        <TextInput style={appStyles.input} placeholder="Niveles del edificio" />
       </View>
 
       <View>
@@ -111,10 +146,26 @@ const SpecificData = () => {
 
       <View>
         <Text style={styles.subtitle}>Espacios internos</Text>
-        <TextInput style={appStyles.input} placeholder="Recámaras" />
-        <TextInput style={appStyles.input} placeholder="Baños completos" />
-        <TextInput style={appStyles.input} placeholder="Medio baños" />
-        <TextInput style={appStyles.input} placeholder="Estacionamientos" />
+        <TextInput
+          onChangeText={value => onChange(value, 'room')}
+          style={appStyles.input}
+          placeholder="Recámaras"
+        />
+        <TextInput
+          onChangeText={value => onChange(value, 'bath')}
+          style={appStyles.input}
+          placeholder="Baños completos"
+        />
+        <TextInput
+          onChangeText={value => onChange(value, 'halfBath')}
+          style={appStyles.input}
+          placeholder="Medio baños"
+        />
+        <TextInput
+          onChangeText={value => onChange(value, 'parkingSlots')}
+          style={appStyles.input}
+          placeholder="Estacionamientos"
+        />
       </View>
 
       <View>
@@ -547,17 +598,19 @@ const SpecificData = () => {
           onChangeText={value => onChange(value, 'mantainance')}
         />
       ) : null}
+
       <Text style={styles.subtitle}>Tipo de gas</Text>
       <View style={appStyles.picker}>
         <Picker
-          selectedValue={kitchen}
+          selectedValue={gasType}
           style={{ color: '#000' }}
-          onValueChange={(itemValue, itemIndex) => setKitchen(itemValue)}>
-          <Picker.Item label="Abierta" value={abierta} />
-          <Picker.Item label="Cerrada" value={cerrada} />
-          <Picker.Item label="Cerrada" value={cerrada} />
+          onValueChange={(itemValue, itemIndex) => setGasType(itemValue)}>
+          <Picker.Item label="LP" value={lp} />
+          <Picker.Item label="Natural" value={natural} />
+          <Picker.Item label="No instalado" value={noGas} />
         </Picker>
       </View>
+
       <BouncyCheckbox
         size={25}
         fillColor="#3F19F9"
@@ -568,33 +621,80 @@ const SpecificData = () => {
           fontFamily: 'JosefinSans-Regular',
           textDecorationLine: 'none',
         }}
+        onPress={() => {
+          setPetFriendly(!petFriendly);
+        }}
       />
       <View>
-        <Text>Características de la zona</Text>
-        <TextInput placeholder="Centros comerciales" />
-        <TextInput placeholder="Tiendes de autoservicio" />
-        <TextInput placeholder="Bancos" />
-        <TextInput placeholder="Escuelas" />
-        <TextInput placeholder="Hospitales" />
-        <TextInput placeholder="Avs. principales" />
-        <TextInput placeholder="Estaciones de metro" />
-        <TextInput placeholder="Estaciones de metrobús" />
+        <Text style={styles.subtitle}>Características de la zona</Text>
+        <TextInput
+          onChangeText={value => onChange(value, 'malls')}
+          style={appStyles.input}
+          placeholder="Centros comerciales"
+        />
+        <TextInput
+          onChangeText={value => onChange(value, 'shops')}
+          style={appStyles.input}
+          placeholder="Tiendes de autoservicio"
+        />
+        <TextInput
+          onChangeText={value => onChange(value, 'banks')}
+          style={appStyles.input}
+          placeholder="Bancos"
+        />
+        <TextInput
+          onChangeText={value => onChange(value, 'schools')}
+          style={appStyles.input}
+          placeholder="Escuelas"
+        />
+        <TextInput
+          onChangeText={value => onChange(value, 'hospitals')}
+          style={appStyles.input}
+          placeholder="Hospitales"
+        />
+        <TextInput
+          onChangeText={value => onChange(value, 'mainavs')}
+          style={appStyles.input}
+          placeholder="Avs. principales"
+        />
+        <TextInput
+          onChangeText={value => onChange(value, 'subway')}
+          style={appStyles.input}
+          placeholder="Estaciones de metro"
+        />
+        <TextInput
+          onChangeText={value => onChange(value, 'metrobus')}
+          style={appStyles.input}
+          placeholder="Estaciones de metrobús"
+        />
       </View>
       <View>
-        <Text>Tiempo</Text>
-        <TextInput placeholder="Fecha de entrega" />
+        <Text style={styles.subtitle}>Tiempo</Text>
+        <TextInput
+          style={appStyles.input}
+          onChangeText={value => onChange(value, 'deliverydate')}
+          placeholder="Fecha de entrega"
+        />
       </View>
       <View>
-        <Text>Antigüedad (años)</Text>
+        <Text style={styles.subtitle}>Antigüedad (años)</Text>
         <Text>0-5 / 6-10 / 11-25 / 25+</Text>
       </View>
       <View>
-        <Text>Título del inmueble</Text>
-        <TextInput placeholder="Título" />
+        <Text style={styles.subtitle}>Título del inmueble</Text>
+        <TextInput
+          style={appStyles.input}
+          onChangeText={value => onChange(value, 'propertyTitle')}
+          placeholder="Título"
+        />
       </View>
       <View>
-        <Text>Descripción del inmueble</Text>
-        <TextInput placeholder="Descripción" />
+        <Text style={styles.subtitle}>Descripción del inmueble</Text>
+        <TextInput
+          style={appStyles.input}
+          onChangeText={value => onChange(value, 'propertyDescription')}
+          placeholder="Descripción"
+        />
       </View>
     </View>
   );
