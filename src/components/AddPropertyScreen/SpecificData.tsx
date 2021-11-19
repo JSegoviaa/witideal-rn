@@ -9,10 +9,13 @@ import {
   regular,
   remodelar,
 } from '../../constant/propertyConvervation';
+import { exterior, interior } from '../../constant/locationBuilding';
+import { cerrada } from '../../constant/kitchen';
 
 const SpecificData = () => {
-  const [locationBuilding, setLocationBuilding] = useState('interior');
+  const [locationBuilding, setLocationBuilding] = useState(interior);
   const [preservationState, setPreservationState] = useState(excelente);
+  const [kitchen, setKitchen] = useState(cerrada);
 
   return (
     <View>
@@ -50,8 +53,8 @@ const SpecificData = () => {
             onValueChange={(itemValue, itemIndex) =>
               setLocationBuilding(itemValue)
             }>
-            <Picker.Item label="Interior" value="interior" />
-            <Picker.Item label="Exterior" value="exterior" />
+            <Picker.Item label="Interior" value={interior} />
+            <Picker.Item label="Exterior" value={exterior} />
           </Picker>
         </View>
       </View>
@@ -80,7 +83,7 @@ const SpecificData = () => {
         <TextInput style={appStyles.input} placeholder="Estacionamientos" />
       </View>
       <View>
-        <Text>Cocina</Text>
+        <Text style={styles.subtitle}>Cocina</Text>
         <Text>Abierta / Cerrada</Text>
         <BouncyCheckbox
           size={25}
