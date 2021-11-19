@@ -1,39 +1,83 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { StyleSheet, Text, TextInput, View } from 'react-native';
+import { Picker } from '@react-native-picker/picker';
 import BouncyCheckbox from 'react-native-bouncy-checkbox';
+import { appStyles } from '../../theme/appTheme';
+import {
+  bueno,
+  excelente,
+  regular,
+  remodelar,
+} from '../../constant/propertyConvervation';
 
 const SpecificData = () => {
+  const [locationBuilding, setLocationBuilding] = useState('interior');
+  const [preservationState, setPreservationState] = useState(excelente);
+
   return (
     <View>
       <View>
-        <Text>El tipo de inmueble que seleccionaste fue Departamento</Text>
-        <Text>
+        <Text style={styles.title}>
+          El tipo de inmueble que seleccionaste fue Departamento
+        </Text>
+        <Text style={styles.text}>
           Llena el siguiente formulario, mientras más completa la información,
           mejor oportunidad tendrá el anuncion de aparecer en la búsqueda de
           usuarios
         </Text>
       </View>
       <View>
-        <Text>Características Físicas</Text>
-        <TextInput placeholder="M2 construidos" />
-        <TextInput placeholder="Total de unidades del conjunto" />
-        <TextInput placeholder="Niveles del edificio" />
-        <TextInput placeholder="Nivel en el que se encuentra" />
+        <Text style={styles.subtitle}>Características Físicas</Text>
+        <TextInput style={appStyles.input} placeholder="M2 construidos" />
+        <TextInput
+          style={appStyles.input}
+          placeholder="Total de unidades del conjunto"
+        />
+        <TextInput style={appStyles.input} placeholder="Niveles del edificio" />
+        <TextInput
+          style={appStyles.input}
+          placeholder="Nivel en el que se encuentra"
+        />
+        <TextInput style={appStyles.input} placeholder="Niveles del edificio" />
+      </View>
+
+      <View>
+        <Text style={styles.subtitle}>Ubicación en edificio</Text>
+        <View style={appStyles.picker}>
+          <Picker
+            selectedValue={locationBuilding}
+            style={{ color: '#000' }}
+            onValueChange={(itemValue, itemIndex) =>
+              setLocationBuilding(itemValue)
+            }>
+            <Picker.Item label="Interior" value="interior" />
+            <Picker.Item label="Exterior" value="exterior" />
+          </Picker>
+        </View>
+      </View>
+
+      <View>
+        <Text style={styles.subtitle}>Estado de conservación</Text>
+        <View style={appStyles.picker}>
+          <Picker
+            selectedValue={preservationState}
+            style={{ color: '#000' }}
+            onValueChange={(itemValue, itemIndex) =>
+              setPreservationState(itemValue)
+            }>
+            <Picker.Item label="Excelente" value={excelente} />
+            <Picker.Item label="Bueno" value={bueno} />
+            <Picker.Item label="Regular" value={regular} />
+            <Picker.Item label="Remodelar" value={remodelar} />
+          </Picker>
+        </View>
       </View>
       <View>
-        <Text>Ubicación en edificio</Text>
-        <Text>Interior / Exterior</Text>
-      </View>
-      <View>
-        <Text>Estado de conservación</Text>
-        <Text>Excelente / Bueno / Regular / Remodelar</Text>
-      </View>
-      <View>
-        <Text>Espacios internos</Text>
-        <TextInput placeholder="Recámaras" />
-        <TextInput placeholder="Baños completos" />
-        <TextInput placeholder="Medio baños" />
-        <TextInput placeholder="Estacionamientos" />
+        <Text style={styles.subtitle}>Espacios internos</Text>
+        <TextInput style={appStyles.input} placeholder="Recámaras" />
+        <TextInput style={appStyles.input} placeholder="Baños completos" />
+        <TextInput style={appStyles.input} placeholder="Medio baños" />
+        <TextInput style={appStyles.input} placeholder="Estacionamientos" />
       </View>
       <View>
         <Text>Cocina</Text>
@@ -386,4 +430,22 @@ const SpecificData = () => {
 
 export default SpecificData;
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  subtitle: {
+    color: '#1E0E6F',
+    fontSize: 18,
+    fontWeight: '700',
+    paddingVertical: 10,
+  },
+  text: {
+    color: '#1E0E6F',
+    fontSize: 16,
+    textAlign: 'center',
+    paddingVertical: 10,
+  },
+  title: {
+    color: '#1E0E6F',
+    fontSize: 30,
+    textAlign: 'center',
+  },
+});
