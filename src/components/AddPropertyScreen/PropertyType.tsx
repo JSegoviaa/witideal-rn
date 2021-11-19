@@ -35,6 +35,8 @@ const PropertyType = () => {
   const [propertyTypeSelected, setPropertyTypeSelected] =
     useState<Boolean>(false);
   const [sharesCom, setSharesCom] = useState<Boolean>(false);
+  const [bankSale, setBankSale] = useState<Boolean>(false);
+
   const handleActionTypeSelected = () => {
     setActionSelected(!actionSelected);
     if (!actionSelected) {
@@ -211,6 +213,22 @@ const PropertyType = () => {
               setSharesCom(!sharesCom);
             }}
           />
+          {actionSelected ? (
+            <BouncyCheckbox
+              size={25}
+              fillColor="#3F19F9"
+              unfillColor="#FFFFFF"
+              text="¿Es remate bancario?"
+              iconStyle={{ borderColor: '#3F19F9' }}
+              textStyle={{
+                fontFamily: 'JosefinSans-Regular',
+                textDecorationLine: 'none',
+              }}
+              onPress={() => {
+                setBankSale(!bankSale);
+              }}
+            />
+          ) : null}
         </View>
       </View>
     </>
