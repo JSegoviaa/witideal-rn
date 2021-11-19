@@ -34,7 +34,7 @@ const PropertyType = () => {
   const [propertyType, setPropertyType] = useState(singleHouse);
   const [propertyTypeSelected, setPropertyTypeSelected] =
     useState<Boolean>(false);
-  const [shareComission, setShareComission] = useState<Boolean>(false);
+  const [sharesCom, setSharesCom] = useState<Boolean>(false);
   const handleActionTypeSelected = () => {
     setActionSelected(!actionSelected);
     if (!actionSelected) {
@@ -208,7 +208,7 @@ const PropertyType = () => {
               textDecorationLine: 'none',
             }}
             onPress={() => {
-              setShareComission(!shareComission);
+              setSharesCom(!sharesCom);
             }}
           />
         </View>

@@ -9,7 +9,10 @@ import { appStyles } from '../theme/appTheme';
 
 const AddPropertyScreen = () => {
   return (
-    <ScrollView style={{ backgroundColor: '#fff' }}>
+    <ScrollView
+      keyboardShouldPersistTaps={'always'}
+      nestedScrollEnabled
+      style={{ backgroundColor: '#fff' }}>
       <View style={appStyles.container}>
         <PropertyType />
         <Ubicacion />
