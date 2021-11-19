@@ -21,14 +21,23 @@ const SpecificData = () => {
     deliverydate: '',
     extras: '',
     floorNumber: '',
+    floors: '',
     halfBath: '',
     hospitals: '',
+    landUseCode: '',
     m2build: '',
+    m2Office: '',
+    m2Storage: '',
+    m2terrain: '',
     mainavs: '',
     malls: '',
     mantainance: 0,
+    mDepth: '',
+    mFront: '',
     metrobus: '',
+    mHeight: '',
     parkingSlots: '',
+    privateOffice: '',
     propertyDescription: '',
     propertyTitle: '',
     room: '',
@@ -74,6 +83,53 @@ const SpecificData = () => {
   const [petFriendly, setPetFriendly] = useState<Boolean | undefined>(
     undefined,
   );
+  const [garden, setGarden] = useState<Boolean | undefined>(undefined);
+  const [cistern, setCistern] = useState<Boolean | undefined>(undefined);
+  const [equipment, setEquipment] = useState<Boolean | undefined>(undefined);
+  const [onstreet, setOnstreet] = useState<Boolean | undefined>(undefined);
+  const [insideMall, setInsideMall] = useState<Boolean | undefined>(undefined);
+  const [insideCorp, setInsideCorp] = useState<Boolean | undefined>(undefined);
+  const [fireAlarm, setFireAlarm] = useState<Boolean | undefined>(undefined);
+  const [insideIndust, setInsideIndust] = useState<Boolean | undefined>(
+    undefined,
+  );
+  const [electricity, setElectricity] = useState<Boolean | undefined>(
+    undefined,
+  );
+  const [water, setWater] = useState<Boolean | undefined>(undefined);
+
+  const {
+    propertyTitle,
+    propertyDescription,
+    deliverydate,
+    metrobus,
+    subway,
+    mainavs,
+    hospitals,
+    schools,
+    banks,
+    shops,
+    malls,
+    privateOffice,
+    parkingSlots,
+    halfBath,
+    bath,
+    room,
+    m2build,
+    totalUnits,
+    totalBuidingFloors,
+    floorNumber,
+    m2terrain,
+    floors,
+    landUseCode,
+    mDepth,
+    mFront,
+    extras,
+    m2Office,
+    m2Storage,
+    mHeight,
+    mantainance,
+  } = form;
 
   return (
     <View>
@@ -91,24 +147,82 @@ const SpecificData = () => {
       <View>
         <Text style={styles.subtitle}>Características Físicas</Text>
         <TextInput
+          keyboardType="numeric"
           onChangeText={value => onChange(value, 'm2build')}
           style={appStyles.input}
           placeholder="M2 construidos"
         />
         <TextInput
+          keyboardType="numeric"
           onChangeText={value => onChange(value, 'totalUnits')}
           style={appStyles.input}
           placeholder="Total de unidades del conjunto"
         />
         <TextInput
+          keyboardType="numeric"
           onChangeText={value => onChange(value, 'totalBuidingFloors')}
           style={appStyles.input}
           placeholder="Niveles del edificio"
         />
         <TextInput
+          keyboardType="numeric"
+          onChangeText={value => onChange(value, 'm2terrain')}
+          style={appStyles.input}
+          placeholder="M2 del terreno"
+        />
+        <TextInput
+          keyboardType="numeric"
+          onChangeText={value => onChange(value, 'floors')}
+          style={appStyles.input}
+          placeholder="Niveles construidos"
+        />
+        <TextInput
+          keyboardType="numeric"
           onChangeText={value => onChange(value, 'floorNumber')}
           style={appStyles.input}
           placeholder="Nivel en el que se encuentra"
+        />
+        <TextInput
+          keyboardType="numeric"
+          onChangeText={value => onChange(value, 'floorNumber')}
+          style={appStyles.input}
+          placeholder="Metros de altura"
+        />
+        <TextInput
+          keyboardType="numeric"
+          onChangeText={value => onChange(value, 'floorNumber')}
+          style={appStyles.input}
+          placeholder="M2 Bodega"
+        />
+        <TextInput
+          keyboardType="numeric"
+          onChangeText={value => onChange(value, 'm2Office')}
+          style={appStyles.input}
+          placeholder="M2 Oficina"
+        />
+        <TextInput
+          keyboardType="numeric"
+          onChangeText={value => onChange(value, 'm2Storage')}
+          style={appStyles.input}
+          placeholder="M2 Bodega"
+        />
+        <TextInput
+          keyboardType="numeric"
+          onChangeText={value => onChange(value, 'mHeight')}
+          style={appStyles.input}
+          placeholder="Metros de altura"
+        />
+        <TextInput
+          keyboardType="numeric"
+          onChangeText={value => onChange(value, 'mDepth')}
+          style={appStyles.input}
+          placeholder="Metros de fondo"
+        />
+        <TextInput
+          keyboardType="numeric"
+          onChangeText={value => onChange(value, 'mFront')}
+          style={appStyles.input}
+          placeholder="Metros de frente"
         />
       </View>
 
@@ -147,21 +261,25 @@ const SpecificData = () => {
       <View>
         <Text style={styles.subtitle}>Espacios internos</Text>
         <TextInput
+          keyboardType="numeric"
           onChangeText={value => onChange(value, 'room')}
           style={appStyles.input}
           placeholder="Recámaras"
         />
         <TextInput
+          keyboardType="numeric"
           onChangeText={value => onChange(value, 'bath')}
           style={appStyles.input}
           placeholder="Baños completos"
         />
         <TextInput
+          keyboardType="numeric"
           onChangeText={value => onChange(value, 'halfBath')}
           style={appStyles.input}
           placeholder="Medio baños"
         />
         <TextInput
+          keyboardType="numeric"
           onChangeText={value => onChange(value, 'parkingSlots')}
           style={appStyles.input}
           placeholder="Estacionamientos"
@@ -232,6 +350,21 @@ const SpecificData = () => {
           size={25}
           fillColor="#3F19F9"
           unfillColor="#FFFFFF"
+          text="Equipamiento"
+          iconStyle={{ borderColor: '#3F19F9' }}
+          textStyle={{
+            fontFamily: 'JosefinSans-Regular',
+            textDecorationLine: 'none',
+          }}
+          onPress={() => {
+            setEquipment(!equipment);
+          }}
+        />
+        <BouncyCheckbox
+          style={{ paddingVertical: 5 }}
+          size={25}
+          fillColor="#3F19F9"
+          unfillColor="#FFFFFF"
           text="Balcón"
           iconStyle={{ borderColor: '#3F19F9' }}
           textStyle={{
@@ -270,6 +403,21 @@ const SpecificData = () => {
           }}
           onPress={() => {
             setRoofGarden(!roofGarden);
+          }}
+        />
+        <BouncyCheckbox
+          style={{ paddingVertical: 5 }}
+          size={25}
+          fillColor="#3F19F9"
+          unfillColor="#FFFFFF"
+          text="Jardín"
+          iconStyle={{ borderColor: '#3F19F9' }}
+          textStyle={{
+            fontFamily: 'JosefinSans-Regular',
+            textDecorationLine: 'none',
+          }}
+          onPress={() => {
+            setGarden(!garden);
           }}
         />
         <BouncyCheckbox
@@ -332,6 +480,12 @@ const SpecificData = () => {
             setCarElevator(!carElevator);
           }}
         />
+        <TextInput
+          keyboardType="numeric"
+          onChangeText={value => onChange(value, 'privateOffice')}
+          style={appStyles.input}
+          placeholder="Oficinas privadas"
+        />
       </View>
       <Text style={styles.subtitle}>Seguridad</Text>
       <BouncyCheckbox
@@ -362,6 +516,21 @@ const SpecificData = () => {
         }}
         onPress={() => {
           setElectricFence(!electricFence);
+        }}
+      />
+      <BouncyCheckbox
+        style={{ paddingVertical: 5 }}
+        size={25}
+        fillColor="#3F19F9"
+        unfillColor="#FFFFFF"
+        text="Alarma contra indencios"
+        iconStyle={{ borderColor: '#3F19F9' }}
+        textStyle={{
+          fontFamily: 'JosefinSans-Regular',
+          textDecorationLine: 'none',
+        }}
+        onPress={() => {
+          setFireAlarm(!fireAlarm);
         }}
       />
       <BouncyCheckbox
@@ -591,6 +760,58 @@ const SpecificData = () => {
           setIsMantainceIncluded(!isMantainceIncluded);
         }}
       />
+      <BouncyCheckbox
+        style={{ paddingVertical: 5 }}
+        size={25}
+        fillColor="#3F19F9"
+        unfillColor="#FFFFFF"
+        text="Cisterna"
+        iconStyle={{ borderColor: '#3F19F9' }}
+        textStyle={{
+          fontFamily: 'JosefinSans-Regular',
+          textDecorationLine: 'none',
+        }}
+        onPress={() => {
+          setCistern(!cistern);
+        }}
+      />
+      <BouncyCheckbox
+        style={{ paddingVertical: 5 }}
+        size={25}
+        fillColor="#3F19F9"
+        unfillColor="#FFFFFF"
+        text="Electricidad"
+        iconStyle={{ borderColor: '#3F19F9' }}
+        textStyle={{
+          fontFamily: 'JosefinSans-Regular',
+          textDecorationLine: 'none',
+        }}
+        onPress={() => {
+          setElectricity(!electricity);
+        }}
+      />
+      <BouncyCheckbox
+        style={{ paddingVertical: 5 }}
+        size={25}
+        fillColor="#3F19F9"
+        unfillColor="#FFFFFF"
+        text="Agua"
+        iconStyle={{ borderColor: '#3F19F9' }}
+        textStyle={{
+          fontFamily: 'JosefinSans-Regular',
+          textDecorationLine: 'none',
+        }}
+        onPress={() => {
+          setWater(!water);
+        }}
+      />
+
+      <TextInput
+        onChangeText={value => onChange(value, 'landUseCode')}
+        style={appStyles.input}
+        placeholder="Uso de suelo"
+      />
+
       {isMantainceIncluded ? (
         <TextInput
           style={appStyles.input}
@@ -612,6 +833,7 @@ const SpecificData = () => {
       </View>
 
       <BouncyCheckbox
+        style={{ paddingVertical: 10 }}
         size={25}
         fillColor="#3F19F9"
         unfillColor="#FFFFFF"
@@ -627,6 +849,66 @@ const SpecificData = () => {
       />
       <View>
         <Text style={styles.subtitle}>Características de la zona</Text>
+        <BouncyCheckbox
+          style={{ paddingVertical: 5 }}
+          size={25}
+          fillColor="#3F19F9"
+          unfillColor="#FFFFFF"
+          text="En centro comercial"
+          iconStyle={{ borderColor: '#3F19F9' }}
+          textStyle={{
+            fontFamily: 'JosefinSans-Regular',
+            textDecorationLine: 'none',
+          }}
+          onPress={() => {
+            setInsideMall(!insideMall);
+          }}
+        />
+        <BouncyCheckbox
+          style={{ paddingVertical: 5 }}
+          size={25}
+          fillColor="#3F19F9"
+          unfillColor="#FFFFFF"
+          text="En parque industrial"
+          iconStyle={{ borderColor: '#3F19F9' }}
+          textStyle={{
+            fontFamily: 'JosefinSans-Regular',
+            textDecorationLine: 'none',
+          }}
+          onPress={() => {
+            setInsideIndust(!insideIndust);
+          }}
+        />
+        <BouncyCheckbox
+          style={{ paddingVertical: 5 }}
+          size={25}
+          fillColor="#3F19F9"
+          unfillColor="#FFFFFF"
+          text="En centro corporativo"
+          iconStyle={{ borderColor: '#3F19F9' }}
+          textStyle={{
+            fontFamily: 'JosefinSans-Regular',
+            textDecorationLine: 'none',
+          }}
+          onPress={() => {
+            setInsideCorp(!insideCorp);
+          }}
+        />
+        <BouncyCheckbox
+          style={{ paddingVertical: 5 }}
+          size={25}
+          fillColor="#3F19F9"
+          unfillColor="#FFFFFF"
+          text="A pie de calle"
+          iconStyle={{ borderColor: '#3F19F9' }}
+          textStyle={{
+            fontFamily: 'JosefinSans-Regular',
+            textDecorationLine: 'none',
+          }}
+          onPress={() => {
+            setOnstreet(!onstreet);
+          }}
+        />
         <TextInput
           onChangeText={value => onChange(value, 'malls')}
           style={appStyles.input}
@@ -678,7 +960,17 @@ const SpecificData = () => {
       </View>
       <View>
         <Text style={styles.subtitle}>Antigüedad (años)</Text>
-        <Text>0-5 / 6-10 / 11-25 / 25+</Text>
+        <View style={appStyles.picker}>
+          <Picker
+            selectedValue={gasType}
+            style={{ color: '#000' }}
+            onValueChange={(itemValue, itemIndex) => setGasType(itemValue)}>
+            <Picker.Item label="0-5" value="0-5" />
+            <Picker.Item label="5-10" value="5-10" />
+            <Picker.Item label="10-25" value="10-25" />
+            <Picker.Item label="25+" value="25+" />
+          </Picker>
+        </View>
       </View>
       <View>
         <Text style={styles.subtitle}>Título del inmueble</Text>
