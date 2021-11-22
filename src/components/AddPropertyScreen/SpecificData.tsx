@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import {
   ScrollView,
   StyleSheet,
@@ -22,6 +22,8 @@ import { abierta, cerrada } from '../../constant/kitchen';
 import { useForm } from '../../hooks/useForm';
 import { lp, natural, noGas } from '../../constant/gasType';
 import { RootAddPropertyStackNavigation } from '../../navigation/AddPropertyStackNavigation';
+import { PropertyContext } from '../../context/property/PropertyContext';
+import urlTranslator from '../../helpers/urlTranslator';
 
 interface Props
   extends StackScreenProps<
@@ -30,6 +32,8 @@ interface Props
   > {}
 
 const SpecificData = ({ navigation }: Props) => {
+  const { propertyType } = useContext(PropertyContext);
+
   const { form, onChange } = useForm({
     banks: '',
     bath: '',
@@ -153,7 +157,8 @@ const SpecificData = ({ navigation }: Props) => {
       <View style={appStyles.container}>
         <View style={{ paddingTop: 30 }}>
           <Text style={styles.title}>
-            El tipo de inmueble que seleccionaste fue Departamento
+            El tipo de inmueble que seleccionaste fue{' '}
+            {urlTranslator(propertyType)}
           </Text>
           <Text style={styles.text}>
             Llena el siguiente formulario, mientras más completa la información,

@@ -38,17 +38,27 @@ const PropertyType = ({ navigation }: Props) => {
   const { form, onChange } = useForm({
     precio: '',
   });
-  const { currency, setCurrency } = useContext(PropertyContext);
+
+  const {
+    currency,
+    setCurrency,
+    propertyType,
+    setPropertyType,
+    actionSelected,
+    setActionSelected,
+    sharesCom,
+    setSharesCom,
+    bankSale,
+    setBankSale,
+    isCommercial,
+    setIsCommercial,
+    propertyTypeSelected,
+    setPropertyTypeSelected,
+    action,
+    setAction,
+  } = useContext(PropertyContext);
 
   const { precio } = form;
-  const [action, setAction] = useState<String>(rent);
-  const [actionSelected, setActionSelected] = useState<Boolean>(false);
-  const [isCommercial, setIsCommercial] = useState<Boolean>(false);
-  const [propertyType, setPropertyType] = useState(singleHouse);
-  const [propertyTypeSelected, setPropertyTypeSelected] =
-    useState<Boolean>(false);
-  const [sharesCom, setSharesCom] = useState<Boolean>(false);
-  const [bankSale, setBankSale] = useState<Boolean>(false);
 
   const handleActionTypeSelected = () => {
     setActionSelected(!actionSelected);
