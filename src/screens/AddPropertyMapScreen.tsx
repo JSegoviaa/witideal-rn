@@ -16,7 +16,7 @@ interface Props
     'AddPropertyMapScreen'
   > {}
 
-const AddPropertyMapScreen = ({ navigation }: Props) => {
+const AddPropertyMapScreen = ({ navigation, route }: Props) => {
   const [coordinates, setCoordinates] = useState<Location>({
     latitude: 21.1742,
     longitude: -86.8466,
