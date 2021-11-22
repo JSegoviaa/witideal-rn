@@ -8,6 +8,7 @@ import TabsNavigation from './src/navigation/TabsNavigation';
 import { GradientProvider } from './src/context/gradient/GradientContext';
 import { AuthProvider } from './src/context/auth/AuthContext';
 import PermissionsProvider from './src/context/permissions/PermissionsContext';
+import PropertyProvider from './src/context/property/PropertyContext';
 
 const App = () => {
   useEffect(() => {
@@ -17,18 +18,20 @@ const App = () => {
   return (
     <>
       <AuthProvider>
-        <PermissionsProvider>
-          <NavigationContainer>
-            <GradientProvider>
-              <StatusBar
-                barStyle={'dark-content'}
-                backgroundColor={'transparent'}
-                translucent={true}
-              />
-              <TabsNavigation />
-            </GradientProvider>
-          </NavigationContainer>
-        </PermissionsProvider>
+        <PropertyProvider>
+          <PermissionsProvider>
+            <NavigationContainer>
+              <GradientProvider>
+                <StatusBar
+                  barStyle={'dark-content'}
+                  backgroundColor={'transparent'}
+                  translucent={true}
+                />
+                <TabsNavigation />
+              </GradientProvider>
+            </NavigationContainer>
+          </PermissionsProvider>
+        </PropertyProvider>
       </AuthProvider>
       <Toast />
     </>

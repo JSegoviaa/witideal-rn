@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import {
   ScrollView,
   StyleSheet,
@@ -26,6 +26,7 @@ import {
 import { useForm } from '../../hooks/useForm';
 import { appStyles } from '../../theme/appTheme';
 import { RootAddPropertyStackNavigation } from '../../navigation/AddPropertyStackNavigation';
+import { PropertyContext } from '../../context/property/PropertyContext';
 
 interface Props
   extends StackScreenProps<
@@ -37,11 +38,11 @@ const PropertyType = ({ navigation }: Props) => {
   const { form, onChange } = useForm({
     precio: '',
   });
+  const { currency, setCurrency } = useContext(PropertyContext);
 
   const { precio } = form;
   const [action, setAction] = useState<String>(rent);
   const [actionSelected, setActionSelected] = useState<Boolean>(false);
-  const [currency, setCurrency] = useState<String>(mxn);
   const [isCommercial, setIsCommercial] = useState<Boolean>(false);
   const [propertyType, setPropertyType] = useState(singleHouse);
   const [propertyTypeSelected, setPropertyTypeSelected] =
