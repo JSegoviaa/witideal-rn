@@ -1,4 +1,3 @@
-import { Picker } from '@react-native-picker/picker';
 import React, { useState } from 'react';
 import {
   ScrollView,
@@ -8,6 +7,8 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
+import { StackScreenProps } from '@react-navigation/stack';
+import { Picker } from '@react-native-picker/picker';
 import BouncyCheckbox from 'react-native-bouncy-checkbox';
 import Toast from 'react-native-toast-message';
 import { buy, rent } from '../../constant/action';
@@ -24,8 +25,15 @@ import {
 } from '../../constant/propertyType';
 import { useForm } from '../../hooks/useForm';
 import { appStyles } from '../../theme/appTheme';
+import { RootAddPropertyStackNavigation } from '../../navigation/AddPropertyStackNavigation';
 
-const PropertyType = () => {
+interface Props
+  extends StackScreenProps<
+    RootAddPropertyStackNavigation,
+    'PropertyTypeScreen'
+  > {}
+
+const PropertyType = ({ navigation }: Props) => {
   const { form, onChange } = useForm({
     precio: '',
   });
@@ -70,6 +78,10 @@ const PropertyType = () => {
         text1: 'El precio es obligatorio',
         text2: 'Inténtelo nuevamente',
       });
+    }
+
+    if (precio.trim()) {
+      navigation.navigate('UbicationScreen');
     }
   };
 
@@ -246,6 +258,9 @@ const PropertyType = () => {
             ) : null}
           </View>
         </View>
+        <TouchableOpacity onPress={handleNext} style={styles.btnActivate}>
+          <Text style={styles.textActive}>Siguiente</Text>
+        </TouchableOpacity>
       </View>
     </ScrollView>
   );

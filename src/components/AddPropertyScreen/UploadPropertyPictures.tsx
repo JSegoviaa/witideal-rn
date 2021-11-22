@@ -22,8 +22,12 @@ const UploadPropertyPictures = () => {
     );
   };
 
+  const handleConfirm = () => {
+    console.log('Hola');
+  };
+
   return (
-    <View>
+    <View style={appStyles.container}>
       <View>
         <Text style={styles.subtitle}>Foto principal</Text>
         <TouchableOpacity
@@ -49,8 +53,16 @@ const UploadPropertyPictures = () => {
       </View>
 
       <View style={{ alignItems: 'center' }}>
-        <TouchableOpacity style={appStyles.btnPrimary}>
-          <Text style={{ textAlign: 'center', color: '#fff' }}>Confirmar</Text>
+        <TouchableOpacity onPress={handleConfirm} style={appStyles.btnPrimary}>
+          <Text
+            style={{
+              color: '#fff',
+              fontSize: 17,
+              fontWeight: '700',
+              textAlign: 'center',
+            }}>
+            Confirmar
+          </Text>
         </TouchableOpacity>
       </View>
     </View>

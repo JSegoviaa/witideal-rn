@@ -23,9 +23,9 @@ const AddPropertyMapScreen = ({ navigation, route }: Props) => {
   });
   const { latitude, longitude } = coordinates;
 
-  console.log(latitude, longitude);
-
   const handleGoBack = () => navigation.goBack();
+
+  const handleNext = () => navigation.navigate('SpecificDataScreen');
 
   return (
     <View style={{ flex: 1 }}>
@@ -61,6 +61,13 @@ const AddPropertyMapScreen = ({ navigation, route }: Props) => {
         size={28}
         color="#000"
         style={{ position: 'absolute', top: 60, left: 20 }}
+      />
+      <Icon
+        onPress={handleNext}
+        name="arrow-forward-outline"
+        size={40}
+        color="#000"
+        style={{ position: 'absolute', bottom: 20, right: 20 }}
       />
     </View>
   );

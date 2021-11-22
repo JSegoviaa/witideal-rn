@@ -2,6 +2,9 @@ import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 import AddPropertyMapScreen from '../screens/AddPropertyMapScreen';
 import PropertyType from '../components/AddPropertyScreen/PropertyType';
+import Ubicacion from '../components/AddPropertyScreen/Ubicacion';
+import SpecificData from '../components/AddPropertyScreen/SpecificData';
+import UploadPropertyPictures from '../components/AddPropertyScreen/UploadPropertyPictures';
 
 export type RootAddPropertyStackNavigation = {
   PropertyTypeScreen: undefined;
@@ -15,25 +18,48 @@ const Stack = createStackNavigator<RootAddPropertyStackNavigation>();
 
 const AddPropertyStackNavigation = () => {
   return (
-    <Stack.Navigator>
+    <Stack.Navigator
+      screenOptions={{
+        cardStyle: { backgroundColor: 'white' },
+        headerStyle: { elevation: 0, shadowColor: 'transparent' },
+      }}>
       <Stack.Screen
         name="PropertyTypeScreen"
         options={{ headerShown: false }}
         component={PropertyType}
       />
-      <Stack.Screen name="UbicationScreen" component={AddPropertyMapScreen} />
       <Stack.Screen
-        options={{ headerShown: false }}
-        name="AddPropertyMapScreen"
-        component={AddPropertyMapScreen}
+        name="UbicationScreen"
+        options={{
+          title: 'Anuncio nuevo',
+          headerTitleAlign: 'center',
+          headerTitleStyle: { color: '#1E0e6F', fontSize: 24 },
+        }}
+        component={Ubicacion}
       />
       <Stack.Screen
-        name="SpecificDataScreen"
+        name="AddPropertyMapScreen"
+        options={{ headerShown: false }}
         component={AddPropertyMapScreen}
+      />
+
+      <Stack.Screen
+        name="SpecificDataScreen"
+        options={{
+          title: 'Anuncio nuevo',
+          headerTitleAlign: 'center',
+          headerTitleStyle: { color: '#1E0e6F', fontSize: 24 },
+        }}
+        component={SpecificData}
       />
       <Stack.Screen
         name="UploadPropertyPicTureScreen"
-        component={AddPropertyMapScreen}
+        options={{
+          title: 'Anuncio nuevo',
+          headerTitleAlign: 'center',
+          headerTitleStyle: { color: '#1E0e6F', fontSize: 24 },
+        }}
+        component={UploadPropertyPictures}
       />
     </Stack.Navigator>
   );
