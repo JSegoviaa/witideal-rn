@@ -151,78 +151,91 @@ const SpecificData = () => {
           onChangeText={value => onChange(value, 'm2build')}
           style={appStyles.input}
           placeholder="M2 construidos"
+          placeholderTextColor="#ccc"
         />
         <TextInput
           keyboardType="numeric"
           onChangeText={value => onChange(value, 'totalUnits')}
           style={appStyles.input}
           placeholder="Total de unidades del conjunto"
+          placeholderTextColor="#ccc"
         />
         <TextInput
           keyboardType="numeric"
           onChangeText={value => onChange(value, 'totalBuidingFloors')}
           style={appStyles.input}
           placeholder="Niveles del edificio"
+          placeholderTextColor="#ccc"
         />
         <TextInput
           keyboardType="numeric"
           onChangeText={value => onChange(value, 'm2terrain')}
           style={appStyles.input}
           placeholder="M2 del terreno"
+          placeholderTextColor="#ccc"
         />
         <TextInput
           keyboardType="numeric"
           onChangeText={value => onChange(value, 'floors')}
           style={appStyles.input}
           placeholder="Niveles construidos"
+          placeholderTextColor="#ccc"
         />
         <TextInput
           keyboardType="numeric"
           onChangeText={value => onChange(value, 'floorNumber')}
           style={appStyles.input}
           placeholder="Nivel en el que se encuentra"
+          placeholderTextColor="#ccc"
         />
         <TextInput
           keyboardType="numeric"
           onChangeText={value => onChange(value, 'floorNumber')}
           style={appStyles.input}
           placeholder="Metros de altura"
+          placeholderTextColor="#ccc"
         />
         <TextInput
           keyboardType="numeric"
           onChangeText={value => onChange(value, 'floorNumber')}
           style={appStyles.input}
           placeholder="M2 Bodega"
+          placeholderTextColor="#ccc"
         />
         <TextInput
           keyboardType="numeric"
           onChangeText={value => onChange(value, 'm2Office')}
           style={appStyles.input}
           placeholder="M2 Oficina"
+          placeholderTextColor="#ccc"
         />
         <TextInput
           keyboardType="numeric"
           onChangeText={value => onChange(value, 'm2Storage')}
           style={appStyles.input}
           placeholder="M2 Bodega"
+          placeholderTextColor="#ccc"
         />
         <TextInput
           keyboardType="numeric"
           onChangeText={value => onChange(value, 'mHeight')}
           style={appStyles.input}
           placeholder="Metros de altura"
+          placeholderTextColor="#ccc"
         />
         <TextInput
           keyboardType="numeric"
           onChangeText={value => onChange(value, 'mDepth')}
           style={appStyles.input}
           placeholder="Metros de fondo"
+          placeholderTextColor="#ccc"
         />
         <TextInput
           keyboardType="numeric"
           onChangeText={value => onChange(value, 'mFront')}
           style={appStyles.input}
           placeholder="Metros de frente"
+          placeholderTextColor="#ccc"
         />
       </View>
 
@@ -265,24 +278,28 @@ const SpecificData = () => {
           onChangeText={value => onChange(value, 'room')}
           style={appStyles.input}
           placeholder="Recámaras"
+          placeholderTextColor="#ccc"
         />
         <TextInput
           keyboardType="numeric"
           onChangeText={value => onChange(value, 'bath')}
           style={appStyles.input}
           placeholder="Baños completos"
+          placeholderTextColor="#ccc"
         />
         <TextInput
           keyboardType="numeric"
           onChangeText={value => onChange(value, 'halfBath')}
           style={appStyles.input}
           placeholder="Medio baños"
+          placeholderTextColor="#ccc"
         />
         <TextInput
           keyboardType="numeric"
           onChangeText={value => onChange(value, 'parkingSlots')}
           style={appStyles.input}
           placeholder="Estacionamientos"
+          placeholderTextColor="#ccc"
         />
       </View>
 
@@ -485,6 +502,7 @@ const SpecificData = () => {
           onChangeText={value => onChange(value, 'privateOffice')}
           style={appStyles.input}
           placeholder="Oficinas privadas"
+          placeholderTextColor="#ccc"
         />
       </View>
       <Text style={styles.subtitle}>Seguridad</Text>
@@ -810,6 +828,7 @@ const SpecificData = () => {
         onChangeText={value => onChange(value, 'landUseCode')}
         style={appStyles.input}
         placeholder="Uso de suelo"
+        placeholderTextColor="#ccc"
       />
 
       {isMantainceIncluded ? (
@@ -817,6 +836,7 @@ const SpecificData = () => {
           style={appStyles.input}
           placeholder="Costo de mantenimiento"
           onChangeText={value => onChange(value, 'mantainance')}
+          placeholderTextColor="#ccc"
         />
       ) : null}
 
@@ -913,41 +933,49 @@ const SpecificData = () => {
           onChangeText={value => onChange(value, 'malls')}
           style={appStyles.input}
           placeholder="Centros comerciales"
+          placeholderTextColor="#ccc"
         />
         <TextInput
           onChangeText={value => onChange(value, 'shops')}
           style={appStyles.input}
           placeholder="Tiendes de autoservicio"
+          placeholderTextColor="#ccc"
         />
         <TextInput
           onChangeText={value => onChange(value, 'banks')}
           style={appStyles.input}
           placeholder="Bancos"
+          placeholderTextColor="#ccc"
         />
         <TextInput
           onChangeText={value => onChange(value, 'schools')}
           style={appStyles.input}
           placeholder="Escuelas"
+          placeholderTextColor="#ccc"
         />
         <TextInput
           onChangeText={value => onChange(value, 'hospitals')}
           style={appStyles.input}
           placeholder="Hospitales"
+          placeholderTextColor="#ccc"
         />
         <TextInput
           onChangeText={value => onChange(value, 'mainavs')}
           style={appStyles.input}
           placeholder="Avs. principales"
+          placeholderTextColor="#ccc"
         />
         <TextInput
           onChangeText={value => onChange(value, 'subway')}
           style={appStyles.input}
           placeholder="Estaciones de metro"
+          placeholderTextColor="#ccc"
         />
         <TextInput
           onChangeText={value => onChange(value, 'metrobus')}
           style={appStyles.input}
           placeholder="Estaciones de metrobús"
+          placeholderTextColor="#ccc"
         />
       </View>
       <View>
@@ -956,6 +984,7 @@ const SpecificData = () => {
           style={appStyles.input}
           onChangeText={value => onChange(value, 'deliverydate')}
           placeholder="Fecha de entrega"
+          placeholderTextColor="#ccc"
         />
       </View>
       <View>
@@ -978,6 +1007,7 @@ const SpecificData = () => {
           style={appStyles.input}
           onChangeText={value => onChange(value, 'propertyTitle')}
           placeholder="Título"
+          placeholderTextColor="#ccc"
         />
       </View>
       <View>
@@ -986,6 +1016,7 @@ const SpecificData = () => {
           style={appStyles.input}
           onChangeText={value => onChange(value, 'propertyDescription')}
           placeholder="Descripción"
+          placeholderTextColor="#ccc"
         />
       </View>
     </View>

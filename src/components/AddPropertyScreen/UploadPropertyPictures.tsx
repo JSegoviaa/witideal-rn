@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { launchImageLibrary } from 'react-native-image-picker';
+import { appStyles } from '../../theme/appTheme';
 
 const UploadPropertyPictures = () => {
   const [tempUri, setTempUri] = useState<string>('');
@@ -34,6 +35,7 @@ const UploadPropertyPictures = () => {
           <Text style={styles.text}>Solo se subir una foto</Text>
         </TouchableOpacity>
       </View>
+
       <View>
         <Text style={styles.subtitle}>Fotos del inmueble</Text>
         <TouchableOpacity
@@ -43,6 +45,12 @@ const UploadPropertyPictures = () => {
             Selcciona las fotos que quieres mostrar en tu inmueble
           </Text>
           <Text style={styles.text}>Máximo 30 fotos</Text>
+        </TouchableOpacity>
+      </View>
+
+      <View style={{ alignItems: 'center' }}>
+        <TouchableOpacity style={appStyles.btnPrimary}>
+          <Text style={{ textAlign: 'center', color: '#fff' }}>Confirmar</Text>
         </TouchableOpacity>
       </View>
     </View>

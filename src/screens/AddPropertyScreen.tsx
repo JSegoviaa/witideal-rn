@@ -2,7 +2,7 @@ import React from 'react';
 import { ScrollView, View } from 'react-native';
 import PropertyType from '../components/AddPropertyScreen/PropertyType';
 import SpecificData from '../components/AddPropertyScreen/SpecificData';
-import Summary from '../components/AddPropertyScreen/Summary';
+// import Summary from '../components/AddPropertyScreen/Summary';
 import Ubicacion from '../components/AddPropertyScreen/Ubicacion';
 import UploadPropertyPictures from '../components/AddPropertyScreen/UploadPropertyPictures';
 import { appStyles } from '../theme/appTheme';
@@ -18,7 +18,7 @@ const AddPropertyScreen = () => {
         <Ubicacion />
         <SpecificData />
         <UploadPropertyPictures />
-        <Summary />
+        {/* <Summary /> */}
       </View>
     </ScrollView>
   );
