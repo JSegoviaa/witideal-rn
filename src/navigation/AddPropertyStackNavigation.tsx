@@ -2,7 +2,7 @@ import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 import AddPropertyMapScreen from '../screens/AddPropertyMapScreen';
 
-type RootAddPropertyStackNavigation = {
+export type RootAddPropertyStackNavigation = {
   PropertyTypeScreen: undefined;
   UbicationScreen: undefined;
   AddPropertyMapScreen: undefined;
@@ -16,6 +16,7 @@ const AddPropertyStackNavigation = () => {
     <Stack.Navigator>
       <Stack.Screen
         name="PropertyTypeScreen"
+        options={{ headerShown: false }}
         component={AddPropertyMapScreen}
       />
       <Stack.Screen name="UbicationScreen" component={AddPropertyMapScreen} />

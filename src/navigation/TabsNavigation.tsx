@@ -9,6 +9,7 @@ import ProfileStackNavigation from './ProfileStackNavigation';
 import MyDestPropertiesScreenStack from './MyDestPropertiesScreenStack';
 import AddPropertyScreen from '../screens/AddPropertyScreen';
 import { useUserInfo } from '../hooks/useUserInfo';
+import AddPropertyStackNavigation from './AddPropertyStackNavigation';
 
 export type RootTabsNavigation = {
   SearchStackNavigation: undefined;
@@ -125,7 +126,7 @@ const TabLogin = () => {
         <Tab.Screen
           name="AddPropertyScreen"
           options={{ title: 'Añadir', headerShown: false }}
-          component={AddPropertyScreen}
+          component={AddPropertyStackNavigation}
         />
       ) : null}
 

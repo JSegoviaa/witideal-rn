@@ -1,21 +1,34 @@
 import React, { useState } from 'react';
-import { Image, StyleSheet, View } from 'react-native';
+import { View } from 'react-native';
 import MapView, { Marker } from 'react-native-maps';
+import { StackScreenProps } from '@react-navigation/stack';
+import Icon from 'react-native-vector-icons/Ionicons';
+import { RootAddPropertyStackNavigation } from '../navigation/AddPropertyStackNavigation';
 
 interface Location {
   latitude: number;
   longitude: number;
 }
 
-const AddPropertyMapScreen = () => {
+interface Props
+  extends StackScreenProps<
+    RootAddPropertyStackNavigation,
+    'AddPropertyMapScreen'
+  > {}
+
+const AddPropertyMapScreen = ({ navigation }: Props) => {
   const [coordinates, setCoordinates] = useState<Location>({
     latitude: 21.1742,
     longitude: -86.8466,
   });
   const { latitude, longitude } = coordinates;
 
+  console.log(latitude, longitude);
+
+  const handleGoBack = () => navigation.goBack();
+
   return (
-    <View>
+    <View style={{ flex: 1 }}>
       <MapView
         style={{
           flex: 1,
@@ -27,24 +40,30 @@ const AddPropertyMapScreen = () => {
           longitudeDelta: 0.0151,
         }}>
         <Marker
+          icon={require('../assets/ubicacion-01.png')}
           draggable
-          onDragStart={() => {
-            console.log('start');
+          onDragStart={e => {
+            console.log(e.nativeEvent.coordinate);
           }}
-          onDragEnd={() => {
-            console.log('end');
+          onDragEnd={e => {
+            setCoordinates({
+              latitude: e.nativeEvent.coordinate.latitude,
+              longitude: e.nativeEvent.coordinate.longitude,
+            });
           }}
-          coordinate={{ latitude: 21.1742, longitude: -86.8466 }}>
-          <Image
-            source={require('../assets/ubicacion-01.png')}
-            style={{ width: 50, height: 50 }}
-          />
-        </Marker>
+          coordinate={{ latitude: 21.1742, longitude: -86.8466 }}
+        />
       </MapView>
+
+      <Icon
+        onPress={handleGoBack}
+        name="arrow-back-outline"
+        size={28}
+        color="#000"
+        style={{ position: 'absolute', top: 60, left: 20 }}
+      />
     </View>
   );
 };
 
 export default AddPropertyMapScreen;
-
-const styles = StyleSheet.create({});
