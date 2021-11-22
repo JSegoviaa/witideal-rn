@@ -7,7 +7,6 @@ import { AuthContext } from '../context/auth/AuthContext';
 import MyPropertiesStackNavigation from './MyPropertiesStackNavigation';
 import ProfileStackNavigation from './ProfileStackNavigation';
 import MyDestPropertiesScreenStack from './MyDestPropertiesScreenStack';
-import AddPropertyScreen from '../screens/AddPropertyScreen';
 import { useUserInfo } from '../hooks/useUserInfo';
 import AddPropertyStackNavigation from './AddPropertyStackNavigation';
 
@@ -79,7 +78,7 @@ const TabLogin = () => {
         tabBarActiveTintColor: '#3f19f9',
         tabBarInactiveTintColor: '#000',
         tabBarLabelStyle: {
-          fontSize: userInfo?.isPromoter ? 11 : 12,
+          fontSize: userInfo?.isPromoter ? 10 : 12,
           textAlign: 'center',
         },
         tabBarIcon: ({ focused }) => {
