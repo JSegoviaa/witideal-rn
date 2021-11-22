@@ -51,7 +51,10 @@ const Ubicacion = ({ navigation }: Props) => {
     }
 
     if (coordinates.latitude) {
-      navigation.navigate('AddPropertyMapScreen');
+      navigation.navigate('AddPropertyMapScreen', {
+        latitude: coordinates.latitude,
+        longitude: coordinates.longitude,
+      });
     }
   };
 

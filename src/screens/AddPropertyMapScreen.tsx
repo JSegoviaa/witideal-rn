@@ -17,11 +17,11 @@ interface Props
   > {}
 
 const AddPropertyMapScreen = ({ navigation, route }: Props) => {
+  const { latitude, longitude } = route.params;
   const [coordinates, setCoordinates] = useState<Location>({
-    latitude: 21.1742,
-    longitude: -86.8466,
+    latitude,
+    longitude,
   });
-  const { latitude, longitude } = coordinates;
 
   const handleGoBack = () => navigation.goBack();
 
@@ -51,7 +51,7 @@ const AddPropertyMapScreen = ({ navigation, route }: Props) => {
               longitude: e.nativeEvent.coordinate.longitude,
             });
           }}
-          coordinate={{ latitude: 21.1742, longitude: -86.8466 }}
+          coordinate={{ latitude, longitude }}
         />
       </MapView>
 

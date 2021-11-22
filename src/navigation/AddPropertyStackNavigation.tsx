@@ -9,7 +9,7 @@ import UploadPropertyPictures from '../components/AddPropertyScreen/UploadProper
 export type RootAddPropertyStackNavigation = {
   PropertyTypeScreen: undefined;
   UbicationScreen: undefined;
-  AddPropertyMapScreen: undefined;
+  AddPropertyMapScreen: { latitude: number; longitude: number };
   SpecificDataScreen: undefined;
   UploadPropertyPicTureScreen: undefined;
 };
