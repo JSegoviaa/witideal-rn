@@ -8,6 +8,7 @@ import {
   View,
 } from 'react-native';
 import BouncyCheckbox from 'react-native-bouncy-checkbox';
+import Toast from 'react-native-toast-message';
 import { buy, rent } from '../../constant/action';
 import { mxn, usd } from '../../constant/currency';
 import {
@@ -24,9 +25,10 @@ import { useForm } from '../../hooks/useForm';
 
 const PropertyType = () => {
   const { form, onChange } = useForm({
-    precio: 0,
+    precio: '',
   });
 
+  const { precio } = form;
   const [action, setAction] = useState<String>(rent);
   const [actionSelected, setActionSelected] = useState<Boolean>(false);
   const [currency, setCurrency] = useState<String>(mxn);
@@ -56,6 +58,16 @@ const PropertyType = () => {
     if (propertyTypeSelected) {
       setPropertyType(singleHouse);
       setIsCommercial(false);
+    }
+  };
+
+  const handleNext = () => {
+    if (!precio.trim()) {
+      Toast.show({
+        type: 'error',
+        text1: 'El precio es obligatorio',
+        text2: 'Inténtelo nuevamente',
+      });
     }
   };
 

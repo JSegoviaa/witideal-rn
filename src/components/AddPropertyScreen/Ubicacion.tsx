@@ -28,6 +28,16 @@ const Ubicacion = () => {
     route: '',
   });
 
+  const handleNext = () => {
+    if (!coordinates) {
+      Toast.show({
+        type: 'error',
+        text1: 'Elija un lugar',
+        text2: 'Inténtelo nuevamente',
+      });
+    }
+  };
+
   return (
     <View>
       <Text style={styles.title}>
