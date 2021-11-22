@@ -258,9 +258,11 @@ const PropertyType = ({ navigation }: Props) => {
             ) : null}
           </View>
         </View>
-        <TouchableOpacity onPress={handleNext} style={styles.btnActivate}>
-          <Text style={styles.textActive}>Siguiente</Text>
-        </TouchableOpacity>
+        <View style={{ paddingBottom: 20 }}>
+          <TouchableOpacity onPress={handleNext} style={styles.btnActivate}>
+            <Text style={styles.textActive}>Siguiente</Text>
+          </TouchableOpacity>
+        </View>
       </View>
     </ScrollView>
   );
