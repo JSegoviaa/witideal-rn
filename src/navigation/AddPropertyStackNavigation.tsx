@@ -65,11 +65,7 @@ const AddPropertyStackNavigation = () => {
       />
       <Stack.Screen
         name="SummaryScreen"
-        options={{
-          title: 'Anuncio nuevo',
-          headerTitleAlign: 'center',
-          headerTitleStyle: { color: '#1E0e6F', fontSize: 24 },
-        }}
+        options={{ headerShown: false }}
         component={Summary}
       />
     </Stack.Navigator>
