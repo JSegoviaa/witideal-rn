@@ -13,6 +13,7 @@ import { interior } from '../../constant/locationBuilding';
 import { excelente } from '../../constant/propertyConvervation';
 import { singleHouse } from '../../constant/propertyType';
 import { useForm } from '../../hooks/useForm';
+import { Location } from '../../interfaces/Location';
 
 type onChangeValues =
   | 'precio'
@@ -50,11 +51,6 @@ type onChangeValues =
   | 'subway'
   | 'totalBuidingFloors'
   | 'totalUnits';
-
-interface Location {
-  latitude: number;
-  longitude: number;
-}
 
 interface ContextProps {
   precio: string;
