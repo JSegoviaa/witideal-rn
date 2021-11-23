@@ -1,14 +1,10 @@
-import React, { useState } from 'react';
+import React, { useContext } from 'react';
 import { View } from 'react-native';
 import MapView, { Marker } from 'react-native-maps';
 import { StackScreenProps } from '@react-navigation/stack';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { RootAddPropertyStackNavigation } from '../navigation/AddPropertyStackNavigation';
-
-interface Location {
-  latitude: number;
-  longitude: number;
-}
+import { PropertyContext } from '../context/property/PropertyContext';
 
 interface Props
   extends StackScreenProps<
@@ -18,10 +14,7 @@ interface Props
 
 const AddPropertyMapScreen = ({ navigation, route }: Props) => {
   const { latitude, longitude } = route.params;
-  const [coordinates, setCoordinates] = useState<Location>({
-    latitude,
-    longitude,
-  });
+  const { setCoordinates } = useContext(PropertyContext);
 
   const handleGoBack = () => navigation.goBack();
 
