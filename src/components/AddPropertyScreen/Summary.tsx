@@ -22,15 +22,6 @@ const Summary = () => {
     coordinates,
     administrative_area_level_1,
     locality,
-    propertyTitle,
-    propertyDescription,
-    laundry,
-    deliverydate,
-    totalBuildingFloors,
-    preservationState,
-    locationInBuilding,
-    isMantainceIncluded,
-    kitchen,
     specificData,
   } = useContext(PropertyContext);
 
@@ -47,8 +38,8 @@ const Summary = () => {
         </Text>
         <Text style={styles.text}>{urlTranslator(propertyType)}</Text>
         <Text style={styles.text}>{urlTranslator(action)} </Text>
-        <Text style={styles.text}>{propertyTitle}</Text>
-        <Text style={styles.text}>{propertyDescription}</Text>
+        <Text style={styles.text}>{specificData.propertyTitle}</Text>
+        <Text style={styles.text}>{specificData.propertyDescription}</Text>
 
         <View>
           {specificData.m2Build ? (
@@ -108,10 +99,10 @@ const Summary = () => {
         <View>
           <Text style={styles.title}>Datos específicos</Text>
 
-          {laundry ? (
+          {specificData.laundry ? (
             <View style={styles.specificaDataContainer}>
               <Text style={styles.specificaDataInfo}>Área de lavado</Text>
-              {laundry ? (
+              {specificData.laundry ? (
                 <View style={{ marginLeft: 'auto', marginRight: 'auto' }}>
                   <Icon name="checkmark-outline" size={20} color="#160A53" />
                 </View>
@@ -123,55 +114,61 @@ const Summary = () => {
             </View>
           ) : null}
 
-          {deliverydate ? (
+          {specificData.deliverydate ? (
             <View style={styles.specificaDataContainer}>
               <Text style={styles.specificaDataInfo}>Fecha de entrega</Text>
-              <Text style={styles.specificaDataInfo}>{deliverydate}</Text>
-            </View>
-          ) : null}
-
-          {/* {antiquity ? (
-              <View style={styles.specificaDataContainer}>
-                <Text style={styles.specificaDataInfo}>Antigüedad (años)</Text>
-                <Text style={styles.specificaDataInfo}>
-                  {antiquity}
-                </Text>
-              </View>
-            ) : null} */}
-
-          {totalBuildingFloors ? (
-            <View style={styles.specificaDataContainer}>
-              <Text style={styles.specificaDataInfo}>Niveles del edificio</Text>
               <Text style={styles.specificaDataInfo}>
-                {totalBuildingFloors}
+                {specificData.deliverydate}
               </Text>
             </View>
           ) : null}
 
-          {preservationState ? (
+          {specificData.antiquity ? (
+            <View style={styles.specificaDataContainer}>
+              <Text style={styles.specificaDataInfo}>Antigüedad (años)</Text>
+              <Text style={styles.specificaDataInfo}>
+                {specificData.antiquity}
+              </Text>
+            </View>
+          ) : null}
+
+          {specificData.totalBuildingFloors ? (
+            <View style={styles.specificaDataContainer}>
+              <Text style={styles.specificaDataInfo}>Niveles del edificio</Text>
+              <Text style={styles.specificaDataInfo}>
+                {specificData.totalBuildingFloors}
+              </Text>
+            </View>
+          ) : null}
+
+          {specificData.preservationState ? (
             <View style={styles.specificaDataContainer}>
               <Text style={styles.specificaDataInfo}>
                 Estado de conservación
               </Text>
-              <Text style={styles.specificaDataInfo}>{preservationState}</Text>
+              <Text style={styles.specificaDataInfo}>
+                {specificData.preservationState}
+              </Text>
             </View>
           ) : null}
 
-          {locationInBuilding ? (
+          {specificData.locationInBuilding ? (
             <View style={styles.specificaDataContainer}>
               <Text style={styles.specificaDataInfo}>
                 Ubicación en Edificio
               </Text>
-              <Text style={styles.specificaDataInfo}>{locationInBuilding}</Text>
+              <Text style={styles.specificaDataInfo}>
+                {specificData.locationInBuilding}
+              </Text>
             </View>
           ) : null}
 
-          {isMantainceIncluded ? (
+          {specificData.isMantainceIncluded ? (
             <View style={styles.specificaDataContainer}>
               <Text style={styles.specificaDataInfo}>
                 Mantenimiento incluido (solo renta)
               </Text>
-              {isMantainceIncluded ? (
+              {specificData.isMantainceIncluded ? (
                 <View style={{ marginLeft: 'auto', marginRight: 'auto' }}>
                   <Icon name="checkmark-outline" size={20} color="#160A53" />
                 </View>
@@ -183,10 +180,12 @@ const Summary = () => {
             </View>
           ) : null}
 
-          {isMantainceIncluded ? (
+          {specificData.kitchen ? (
             <View style={styles.specificaDataContainer}>
               <Text style={styles.specificaDataInfo}>Cocina</Text>
-              <Text style={styles.specificaDataInfo}>{kitchen}</Text>
+              <Text style={styles.specificaDataInfo}>
+                {specificData.kitchen}
+              </Text>
             </View>
           ) : null}
 

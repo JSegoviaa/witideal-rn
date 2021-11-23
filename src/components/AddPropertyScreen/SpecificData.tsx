@@ -34,79 +34,50 @@ const SpecificData = ({ navigation }: Props) => {
   const {
     propertyType,
     onChange,
-    locationInBuilding,
     setLocationInBuilding,
-    preservationState,
     setPreservationState,
-    kitchen,
     setKitchen,
-    serviceRoom,
     setServiceRoom,
-    laundry,
     setLaundry,
-    cellar,
     setCellar,
     setBalcony,
-    terrace,
     setTerrace,
-    roofGarden,
     setRoofGarden,
-    familyRoom,
     setFamilyRoom,
-    study,
     setStudy,
-    tvRoom,
     setTvRoom,
-    carElevator,
     setCarElevator,
-    wireFence,
     setWireFence,
-    electricFence,
     setElectricFence,
     setClosedStreet,
     setCctv,
-    alarm,
     setAlarm,
-    janitor,
     setJanitor,
     setSecurity247,
     setPool,
-    sportsField,
     setSportsField,
-    swimmingLane,
     setSwimmingLane,
     setBussinessCentre,
     setPlayground,
     setPartyRoom,
     setGym,
     setElevator,
-    airConditioner,
     setAirConditioner,
-    isMantainceIncluded,
     setIsMantainceIncluded,
     setGasType,
-    petFriendly,
     setPetFriendly,
-    garden,
+    setAntiquity,
     setGarden,
-    cistern,
     setCistern,
-    equipment,
     setEquipment,
-    onstreet,
     setOnstreet,
-    insideMall,
     setInsideMall,
-    insideCorp,
     setInsideCorp,
-    fireAlarm,
     setFireAlarm,
-    insideIndust,
     setInsideIndust,
-    electricity,
     setElectricity,
-    water,
     setWater,
+    setTrailerPlat,
     specificData,
   } = useContext(PropertyContext);
 
@@ -152,7 +123,7 @@ const SpecificData = ({ navigation }: Props) => {
           />
           <TextInput
             keyboardType="numeric"
-            onChangeText={value => onChange(value, 'm2terrain')}
+            onChangeText={value => onChange(value, 'm2Terrain')}
             style={appStyles.input}
             placeholder="M2 del terreno"
             placeholderTextColor="#ccc"
@@ -226,7 +197,7 @@ const SpecificData = ({ navigation }: Props) => {
           <Text style={styles.subtitle}>Ubicación en edificio</Text>
           <View style={appStyles.picker}>
             <Picker
-              selectedValue={locationInBuilding}
+              selectedValue={specificData.locationInBuilding}
               style={{ color: '#000' }}
               onValueChange={(itemValue, itemIndex) =>
                 setLocationInBuilding(itemValue)
@@ -241,7 +212,7 @@ const SpecificData = ({ navigation }: Props) => {
           <Text style={styles.subtitle}>Estado de conservación</Text>
           <View style={appStyles.picker}>
             <Picker
-              selectedValue={preservationState}
+              selectedValue={specificData.preservationState}
               style={{ color: '#000' }}
               onValueChange={(itemValue, itemIndex) =>
                 setPreservationState(itemValue)
@@ -290,7 +261,7 @@ const SpecificData = ({ navigation }: Props) => {
           <Text style={styles.subtitle}>Cocina</Text>
           <View style={appStyles.picker}>
             <Picker
-              selectedValue={kitchen}
+              selectedValue={specificData.kitchen}
               style={{ color: '#000' }}
               onValueChange={(itemValue, itemIndex) => setKitchen(itemValue)}>
               <Picker.Item label="Abierta" value={abierta} />
@@ -312,7 +283,7 @@ const SpecificData = ({ navigation }: Props) => {
               textDecorationLine: 'none',
             }}
             onPress={() => {
-              setServiceRoom(!serviceRoom);
+              setServiceRoom(!specificData.serviceRoom);
             }}
           />
           <BouncyCheckbox
@@ -327,7 +298,7 @@ const SpecificData = ({ navigation }: Props) => {
               textDecorationLine: 'none',
             }}
             onPress={() => {
-              setLaundry(!laundry);
+              setLaundry(!specificData.laundry);
             }}
           />
           <BouncyCheckbox
@@ -342,7 +313,7 @@ const SpecificData = ({ navigation }: Props) => {
               textDecorationLine: 'none',
             }}
             onPress={() => {
-              setCellar(!cellar);
+              setCellar(!specificData.cellar);
             }}
           />
           <BouncyCheckbox
@@ -357,7 +328,7 @@ const SpecificData = ({ navigation }: Props) => {
               textDecorationLine: 'none',
             }}
             onPress={() => {
-              setEquipment(!equipment);
+              setEquipment(!specificData.equipment);
             }}
           />
           <BouncyCheckbox
@@ -387,7 +358,7 @@ const SpecificData = ({ navigation }: Props) => {
               textDecorationLine: 'none',
             }}
             onPress={() => {
-              setTerrace(!terrace);
+              setTerrace(!specificData.terrace);
             }}
           />
           <BouncyCheckbox
@@ -402,7 +373,7 @@ const SpecificData = ({ navigation }: Props) => {
               textDecorationLine: 'none',
             }}
             onPress={() => {
-              setRoofGarden(!roofGarden);
+              setRoofGarden(!specificData.roofGarden);
             }}
           />
           <BouncyCheckbox
@@ -417,7 +388,7 @@ const SpecificData = ({ navigation }: Props) => {
               textDecorationLine: 'none',
             }}
             onPress={() => {
-              setGarden(!garden);
+              setGarden(!specificData.garden);
             }}
           />
           <BouncyCheckbox
@@ -432,7 +403,7 @@ const SpecificData = ({ navigation }: Props) => {
               textDecorationLine: 'none',
             }}
             onPress={() => {
-              setFamilyRoom(!familyRoom);
+              setFamilyRoom(!specificData.familyRoom);
             }}
           />
           <BouncyCheckbox
@@ -447,7 +418,7 @@ const SpecificData = ({ navigation }: Props) => {
               textDecorationLine: 'none',
             }}
             onPress={() => {
-              setStudy(!study);
+              setStudy(!specificData.study);
             }}
           />
           <BouncyCheckbox
@@ -462,7 +433,7 @@ const SpecificData = ({ navigation }: Props) => {
               textDecorationLine: 'none',
             }}
             onPress={() => {
-              setTvRoom(!tvRoom);
+              setTvRoom(!specificData.tvRoom);
             }}
           />
           <BouncyCheckbox
@@ -477,7 +448,7 @@ const SpecificData = ({ navigation }: Props) => {
               textDecorationLine: 'none',
             }}
             onPress={() => {
-              setCarElevator(!carElevator);
+              setCarElevator(!specificData.carElevator);
             }}
           />
           <TextInput
@@ -501,7 +472,7 @@ const SpecificData = ({ navigation }: Props) => {
             textDecorationLine: 'none',
           }}
           onPress={() => {
-            setWireFence(!wireFence);
+            setWireFence(!specificData.wireFence);
           }}
         />
         <BouncyCheckbox
@@ -516,7 +487,7 @@ const SpecificData = ({ navigation }: Props) => {
             textDecorationLine: 'none',
           }}
           onPress={() => {
-            setElectricFence(!electricFence);
+            setElectricFence(!specificData.electricFence);
           }}
         />
         <BouncyCheckbox
@@ -531,7 +502,7 @@ const SpecificData = ({ navigation }: Props) => {
             textDecorationLine: 'none',
           }}
           onPress={() => {
-            setFireAlarm(!fireAlarm);
+            setFireAlarm(!specificData.fireAlarm);
           }}
         />
         <BouncyCheckbox
@@ -576,7 +547,7 @@ const SpecificData = ({ navigation }: Props) => {
             textDecorationLine: 'none',
           }}
           onPress={() => {
-            setAlarm(!alarm);
+            setAlarm(!specificData.alarm);
           }}
         />
         <BouncyCheckbox
@@ -591,7 +562,7 @@ const SpecificData = ({ navigation }: Props) => {
             textDecorationLine: 'none',
           }}
           onPress={() => {
-            setJanitor(!janitor);
+            setJanitor(!specificData.janitor);
           }}
         />
         <BouncyCheckbox
@@ -637,7 +608,7 @@ const SpecificData = ({ navigation }: Props) => {
             textDecorationLine: 'none',
           }}
           onPress={() => {
-            setSportsField(!sportsField);
+            setSportsField(!specificData.sportsField);
           }}
         />
         <BouncyCheckbox
@@ -652,7 +623,7 @@ const SpecificData = ({ navigation }: Props) => {
             textDecorationLine: 'none',
           }}
           onPress={() => {
-            setSwimmingLane(!swimmingLane);
+            setSwimmingLane(!specificData.swimmingLane);
           }}
         />
         <BouncyCheckbox
@@ -736,6 +707,21 @@ const SpecificData = ({ navigation }: Props) => {
           size={25}
           fillColor="#3F19F9"
           unfillColor="#FFFFFF"
+          text="Andén para triáler"
+          iconStyle={{ borderColor: '#3F19F9' }}
+          textStyle={{
+            fontFamily: 'JosefinSans-Regular',
+            textDecorationLine: 'none',
+          }}
+          onPress={() => {
+            setTrailerPlat(!specificData.trailerPlat);
+          }}
+        />
+        <BouncyCheckbox
+          style={{ paddingVertical: 5 }}
+          size={25}
+          fillColor="#3F19F9"
+          unfillColor="#FFFFFF"
           text="Aire acondicionado"
           iconStyle={{ borderColor: '#3F19F9' }}
           textStyle={{
@@ -743,7 +729,7 @@ const SpecificData = ({ navigation }: Props) => {
             textDecorationLine: 'none',
           }}
           onPress={() => {
-            setAirConditioner(!airConditioner);
+            setAirConditioner(!specificData.airConditioner);
           }}
         />
         <BouncyCheckbox
@@ -758,7 +744,7 @@ const SpecificData = ({ navigation }: Props) => {
             textDecorationLine: 'none',
           }}
           onPress={() => {
-            setIsMantainceIncluded(!isMantainceIncluded);
+            setIsMantainceIncluded(!specificData.isMantainceIncluded);
           }}
         />
         <BouncyCheckbox
@@ -773,7 +759,7 @@ const SpecificData = ({ navigation }: Props) => {
             textDecorationLine: 'none',
           }}
           onPress={() => {
-            setCistern(!cistern);
+            setCistern(!specificData.cistern);
           }}
         />
         <BouncyCheckbox
@@ -788,7 +774,7 @@ const SpecificData = ({ navigation }: Props) => {
             textDecorationLine: 'none',
           }}
           onPress={() => {
-            setElectricity(!electricity);
+            setElectricity(!specificData.electricity);
           }}
         />
         <BouncyCheckbox
@@ -803,7 +789,7 @@ const SpecificData = ({ navigation }: Props) => {
             textDecorationLine: 'none',
           }}
           onPress={() => {
-            setWater(!water);
+            setWater(!specificData.water);
           }}
         />
 
@@ -814,7 +800,7 @@ const SpecificData = ({ navigation }: Props) => {
           placeholderTextColor="#ccc"
         />
 
-        {isMantainceIncluded ? (
+        {specificData.isMantainceIncluded ? (
           <TextInput
             style={appStyles.input}
             placeholder="Costo de mantenimiento"
@@ -847,7 +833,7 @@ const SpecificData = ({ navigation }: Props) => {
             textDecorationLine: 'none',
           }}
           onPress={() => {
-            setPetFriendly(!petFriendly);
+            setPetFriendly(!specificData.petFriendly);
           }}
         />
         <View>
@@ -864,7 +850,7 @@ const SpecificData = ({ navigation }: Props) => {
               textDecorationLine: 'none',
             }}
             onPress={() => {
-              setInsideMall(!insideMall);
+              setInsideMall(!specificData.insideMall);
             }}
           />
           <BouncyCheckbox
@@ -879,7 +865,7 @@ const SpecificData = ({ navigation }: Props) => {
               textDecorationLine: 'none',
             }}
             onPress={() => {
-              setInsideIndust(!insideIndust);
+              setInsideIndust(!specificData.insideIndust);
             }}
           />
           <BouncyCheckbox
@@ -894,7 +880,7 @@ const SpecificData = ({ navigation }: Props) => {
               textDecorationLine: 'none',
             }}
             onPress={() => {
-              setInsideCorp(!insideCorp);
+              setInsideCorp(!specificData.insideCorp);
             }}
           />
           <BouncyCheckbox
@@ -909,7 +895,7 @@ const SpecificData = ({ navigation }: Props) => {
               textDecorationLine: 'none',
             }}
             onPress={() => {
-              setOnstreet(!onstreet);
+              setOnstreet(!specificData.onstreet);
             }}
           />
           <TextInput
@@ -974,9 +960,9 @@ const SpecificData = ({ navigation }: Props) => {
           <Text style={styles.subtitle}>Antigüedad (años)</Text>
           <View style={appStyles.picker}>
             <Picker
-              selectedValue={specificData.gasType}
+              selectedValue={specificData.antiquity}
               style={{ color: '#000' }}
-              onValueChange={(itemValue, itemIndex) => setGasType(itemValue)}>
+              onValueChange={(itemValue, itemIndex) => setAntiquity(itemValue)}>
               <Picker.Item label="0-5" value="0-5" />
               <Picker.Item label="5-10" value="5-10" />
               <Picker.Item label="10-25" value="10-25" />
