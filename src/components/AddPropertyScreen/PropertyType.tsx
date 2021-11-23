@@ -23,7 +23,6 @@ import {
   terrain,
   warehouse,
 } from '../../constant/propertyType';
-import { useForm } from '../../hooks/useForm';
 import { appStyles } from '../../theme/appTheme';
 import { RootAddPropertyStackNavigation } from '../../navigation/AddPropertyStackNavigation';
 import { PropertyContext } from '../../context/property/PropertyContext';
@@ -35,10 +34,6 @@ interface Props
   > {}
 
 const PropertyType = ({ navigation }: Props) => {
-  const { form, onChange } = useForm({
-    precio: '',
-  });
-
   const {
     currency,
     setCurrency,
@@ -56,9 +51,9 @@ const PropertyType = ({ navigation }: Props) => {
     setPropertyTypeSelected,
     action,
     setAction,
+    precio,
+    onChange,
   } = useContext(PropertyContext);
-
-  const { precio } = form;
 
   const handleActionTypeSelected = () => {
     setActionSelected(!actionSelected);

@@ -8,6 +8,7 @@ import React, {
 import { rent } from '../../constant/action';
 import { mxn } from '../../constant/currency';
 import { singleHouse } from '../../constant/propertyType';
+import { useForm } from '../../hooks/useForm';
 
 interface ContextProps {
   currency: string;
@@ -26,11 +27,17 @@ interface ContextProps {
   setPropertyTypeSelected: Dispatch<SetStateAction<boolean>>;
   action: string;
   setAction: Dispatch<SetStateAction<string>>;
+  precio: string;
+  onChange: <K extends Object>(value: K, field: 'precio') => void;
 }
 
 export const PropertyContext = createContext({} as ContextProps);
 
 const PropertyProvider: FC = ({ children }) => {
+  const { form, onChange } = useForm({
+    precio: '',
+  });
+  const { precio } = form;
   const [currency, setCurrency] = useState(mxn);
   const [propertyType, setPropertyType] = useState(singleHouse);
   const [actionSelected, setActionSelected] = useState<boolean>(false);
@@ -60,6 +67,8 @@ const PropertyProvider: FC = ({ children }) => {
         setPropertyTypeSelected,
         action,
         setAction,
+        precio,
+        onChange,
       }}>
       {children}
     </PropertyContext.Provider>
