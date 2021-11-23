@@ -33,13 +33,9 @@ import {
   regular,
   remodelar,
 } from '../constant/propertyConvervation';
+import { Location } from '../interfaces/Location';
 
 const image = { uri: 'https://i.imgur.com/QxTLA6l.jpg' };
-
-interface Location {
-  latitude: number;
-  longitude: number;
-}
 
 interface Props
   extends StackScreenProps<RootSearchStackNavigation, 'SearchScreen'> {}

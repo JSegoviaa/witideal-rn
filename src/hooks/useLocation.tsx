@@ -1,10 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import Geolocation from '@react-native-community/geolocation';
-
-interface Location {
-  latitude: number;
-  longitude: number;
-}
+import { Location } from '../interfaces/Location';
 
 export const useLocation = () => {
   const [loading, setLoading] = useState(false);
