@@ -56,7 +56,6 @@ interface SpecificData {
   electricity: boolean | undefined;
   elevator: boolean | undefined;
   equipment: boolean | undefined;
-
   extras: string;
   familyRoom: boolean | undefined;
   fireAlarm: boolean | undefined;
@@ -68,10 +67,8 @@ interface SpecificData {
   halfBath: string;
   hospitals: string;
   insideCorp: boolean | undefined;
-
   insideIndust: boolean | undefined;
   insideMall: boolean | undefined;
-
   isMantainceIncluded: boolean | undefined;
   janitor: boolean | undefined;
   kitchen: string;
@@ -89,7 +86,6 @@ interface SpecificData {
   mantainance: number;
   metrobus: string;
   onstreet: boolean | undefined;
-
   parkingSlots: string;
   partyRoom: boolean | undefined;
   petFriendly: boolean | undefined;
