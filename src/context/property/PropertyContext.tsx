@@ -47,7 +47,7 @@ const PropertyProvider: FC = ({ children }) => {
     schools: '',
     shops: '',
     subway: '',
-    totalBuidingFloors: '',
+    totalBuildingFloors: '',
     totalUnits: '',
   });
   const {
@@ -84,7 +84,7 @@ const PropertyProvider: FC = ({ children }) => {
     schools,
     shops,
     subway,
-    totalBuidingFloors,
+    totalBuildingFloors,
     totalUnits,
   } = form;
   const [currency, setCurrency] = useState(mxn);
@@ -105,7 +105,7 @@ const PropertyProvider: FC = ({ children }) => {
   const [locality, setLocality] = useState('');
   const [isExactLoaction, setIsExactLoaction] = useState(false);
 
-  const [locationBuilding, setLocationBuilding] = useState(interior);
+  const [locationInBuilding, setLocationInBuilding] = useState(interior);
   const [preservationState, setPreservationState] = useState(excelente);
   const [kitchen, setKitchen] = useState(abierta);
   const [serviceRoom, setServiceRoom] = useState<boolean | undefined>(
@@ -218,7 +218,7 @@ const PropertyProvider: FC = ({ children }) => {
         schools,
         shops,
         subway,
-        totalBuidingFloors,
+        totalBuildingFloors,
         totalUnits,
         onChange,
         currency,
@@ -247,8 +247,8 @@ const PropertyProvider: FC = ({ children }) => {
         setLocality,
         isExactLoaction,
         setIsExactLoaction,
-        locationBuilding,
-        setLocationBuilding,
+        locationInBuilding,
+        setLocationInBuilding,
         preservationState,
         setPreservationState,
         kitchen,

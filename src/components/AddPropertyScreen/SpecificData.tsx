@@ -34,8 +34,8 @@ const SpecificData = ({ navigation }: Props) => {
   const {
     propertyType,
     onChange,
-    locationBuilding,
-    setLocationBuilding,
+    locationInBuilding,
+    setLocationInBuilding,
     preservationState,
     setPreservationState,
     kitchen,
@@ -155,7 +155,7 @@ const SpecificData = ({ navigation }: Props) => {
           />
           <TextInput
             keyboardType="numeric"
-            onChangeText={value => onChange(value, 'totalBuidingFloors')}
+            onChangeText={value => onChange(value, 'totalBuildingFloors')}
             style={appStyles.input}
             placeholder="Niveles del edificio"
             placeholderTextColor="#ccc"
@@ -236,10 +236,10 @@ const SpecificData = ({ navigation }: Props) => {
           <Text style={styles.subtitle}>Ubicación en edificio</Text>
           <View style={appStyles.picker}>
             <Picker
-              selectedValue={locationBuilding}
+              selectedValue={locationInBuilding}
               style={{ color: '#000' }}
               onValueChange={(itemValue, itemIndex) =>
-                setLocationBuilding(itemValue)
+                setLocationInBuilding(itemValue)
               }>
               <Picker.Item label="Interior" value={interior} />
               <Picker.Item label="Exterior" value={exterior} />

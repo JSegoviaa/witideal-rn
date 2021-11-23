@@ -35,7 +35,7 @@ type onChangeValues =
   | 'schools'
   | 'shops'
   | 'subway'
-  | 'totalBuidingFloors'
+  | 'totalBuildingFloors'
   | 'totalUnits';
 
 export interface ContextProps {
@@ -72,7 +72,7 @@ export interface ContextProps {
   schools: string;
   shops: string;
   subway: string;
-  totalBuidingFloors: string;
+  totalBuildingFloors: string;
   totalUnits: string;
   onChange: <K extends Object>(value: K, field: onChangeValues) => void;
   currency: string;
@@ -101,8 +101,8 @@ export interface ContextProps {
   setLocality: Dispatch<SetStateAction<string>>;
   isExactLoaction: boolean;
   setIsExactLoaction: Dispatch<SetStateAction<boolean>>;
-  locationBuilding: string;
-  setLocationBuilding: Dispatch<SetStateAction<string>>;
+  locationInBuilding: string;
+  setLocationInBuilding: Dispatch<SetStateAction<string>>;
   preservationState: string;
   setPreservationState: Dispatch<SetStateAction<string>>;
   kitchen: string;
