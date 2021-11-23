@@ -174,6 +174,14 @@ const PropertyProvider: FC = ({ children }) => {
   );
   const [water, setWater] = useState<boolean | undefined>(undefined);
 
+  const uploadPicture = () => {
+    console.log('Se subió una imagen');
+  };
+
+  const uploadPictures = () => {
+    console.log('Se subieron muchas imágenes');
+  };
+
   return (
     <PropertyContext.Provider
       value={{
@@ -323,6 +331,8 @@ const PropertyProvider: FC = ({ children }) => {
         setElectricity,
         water,
         setWater,
+        uploadPicture,
+        uploadPictures,
       }}>
       {children}
     </PropertyContext.Provider>

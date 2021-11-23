@@ -1,9 +1,11 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { launchImageLibrary } from 'react-native-image-picker';
+import { PropertyContext } from '../../context/property/PropertyContext';
 import { appStyles } from '../../theme/appTheme';
 
 const UploadPropertyPictures = () => {
+  const { uploadPicture, uploadPictures } = useContext(PropertyContext);
   const [tempUri, setTempUri] = useState<string>('');
   const [fileName, setFileName] = useState<string>('');
 
@@ -18,6 +20,23 @@ const UploadPropertyPictures = () => {
         if (!resp.assets![0].uri) return;
         setTempUri(resp.assets![0].uri);
         setFileName(resp.assets![0].fileName!);
+        uploadPicture();
+      },
+    );
+  };
+
+  const takePhotosFromGallery = () => {
+    launchImageLibrary(
+      {
+        mediaType: 'photo',
+        quality: 0.5,
+      },
+      resp => {
+        if (resp.didCancel) return;
+        if (!resp.assets![0].uri) return;
+        setTempUri(resp.assets![0].uri);
+        setFileName(resp.assets![0].fileName!);
+        uploadPictures();
       },
     );
   };
@@ -44,7 +63,7 @@ const UploadPropertyPictures = () => {
         <Text style={styles.subtitle}>Fotos del inmueble</Text>
         <TouchableOpacity
           style={styles.background}
-          onPress={takePhotoFromGallery}>
+          onPress={takePhotosFromGallery}>
           <Text style={styles.subtitle}>
             Selcciona las fotos que quieres mostrar en tu inmueble
           </Text>

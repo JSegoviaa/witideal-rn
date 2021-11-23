@@ -185,4 +185,6 @@ export interface ContextProps {
   setElectricity: Dispatch<SetStateAction<boolean | undefined>>;
   water: boolean | undefined;
   setWater: Dispatch<SetStateAction<boolean | undefined>>;
+  uploadPicture: () => void;
+  uploadPictures: () => void;
 }
