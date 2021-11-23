@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useContext } from 'react';
 import {
   ScrollView,
   StyleSheet,
@@ -11,35 +11,31 @@ import { StackScreenProps } from '@react-navigation/stack';
 import BouncyCheckbox from 'react-native-bouncy-checkbox';
 import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete';
 import Toast from 'react-native-toast-message';
-import { useForm } from '../../hooks/useForm';
 import { RootAddPropertyStackNavigation } from '../../navigation/AddPropertyStackNavigation';
 import { appStyles } from '../../theme/appTheme';
-
-interface Location {
-  latitude: number;
-  longitude: number;
-}
+import { PropertyContext } from '../../context/property/PropertyContext';
 
 interface Props
   extends StackScreenProps<RootAddPropertyStackNavigation, 'UbicationScreen'> {}
 
 const Ubicacion = ({ navigation }: Props) => {
-  const [administrative_area_level_1, setAdministrative_area_level_1] =
-    useState('');
-  const [coordinates, setCoordinates] = useState<Location>({
-    longitude: 0,
-    latitude: 0,
-  });
-  const [country, setCountry] = useState('');
-  const [locality, setLocality] = useState('');
-  const [isExactLoaction, setIsExactLoaction] = useState<Boolean>(false);
-
-  const { form, onChange } = useForm({
-    int_number: '',
-    ext_number: '',
-    postal_code: '',
-    route: '',
-  });
+  const {
+    coordinates,
+    setCoordinates,
+    administrative_area_level_1,
+    setAdministrative_area_level_1,
+    country,
+    setCountry,
+    locality,
+    setLocality,
+    isExactLoaction,
+    setIsExactLoaction,
+    onChange,
+    int_number,
+    postal_code,
+    route,
+    ext_number,
+  } = useContext(PropertyContext);
 
   const handleNext = () => {
     if (!coordinates.latitude) {
