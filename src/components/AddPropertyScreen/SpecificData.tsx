@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext } from 'react';
 import {
   ScrollView,
   StyleSheet,
@@ -19,7 +19,6 @@ import {
 } from '../../constant/propertyConvervation';
 import { exterior, interior } from '../../constant/locationBuilding';
 import { abierta, cerrada } from '../../constant/kitchen';
-import { useForm } from '../../hooks/useForm';
 import { lp, natural, noGas } from '../../constant/gasType';
 import { RootAddPropertyStackNavigation } from '../../navigation/AddPropertyStackNavigation';
 import { PropertyContext } from '../../context/property/PropertyContext';
@@ -32,123 +31,94 @@ interface Props
   > {}
 
 const SpecificData = ({ navigation }: Props) => {
-  const { propertyType } = useContext(PropertyContext);
-
-  const { form, onChange } = useForm({
-    banks: '',
-    bath: '',
-    deliverydate: '',
-    extras: '',
-    floorNumber: '',
-    floors: '',
-    halfBath: '',
-    hospitals: '',
-    landUseCode: '',
-    m2build: '',
-    m2Office: '',
-    m2Storage: '',
-    m2terrain: '',
-    mainavs: '',
-    malls: '',
-    mantainance: 0,
-    mDepth: '',
-    mFront: '',
-    metrobus: '',
-    mHeight: '',
-    parkingSlots: '',
-    privateOffice: '',
-    propertyDescription: '',
-    propertyTitle: '',
-    room: '',
-    schools: '',
-    shops: '',
-    subway: '',
-    totalBuidingFloors: '',
-    totalUnits: '',
-  });
-
-  const [locationBuilding, setLocationBuilding] = useState<String>(interior);
-  const [preservationState, setPreservationState] = useState<String>(excelente);
-  const [kitchen, setKitchen] = useState<String>(abierta);
-  const [serviceRoom, setServiceRoom] = useState<Boolean>(false);
-  const [laundry, setLaundry] = useState<Boolean>(false);
-  const [cellar, setCellar] = useState<Boolean>(false);
-  const [balcony, setBalcony] = useState<Boolean>(false);
-  const [terrace, setTerrace] = useState<Boolean>(false);
-  const [roofGarden, setRoofGarden] = useState<Boolean>(false);
-  const [familyRoom, setFamilyRoom] = useState<Boolean>(false);
-  const [study, setStudy] = useState<Boolean>(false);
-  const [tvRoom, setTvRoom] = useState<Boolean>(false);
-  const [carElevator, setCarElevator] = useState<Boolean>(false);
-  const [wireFence, setWireFence] = useState<Boolean>(false);
-  const [electricFence, setElectricFence] = useState<Boolean>(false);
-  const [closedStreet, setClosedStreet] = useState<Boolean>(false);
-  const [cctv, setCctv] = useState<Boolean>(false);
-  const [alarm, setAlarm] = useState<Boolean>(false);
-  const [janitor, setJanitor] = useState<Boolean>(false);
-  const [security247, setSecurity247] = useState<Boolean>(false);
-  const [pool, setPool] = useState<Boolean>(false);
-  const [sportsField, setSportsField] = useState<Boolean>(false);
-  const [swimmingLane, setSwimmingLane] = useState<Boolean>(false);
-  const [bussinessCentre, setBussinessCentre] = useState<Boolean>(false);
-  const [playground, setPlayground] = useState<Boolean>(false);
-  const [partyRoom, setPartyRoom] = useState<Boolean>(false);
-  const [gym, setGym] = useState<Boolean>(false);
-  const [elevator, setElevator] = useState<Boolean>(false);
-  const [airConditioner, setAirConditioner] = useState<Boolean>(false);
-  const [isMantainceIncluded, setIsMantainceIncluded] =
-    useState<Boolean>(false);
-  const [gasType, setGasType] = useState(lp);
-  const [petFriendly, setPetFriendly] = useState<Boolean | undefined>(
-    undefined,
-  );
-  const [garden, setGarden] = useState<Boolean | undefined>(undefined);
-  const [cistern, setCistern] = useState<Boolean | undefined>(undefined);
-  const [equipment, setEquipment] = useState<Boolean | undefined>(undefined);
-  const [onstreet, setOnstreet] = useState<Boolean | undefined>(undefined);
-  const [insideMall, setInsideMall] = useState<Boolean | undefined>(undefined);
-  const [insideCorp, setInsideCorp] = useState<Boolean | undefined>(undefined);
-  const [fireAlarm, setFireAlarm] = useState<Boolean | undefined>(undefined);
-  const [insideIndust, setInsideIndust] = useState<Boolean | undefined>(
-    undefined,
-  );
-  const [electricity, setElectricity] = useState<Boolean | undefined>(
-    undefined,
-  );
-  const [water, setWater] = useState<Boolean | undefined>(undefined);
-
   const {
-    propertyTitle,
-    propertyDescription,
-    deliverydate,
-    metrobus,
-    subway,
-    mainavs,
-    hospitals,
-    schools,
-    banks,
-    shops,
-    malls,
-    privateOffice,
-    parkingSlots,
-    halfBath,
-    bath,
-    room,
-    m2build,
-    totalUnits,
-    totalBuidingFloors,
-    floorNumber,
-    m2terrain,
-    floors,
-    landUseCode,
-    mDepth,
-    mFront,
-    extras,
-    m2Office,
-    m2Storage,
-    mHeight,
-    mantainance,
-  } = form;
+    propertyType,
+    onChange,
+    locationBuilding,
+    setLocationBuilding,
+    preservationState,
+    setPreservationState,
+    kitchen,
+    setKitchen,
+    serviceRoom,
+    setServiceRoom,
+    laundry,
+    setLaundry,
+    cellar,
+    setCellar,
+    balcony,
+    setBalcony,
+    terrace,
+    setTerrace,
+    roofGarden,
+    setRoofGarden,
+    familyRoom,
+    setFamilyRoom,
+    study,
+    setStudy,
+    tvRoom,
+    setTvRoom,
+    carElevator,
+    setCarElevator,
+    wireFence,
+    setWireFence,
+    electricFence,
+    setElectricFence,
+    closedStreet,
+    setClosedStreet,
+    cctv,
+    setCctv,
+    alarm,
+    setAlarm,
+    janitor,
+    setJanitor,
+    security247,
+    setSecurity247,
+    pool,
+    setPool,
+    sportsField,
+    setSportsField,
+    swimmingLane,
+    setSwimmingLane,
+    bussinessCentre,
+    setBussinessCentre,
+    playground,
+    setPlayground,
+    partyRoom,
+    setPartyRoom,
+    gym,
+    setGym,
+    elevator,
+    setElevator,
+    airConditioner,
+    setAirConditioner,
+    isMantainceIncluded,
+    setIsMantainceIncluded,
+    gasType,
+    setGasType,
+    petFriendly,
+    setPetFriendly,
+    garden,
+    setGarden,
+    cistern,
+    setCistern,
+    equipment,
+    setEquipment,
+    onstreet,
+    setOnstreet,
+    insideMall,
+    setInsideMall,
+    insideCorp,
+    setInsideCorp,
+    fireAlarm,
+    setFireAlarm,
+    insideIndust,
+    setInsideIndust,
+    electricity,
+    setElectricity,
+    water,
+    setWater,
+  } = useContext(PropertyContext);
 
   const handleNext = () => navigation.navigate('UploadPropertyPicTureScreen');
 
