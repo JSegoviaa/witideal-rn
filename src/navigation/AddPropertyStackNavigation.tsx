@@ -5,6 +5,7 @@ import PropertyType from '../components/AddPropertyScreen/PropertyType';
 import Ubicacion from '../components/AddPropertyScreen/Ubicacion';
 import SpecificData from '../components/AddPropertyScreen/SpecificData';
 import UploadPropertyPictures from '../components/AddPropertyScreen/UploadPropertyPictures';
+import Summary from '../components/AddPropertyScreen/Summary';
 
 export type RootAddPropertyStackNavigation = {
   PropertyTypeScreen: undefined;
@@ -12,6 +13,7 @@ export type RootAddPropertyStackNavigation = {
   AddPropertyMapScreen: { latitude: number; longitude: number };
   SpecificDataScreen: undefined;
   UploadPropertyPicTureScreen: undefined;
+  SummaryScreen: undefined;
 };
 
 const Stack = createStackNavigator<RootAddPropertyStackNavigation>();
@@ -60,6 +62,15 @@ const AddPropertyStackNavigation = () => {
           headerTitleStyle: { color: '#1E0e6F', fontSize: 24 },
         }}
         component={UploadPropertyPictures}
+      />
+      <Stack.Screen
+        name="SummaryScreen"
+        options={{
+          title: 'Anuncio nuevo',
+          headerTitleAlign: 'center',
+          headerTitleStyle: { color: '#1E0e6F', fontSize: 24 },
+        }}
+        component={Summary}
       />
     </Stack.Navigator>
   );

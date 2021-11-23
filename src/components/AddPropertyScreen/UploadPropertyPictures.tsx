@@ -1,10 +1,15 @@
 import React, { useContext, useState } from 'react';
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { launchImageLibrary } from 'react-native-image-picker';
+import { StackScreenProps } from '@react-navigation/stack';
 import { PropertyContext } from '../../context/property/PropertyContext';
 import { appStyles } from '../../theme/appTheme';
+import { RootAddPropertyStackNavigation } from '../../navigation/AddPropertyStackNavigation';
 
-const UploadPropertyPictures = () => {
+interface Props
+  extends StackScreenProps<RootAddPropertyStackNavigation, 'SummaryScreen'> {}
+
+const UploadPropertyPictures = ({ navigation }: Props) => {
   const { uploadPicture, uploadPictures } = useContext(PropertyContext);
   const [tempUri, setTempUri] = useState<string>('');
   const [fileName, setFileName] = useState<string>('');
@@ -41,9 +46,7 @@ const UploadPropertyPictures = () => {
     );
   };
 
-  const handleConfirm = () => {
-    console.log('Hola');
-  };
+  const handleNext = () => navigation.navigate('SummaryScreen');
 
   return (
     <View style={appStyles.container}>
@@ -72,7 +75,7 @@ const UploadPropertyPictures = () => {
       </View>
 
       <View style={{ alignItems: 'center' }}>
-        <TouchableOpacity onPress={handleConfirm} style={appStyles.btnPrimary}>
+        <TouchableOpacity onPress={handleNext} style={appStyles.btnPrimary}>
           <Text
             style={{
               color: '#fff',
