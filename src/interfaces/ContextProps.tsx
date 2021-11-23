@@ -16,7 +16,7 @@ type onChangeValues =
   | 'halfBath'
   | 'hospitals'
   | 'landUseCode'
-  | 'm2build'
+  | 'm2Build'
   | 'm2Office'
   | 'm2Storage'
   | 'm2terrain'
@@ -38,38 +38,52 @@ type onChangeValues =
   | 'totalBuildingFloors'
   | 'totalUnits';
 
+interface SpecificData {
+  banks: string;
+  bath: string;
+  m2Build: string;
+  room: string;
+  parkingSlots: string;
+  extras: string;
+  cctv: boolean | undefined;
+  elevator: boolean | undefined;
+  schools: string;
+  mainavs: string;
+  pool: boolean | undefined;
+  playground: boolean | undefined;
+  bussinessCentre: boolean | undefined;
+  balcony: boolean | undefined;
+  gym: boolean | undefined;
+  floorNumber: string;
+  gasType: string;
+  closedStreet: boolean | undefined;
+  partyRoom: boolean | undefined;
+  halfBath: string;
+  security247: boolean | undefined;
+}
+
 export interface ContextProps {
   precio: string;
   ext_number: string;
   int_number: string;
   postal_code: string;
   route: string;
-  banks: string;
-  bath: string;
   deliverydate: string;
-  extras: string;
-  floorNumber: string;
   floors: string;
-  halfBath: string;
   hospitals: string;
   landUseCode: string;
-  m2build: string;
   m2Office: string;
   m2Storage: string;
   m2terrain: string;
-  mainavs: string;
   malls: string;
   mantainance: number;
   mDepth: string;
   mFront: string;
   metrobus: string;
   mHeight: string;
-  parkingSlots: string;
   privateOffice: string;
   propertyDescription: string;
   propertyTitle: string;
-  room: string;
-  schools: string;
   shops: string;
   subway: string;
   totalBuildingFloors: string;
@@ -113,7 +127,6 @@ export interface ContextProps {
   setLaundry: Dispatch<SetStateAction<boolean | undefined>>;
   cellar: boolean | undefined;
   setCellar: Dispatch<SetStateAction<boolean | undefined>>;
-  balcony: boolean | undefined;
   setBalcony: Dispatch<SetStateAction<boolean | undefined>>;
   terrace: boolean | undefined;
   setTerrace: Dispatch<SetStateAction<boolean | undefined>>;
@@ -131,37 +144,27 @@ export interface ContextProps {
   setWireFence: Dispatch<SetStateAction<boolean | undefined>>;
   electricFence: boolean | undefined;
   setElectricFence: Dispatch<SetStateAction<boolean | undefined>>;
-  closedStreet: boolean | undefined;
   setClosedStreet: Dispatch<SetStateAction<boolean | undefined>>;
-  cctv: boolean | undefined;
   setCctv: Dispatch<SetStateAction<boolean | undefined>>;
   alarm: boolean | undefined;
   setAlarm: Dispatch<SetStateAction<boolean | undefined>>;
   janitor: boolean | undefined;
   setJanitor: Dispatch<SetStateAction<boolean | undefined>>;
-  security247: boolean | undefined;
   setSecurity247: Dispatch<SetStateAction<boolean | undefined>>;
-  pool: boolean | undefined;
   setPool: Dispatch<SetStateAction<boolean | undefined>>;
   sportsField: boolean | undefined;
   setSportsField: Dispatch<SetStateAction<boolean | undefined>>;
   swimmingLane: boolean | undefined;
   setSwimmingLane: Dispatch<SetStateAction<boolean | undefined>>;
-  bussinessCentre: boolean | undefined;
   setBussinessCentre: Dispatch<SetStateAction<boolean | undefined>>;
-  playground: boolean | undefined;
   setPlayground: Dispatch<SetStateAction<boolean | undefined>>;
-  partyRoom: boolean | undefined;
   setPartyRoom: Dispatch<SetStateAction<boolean | undefined>>;
-  gym: boolean | undefined;
   setGym: Dispatch<SetStateAction<boolean | undefined>>;
-  elevator: boolean | undefined;
   setElevator: Dispatch<SetStateAction<boolean | undefined>>;
   airConditioner: boolean | undefined;
   setAirConditioner: Dispatch<SetStateAction<boolean | undefined>>;
   isMantainceIncluded: boolean | undefined;
   setIsMantainceIncluded: Dispatch<SetStateAction<boolean | undefined>>;
-  gasType: string;
   setGasType: Dispatch<SetStateAction<string>>;
   petFriendly: boolean | undefined;
   setPetFriendly: Dispatch<SetStateAction<boolean | undefined>>;
@@ -187,4 +190,5 @@ export interface ContextProps {
   setWater: Dispatch<SetStateAction<boolean | undefined>>;
   uploadPicture: () => void;
   uploadPictures: () => void;
+  specificData: SpecificData;
 }

@@ -24,10 +24,6 @@ const Summary = () => {
     locality,
     propertyTitle,
     propertyDescription,
-    parkingSlots,
-    room,
-    bath,
-    m2build,
     laundry,
     deliverydate,
     totalBuildingFloors,
@@ -35,23 +31,7 @@ const Summary = () => {
     locationInBuilding,
     isMantainceIncluded,
     kitchen,
-    banks,
-    extras,
-    cctv,
-    elevator,
-    schools,
-    mainavs,
-    pool,
-    playground,
-    bussinessCentre,
-    balcony,
-    gym,
-    floorNumber,
-    gasType,
-    closedStreet,
-    halfBath,
-    security247,
-    partyRoom,
+    specificData,
   } = useContext(PropertyContext);
 
   return (
@@ -71,7 +51,7 @@ const Summary = () => {
         <Text style={styles.text}>{propertyDescription}</Text>
 
         <View>
-          {m2build ? (
+          {specificData.m2Build ? (
             <View style={styles.box}>
               <Image
                 width={75}
@@ -80,11 +60,12 @@ const Summary = () => {
                 source={require('../../assets/build.png')}
               />
 
-              <Text style={styles.data}>{m2build}</Text>
+              <Text style={styles.data}>{specificData.m2Build}</Text>
               <Text style={styles.info}>M2 construidos</Text>
             </View>
           ) : null}
-          {room ? (
+
+          {specificData.room ? (
             <View style={styles.box}>
               <Image
                 width={75}
@@ -92,11 +73,12 @@ const Summary = () => {
                 style={styles.image}
                 source={require('../../assets/rooms.png')}
               />
-              <Text style={styles.data}>{room}</Text>
+              <Text style={styles.data}>{specificData.room}</Text>
               <Text style={styles.info}>Recamaras</Text>
             </View>
           ) : null}
-          {bath ? (
+
+          {specificData.bath ? (
             <View style={styles.box}>
               <Image
                 width={75}
@@ -104,11 +86,12 @@ const Summary = () => {
                 style={styles.image}
                 source={require('../../assets/baths.png')}
               />
-              <Text style={styles.data}>{bath}</Text>
+              <Text style={styles.data}>{specificData.bath}</Text>
               <Text style={styles.info}>Baños completos</Text>
             </View>
           ) : null}
-          {parkingSlots ? (
+
+          {specificData.parkingSlots ? (
             <View style={styles.box}>
               <Image
                 width={75}
@@ -116,7 +99,7 @@ const Summary = () => {
                 style={styles.image}
                 source={require('../../assets/parking.png')}
               />
-              <Text style={styles.data}>{parkingSlots}</Text>
+              <Text style={styles.data}>{specificData.parkingSlots}</Text>
               <Text style={styles.info}>Estacionamientos</Text>
             </View>
           ) : null}
@@ -207,24 +190,26 @@ const Summary = () => {
             </View>
           ) : null}
 
-          {banks ? (
+          {specificData.banks ? (
             <View style={styles.specificaDataContainer}>
               <Text style={styles.specificaDataInfo}>Bancos</Text>
-              <Text style={styles.specificaDataInfo}>{banks}</Text>
+              <Text style={styles.specificaDataInfo}>{specificData.banks}</Text>
             </View>
           ) : null}
 
-          {extras ? (
+          {specificData.extras ? (
             <View style={styles.specificaDataContainer}>
               <Text style={styles.specificaDataInfo}>Otros</Text>
-              <Text style={styles.specificaDataInfo}>{extras}</Text>
+              <Text style={styles.specificaDataInfo}>
+                {specificData.extras}
+              </Text>
             </View>
           ) : null}
 
-          {cctv ? (
+          {specificData.cctv ? (
             <View style={styles.specificaDataContainer}>
               <Text style={styles.specificaDataInfo}>CCTV</Text>
-              {cctv ? (
+              {specificData.cctv ? (
                 <View style={{ marginLeft: 'auto', marginRight: 'auto' }}>
                   <Icon name="checkmark-outline" size={20} color="#160A53" />
                 </View>
@@ -236,10 +221,10 @@ const Summary = () => {
             </View>
           ) : null}
 
-          {elevator ? (
+          {specificData.elevator ? (
             <View style={styles.specificaDataContainer}>
               <Text style={styles.specificaDataInfo}>Elevador</Text>
-              {elevator ? (
+              {specificData.elevator ? (
                 <View style={{ marginLeft: 'auto', marginRight: 'auto' }}>
                   <Icon name="checkmark-outline" size={20} color="#160A53" />
                 </View>
@@ -251,24 +236,28 @@ const Summary = () => {
             </View>
           ) : null}
 
-          {schools ? (
+          {specificData.schools ? (
             <View style={styles.specificaDataContainer}>
               <Text style={styles.specificaDataInfo}>Escuelas</Text>
-              <Text style={styles.specificaDataInfo}>{schools}</Text>
+              <Text style={styles.specificaDataInfo}>
+                {specificData.schools}
+              </Text>
             </View>
           ) : null}
 
-          {mainavs ? (
+          {specificData.mainavs ? (
             <View style={styles.specificaDataContainer}>
               <Text style={styles.specificaDataInfo}>Av. Principales</Text>
-              <Text style={styles.specificaDataInfo}>{mainavs}</Text>
+              <Text style={styles.specificaDataInfo}>
+                {specificData.mainavs}
+              </Text>
             </View>
           ) : null}
 
-          {pool ? (
+          {specificData.pool ? (
             <View style={styles.specificaDataContainer}>
               <Text style={styles.specificaDataInfo}>Alberca</Text>
-              {pool ? (
+              {specificData.pool ? (
                 <View style={{ marginLeft: 'auto', marginRight: 'auto' }}>
                   <Icon name="checkmark-outline" size={20} color="#160A53" />
                 </View>
@@ -280,10 +269,10 @@ const Summary = () => {
             </View>
           ) : null}
 
-          {playground ? (
+          {specificData.playground ? (
             <View style={styles.specificaDataContainer}>
               <Text style={styles.specificaDataInfo}>Juegos infantiles</Text>
-              {playground ? (
+              {specificData.playground ? (
                 <View style={{ marginLeft: 'auto', marginRight: 'auto' }}>
                   <Icon name="checkmark-outline" size={20} color="#160A53" />
                 </View>
@@ -295,10 +284,10 @@ const Summary = () => {
             </View>
           ) : null}
 
-          {bussinessCentre ? (
+          {specificData.bussinessCentre ? (
             <View style={styles.specificaDataContainer}>
               <Text style={styles.specificaDataInfo}>Centro de negocios</Text>
-              {bussinessCentre ? (
+              {specificData.bussinessCentre ? (
                 <View style={{ marginLeft: 'auto', marginRight: 'auto' }}>
                   <Icon name="checkmark-outline" size={20} color="#160A53" />
                 </View>
@@ -310,10 +299,10 @@ const Summary = () => {
             </View>
           ) : null}
 
-          {balcony ? (
+          {specificData.balcony ? (
             <View style={styles.specificaDataContainer}>
               <Text style={styles.specificaDataInfo}>Balcón</Text>
-              {balcony ? (
+              {specificData.balcony ? (
                 <View style={{ marginLeft: 'auto', marginRight: 'auto' }}>
                   <Icon name="checkmark-outline" size={20} color="#160A53" />
                 </View>
@@ -325,10 +314,10 @@ const Summary = () => {
             </View>
           ) : null}
 
-          {gym ? (
+          {specificData.gym ? (
             <View style={styles.specificaDataContainer}>
               <Text style={styles.specificaDataInfo}>Gym</Text>
-              {gym ? (
+              {specificData.gym ? (
                 <View style={{ marginLeft: 'auto', marginRight: 'auto' }}>
                   <Icon name="checkmark-outline" size={20} color="#160A53" />
                 </View>
@@ -340,26 +329,30 @@ const Summary = () => {
             </View>
           ) : null}
 
-          {floorNumber ? (
+          {specificData.floorNumber ? (
             <View style={styles.specificaDataContainer}>
               <Text style={styles.specificaDataInfo}>
                 Nivel en el que se encuentra
               </Text>
-              <Text style={styles.specificaDataInfo}>{floorNumber}</Text>
+              <Text style={styles.specificaDataInfo}>
+                {specificData.floorNumber}
+              </Text>
             </View>
           ) : null}
 
-          {gasType ? (
+          {specificData.gasType ? (
             <View style={styles.specificaDataContainer}>
               <Text style={styles.specificaDataInfo}>Tipo de gas</Text>
-              <Text style={styles.specificaDataInfo}>{gasType}</Text>
+              <Text style={styles.specificaDataInfo}>
+                {specificData.gasType}
+              </Text>
             </View>
           ) : null}
 
-          {closedStreet ? (
+          {specificData.closedStreet ? (
             <View style={styles.specificaDataContainer}>
               <Text style={styles.specificaDataInfo}>Calle cerrada</Text>
-              {closedStreet ? (
+              {specificData.closedStreet ? (
                 <View style={{ marginLeft: 'auto', marginRight: 'auto' }}>
                   <Icon name="checkmark-outline" size={20} color="#160A53" />
                 </View>
@@ -371,10 +364,10 @@ const Summary = () => {
             </View>
           ) : null}
 
-          {partyRoom ? (
+          {specificData.partyRoom ? (
             <View style={styles.specificaDataContainer}>
               <Text style={styles.specificaDataInfo}>Salón de fiestas</Text>
-              {partyRoom ? (
+              {specificData.partyRoom ? (
                 <View style={{ marginLeft: 'auto', marginRight: 'auto' }}>
                   <Icon name="checkmark-outline" size={20} color="#160A53" />
                 </View>
@@ -386,17 +379,19 @@ const Summary = () => {
             </View>
           ) : null}
 
-          {halfBath ? (
+          {specificData.halfBath ? (
             <View style={styles.specificaDataContainer}>
               <Text style={styles.specificaDataInfo}>Medio baños</Text>
-              <Text style={styles.specificaDataInfo}>{halfBath}</Text>
+              <Text style={styles.specificaDataInfo}>
+                {specificData.halfBath}
+              </Text>
             </View>
           ) : null}
 
-          {security247 ? (
+          {specificData.security247 ? (
             <View style={styles.specificaDataContainer}>
               <Text style={styles.specificaDataInfo}>Vigilancia 24/7</Text>
-              {security247 ? (
+              {specificData.security247 ? (
                 <View style={{ marginLeft: 'auto', marginRight: 'auto' }}>
                   <Icon name="checkmark-outline" size={20} color="#160A53" />
                 </View>
