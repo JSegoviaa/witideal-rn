@@ -27,6 +27,7 @@ type onChangeValues =
   | 'mFront'
   | 'metrobus'
   | 'mHeight'
+  | 'numDepBuilding'
   | 'parkingSlots'
   | 'privateOffice'
   | 'propertyDescription'
