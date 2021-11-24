@@ -76,6 +76,8 @@ import CaracteristicasOffice from './office/CaracteristicasOffice';
 import SecurityOffice from './office/SecurityOffice';
 import ServicesOffices from './office/ServicesOffices';
 import AntiquityLocal from './local/AntiquityLocal';
+import SecurityTerrain from './terrain/SecurityTerrain';
+import ServicesTerrain from './terrain/ServicesTerrain';
 
 interface Props
   extends StackScreenProps<
@@ -88,19 +90,11 @@ const SpecificData = ({ navigation }: Props) => {
     propertyType,
     onChange,
     setPreservationState,
-    setWireFence,
-    setElectricFence,
-    setClosedStreet,
-    setCctv,
-    setAlarm,
-    setSecurity247,
     setGasType,
     setPetFriendly,
     setOnstreet,
     setInsideMall,
     setInsideCorp,
-    setElectricity,
-    setWater,
     specificData,
   } = useContext(PropertyContext);
 
@@ -185,105 +179,7 @@ const SpecificData = ({ navigation }: Props) => {
         {propertyType === local ? <SecurityLocal /> : null}
         {propertyType === building ? <SecurityBuiling /> : null}
         {propertyType === office ? <SecurityOffice /> : null}
-
-        {/*  /  /  /  /  / Terreno /  / */}
-        <BouncyCheckbox
-          style={{ paddingVertical: 5 }}
-          size={25}
-          fillColor="#3F19F9"
-          unfillColor="#FFFFFF"
-          text="Alambrado"
-          iconStyle={{ borderColor: '#3F19F9' }}
-          textStyle={{
-            fontFamily: 'JosefinSans-Regular',
-            textDecorationLine: 'none',
-          }}
-          onPress={() => {
-            setWireFence(!specificData.wireFence);
-          }}
-        />
-        {/*  /  /  /  /  / Terreno /  / */}
-        <BouncyCheckbox
-          style={{ paddingVertical: 5 }}
-          size={25}
-          fillColor="#3F19F9"
-          unfillColor="#FFFFFF"
-          text="Cerca eléctrica"
-          iconStyle={{ borderColor: '#3F19F9' }}
-          textStyle={{
-            fontFamily: 'JosefinSans-Regular',
-            textDecorationLine: 'none',
-          }}
-          onPress={() => {
-            setElectricFence(!specificData.electricFence);
-          }}
-        />
-
-        {/*  /  /  /  /  / Terreno /  /*/}
-        <BouncyCheckbox
-          style={{ paddingVertical: 5 }}
-          size={25}
-          fillColor="#3F19F9"
-          unfillColor="#FFFFFF"
-          text="Calle cerrada"
-          iconStyle={{ borderColor: '#3F19F9' }}
-          textStyle={{
-            fontFamily: 'JosefinSans-Regular',
-            textDecorationLine: 'none',
-          }}
-          onPress={() => {
-            setClosedStreet(!specificData.closedStreet);
-          }}
-        />
-        {/*  /  /  /  /  / Terreno /  / */}
-        <BouncyCheckbox
-          style={{ paddingVertical: 5 }}
-          size={25}
-          fillColor="#3F19F9"
-          unfillColor="#FFFFFF"
-          text="CCTV"
-          iconStyle={{ borderColor: '#3F19F9' }}
-          textStyle={{
-            fontFamily: 'JosefinSans-Regular',
-            textDecorationLine: 'none',
-          }}
-          onPress={() => {
-            setCctv(!specificData.cctv);
-          }}
-        />
-        {/*  /   /  /  / Terreno /  / */}
-        <BouncyCheckbox
-          style={{ paddingVertical: 5 }}
-          size={25}
-          fillColor="#3F19F9"
-          unfillColor="#FFFFFF"
-          text="Alarmas"
-          iconStyle={{ borderColor: '#3F19F9' }}
-          textStyle={{
-            fontFamily: 'JosefinSans-Regular',
-            textDecorationLine: 'none',
-          }}
-          onPress={() => {
-            setAlarm(!specificData.alarm);
-          }}
-        />
-
-        {/*  /  /  /  / Terreno /  / */}
-        <BouncyCheckbox
-          style={{ paddingVertical: 5 }}
-          size={25}
-          fillColor="#3F19F9"
-          unfillColor="#FFFFFF"
-          text="Vigilancia 24/7"
-          iconStyle={{ borderColor: '#3F19F9' }}
-          textStyle={{
-            fontFamily: 'JosefinSans-Regular',
-            textDecorationLine: 'none',
-          }}
-          onPress={() => {
-            setSecurity247(!specificData.security247);
-          }}
-        />
+        {propertyType === terrain ? <SecurityTerrain /> : null}
 
         {propertyType === aparment && propertyType === singleHouse ? (
           <Text style={styles.subtitle}>Amenidades</Text>
@@ -291,9 +187,7 @@ const SpecificData = ({ navigation }: Props) => {
         {propertyType === aparment ? <AmenidadesAparment /> : null}
         {propertyType === condoHouse ? <AmenidadesCondo /> : null}
 
-        {propertyType !== terrain ? (
-          <Text style={styles.subtitle}>Servicios</Text>
-        ) : null}
+        <Text style={styles.subtitle}>Servicios</Text>
 
         {propertyType === warehouse ? <ServicesWarehouse /> : null}
         {propertyType === aparment ? <ServicesAparment /> : null}
@@ -302,46 +196,7 @@ const SpecificData = ({ navigation }: Props) => {
         {propertyType === local ? <ServiciosLocal /> : null}
         {propertyType === building ? <ServicesBulding /> : null}
         {propertyType === office ? <ServicesOffices /> : null}
-
-        {/*   / Terreno*/}
-        <BouncyCheckbox
-          style={{ paddingVertical: 5 }}
-          size={25}
-          fillColor="#3F19F9"
-          unfillColor="#FFFFFF"
-          text="Electricidad"
-          iconStyle={{ borderColor: '#3F19F9' }}
-          textStyle={{
-            fontFamily: 'JosefinSans-Regular',
-            textDecorationLine: 'none',
-          }}
-          onPress={() => {
-            setElectricity(!specificData.electricity);
-          }}
-        />
-        {/*  / Terreno*/}
-        <BouncyCheckbox
-          style={{ paddingVertical: 5 }}
-          size={25}
-          fillColor="#3F19F9"
-          unfillColor="#FFFFFF"
-          text="Agua"
-          iconStyle={{ borderColor: '#3F19F9' }}
-          textStyle={{
-            fontFamily: 'JosefinSans-Regular',
-            textDecorationLine: 'none',
-          }}
-          onPress={() => {
-            setWater(!specificData.water);
-          }}
-        />
-        {/* Terreno */}
-        <TextInput
-          onChangeText={value => onChange(value, 'landUseCode')}
-          style={appStyles.input}
-          placeholder="Uso de suelo"
-          placeholderTextColor="#ccc"
-        />
+        {propertyType === terrain ? <ServicesTerrain /> : null}
 
         {propertyType !== terrain ? (
           <>
@@ -435,56 +290,48 @@ const SpecificData = ({ navigation }: Props) => {
             />
           ) : null}
 
-          {/* Departamento / Casa / Local / Oficina / Bodega / Terreno / Edificio / Casa en condo*/}
           <TextInput
             onChangeText={value => onChange(value, 'malls')}
             style={appStyles.input}
             placeholder="Centros comerciales"
             placeholderTextColor="#ccc"
           />
-          {/* Departamento / Casa / Local / Oficina / Bodega / Terreno / Edificio / Casa en condo*/}
           <TextInput
             onChangeText={value => onChange(value, 'shops')}
             style={appStyles.input}
             placeholder="Tiendas de autoservicio"
             placeholderTextColor="#ccc"
           />
-          {/* Departamento / Casa / Local / Oficina / Bodega / Terreno / Edificio / Casa en condo*/}
           <TextInput
             onChangeText={value => onChange(value, 'banks')}
             style={appStyles.input}
             placeholder="Bancos"
             placeholderTextColor="#ccc"
           />
-          {/* Departamento / Casa / Local / Oficina / Bodega / Terreno / Edificio / Casa en condo*/}
           <TextInput
             onChangeText={value => onChange(value, 'schools')}
             style={appStyles.input}
             placeholder="Escuelas"
             placeholderTextColor="#ccc"
           />
-          {/* Departamento / Casa / Local / Oficina / Bodega / Terreno / Edificio / Casa en condo*/}
           <TextInput
             onChangeText={value => onChange(value, 'hospitals')}
             style={appStyles.input}
             placeholder="Hospitales"
             placeholderTextColor="#ccc"
           />
-          {/* Departamento / Casa / Local / Oficina / Bodega / Terreno / Edificio / Casa en condo*/}
           <TextInput
             onChangeText={value => onChange(value, 'mainavs')}
             style={appStyles.input}
             placeholder="Avs. principales"
             placeholderTextColor="#ccc"
           />
-          {/* Departamento / Casa / Local / Oficina / Bodega / Terreno / Edificio / Casa en condo*/}
           <TextInput
             onChangeText={value => onChange(value, 'subway')}
             style={appStyles.input}
             placeholder="Estaciones de metro"
             placeholderTextColor="#ccc"
           />
-          {/* Departamento / Casa / Local / Oficina / Bodega / Terreno / Edificio / Casa en condo*/}
           <TextInput
             onChangeText={value => onChange(value, 'metrobus')}
             style={appStyles.input}
