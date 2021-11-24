@@ -2,7 +2,7 @@ import { Dispatch, SetStateAction } from 'react';
 import { Location } from './Location';
 
 type onChangeValues =
-  | 'precio'
+  | 'price'
   | 'route'
   | 'postal_code'
   | 'int_number'
@@ -117,7 +117,7 @@ interface SpecificData {
 }
 
 export interface ContextProps {
-  precio: string;
+  price: string;
   ext_number: string;
   int_number: string;
   postal_code: string;

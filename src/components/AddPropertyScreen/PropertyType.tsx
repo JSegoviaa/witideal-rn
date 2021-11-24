@@ -49,7 +49,7 @@ const PropertyType = ({ navigation }: Props) => {
     propertyTypeSelected,
     setPropertyTypeSelected,
     setAction,
-    precio,
+    price,
     onChange,
   } = useContext(PropertyContext);
 
@@ -76,7 +76,7 @@ const PropertyType = ({ navigation }: Props) => {
   };
 
   const handleNext = () => {
-    if (!precio.trim()) {
+    if (!price.trim()) {
       Toast.show({
         type: 'error',
         text1: 'El precio es obligatorio',
@@ -84,7 +84,7 @@ const PropertyType = ({ navigation }: Props) => {
       });
     }
 
-    if (precio.trim()) {
+    if (price.trim()) {
       navigation.navigate('UbicationScreen');
     }
   };
@@ -217,7 +217,7 @@ const PropertyType = ({ navigation }: Props) => {
             placeholderTextColor="#ccc"
             keyboardType="numeric"
             style={styles.input}
-            onChangeText={value => onChange(value, 'precio')}
+            onChangeText={value => onChange(value, 'price')}
           />
           <View style={styles.picker}>
             <Picker

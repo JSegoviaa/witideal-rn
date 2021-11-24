@@ -18,7 +18,7 @@ const PropertyProvider: FC = ({ children }) => {
   const { user } = useContext(AuthContext);
 
   const { form, onChange } = useForm({
-    precio: '',
+    price: '',
     antiquity: '',
     int_number: '',
     ext_number: '',
@@ -57,7 +57,7 @@ const PropertyProvider: FC = ({ children }) => {
     totalUnits: '',
   });
   const {
-    precio,
+    price,
     ext_number,
     int_number,
     postal_code,
@@ -308,7 +308,6 @@ const PropertyProvider: FC = ({ children }) => {
     postal_code,
     route,
     propertyType,
-    propertyTypeSelected,
     sharesCom,
     tempUri,
     fileName,
@@ -318,7 +317,7 @@ const PropertyProvider: FC = ({ children }) => {
   return (
     <PropertyContext.Provider
       value={{
-        precio,
+        price,
         ext_number,
         route,
         postal_code,

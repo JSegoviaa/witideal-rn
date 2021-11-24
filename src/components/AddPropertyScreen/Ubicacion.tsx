@@ -112,19 +112,20 @@ const Ubicacion = ({ navigation }: Props) => {
             />
             <TextInput
               placeholder="Número exterior"
+              keyboardType="numeric"
               placeholderTextColor="#ccc"
               style={styles.input}
               onChangeText={value => onChange(value, 'ext_number')}
             />
             <TextInput
               placeholder="Número interior"
+              keyboardType="numeric"
               placeholderTextColor="#ccc"
               style={styles.input}
               onChangeText={value => onChange(value, 'int_number')}
             />
             <TextInput
               placeholder="Código postal"
-              placeholderTextColor="#ccc"
               style={styles.input}
               onChangeText={value => onChange(value, 'postal_code')}
             />
