@@ -10,6 +10,7 @@ const SecurityLocal = () => {
     setClosedStreet,
     setCctv,
     setSecurity247,
+    setAlarm,
   } = useContext(PropertyContext);
 
   return (
@@ -72,6 +73,21 @@ const SecurityLocal = () => {
         }}
         onPress={() => {
           setCctv(!specificData.cctv);
+        }}
+      />
+      <BouncyCheckbox
+        style={{ paddingVertical: 5 }}
+        size={25}
+        fillColor="#3F19F9"
+        unfillColor="#FFFFFF"
+        text="Alarmas"
+        iconStyle={{ borderColor: '#3F19F9' }}
+        textStyle={{
+          fontFamily: 'JosefinSans-Regular',
+          textDecorationLine: 'none',
+        }}
+        onPress={() => {
+          setAlarm(!specificData.alarm);
         }}
       />
       <BouncyCheckbox

@@ -151,7 +151,9 @@ const SpecificData = ({ navigation }: Props) => {
           </>
         ) : null}
 
-        <Text style={styles.subtitle}>Espacios internos</Text>
+        {propertyType !== terrain ? (
+          <Text style={styles.subtitle}>Espacios internos</Text>
+        ) : null}
         {propertyType === warehouse ? <EspaciosWarehouse /> : null}
         {propertyType === aparment ? <EspaciosAparment /> : null}
         {propertyType === singleHouse ? <EspaciosHouse /> : null}
@@ -237,7 +239,24 @@ const SpecificData = ({ navigation }: Props) => {
           <Text style={styles.subtitle}>Características de la zona</Text>
           {propertyType === warehouse ? <ZoneWarehouse /> : null}
 
-          {propertyType === local && propertyType === office ? (
+          {propertyType === office ? (
+            <BouncyCheckbox
+              style={{ paddingVertical: 5 }}
+              size={25}
+              fillColor="#3F19F9"
+              unfillColor="#FFFFFF"
+              text="En centro comercial"
+              iconStyle={{ borderColor: '#3F19F9' }}
+              textStyle={{
+                fontFamily: 'JosefinSans-Regular',
+                textDecorationLine: 'none',
+              }}
+              onPress={() => {
+                setInsideMall(!specificData.insideMall);
+              }}
+            />
+          ) : null}
+          {propertyType === local ? (
             <BouncyCheckbox
               style={{ paddingVertical: 5 }}
               size={25}
