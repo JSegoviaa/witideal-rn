@@ -2,6 +2,7 @@ import React, { useContext, useState } from 'react';
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { launchImageLibrary } from 'react-native-image-picker';
 import { StackScreenProps } from '@react-navigation/stack';
+import Toast from 'react-native-toast-message';
 import { PropertyContext } from '../../context/property/PropertyContext';
 import { appStyles } from '../../theme/appTheme';
 import { RootAddPropertyStackNavigation } from '../../navigation/AddPropertyStackNavigation';
@@ -46,7 +47,18 @@ const UploadPropertyPictures = ({ navigation }: Props) => {
     );
   };
 
-  const handleNext = () => navigation.navigate('SummaryScreen');
+  const handleNext = () => {
+    if (tempUri == '') {
+      return Toast.show({
+        type: 'error',
+        text1: 'Aún no has seleccionado ninguna imagen',
+        text2: 'Inténtelo nuevamente',
+      });
+    }
+    if (tempUri !== '') {
+      navigation.navigate('SummaryScreen');
+    }
+  };
 
   return (
     <View style={appStyles.container}>
