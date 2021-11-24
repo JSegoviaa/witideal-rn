@@ -96,13 +96,13 @@ const MyPropertiesListItem = ({ inmueble }: any) => {
             }}
           />
 
-          {inmueble.data.specificData.propertyTitle && (
+          {inmueble.data.specificData.propertyTitle ? (
             <Text numberOfLines={1} style={styles.textCenter}>
               {inmueble.data.specificData.propertyTitle}
             </Text>
-          )}
+          ) : null}
 
-          {inmueble.data && (
+          {inmueble.data ? (
             <Text
               style={isEnable ? styles.textCenter : styles.textCenterDisabled}>
               {inmueble.data.sublocality_level_1 !== undefined
@@ -115,18 +115,18 @@ const MyPropertiesListItem = ({ inmueble }: any) => {
                 ? inmueble.data.administrative_area_level_1
                 : ''}
             </Text>
-          )}
+          ) : null}
 
-          {inmueble.desc && (
+          {inmueble.desc ? (
             <Text style={styles.subtitle}>{inmueble.desc}</Text>
-          )}
+          ) : null}
 
-          {!isEnable && (
+          {!isEnable ? (
             <Text style={styles.subtitle}>
               Si deseas activar este anuncio, solo presiona el botón "Activar
               anuncio"{' '}
             </Text>
-          )}
+          ) : null}
 
           <View style={{ flexDirection: 'row', padding: 10 }}>
             {isEnable ? (
@@ -143,15 +143,15 @@ const MyPropertiesListItem = ({ inmueble }: any) => {
               </TouchableOpacity>
             )}
 
-            {!isEnable && (
+            {!isEnable ? (
               <TouchableOpacity style={styles.btnDanger} onPress={handleDelete}>
                 <Text style={{ color: 'white', textAlign: 'center' }}>
                   Eliminar inmueble
                 </Text>
               </TouchableOpacity>
-            )}
+            ) : null}
 
-            {isEnable && !isDestProperty && (
+            {isEnable && !isDestProperty ? (
               <TouchableOpacity
                 style={styles.btnDest}
                 onPress={handleDestacado}>
@@ -159,9 +159,9 @@ const MyPropertiesListItem = ({ inmueble }: any) => {
                   Destacar inmueble
                 </Text>
               </TouchableOpacity>
-            )}
+            ) : null}
 
-            {isDestProperty && (
+            {isDestProperty ? (
               <TouchableOpacity
                 disabled
                 style={styles.btnDest}
@@ -170,7 +170,7 @@ const MyPropertiesListItem = ({ inmueble }: any) => {
                   Propiedad destacada
                 </Text>
               </TouchableOpacity>
-            )}
+            ) : null}
           </View>
 
           <Text style={styles.subtitle}> ID:{inmueble.id}</Text>
