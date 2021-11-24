@@ -17,7 +17,6 @@ import {
   regular,
   remodelar,
 } from '../../constant/propertyConvervation';
-import { abierta, cerrada } from '../../constant/kitchen';
 import { lp, natural, noGas } from '../../constant/gasType';
 import { RootAddPropertyStackNavigation } from '../../navigation/AddPropertyStackNavigation';
 import { PropertyContext } from '../../context/property/PropertyContext';
@@ -76,6 +75,7 @@ import CocinaOffice from './office/CocinaOffice';
 import CaracteristicasOffice from './office/CaracteristicasOffice';
 import SecurityOffice from './office/SecurityOffice';
 import ServicesOffices from './office/ServicesOffices';
+import AntiquityLocal from './local/AntiquityLocal';
 
 interface Props
   extends StackScreenProps<
@@ -88,19 +88,14 @@ const SpecificData = ({ navigation }: Props) => {
     propertyType,
     onChange,
     setPreservationState,
-    setKitchen,
-    setCellar,
     setWireFence,
     setElectricFence,
     setClosedStreet,
     setCctv,
     setAlarm,
     setSecurity247,
-    setAirConditioner,
-    setIsMantainceIncluded,
     setGasType,
     setPetFriendly,
-    setAntiquity,
     setOnstreet,
     setInsideMall,
     setInsideCorp,
@@ -508,25 +503,11 @@ const SpecificData = ({ navigation }: Props) => {
             />
           </>
         ) : null}
-        {/*  /  / Local / */}
+
         {propertyType === aparment ? <AntiquityAparment /> : null}
         {propertyType === warehouse ? <AntiquityWarehouse /> : null}
         {propertyType === singleHouse ? <AntiquityHouse /> : null}
-
-        <View>
-          <Text style={styles.subtitle}>Antigüedad (años)</Text>
-          <View style={appStyles.picker}>
-            <Picker
-              selectedValue={specificData.antiquity}
-              style={{ color: '#000' }}
-              onValueChange={(itemValue, itemIndex) => setAntiquity(itemValue)}>
-              <Picker.Item label="0-5" value="0-5" />
-              <Picker.Item label="5-10" value="5-10" />
-              <Picker.Item label="10-25" value="10-25" />
-              <Picker.Item label="25+" value="25+" />
-            </Picker>
-          </View>
-        </View>
+        {propertyType === local ? <AntiquityLocal /> : null}
 
         <View>
           <Text style={styles.subtitle}>Título del inmueble</Text>
