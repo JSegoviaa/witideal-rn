@@ -50,6 +50,7 @@ import SecurityAparment from './aparment/SecurityAparment';
 import AmenidadesAparment from './aparment/AmenidadesAparment';
 import ServicesAparment from './aparment/ServicesAparment';
 import AntiquityAparment from './aparment/AntiquityAparment';
+import AntiquityWarehouse from './warehouse/AntiquityWarehouse';
 
 interface Props
   extends StackScreenProps<
@@ -819,8 +820,9 @@ const SpecificData = ({ navigation }: Props) => {
           </>
         ) : null}
 
-        {/*  / Casa / Local / Bodega*/}
+        {/*  / Casa / Local / */}
         {propertyType === aparment ? <AntiquityAparment /> : null}
+        {propertyType === warehouse ? <AntiquityWarehouse /> : null}
         <View>
           <Text style={styles.subtitle}>Antigüedad (años)</Text>
           <View style={appStyles.picker}>
