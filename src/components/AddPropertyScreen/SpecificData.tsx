@@ -68,6 +68,9 @@ import CocinaLocal from './local/CocinaLocal';
 import CaracteristicasLocal from './local/CaracteristicasLocal';
 import SecurityLocal from './local/SecurityLocal';
 import ServiciosLocal from './local/ServiciosLocal';
+import EspaciosBuilding from './building/EspaciosBuilding';
+import SecurityBuiling from './building/SecurityBuiling';
+import ServicesBulding from './building/ServicesBulding';
 
 interface Props
   extends StackScreenProps<
@@ -88,18 +91,14 @@ const SpecificData = ({ navigation }: Props) => {
     setCctv,
     setAlarm,
     setSecurity247,
-    setElevator,
     setAirConditioner,
     setIsMantainceIncluded,
     setGasType,
     setPetFriendly,
     setAntiquity,
-    setCistern,
-    setEquipment,
     setOnstreet,
     setInsideMall,
     setInsideCorp,
-    setFireAlarm,
     setElectricity,
     setWater,
     specificData,
@@ -162,16 +161,9 @@ const SpecificData = ({ navigation }: Props) => {
           {propertyType === singleHouse ? <EspaciosHouse /> : null}
           {propertyType === condoHouse ? <EspaciosCondo /> : null}
           {propertyType === local ? <EspaciosLocal /> : null}
+          {propertyType === building ? <EspaciosBuilding /> : null}
 
-          {/*  /  /  /  / Edificio / */}
-          <TextInput
-            keyboardType="numeric"
-            onChangeText={value => onChange(value, 'bath')}
-            style={appStyles.input}
-            placeholder="Baños completos"
-            placeholderTextColor="#ccc"
-          />
-          {/*  /  /  / Oficina /  / Edificio / */}
+          {/*  /  /  / Oficina /  /  / */}
           <TextInput
             keyboardType="numeric"
             onChangeText={value => onChange(value, 'halfBath')}
@@ -179,20 +171,12 @@ const SpecificData = ({ navigation }: Props) => {
             placeholder="Medio baño"
             placeholderTextColor="#ccc"
           />
-          {/*  /  /  / Oficina /  / Edificio / */}
+          {/*  /  /  / Oficina /  /  / */}
           <TextInput
             keyboardType="numeric"
             onChangeText={value => onChange(value, 'parkingSlots')}
             style={appStyles.input}
             placeholder="Estacionamientos"
-            placeholderTextColor="#ccc"
-          />
-          {/* Edificio */}
-          <TextInput
-            keyboardType="numeric"
-            onChangeText={value => onChange(value, 'numDepBuilding')}
-            style={appStyles.input}
-            placeholder="Número de departamentos / Oficinas"
             placeholderTextColor="#ccc"
           />
         </View>
@@ -253,8 +237,9 @@ const SpecificData = ({ navigation }: Props) => {
         {propertyType === singleHouse ? <SecurityHouse /> : null}
         {propertyType === condoHouse ? <SecurityCondo /> : null}
         {propertyType === local ? <SecurityLocal /> : null}
+        {propertyType === building ? <SecurityBuiling /> : null}
 
-        {/*  /  /  / Oficina /  / Terreno / Edificio / */}
+        {/*  /  /  / Oficina /  / Terreno /  / */}
         <BouncyCheckbox
           style={{ paddingVertical: 5 }}
           size={25}
@@ -270,7 +255,7 @@ const SpecificData = ({ navigation }: Props) => {
             setWireFence(!specificData.wireFence);
           }}
         />
-        {/*  /  /  / Oficina /  / Terreno / Edificio / */}
+        {/*  /  /  / Oficina /  / Terreno /  / */}
         <BouncyCheckbox
           style={{ paddingVertical: 5 }}
           size={25}
@@ -286,23 +271,8 @@ const SpecificData = ({ navigation }: Props) => {
             setElectricFence(!specificData.electricFence);
           }}
         />
-        {/*   / Edificio*/}
-        <BouncyCheckbox
-          style={{ paddingVertical: 5 }}
-          size={25}
-          fillColor="#3F19F9"
-          unfillColor="#FFFFFF"
-          text="Alarma contra indencios"
-          iconStyle={{ borderColor: '#3F19F9' }}
-          textStyle={{
-            fontFamily: 'JosefinSans-Regular',
-            textDecorationLine: 'none',
-          }}
-          onPress={() => {
-            setFireAlarm(!specificData.fireAlarm);
-          }}
-        />
-        {/*  /  /  / Oficina /  / Terreno / Edificio /*/}
+
+        {/*  /  /  / Oficina /  / Terreno /  /*/}
         <BouncyCheckbox
           style={{ paddingVertical: 5 }}
           size={25}
@@ -318,7 +288,7 @@ const SpecificData = ({ navigation }: Props) => {
             setClosedStreet(!specificData.closedStreet);
           }}
         />
-        {/*  /  /  / Oficina /  / Terreno / Edificio / */}
+        {/*  /  /  / Oficina /  / Terreno /  / */}
         <BouncyCheckbox
           style={{ paddingVertical: 5 }}
           size={25}
@@ -334,7 +304,7 @@ const SpecificData = ({ navigation }: Props) => {
             setCctv(!specificData.cctv);
           }}
         />
-        {/*  /   / Oficina /  / Terreno / Edificio / */}
+        {/*  /   / Oficina /  / Terreno /  / */}
         <BouncyCheckbox
           style={{ paddingVertical: 5 }}
           size={25}
@@ -351,7 +321,7 @@ const SpecificData = ({ navigation }: Props) => {
           }}
         />
 
-        {/*  /  / Oficina /  / Terreno / Edificio / */}
+        {/*  /  / Oficina /  / Terreno /  / */}
         <BouncyCheckbox
           style={{ paddingVertical: 5 }}
           size={25}
@@ -383,24 +353,9 @@ const SpecificData = ({ navigation }: Props) => {
         {propertyType === singleHouse ? <ServicesHouse /> : null}
         {propertyType === condoHouse ? <ServicesCondo /> : null}
         {propertyType === local ? <ServiciosLocal /> : null}
+        {propertyType === building ? <ServicesBulding /> : null}
 
-        {/*  / Edificio*/}
-        <BouncyCheckbox
-          style={{ paddingVertical: 5 }}
-          size={25}
-          fillColor="#3F19F9"
-          unfillColor="#FFFFFF"
-          text="Elevador"
-          iconStyle={{ borderColor: '#3F19F9' }}
-          textStyle={{
-            fontFamily: 'JosefinSans-Regular',
-            textDecorationLine: 'none',
-          }}
-          onPress={() => {
-            setElevator(!specificData.elevator);
-          }}
-        />
-        {/*   /  /  / Oficina /  / Edificio / */}
+        {/*   /  /  / Oficina /  /  / */}
         <BouncyCheckbox
           style={{ paddingVertical: 5 }}
           size={25}
@@ -432,22 +387,7 @@ const SpecificData = ({ navigation }: Props) => {
             setIsMantainceIncluded(!specificData.isMantainceIncluded);
           }}
         />
-        {/*  / Edificio */}
-        <BouncyCheckbox
-          style={{ paddingVertical: 5 }}
-          size={25}
-          fillColor="#3F19F9"
-          unfillColor="#FFFFFF"
-          text="Cisterna"
-          iconStyle={{ borderColor: '#3F19F9' }}
-          textStyle={{
-            fontFamily: 'JosefinSans-Regular',
-            textDecorationLine: 'none',
-          }}
-          onPress={() => {
-            setCistern(!specificData.cistern);
-          }}
-        />
+
         {/*   / Terreno*/}
         <BouncyCheckbox
           style={{ paddingVertical: 5 }}
