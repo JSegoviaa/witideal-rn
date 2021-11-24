@@ -11,9 +11,14 @@ interface Props
   extends StackScreenProps<RootAddPropertyStackNavigation, 'SummaryScreen'> {}
 
 const UploadPropertyPictures = ({ navigation }: Props) => {
-  const { uploadPicture, uploadPictures } = useContext(PropertyContext);
-  const [tempUri, setTempUri] = useState<string>('');
-  const [fileName, setFileName] = useState<string>('');
+  const {
+    uploadPicture,
+    uploadPictures,
+    tempUri,
+    setTempUri,
+    fileName,
+    setFileName,
+  } = useContext(PropertyContext);
 
   const takePhotoFromGallery = () => {
     launchImageLibrary(
@@ -70,7 +75,7 @@ const UploadPropertyPictures = ({ navigation }: Props) => {
           <Text style={styles.subtitle}>
             Selecciona la imagen principal de tu inmueble
           </Text>
-          <Text style={styles.text}>Solo se subir una foto</Text>
+          <Text style={styles.text}>Solo se subir una foto (obligatorio)</Text>
         </TouchableOpacity>
       </View>
 

@@ -181,6 +181,9 @@ const PropertyProvider: FC = ({ children }) => {
   const [trailerPlat, setTrailerPlat] = useState<boolean | undefined>(
     undefined,
   );
+  const [tempUri, setTempUri] = useState<string>('');
+  const [fileName, setFileName] = useState<string | undefined>('');
+
   const uploadPicture = () => {
     console.log('Se subió una imagen');
   };
@@ -347,6 +350,10 @@ const PropertyProvider: FC = ({ children }) => {
         setWater,
         uploadPicture,
         uploadPictures,
+        tempUri,
+        setTempUri,
+        fileName,
+        setFileName,
         specificData,
       }}>
       {children}

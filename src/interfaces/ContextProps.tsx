@@ -193,6 +193,10 @@ export interface ContextProps {
   setInsideIndust: Dispatch<SetStateAction<boolean | undefined>>;
   setElectricity: Dispatch<SetStateAction<boolean | undefined>>;
   setWater: Dispatch<SetStateAction<boolean | undefined>>;
+  tempUri: string;
+  setTempUri: Dispatch<SetStateAction<string>>;
+  fileName: string | undefined;
+  setFileName: Dispatch<SetStateAction<string | undefined>>;
   uploadPicture: () => void;
   uploadPictures: () => void;
   specificData: SpecificData;
