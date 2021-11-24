@@ -43,6 +43,13 @@ import EspaciosWarehouse from './warehouse/EspaciosWarehouse';
 import SecurityWarehouse from './warehouse/SecurityWarehouse';
 import ServicesWarehouse from './warehouse/ServicesWarehouse';
 import ZoneWarehouse from './warehouse/ZoneWarehouse';
+import EspaciosAparment from './aparment/EspaciosAparment';
+import CocinaAparment from './aparment/CocinaAparment';
+import CaracteristicasAparment from './aparment/CaracteristicasAparment';
+import SecurityAparment from './aparment/SecurityAparment';
+import AmenidadesAparment from './aparment/AmenidadesAparment';
+import ServicesAparment from './aparment/ServicesAparment';
+import AntiquityAparment from './aparment/AntiquityAparment';
 
 interface Props
   extends StackScreenProps<
@@ -130,28 +137,30 @@ const SpecificData = ({ navigation }: Props) => {
           {propertyType === condoHouse ? <CaracteristicasCondo /> : null}
         </View>
 
-        {/* Departamento  / Casa / Local / Oficina / Bodega / Edificio / Casa en condo*/}
-        <View>
-          <Text style={styles.subtitle}>Estado de conservación</Text>
-          <View style={appStyles.picker}>
-            <Picker
-              selectedValue={specificData.preservationState}
-              style={{ color: '#000' }}
-              onValueChange={(itemValue, itemIndex) =>
-                setPreservationState(itemValue)
-              }>
-              <Picker.Item label="Excelente" value={excelente} />
-              <Picker.Item label="Bueno" value={bueno} />
-              <Picker.Item label="Regular" value={regular} />
-              <Picker.Item label="Remodelar" value={remodelar} />
-            </Picker>
-          </View>
-        </View>
+        {propertyType !== terrain ? (
+          <>
+            <Text style={styles.subtitle}>Estado de conservación</Text>
+            <View style={appStyles.picker}>
+              <Picker
+                selectedValue={specificData.preservationState}
+                style={{ color: '#000' }}
+                onValueChange={(itemValue, itemIndex) =>
+                  setPreservationState(itemValue)
+                }>
+                <Picker.Item label="Excelente" value={excelente} />
+                <Picker.Item label="Bueno" value={bueno} />
+                <Picker.Item label="Regular" value={regular} />
+                <Picker.Item label="Remodelar" value={remodelar} />
+              </Picker>
+            </View>
+          </>
+        ) : null}
 
         <View>
           <Text style={styles.subtitle}>Espacios internos</Text>
           {propertyType === warehouse ? <EspaciosWarehouse /> : null}
-          {/* Departamento / Casa  / Casa en condo*/}
+          {propertyType === aparment ? <EspaciosAparment /> : null}
+          {/*  / Casa  / Casa en condo*/}
           <TextInput
             keyboardType="numeric"
             onChangeText={value => onChange(value, 'room')}
@@ -159,7 +168,7 @@ const SpecificData = ({ navigation }: Props) => {
             placeholder="Recámaras"
             placeholderTextColor="#ccc"
           />
-          {/* Departamento / Casa / Local /  / Edificio / Casa en condo*/}
+          {/*  / Casa / Local /  / Edificio / Casa en condo*/}
           <TextInput
             keyboardType="numeric"
             onChangeText={value => onChange(value, 'bath')}
@@ -167,7 +176,7 @@ const SpecificData = ({ navigation }: Props) => {
             placeholder="Baños completos"
             placeholderTextColor="#ccc"
           />
-          {/* Departamento / Casa / Local / Oficina /  / Edificio / Casa en condo*/}
+          {/*  / Casa / Local / Oficina /  / Edificio / Casa en condo*/}
           <TextInput
             keyboardType="numeric"
             onChangeText={value => onChange(value, 'halfBath')}
@@ -175,7 +184,7 @@ const SpecificData = ({ navigation }: Props) => {
             placeholder="Medio baño"
             placeholderTextColor="#ccc"
           />
-          {/* Departamento / Casa / Local / Oficina /  / Edificio / Casa en condo*/}
+          {/*  / Casa / Local / Oficina /  / Edificio / Casa en condo*/}
           <TextInput
             keyboardType="numeric"
             onChangeText={value => onChange(value, 'parkingSlots')}
@@ -192,7 +201,8 @@ const SpecificData = ({ navigation }: Props) => {
             placeholderTextColor="#ccc"
           />
         </View>
-        {/* Departamento / Casa / Local / Oficina / Casa en condo*/}
+        {/*  / Casa / Local / Oficina / Casa en condo*/}
+        {propertyType === aparment ? <CocinaAparment /> : null}
         <View>
           <Text style={styles.subtitle}>Cocina</Text>
           <View style={appStyles.picker}>
@@ -205,8 +215,10 @@ const SpecificData = ({ navigation }: Props) => {
             </Picker>
           </View>
         </View>
+
         <View>
-          {/* Departamento / Casa / Casa en condo*/}
+          {propertyType === aparment ? <CaracteristicasAparment /> : null}
+          {/*  / Casa / Casa en condo*/}
           <BouncyCheckbox
             style={{ paddingVertical: 5 }}
             size={25}
@@ -222,7 +234,7 @@ const SpecificData = ({ navigation }: Props) => {
               setServiceRoom(!specificData.serviceRoom);
             }}
           />
-          {/* Departamento / Casa / Casa en condo*/}
+          {/*  / Casa / Casa en condo*/}
           <BouncyCheckbox
             style={{ paddingVertical: 5 }}
             size={25}
@@ -238,7 +250,7 @@ const SpecificData = ({ navigation }: Props) => {
               setLaundry(!specificData.laundry);
             }}
           />
-          {/* Departamento / Casa / Local / Oficina / Casa en condo*/}
+          {/*  / Casa / Local / Oficina / Casa en condo*/}
           <BouncyCheckbox
             style={{ paddingVertical: 5 }}
             size={25}
@@ -270,7 +282,7 @@ const SpecificData = ({ navigation }: Props) => {
               setEquipment(!specificData.equipment);
             }}
           />
-          {/* Departamento / Casa / Casa en condo*/}
+          {/*  / Casa / Casa en condo*/}
           <BouncyCheckbox
             style={{ paddingVertical: 5 }}
             size={25}
@@ -286,7 +298,7 @@ const SpecificData = ({ navigation }: Props) => {
               setBalcony(!specificData.balcony);
             }}
           />
-          {/* Departamento / Casa / Casa en condo*/}
+          {/*  / Casa / Casa en condo*/}
           <BouncyCheckbox
             style={{ paddingVertical: 5 }}
             size={25}
@@ -302,7 +314,7 @@ const SpecificData = ({ navigation }: Props) => {
               setTerrace(!specificData.terrace);
             }}
           />
-          {/* Departamento / Casa / Casa en condo*/}
+          {/*  / Casa / Casa en condo*/}
           <BouncyCheckbox
             style={{ paddingVertical: 5 }}
             size={25}
@@ -334,7 +346,7 @@ const SpecificData = ({ navigation }: Props) => {
               setGarden(!specificData.garden);
             }}
           />
-          {/* Departamento / Casa / Casa en condo*/}
+          {/*  / Casa / Casa en condo*/}
           <BouncyCheckbox
             style={{ paddingVertical: 5 }}
             size={25}
@@ -350,7 +362,7 @@ const SpecificData = ({ navigation }: Props) => {
               setFamilyRoom(!specificData.familyRoom);
             }}
           />
-          {/* Departamento / Casa / Casa en condo*/}
+          {/*  / Casa / Casa en condo*/}
           <BouncyCheckbox
             style={{ paddingVertical: 5 }}
             size={25}
@@ -366,7 +378,7 @@ const SpecificData = ({ navigation }: Props) => {
               setStudy(!specificData.study);
             }}
           />
-          {/* Departamento / Casa / Casa en condo*/}
+          {/*  / Casa / Casa en condo*/}
           <BouncyCheckbox
             style={{ paddingVertical: 5 }}
             size={25}
@@ -382,22 +394,7 @@ const SpecificData = ({ navigation }: Props) => {
               setTvRoom(!specificData.tvRoom);
             }}
           />
-          {/* Departamento */}
-          <BouncyCheckbox
-            style={{ paddingVertical: 5 }}
-            size={25}
-            fillColor="#3F19F9"
-            unfillColor="#FFFFFF"
-            text="Elevautos"
-            iconStyle={{ borderColor: '#3F19F9' }}
-            textStyle={{
-              fontFamily: 'JosefinSans-Regular',
-              textDecorationLine: 'none',
-            }}
-            onPress={() => {
-              setCarElevator(!specificData.carElevator);
-            }}
-          />
+
           {/* Oficina */}
           <TextInput
             keyboardType="numeric"
@@ -410,7 +407,8 @@ const SpecificData = ({ navigation }: Props) => {
         {/* Departamento  / Casa / Local / Oficina / Bodega / Terreno / Edificio / Casa en condo*/}
         <Text style={styles.subtitle}>Seguridad</Text>
         {propertyType === warehouse ? <SecurityWarehouse /> : null}
-        {/* Departamento / Casa / Local / Oficina /  / Terreno / Edificio / Casa en condo*/}
+        {propertyType === aparment ? <SecurityAparment /> : null}
+        {/*  / Casa / Local / Oficina /  / Terreno / Edificio / Casa en condo*/}
         <BouncyCheckbox
           style={{ paddingVertical: 5 }}
           size={25}
@@ -426,7 +424,7 @@ const SpecificData = ({ navigation }: Props) => {
             setWireFence(!specificData.wireFence);
           }}
         />
-        {/* Departamento / Casa / Local / Oficina /  / Terreno / Edificio / Casa en condo*/}
+        {/*  / Casa / Local / Oficina /  / Terreno / Edificio / Casa en condo*/}
         <BouncyCheckbox
           style={{ paddingVertical: 5 }}
           size={25}
@@ -458,7 +456,7 @@ const SpecificData = ({ navigation }: Props) => {
             setFireAlarm(!specificData.fireAlarm);
           }}
         />
-        {/* Departamento / Casa / Local / Oficina /  / Terreno / Edificio / Casa en condo*/}
+        {/*  / Casa / Local / Oficina /  / Terreno / Edificio / Casa en condo*/}
         <BouncyCheckbox
           style={{ paddingVertical: 5 }}
           size={25}
@@ -474,7 +472,7 @@ const SpecificData = ({ navigation }: Props) => {
             setClosedStreet(!specificData.closedStreet);
           }}
         />
-        {/* Departamento / Casa / Local / Oficina /  / Terreno / Edificio / Casa en condo*/}
+        {/*  / Casa / Local / Oficina /  / Terreno / Edificio / Casa en condo*/}
         <BouncyCheckbox
           style={{ paddingVertical: 5 }}
           size={25}
@@ -490,7 +488,7 @@ const SpecificData = ({ navigation }: Props) => {
             setCctv(!specificData.cctv);
           }}
         />
-        {/* Departamento / Casa  / Oficina /  / Terreno / Edificio / Casa en condo*/}
+        {/*  / Casa  / Oficina /  / Terreno / Edificio / Casa en condo*/}
         <BouncyCheckbox
           style={{ paddingVertical: 5 }}
           size={25}
@@ -506,7 +504,7 @@ const SpecificData = ({ navigation }: Props) => {
             setAlarm(!specificData.alarm);
           }}
         />
-        {/* Departamento / Casa en condo*/}
+        {/*  / Casa en condo*/}
         <BouncyCheckbox
           style={{ paddingVertical: 5 }}
           size={25}
@@ -522,7 +520,7 @@ const SpecificData = ({ navigation }: Props) => {
             setJanitor(!specificData.janitor);
           }}
         />
-        {/* Departamento / Local / Oficina /  / Terreno / Edificio / Casa en condo*/}
+        {/*  / Local / Oficina /  / Terreno / Edificio / Casa en condo*/}
 
         <BouncyCheckbox
           style={{ paddingVertical: 5 }}
@@ -539,132 +537,18 @@ const SpecificData = ({ navigation }: Props) => {
             setSecurity247(!specificData.security247);
           }}
         />
-        {/* Departamento / Casa en condo*/}
-        <Text style={styles.subtitle}>Amenidades</Text>
-        {/* Departamento / Casa en condo*/}
-        <BouncyCheckbox
-          style={{ paddingVertical: 5 }}
-          size={25}
-          fillColor="#3F19F9"
-          unfillColor="#FFFFFF"
-          text="Piscina"
-          iconStyle={{ borderColor: '#3F19F9' }}
-          textStyle={{
-            fontFamily: 'JosefinSans-Regular',
-            textDecorationLine: 'none',
-          }}
-          onPress={() => {
-            setPool(!specificData.pool);
-          }}
-        />
-        {/* Departamento / Casa en condo*/}
-        <BouncyCheckbox
-          style={{ paddingVertical: 5 }}
-          size={25}
-          fillColor="#3F19F9"
-          unfillColor="#FFFFFF"
-          text="Canchas"
-          iconStyle={{ borderColor: '#3F19F9' }}
-          textStyle={{
-            fontFamily: 'JosefinSans-Regular',
-            textDecorationLine: 'none',
-          }}
-          onPress={() => {
-            setSportsField(!specificData.sportsField);
-          }}
-        />
-        {/* Departamento / Casa en condo*/}
-        <BouncyCheckbox
-          style={{ paddingVertical: 5 }}
-          size={25}
-          fillColor="#3F19F9"
-          unfillColor="#FFFFFF"
-          text="Carril de nado"
-          iconStyle={{ borderColor: '#3F19F9' }}
-          textStyle={{
-            fontFamily: 'JosefinSans-Regular',
-            textDecorationLine: 'none',
-          }}
-          onPress={() => {
-            setSwimmingLane(!specificData.swimmingLane);
-          }}
-        />
-        {/* Departamento / Casa en condo*/}
-        <BouncyCheckbox
-          style={{ paddingVertical: 5 }}
-          size={25}
-          fillColor="#3F19F9"
-          unfillColor="#FFFFFF"
-          text="Centro de negocios"
-          iconStyle={{ borderColor: '#3F19F9' }}
-          textStyle={{
-            fontFamily: 'JosefinSans-Regular',
-            textDecorationLine: 'none',
-          }}
-          onPress={() => {
-            setBussinessCentre(!specificData.bussinessCentre);
-          }}
-        />
-        {/* Departamento / Casa en condo*/}
-        <BouncyCheckbox
-          style={{ paddingVertical: 5 }}
-          size={25}
-          fillColor="#3F19F9"
-          unfillColor="#FFFFFF"
-          text="Juegos infantiles"
-          iconStyle={{ borderColor: '#3F19F9' }}
-          textStyle={{
-            fontFamily: 'JosefinSans-Regular',
-            textDecorationLine: 'none',
-          }}
-          onPress={() => {
-            setPlayground(!specificData.playground);
-          }}
-        />
-        {/* Departamento / Casa en condo*/}
-        <BouncyCheckbox
-          style={{ paddingVertical: 5 }}
-          size={25}
-          fillColor="#3F19F9"
-          unfillColor="#FFFFFF"
-          text="Salón de fiestas"
-          iconStyle={{ borderColor: '#3F19F9' }}
-          textStyle={{
-            fontFamily: 'JosefinSans-Regular',
-            textDecorationLine: 'none',
-          }}
-          onPress={() => {
-            setPartyRoom(!specificData.partyRoom);
-          }}
-        />
-        {/* Departamento / Casa en condo*/}
-        <BouncyCheckbox
-          style={{ paddingVertical: 5 }}
-          size={25}
-          fillColor="#3F19F9"
-          unfillColor="#FFFFFF"
-          text="Gym"
-          iconStyle={{ borderColor: '#3F19F9' }}
-          textStyle={{
-            fontFamily: 'JosefinSans-Regular',
-            textDecorationLine: 'none',
-          }}
-          onPress={() => {
-            setGym(!specificData.gym);
-          }}
-        />
-        {/* Departamento / Casa en condo*/}
-        <TextInput
-          onChangeText={value => onChange(value, 'extras')}
-          style={appStyles.input}
-          placeholder="Otros"
-          placeholderTextColor="#ccc"
-        />
-        {/* Departamento  / Casa / Local / Oficina / Bodega / Edificio / Casa en condo*/}
-        <Text style={styles.subtitle}>Servicios</Text>
-        {propertyType === warehouse ? <ServicesWarehouse /> : null}
 
-        {/* Departamento / Edificio*/}
+        {propertyType === aparment ? <AmenidadesAparment /> : null}
+
+        {/* Departamento  / Casa / Local / Oficina / Bodega / Edificio / Casa en condo*/}
+        {propertyType !== terrain ? (
+          <Text style={styles.subtitle}>Servicios</Text>
+        ) : null}
+
+        {propertyType === warehouse ? <ServicesWarehouse /> : null}
+        {propertyType === aparment ? <ServicesAparment /> : null}
+
+        {/*  / Edificio*/}
         <BouncyCheckbox
           style={{ paddingVertical: 5 }}
           size={25}
@@ -681,7 +565,7 @@ const SpecificData = ({ navigation }: Props) => {
           }}
         />
 
-        {/* Departamento  / Casa / Local / Oficina /  / Edificio / Casa en condo*/}
+        {/*   / Casa / Local / Oficina /  / Edificio / Casa en condo*/}
         <BouncyCheckbox
           style={{ paddingVertical: 5 }}
           size={25}
@@ -697,7 +581,7 @@ const SpecificData = ({ navigation }: Props) => {
             setAirConditioner(!specificData.airConditioner);
           }}
         />
-        {/* Departamento / Local / Oficina /  / Casa en condo*/}
+        {/*  / Local / Oficina /  / Casa en condo*/}
         <BouncyCheckbox
           style={{ paddingVertical: 5 }}
           size={25}
@@ -768,7 +652,7 @@ const SpecificData = ({ navigation }: Props) => {
           placeholder="Uso de suelo"
           placeholderTextColor="#ccc"
         />
-        {/* Departamento / Local / Oficina /  / Casa en condo*/}
+        {/*  / Local / Oficina /  / Casa en condo*/}
         {specificData.isMantainceIncluded ? (
           <TextInput
             style={appStyles.input}
@@ -777,7 +661,7 @@ const SpecificData = ({ navigation }: Props) => {
             placeholderTextColor="#ccc"
           />
         ) : null}
-        {/* Departamento / Casa  / Local / Oficina / Bodega / Edificio / Casa en condo*/}
+
         {propertyType !== terrain ? (
           <>
             <Text style={styles.subtitle}>Tipo de gas</Text>
@@ -794,23 +678,25 @@ const SpecificData = ({ navigation }: Props) => {
           </>
         ) : null}
 
-        {/* Departamento  / Casa / Local / Oficina / Edificio / Casa en condo*/}
-        <BouncyCheckbox
-          style={{ paddingVertical: 10 }}
-          size={25}
-          fillColor="#3F19F9"
-          unfillColor="#FFFFFF"
-          text="Pet friendly"
-          iconStyle={{ borderColor: '#3F19F9' }}
-          textStyle={{
-            fontFamily: 'JosefinSans-Regular',
-            textDecorationLine: 'none',
-          }}
-          onPress={() => {
-            setPetFriendly(!specificData.petFriendly);
-          }}
-        />
-        {/* Departamento / Casa / Local / Oficina / Terreno / Edificio / Casa en condo*/}
+        {propertyType !== terrain && propertyType !== warehouse ? (
+          <BouncyCheckbox
+            style={{ paddingVertical: 10 }}
+            size={25}
+            fillColor="#3F19F9"
+            unfillColor="#FFFFFF"
+            text="Pet friendly"
+            iconStyle={{ borderColor: '#3F19F9' }}
+            textStyle={{
+              fontFamily: 'JosefinSans-Regular',
+              textDecorationLine: 'none',
+            }}
+            onPress={() => {
+              setPetFriendly(!specificData.petFriendly);
+            }}
+          />
+        ) : null}
+
+        {/*  / Casa / Local / Oficina / Terreno / Edificio / Casa en condo*/}
         <View>
           <Text style={styles.subtitle}>Características de la zona</Text>
           {propertyType === warehouse ? <ZoneWarehouse /> : null}
@@ -920,7 +806,7 @@ const SpecificData = ({ navigation }: Props) => {
             placeholderTextColor="#ccc"
           />
         </View>
-        {/* Departamento / Casa / Local / Oficina / Bodega / Edificio / Casa en condo*/}
+
         {propertyType !== terrain ? (
           <>
             <Text style={styles.subtitle}>Tiempo</Text>
@@ -933,7 +819,8 @@ const SpecificData = ({ navigation }: Props) => {
           </>
         ) : null}
 
-        {/* Departamento / Casa / Local / Bodega*/}
+        {/*  / Casa / Local / Bodega*/}
+        {propertyType === aparment ? <AntiquityAparment /> : null}
         <View>
           <Text style={styles.subtitle}>Antigüedad (años)</Text>
           <View style={appStyles.picker}>
