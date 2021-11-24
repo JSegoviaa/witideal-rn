@@ -95,9 +95,6 @@ const SpecificData = ({ navigation }: Props) => {
     setPreservationState,
     setGasType,
     setPetFriendly,
-    setOnstreet,
-    setInsideMall,
-    setInsideCorp,
     specificData,
   } = useContext(PropertyContext);
 

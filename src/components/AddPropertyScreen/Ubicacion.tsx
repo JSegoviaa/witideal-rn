@@ -24,17 +24,12 @@ const Ubicacion = ({ navigation }: Props) => {
     setCoordinates,
     administrative_area_level_1,
     setAdministrative_area_level_1,
-    country,
     setCountry,
     locality,
     setLocality,
     isExactLoaction,
     setIsExactLoaction,
     onChange,
-    int_number,
-    postal_code,
-    route,
-    ext_number,
   } = useContext(PropertyContext);
 
   const handleNext = () => {
