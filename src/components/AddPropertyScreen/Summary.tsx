@@ -102,6 +102,75 @@ const Summary = () => {
         <View>
           <Text style={styles.title}>Datos específicos</Text>
 
+          {specificData.airConditioner ? (
+            <View style={styles.specificaDataContainer}>
+              <Text style={styles.specificaDataInfo}>Aire acondicionado</Text>
+              {specificData.airConditioner ? (
+                <View style={{ marginLeft: 'auto', marginRight: 'auto' }}>
+                  <Icon name="checkmark-outline" size={20} color="#160A53" />
+                </View>
+              ) : (
+                <View style={{ marginLeft: 'auto', marginRight: 'auto' }}>
+                  <Icon name="close-outline" size={20} color="#160A53" />
+                </View>
+              )}
+            </View>
+          ) : null}
+
+          {specificData.wireFence ? (
+            <View style={styles.specificaDataContainer}>
+              <Text style={styles.specificaDataInfo}>Alambrado</Text>
+              {specificData.wireFence ? (
+                <View style={{ marginLeft: 'auto', marginRight: 'auto' }}>
+                  <Icon name="checkmark-outline" size={20} color="#160A53" />
+                </View>
+              ) : (
+                <View style={{ marginLeft: 'auto', marginRight: 'auto' }}>
+                  <Icon name="close-outline" size={20} color="#160A53" />
+                </View>
+              )}
+            </View>
+          ) : null}
+
+          {specificData.alarm ? (
+            <View style={styles.specificaDataContainer}>
+              <Text style={styles.specificaDataInfo}>Alarmas</Text>
+              {specificData.alarm ? (
+                <View style={{ marginLeft: 'auto', marginRight: 'auto' }}>
+                  <Icon name="checkmark-outline" size={20} color="#160A53" />
+                </View>
+              ) : (
+                <View style={{ marginLeft: 'auto', marginRight: 'auto' }}>
+                  <Icon name="close-outline" size={20} color="#160A53" />
+                </View>
+              )}
+            </View>
+          ) : null}
+
+          {specificData.pool ? (
+            <View style={styles.specificaDataContainer}>
+              <Text style={styles.specificaDataInfo}>Alberca</Text>
+              {specificData.pool ? (
+                <View style={{ marginLeft: 'auto', marginRight: 'auto' }}>
+                  <Icon name="checkmark-outline" size={20} color="#160A53" />
+                </View>
+              ) : (
+                <View style={{ marginLeft: 'auto', marginRight: 'auto' }}>
+                  <Icon name="close-outline" size={20} color="#160A53" />
+                </View>
+              )}
+            </View>
+          ) : null}
+
+          {specificData.antiquity ? (
+            <View style={styles.specificaDataContainer}>
+              <Text style={styles.specificaDataInfo}>Antigüedad (años)</Text>
+              <Text style={styles.specificaDataInfo}>
+                {specificData.antiquity}
+              </Text>
+            </View>
+          ) : null}
+
           {specificData.laundry ? (
             <View style={styles.specificaDataContainer}>
               <Text style={styles.specificaDataInfo}>Área de lavado</Text>
@@ -117,71 +186,147 @@ const Summary = () => {
             </View>
           ) : null}
 
-          {specificData.deliverydate ? (
+          {specificData.mainavs ? (
             <View style={styles.specificaDataContainer}>
-              <Text style={styles.specificaDataInfo}>Fecha de entrega</Text>
+              <Text style={styles.specificaDataInfo}>Av. Principales</Text>
               <Text style={styles.specificaDataInfo}>
-                {specificData.deliverydate}
-              </Text>
-            </View>
-          ) : null}
-          {specificData.mantainance ? (
-            <View style={styles.specificaDataContainer}>
-              <Text style={styles.specificaDataInfo}>
-                Costo del mantenimiento
-              </Text>
-              <Text style={styles.specificaDataInfo}>
-                {specificData.mantainance}
+                {specificData.mainavs}
               </Text>
             </View>
           ) : null}
 
-          {specificData.antiquity ? (
+          {specificData.balcony ? (
             <View style={styles.specificaDataContainer}>
-              <Text style={styles.specificaDataInfo}>Antigüedad (años)</Text>
+              <Text style={styles.specificaDataInfo}>Balcón</Text>
+              {specificData.balcony ? (
+                <View style={{ marginLeft: 'auto', marginRight: 'auto' }}>
+                  <Icon name="checkmark-outline" size={20} color="#160A53" />
+                </View>
+              ) : (
+                <View style={{ marginLeft: 'auto', marginRight: 'auto' }}>
+                  <Icon name="close-outline" size={20} color="#160A53" />
+                </View>
+              )}
+            </View>
+          ) : null}
+
+          {specificData.banks ? (
+            <View style={styles.specificaDataContainer}>
+              <Text style={styles.specificaDataInfo}>Bancos</Text>
+              <Text style={styles.specificaDataInfo}>{specificData.banks}</Text>
+            </View>
+          ) : null}
+
+          {specificData.cellar ? (
+            <View style={styles.specificaDataContainer}>
+              <Text style={styles.specificaDataInfo}>Bodega</Text>
+              {specificData.security247 ? (
+                <View style={{ marginLeft: 'auto', marginRight: 'auto' }}>
+                  <Icon name="checkmark-outline" size={20} color="#160A53" />
+                </View>
+              ) : (
+                <View style={{ marginLeft: 'auto', marginRight: 'auto' }}>
+                  <Icon name="close-outline" size={20} color="#160A53" />
+                </View>
+              )}
+            </View>
+          ) : null}
+
+          {specificData.closedStreet ? (
+            <View style={styles.specificaDataContainer}>
+              <Text style={styles.specificaDataInfo}>Calle cerrada</Text>
+              {specificData.closedStreet ? (
+                <View style={{ marginLeft: 'auto', marginRight: 'auto' }}>
+                  <Icon name="checkmark-outline" size={20} color="#160A53" />
+                </View>
+              ) : (
+                <View style={{ marginLeft: 'auto', marginRight: 'auto' }}>
+                  <Icon name="close-outline" size={20} color="#160A53" />
+                </View>
+              )}
+            </View>
+          ) : null}
+
+          {specificData.sportsField ? (
+            <View style={styles.specificaDataContainer}>
+              <Text style={styles.specificaDataInfo}>Canchas</Text>
+              {specificData.sportsField ? (
+                <View style={{ marginLeft: 'auto', marginRight: 'auto' }}>
+                  <Icon name="checkmark-outline" size={20} color="#160A53" />
+                </View>
+              ) : (
+                <View style={{ marginLeft: 'auto', marginRight: 'auto' }}>
+                  <Icon name="close-outline" size={20} color="#160A53" />
+                </View>
+              )}
+            </View>
+          ) : null}
+
+          {specificData.swimmingLane ? (
+            <View style={styles.specificaDataContainer}>
+              <Text style={styles.specificaDataInfo}>Carril de nado</Text>
+              {specificData.swimmingLane ? (
+                <View style={{ marginLeft: 'auto', marginRight: 'auto' }}>
+                  <Icon name="checkmark-outline" size={20} color="#160A53" />
+                </View>
+              ) : (
+                <View style={{ marginLeft: 'auto', marginRight: 'auto' }}>
+                  <Icon name="close-outline" size={20} color="#160A53" />
+                </View>
+              )}
+            </View>
+          ) : null}
+
+          {specificData.cctv ? (
+            <View style={styles.specificaDataContainer}>
+              <Text style={styles.specificaDataInfo}>CCTV</Text>
+              {specificData.cctv ? (
+                <View style={{ marginLeft: 'auto', marginRight: 'auto' }}>
+                  <Icon name="checkmark-outline" size={20} color="#160A53" />
+                </View>
+              ) : (
+                <View style={{ marginLeft: 'auto', marginRight: 'auto' }}>
+                  <Icon name="close-outline" size={20} color="#160A53" />
+                </View>
+              )}
+            </View>
+          ) : null}
+
+          {specificData.bussinessCentre ? (
+            <View style={styles.specificaDataContainer}>
+              <Text style={styles.specificaDataInfo}>Centro de negocios</Text>
+              {specificData.bussinessCentre ? (
+                <View style={{ marginLeft: 'auto', marginRight: 'auto' }}>
+                  <Icon name="checkmark-outline" size={20} color="#160A53" />
+                </View>
+              ) : (
+                <View style={{ marginLeft: 'auto', marginRight: 'auto' }}>
+                  <Icon name="close-outline" size={20} color="#160A53" />
+                </View>
+              )}
+            </View>
+          ) : null}
+
+          {specificData.malls ? (
+            <View style={styles.specificaDataContainer}>
+              <Text style={styles.specificaDataInfo}>Centros comerciales</Text>
+              <Text style={styles.specificaDataInfo}>{specificData.malls}</Text>
+            </View>
+          ) : null}
+
+          {specificData.kitchen ? (
+            <View style={styles.specificaDataContainer}>
+              <Text style={styles.specificaDataInfo}>Cocina</Text>
               <Text style={styles.specificaDataInfo}>
-                {specificData.antiquity}
+                {specificData.kitchen}
               </Text>
             </View>
           ) : null}
 
-          {specificData.totalBuildingFloors ? (
+          {specificData.janitor ? (
             <View style={styles.specificaDataContainer}>
-              <Text style={styles.specificaDataInfo}>Niveles del edificio</Text>
-              <Text style={styles.specificaDataInfo}>
-                {specificData.totalBuildingFloors}
-              </Text>
-            </View>
-          ) : null}
-
-          {specificData.preservationState ? (
-            <View style={styles.specificaDataContainer}>
-              <Text style={styles.specificaDataInfo}>
-                Estado de conservación
-              </Text>
-              <Text style={styles.specificaDataInfo}>
-                {specificData.preservationState}
-              </Text>
-            </View>
-          ) : null}
-
-          {specificData.locationInBuilding ? (
-            <View style={styles.specificaDataContainer}>
-              <Text style={styles.specificaDataInfo}>
-                Ubicación en Edificio
-              </Text>
-              <Text style={styles.specificaDataInfo}>
-                {specificData.locationInBuilding}
-              </Text>
-            </View>
-          ) : null}
-
-          {specificData.isMantainceIncluded ? (
-            <View style={styles.specificaDataContainer}>
-              <Text style={styles.specificaDataInfo}>
-                Mantenimiento incluido (solo renta)
-              </Text>
-              {specificData.isMantainceIncluded ? (
+              <Text style={styles.specificaDataInfo}>Concerjería</Text>
+              {specificData.janitor ? (
                 <View style={{ marginLeft: 'auto', marginRight: 'auto' }}>
                   <Icon name="checkmark-outline" size={20} color="#160A53" />
                 </View>
@@ -208,50 +353,10 @@ const Summary = () => {
             </View>
           ) : null}
 
-          {specificData.study ? (
+          {specificData.tvRoom ? (
             <View style={styles.specificaDataContainer}>
-              <Text style={styles.specificaDataInfo}>Estudio</Text>
-              {specificData.study ? (
-                <View style={{ marginLeft: 'auto', marginRight: 'auto' }}>
-                  <Icon name="checkmark-outline" size={20} color="#160A53" />
-                </View>
-              ) : (
-                <View style={{ marginLeft: 'auto', marginRight: 'auto' }}>
-                  <Icon name="close-outline" size={20} color="#160A53" />
-                </View>
-              )}
-            </View>
-          ) : null}
-
-          {specificData.kitchen ? (
-            <View style={styles.specificaDataContainer}>
-              <Text style={styles.specificaDataInfo}>Cocina</Text>
-              <Text style={styles.specificaDataInfo}>
-                {specificData.kitchen}
-              </Text>
-            </View>
-          ) : null}
-
-          {specificData.banks ? (
-            <View style={styles.specificaDataContainer}>
-              <Text style={styles.specificaDataInfo}>Bancos</Text>
-              <Text style={styles.specificaDataInfo}>{specificData.banks}</Text>
-            </View>
-          ) : null}
-
-          {specificData.extras ? (
-            <View style={styles.specificaDataContainer}>
-              <Text style={styles.specificaDataInfo}>Otros</Text>
-              <Text style={styles.specificaDataInfo}>
-                {specificData.extras}
-              </Text>
-            </View>
-          ) : null}
-
-          {specificData.cctv ? (
-            <View style={styles.specificaDataContainer}>
-              <Text style={styles.specificaDataInfo}>CCTV</Text>
-              {specificData.cctv ? (
+              <Text style={styles.specificaDataInfo}>Cuarto de TV</Text>
+              {specificData.tvRoom ? (
                 <View style={{ marginLeft: 'auto', marginRight: 'auto' }}>
                   <Icon name="checkmark-outline" size={20} color="#160A53" />
                 </View>
@@ -293,21 +398,6 @@ const Summary = () => {
             </View>
           ) : null}
 
-          {specificData.airConditioner ? (
-            <View style={styles.specificaDataContainer}>
-              <Text style={styles.specificaDataInfo}>Aire acondicionado</Text>
-              {specificData.airConditioner ? (
-                <View style={{ marginLeft: 'auto', marginRight: 'auto' }}>
-                  <Icon name="checkmark-outline" size={20} color="#160A53" />
-                </View>
-              ) : (
-                <View style={{ marginLeft: 'auto', marginRight: 'auto' }}>
-                  <Icon name="close-outline" size={20} color="#160A53" />
-                </View>
-              )}
-            </View>
-          ) : null}
-
           {specificData.schools ? (
             <View style={styles.specificaDataContainer}>
               <Text style={styles.specificaDataInfo}>Escuelas</Text>
@@ -317,20 +407,11 @@ const Summary = () => {
             </View>
           ) : null}
 
-          {specificData.hospitals ? (
+          {specificData.subway ? (
             <View style={styles.specificaDataContainer}>
-              <Text style={styles.specificaDataInfo}>Hospitales</Text>
+              <Text style={styles.specificaDataInfo}>Estaciones de metro</Text>
               <Text style={styles.specificaDataInfo}>
-                {specificData.hospitals}
-              </Text>
-            </View>
-          ) : null}
-
-          {specificData.mainavs ? (
-            <View style={styles.specificaDataContainer}>
-              <Text style={styles.specificaDataInfo}>Av. Principales</Text>
-              <Text style={styles.specificaDataInfo}>
-                {specificData.mainavs}
+                {specificData.subway}
               </Text>
             </View>
           ) : null}
@@ -346,35 +427,21 @@ const Summary = () => {
             </View>
           ) : null}
 
-          {specificData.subway ? (
+          {specificData.preservationState ? (
             <View style={styles.specificaDataContainer}>
-              <Text style={styles.specificaDataInfo}>Estaciones de metro</Text>
               <Text style={styles.specificaDataInfo}>
-                {specificData.subway}
+                Estado de conservación
+              </Text>
+              <Text style={styles.specificaDataInfo}>
+                {specificData.preservationState}
               </Text>
             </View>
           ) : null}
 
-          {specificData.shops ? (
+          {specificData.study ? (
             <View style={styles.specificaDataContainer}>
-              <Text style={styles.specificaDataInfo}>
-                Tiendas de autoservicio
-              </Text>
-              <Text style={styles.specificaDataInfo}>{specificData.shops}</Text>
-            </View>
-          ) : null}
-
-          {specificData.malls ? (
-            <View style={styles.specificaDataContainer}>
-              <Text style={styles.specificaDataInfo}>Centros comerciales</Text>
-              <Text style={styles.specificaDataInfo}>{specificData.malls}</Text>
-            </View>
-          ) : null}
-
-          {specificData.pool ? (
-            <View style={styles.specificaDataContainer}>
-              <Text style={styles.specificaDataInfo}>Alberca</Text>
-              {specificData.pool ? (
+              <Text style={styles.specificaDataInfo}>Estudio</Text>
+              {specificData.study ? (
                 <View style={{ marginLeft: 'auto', marginRight: 'auto' }}>
                   <Icon name="checkmark-outline" size={20} color="#160A53" />
                 </View>
@@ -386,10 +453,10 @@ const Summary = () => {
             </View>
           ) : null}
 
-          {specificData.tvRoom ? (
+          {specificData.familyRoom ? (
             <View style={styles.specificaDataContainer}>
-              <Text style={styles.specificaDataInfo}>Cuarto de TV</Text>
-              {specificData.tvRoom ? (
+              <Text style={styles.specificaDataInfo}>Family Room</Text>
+              {specificData.familyRoom ? (
                 <View style={{ marginLeft: 'auto', marginRight: 'auto' }}>
                   <Icon name="checkmark-outline" size={20} color="#160A53" />
                 </View>
@@ -398,6 +465,120 @@ const Summary = () => {
                   <Icon name="close-outline" size={20} color="#160A53" />
                 </View>
               )}
+            </View>
+          ) : null}
+
+          {specificData.deliverydate ? (
+            <View style={styles.specificaDataContainer}>
+              <Text style={styles.specificaDataInfo}>Fecha de entrega</Text>
+              <Text style={styles.specificaDataInfo}>
+                {specificData.deliverydate}
+              </Text>
+            </View>
+          ) : null}
+
+          {specificData.gym ? (
+            <View style={styles.specificaDataContainer}>
+              <Text style={styles.specificaDataInfo}>Gym</Text>
+              {specificData.gym ? (
+                <View style={{ marginLeft: 'auto', marginRight: 'auto' }}>
+                  <Icon name="checkmark-outline" size={20} color="#160A53" />
+                </View>
+              ) : (
+                <View style={{ marginLeft: 'auto', marginRight: 'auto' }}>
+                  <Icon name="close-outline" size={20} color="#160A53" />
+                </View>
+              )}
+            </View>
+          ) : null}
+
+          {specificData.hospitals ? (
+            <View style={styles.specificaDataContainer}>
+              <Text style={styles.specificaDataInfo}>Hospitales</Text>
+              <Text style={styles.specificaDataInfo}>
+                {specificData.hospitals}
+              </Text>
+            </View>
+          ) : null}
+
+          {specificData.playground ? (
+            <View style={styles.specificaDataContainer}>
+              <Text style={styles.specificaDataInfo}>Juegos infantiles</Text>
+              {specificData.playground ? (
+                <View style={{ marginLeft: 'auto', marginRight: 'auto' }}>
+                  <Icon name="checkmark-outline" size={20} color="#160A53" />
+                </View>
+              ) : (
+                <View style={{ marginLeft: 'auto', marginRight: 'auto' }}>
+                  <Icon name="close-outline" size={20} color="#160A53" />
+                </View>
+              )}
+            </View>
+          ) : null}
+
+          {specificData.isMantainceIncluded ? (
+            <View style={styles.specificaDataContainer}>
+              <Text style={styles.specificaDataInfo}>
+                Mantenimiento incluido
+              </Text>
+              {specificData.isMantainceIncluded ? (
+                <View style={{ marginLeft: 'auto', marginRight: 'auto' }}>
+                  <Icon name="checkmark-outline" size={20} color="#160A53" />
+                </View>
+              ) : (
+                <View style={{ marginLeft: 'auto', marginRight: 'auto' }}>
+                  <Icon name="close-outline" size={20} color="#160A53" />
+                </View>
+              )}
+            </View>
+          ) : null}
+
+          {specificData.mantainance ? (
+            <View style={styles.specificaDataContainer}>
+              <Text style={styles.specificaDataInfo}>
+                Costo del mantenimiento
+              </Text>
+              <Text style={styles.specificaDataInfo}>
+                {specificData.mantainance}
+              </Text>
+            </View>
+          ) : null}
+
+          {specificData.halfBath ? (
+            <View style={styles.specificaDataContainer}>
+              <Text style={styles.specificaDataInfo}>Medio baños</Text>
+              <Text style={styles.specificaDataInfo}>
+                {specificData.halfBath}
+              </Text>
+            </View>
+          ) : null}
+
+          {specificData.totalBuildingFloors ? (
+            <View style={styles.specificaDataContainer}>
+              <Text style={styles.specificaDataInfo}>Niveles del edificio</Text>
+              <Text style={styles.specificaDataInfo}>
+                {specificData.totalBuildingFloors}
+              </Text>
+            </View>
+          ) : null}
+
+          {specificData.floorNumber ? (
+            <View style={styles.specificaDataContainer}>
+              <Text style={styles.specificaDataInfo}>
+                Nivel en el que se encuentra
+              </Text>
+              <Text style={styles.specificaDataInfo}>
+                {specificData.floorNumber}
+              </Text>
+            </View>
+          ) : null}
+
+          {specificData.extras ? (
+            <View style={styles.specificaDataContainer}>
+              <Text style={styles.specificaDataInfo}>Otros</Text>
+              <Text style={styles.specificaDataInfo}>
+                {specificData.extras}
+              </Text>
             </View>
           ) : null}
 
@@ -431,161 +612,6 @@ const Summary = () => {
             </View>
           ) : null}
 
-          {specificData.familyRoom ? (
-            <View style={styles.specificaDataContainer}>
-              <Text style={styles.specificaDataInfo}>Family Room</Text>
-              {specificData.familyRoom ? (
-                <View style={{ marginLeft: 'auto', marginRight: 'auto' }}>
-                  <Icon name="checkmark-outline" size={20} color="#160A53" />
-                </View>
-              ) : (
-                <View style={{ marginLeft: 'auto', marginRight: 'auto' }}>
-                  <Icon name="close-outline" size={20} color="#160A53" />
-                </View>
-              )}
-            </View>
-          ) : null}
-
-          {specificData.playground ? (
-            <View style={styles.specificaDataContainer}>
-              <Text style={styles.specificaDataInfo}>Juegos infantiles</Text>
-              {specificData.playground ? (
-                <View style={{ marginLeft: 'auto', marginRight: 'auto' }}>
-                  <Icon name="checkmark-outline" size={20} color="#160A53" />
-                </View>
-              ) : (
-                <View style={{ marginLeft: 'auto', marginRight: 'auto' }}>
-                  <Icon name="close-outline" size={20} color="#160A53" />
-                </View>
-              )}
-            </View>
-          ) : null}
-
-          {specificData.janitor ? (
-            <View style={styles.specificaDataContainer}>
-              <Text style={styles.specificaDataInfo}>Concerjería</Text>
-              {specificData.janitor ? (
-                <View style={{ marginLeft: 'auto', marginRight: 'auto' }}>
-                  <Icon name="checkmark-outline" size={20} color="#160A53" />
-                </View>
-              ) : (
-                <View style={{ marginLeft: 'auto', marginRight: 'auto' }}>
-                  <Icon name="close-outline" size={20} color="#160A53" />
-                </View>
-              )}
-            </View>
-          ) : null}
-
-          {specificData.bussinessCentre ? (
-            <View style={styles.specificaDataContainer}>
-              <Text style={styles.specificaDataInfo}>Centro de negocios</Text>
-              {specificData.bussinessCentre ? (
-                <View style={{ marginLeft: 'auto', marginRight: 'auto' }}>
-                  <Icon name="checkmark-outline" size={20} color="#160A53" />
-                </View>
-              ) : (
-                <View style={{ marginLeft: 'auto', marginRight: 'auto' }}>
-                  <Icon name="close-outline" size={20} color="#160A53" />
-                </View>
-              )}
-            </View>
-          ) : null}
-
-          {specificData.balcony ? (
-            <View style={styles.specificaDataContainer}>
-              <Text style={styles.specificaDataInfo}>Balcón</Text>
-              {specificData.balcony ? (
-                <View style={{ marginLeft: 'auto', marginRight: 'auto' }}>
-                  <Icon name="checkmark-outline" size={20} color="#160A53" />
-                </View>
-              ) : (
-                <View style={{ marginLeft: 'auto', marginRight: 'auto' }}>
-                  <Icon name="close-outline" size={20} color="#160A53" />
-                </View>
-              )}
-            </View>
-          ) : null}
-
-          {specificData.gym ? (
-            <View style={styles.specificaDataContainer}>
-              <Text style={styles.specificaDataInfo}>Gym</Text>
-              {specificData.gym ? (
-                <View style={{ marginLeft: 'auto', marginRight: 'auto' }}>
-                  <Icon name="checkmark-outline" size={20} color="#160A53" />
-                </View>
-              ) : (
-                <View style={{ marginLeft: 'auto', marginRight: 'auto' }}>
-                  <Icon name="close-outline" size={20} color="#160A53" />
-                </View>
-              )}
-            </View>
-          ) : null}
-
-          {specificData.floorNumber ? (
-            <View style={styles.specificaDataContainer}>
-              <Text style={styles.specificaDataInfo}>
-                Nivel en el que se encuentra
-              </Text>
-              <Text style={styles.specificaDataInfo}>
-                {specificData.floorNumber}
-              </Text>
-            </View>
-          ) : null}
-
-          {specificData.gasType ? (
-            <View style={styles.specificaDataContainer}>
-              <Text style={styles.specificaDataInfo}>Tipo de gas</Text>
-              <Text style={styles.specificaDataInfo}>
-                {specificData.gasType}
-              </Text>
-            </View>
-          ) : null}
-
-          {specificData.closedStreet ? (
-            <View style={styles.specificaDataContainer}>
-              <Text style={styles.specificaDataInfo}>Calle cerrada</Text>
-              {specificData.closedStreet ? (
-                <View style={{ marginLeft: 'auto', marginRight: 'auto' }}>
-                  <Icon name="checkmark-outline" size={20} color="#160A53" />
-                </View>
-              ) : (
-                <View style={{ marginLeft: 'auto', marginRight: 'auto' }}>
-                  <Icon name="close-outline" size={20} color="#160A53" />
-                </View>
-              )}
-            </View>
-          ) : null}
-
-          {specificData.alarm ? (
-            <View style={styles.specificaDataContainer}>
-              <Text style={styles.specificaDataInfo}>Alarmas</Text>
-              {specificData.alarm ? (
-                <View style={{ marginLeft: 'auto', marginRight: 'auto' }}>
-                  <Icon name="checkmark-outline" size={20} color="#160A53" />
-                </View>
-              ) : (
-                <View style={{ marginLeft: 'auto', marginRight: 'auto' }}>
-                  <Icon name="close-outline" size={20} color="#160A53" />
-                </View>
-              )}
-            </View>
-          ) : null}
-
-          {specificData.wireFence ? (
-            <View style={styles.specificaDataContainer}>
-              <Text style={styles.specificaDataInfo}>Alambrado</Text>
-              {specificData.wireFence ? (
-                <View style={{ marginLeft: 'auto', marginRight: 'auto' }}>
-                  <Icon name="checkmark-outline" size={20} color="#160A53" />
-                </View>
-              ) : (
-                <View style={{ marginLeft: 'auto', marginRight: 'auto' }}>
-                  <Icon name="close-outline" size={20} color="#160A53" />
-                </View>
-              )}
-            </View>
-          ) : null}
-
           {specificData.partyRoom ? (
             <View style={styles.specificaDataContainer}>
               <Text style={styles.specificaDataInfo}>Salón de fiestas</Text>
@@ -601,41 +627,46 @@ const Summary = () => {
             </View>
           ) : null}
 
-          {specificData.swimmingLane ? (
+          {specificData.shops ? (
             <View style={styles.specificaDataContainer}>
-              <Text style={styles.specificaDataInfo}>Carril de nado</Text>
-              {specificData.swimmingLane ? (
-                <View style={{ marginLeft: 'auto', marginRight: 'auto' }}>
-                  <Icon name="checkmark-outline" size={20} color="#160A53" />
-                </View>
-              ) : (
-                <View style={{ marginLeft: 'auto', marginRight: 'auto' }}>
-                  <Icon name="close-outline" size={20} color="#160A53" />
-                </View>
-              )}
-            </View>
-          ) : null}
-
-          {specificData.sportsField ? (
-            <View style={styles.specificaDataContainer}>
-              <Text style={styles.specificaDataInfo}>Canchas</Text>
-              {specificData.sportsField ? (
-                <View style={{ marginLeft: 'auto', marginRight: 'auto' }}>
-                  <Icon name="checkmark-outline" size={20} color="#160A53" />
-                </View>
-              ) : (
-                <View style={{ marginLeft: 'auto', marginRight: 'auto' }}>
-                  <Icon name="close-outline" size={20} color="#160A53" />
-                </View>
-              )}
-            </View>
-          ) : null}
-
-          {specificData.halfBath ? (
-            <View style={styles.specificaDataContainer}>
-              <Text style={styles.specificaDataInfo}>Medio baños</Text>
               <Text style={styles.specificaDataInfo}>
-                {specificData.halfBath}
+                Tiendas de autoservicio
+              </Text>
+              <Text style={styles.specificaDataInfo}>{specificData.shops}</Text>
+            </View>
+          ) : null}
+
+          {specificData.locationInBuilding ? (
+            <View style={styles.specificaDataContainer}>
+              <Text style={styles.specificaDataInfo}>
+                Ubicación en Edificio
+              </Text>
+              <Text style={styles.specificaDataInfo}>
+                {specificData.locationInBuilding}
+              </Text>
+            </View>
+          ) : null}
+
+          {specificData.terrace ? (
+            <View style={styles.specificaDataContainer}>
+              <Text style={styles.specificaDataInfo}>Terraza</Text>
+              {specificData.terrace ? (
+                <View style={{ marginLeft: 'auto', marginRight: 'auto' }}>
+                  <Icon name="checkmark-outline" size={20} color="#160A53" />
+                </View>
+              ) : (
+                <View style={{ marginLeft: 'auto', marginRight: 'auto' }}>
+                  <Icon name="close-outline" size={20} color="#160A53" />
+                </View>
+              )}
+            </View>
+          ) : null}
+
+          {specificData.gasType ? (
+            <View style={styles.specificaDataContainer}>
+              <Text style={styles.specificaDataInfo}>Tipo de gas</Text>
+              <Text style={styles.specificaDataInfo}>
+                {specificData.gasType}
               </Text>
             </View>
           ) : null}
@@ -644,36 +675,6 @@ const Summary = () => {
             <View style={styles.specificaDataContainer}>
               <Text style={styles.specificaDataInfo}>Vigilancia 24/7</Text>
               {specificData.security247 ? (
-                <View style={{ marginLeft: 'auto', marginRight: 'auto' }}>
-                  <Icon name="checkmark-outline" size={20} color="#160A53" />
-                </View>
-              ) : (
-                <View style={{ marginLeft: 'auto', marginRight: 'auto' }}>
-                  <Icon name="close-outline" size={20} color="#160A53" />
-                </View>
-              )}
-            </View>
-          ) : null}
-
-          {specificData.cellar ? (
-            <View style={styles.specificaDataContainer}>
-              <Text style={styles.specificaDataInfo}>Bodega</Text>
-              {specificData.security247 ? (
-                <View style={{ marginLeft: 'auto', marginRight: 'auto' }}>
-                  <Icon name="checkmark-outline" size={20} color="#160A53" />
-                </View>
-              ) : (
-                <View style={{ marginLeft: 'auto', marginRight: 'auto' }}>
-                  <Icon name="close-outline" size={20} color="#160A53" />
-                </View>
-              )}
-            </View>
-          ) : null}
-
-          {specificData.terrace ? (
-            <View style={styles.specificaDataContainer}>
-              <Text style={styles.specificaDataInfo}>Terraza</Text>
-              {specificData.terrace ? (
                 <View style={{ marginLeft: 'auto', marginRight: 'auto' }}>
                   <Icon name="checkmark-outline" size={20} color="#160A53" />
                 </View>
