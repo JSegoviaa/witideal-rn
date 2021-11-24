@@ -269,7 +269,6 @@ const PropertyProvider: FC = ({ children }) => {
     wireFence,
   };
 
-  console.log(tempUri);
   return (
     <PropertyContext.Provider
       value={{
