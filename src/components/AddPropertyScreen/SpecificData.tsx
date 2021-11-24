@@ -79,6 +79,8 @@ import AntiquityLocal from './local/AntiquityLocal';
 import SecurityTerrain from './terrain/SecurityTerrain';
 import ServicesTerrain from './terrain/ServicesTerrain';
 import AntiquityCondo from './condoHouse/AntiquityCondo';
+import ZoneOffice from './office/ZoneOffice';
+import ZoneLocal from './local/ZoneLocal';
 
 interface Props
   extends StackScreenProps<
@@ -238,77 +240,8 @@ const SpecificData = ({ navigation }: Props) => {
         <View>
           <Text style={styles.subtitle}>Características de la zona</Text>
           {propertyType === warehouse ? <ZoneWarehouse /> : null}
-
-          {propertyType === office ? (
-            <BouncyCheckbox
-              style={{ paddingVertical: 5 }}
-              size={25}
-              fillColor="#3F19F9"
-              unfillColor="#FFFFFF"
-              text="En centro comercial"
-              iconStyle={{ borderColor: '#3F19F9' }}
-              textStyle={{
-                fontFamily: 'JosefinSans-Regular',
-                textDecorationLine: 'none',
-              }}
-              onPress={() => {
-                setInsideMall(!specificData.insideMall);
-              }}
-            />
-          ) : null}
-          {propertyType === local ? (
-            <BouncyCheckbox
-              style={{ paddingVertical: 5 }}
-              size={25}
-              fillColor="#3F19F9"
-              unfillColor="#FFFFFF"
-              text="En centro comercial"
-              iconStyle={{ borderColor: '#3F19F9' }}
-              textStyle={{
-                fontFamily: 'JosefinSans-Regular',
-                textDecorationLine: 'none',
-              }}
-              onPress={() => {
-                setInsideMall(!specificData.insideMall);
-              }}
-            />
-          ) : null}
-
-          {propertyType === office ? (
-            <BouncyCheckbox
-              style={{ paddingVertical: 5 }}
-              size={25}
-              fillColor="#3F19F9"
-              unfillColor="#FFFFFF"
-              text="En centro corporativo"
-              iconStyle={{ borderColor: '#3F19F9' }}
-              textStyle={{
-                fontFamily: 'JosefinSans-Regular',
-                textDecorationLine: 'none',
-              }}
-              onPress={() => {
-                setInsideCorp(!specificData.insideCorp);
-              }}
-            />
-          ) : null}
-
-          {propertyType === local ? (
-            <BouncyCheckbox
-              style={{ paddingVertical: 5 }}
-              size={25}
-              fillColor="#3F19F9"
-              unfillColor="#FFFFFF"
-              text="A pie de calle"
-              iconStyle={{ borderColor: '#3F19F9' }}
-              textStyle={{
-                fontFamily: 'JosefinSans-Regular',
-                textDecorationLine: 'none',
-              }}
-              onPress={() => {
-                setOnstreet(!specificData.onstreet);
-              }}
-            />
-          ) : null}
+          {propertyType === office ? <ZoneOffice /> : null}
+          {propertyType === local ? <ZoneLocal /> : null}
 
           <TextInput
             onChangeText={value => onChange(value, 'malls')}
