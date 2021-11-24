@@ -111,6 +111,7 @@ const ServicesWarehouse = () => {
 
       {specificData.isMantainceIncluded ? (
         <TextInput
+          keyboardType="numeric"
           style={appStyles.input}
           placeholder="Costo de mantenimiento"
           onChangeText={value => onChange(value, 'mantainance')}
