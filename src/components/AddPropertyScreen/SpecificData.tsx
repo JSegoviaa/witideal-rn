@@ -51,6 +51,12 @@ import AmenidadesAparment from './aparment/AmenidadesAparment';
 import ServicesAparment from './aparment/ServicesAparment';
 import AntiquityAparment from './aparment/AntiquityAparment';
 import AntiquityWarehouse from './warehouse/AntiquityWarehouse';
+import EspaciosHouse from './singleHouse/EspaciosHouse';
+import CocinaHouse from './singleHouse/CocinaHouse';
+import CaracteristicaHouse from './singleHouse/CaracteristicaHouse';
+import SecurityHouse from './singleHouse/SecurityHouse';
+import ServicesHouse from './singleHouse/ServicesHouse';
+import AntiquityHouse from './singleHouse/AntiquityHouse';
 
 interface Props
   extends StackScreenProps<
@@ -73,7 +79,6 @@ const SpecificData = ({ navigation }: Props) => {
     setFamilyRoom,
     setStudy,
     setTvRoom,
-    setCarElevator,
     setWireFence,
     setElectricFence,
     setClosedStreet,
@@ -81,13 +86,6 @@ const SpecificData = ({ navigation }: Props) => {
     setAlarm,
     setJanitor,
     setSecurity247,
-    setPool,
-    setSportsField,
-    setSwimmingLane,
-    setBussinessCentre,
-    setPlayground,
-    setPartyRoom,
-    setGym,
     setElevator,
     setAirConditioner,
     setIsMantainceIncluded,
@@ -137,7 +135,6 @@ const SpecificData = ({ navigation }: Props) => {
           {propertyType === terrain ? <CaracteristicasTerrain /> : null}
           {propertyType === condoHouse ? <CaracteristicasCondo /> : null}
         </View>
-
         {propertyType !== terrain ? (
           <>
             <Text style={styles.subtitle}>Estado de conservación</Text>
@@ -156,12 +153,12 @@ const SpecificData = ({ navigation }: Props) => {
             </View>
           </>
         ) : null}
-
         <View>
           <Text style={styles.subtitle}>Espacios internos</Text>
           {propertyType === warehouse ? <EspaciosWarehouse /> : null}
           {propertyType === aparment ? <EspaciosAparment /> : null}
-          {/*  / Casa  / Casa en condo*/}
+          {propertyType === singleHouse ? <EspaciosHouse /> : null}
+          {/*  /   / Casa en condo*/}
           <TextInput
             keyboardType="numeric"
             onChangeText={value => onChange(value, 'room')}
@@ -169,7 +166,7 @@ const SpecificData = ({ navigation }: Props) => {
             placeholder="Recámaras"
             placeholderTextColor="#ccc"
           />
-          {/*  / Casa / Local /  / Edificio / Casa en condo*/}
+          {/*  /  / Local /  / Edificio / Casa en condo*/}
           <TextInput
             keyboardType="numeric"
             onChangeText={value => onChange(value, 'bath')}
@@ -177,7 +174,7 @@ const SpecificData = ({ navigation }: Props) => {
             placeholder="Baños completos"
             placeholderTextColor="#ccc"
           />
-          {/*  / Casa / Local / Oficina /  / Edificio / Casa en condo*/}
+          {/*  /  / Local / Oficina /  / Edificio / Casa en condo*/}
           <TextInput
             keyboardType="numeric"
             onChangeText={value => onChange(value, 'halfBath')}
@@ -185,7 +182,7 @@ const SpecificData = ({ navigation }: Props) => {
             placeholder="Medio baño"
             placeholderTextColor="#ccc"
           />
-          {/*  / Casa / Local / Oficina /  / Edificio / Casa en condo*/}
+          {/*  /  / Local / Oficina /  / Edificio / Casa en condo*/}
           <TextInput
             keyboardType="numeric"
             onChangeText={value => onChange(value, 'parkingSlots')}
@@ -202,8 +199,9 @@ const SpecificData = ({ navigation }: Props) => {
             placeholderTextColor="#ccc"
           />
         </View>
-        {/*  / Casa / Local / Oficina / Casa en condo*/}
+        {/*  /  / Local / Oficina / Casa en condo*/}
         {propertyType === aparment ? <CocinaAparment /> : null}
+        {propertyType === singleHouse ? <CocinaHouse /> : null}
         <View>
           <Text style={styles.subtitle}>Cocina</Text>
           <View style={appStyles.picker}>
@@ -216,10 +214,10 @@ const SpecificData = ({ navigation }: Props) => {
             </Picker>
           </View>
         </View>
-
         <View>
           {propertyType === aparment ? <CaracteristicasAparment /> : null}
-          {/*  / Casa / Casa en condo*/}
+          {propertyType === singleHouse ? <CaracteristicaHouse /> : null}
+          {/*  /  / Casa en condo*/}
           <BouncyCheckbox
             style={{ paddingVertical: 5 }}
             size={25}
@@ -235,7 +233,7 @@ const SpecificData = ({ navigation }: Props) => {
               setServiceRoom(!specificData.serviceRoom);
             }}
           />
-          {/*  / Casa / Casa en condo*/}
+          {/*  /  / Casa en condo*/}
           <BouncyCheckbox
             style={{ paddingVertical: 5 }}
             size={25}
@@ -251,7 +249,7 @@ const SpecificData = ({ navigation }: Props) => {
               setLaundry(!specificData.laundry);
             }}
           />
-          {/*  / Casa / Local / Oficina / Casa en condo*/}
+          {/*  /  / Local / Oficina / Casa en condo*/}
           <BouncyCheckbox
             style={{ paddingVertical: 5 }}
             size={25}
@@ -283,7 +281,7 @@ const SpecificData = ({ navigation }: Props) => {
               setEquipment(!specificData.equipment);
             }}
           />
-          {/*  / Casa / Casa en condo*/}
+          {/*  /  / Casa en condo*/}
           <BouncyCheckbox
             style={{ paddingVertical: 5 }}
             size={25}
@@ -299,7 +297,7 @@ const SpecificData = ({ navigation }: Props) => {
               setBalcony(!specificData.balcony);
             }}
           />
-          {/*  / Casa / Casa en condo*/}
+          {/*  /  / Casa en condo*/}
           <BouncyCheckbox
             style={{ paddingVertical: 5 }}
             size={25}
@@ -315,7 +313,7 @@ const SpecificData = ({ navigation }: Props) => {
               setTerrace(!specificData.terrace);
             }}
           />
-          {/*  / Casa / Casa en condo*/}
+          {/*  /  / Casa en condo*/}
           <BouncyCheckbox
             style={{ paddingVertical: 5 }}
             size={25}
@@ -331,7 +329,7 @@ const SpecificData = ({ navigation }: Props) => {
               setRoofGarden(!specificData.roofGarden);
             }}
           />
-          {/* Casa / Casa en condo */}
+          {/*  / Casa en condo */}
           <BouncyCheckbox
             style={{ paddingVertical: 5 }}
             size={25}
@@ -347,7 +345,7 @@ const SpecificData = ({ navigation }: Props) => {
               setGarden(!specificData.garden);
             }}
           />
-          {/*  / Casa / Casa en condo*/}
+          {/*  /  / Casa en condo*/}
           <BouncyCheckbox
             style={{ paddingVertical: 5 }}
             size={25}
@@ -363,7 +361,7 @@ const SpecificData = ({ navigation }: Props) => {
               setFamilyRoom(!specificData.familyRoom);
             }}
           />
-          {/*  / Casa / Casa en condo*/}
+          {/*  /  / Casa en condo*/}
           <BouncyCheckbox
             style={{ paddingVertical: 5 }}
             size={25}
@@ -379,7 +377,7 @@ const SpecificData = ({ navigation }: Props) => {
               setStudy(!specificData.study);
             }}
           />
-          {/*  / Casa / Casa en condo*/}
+          {/*  /  / Casa en condo*/}
           <BouncyCheckbox
             style={{ paddingVertical: 5 }}
             size={25}
@@ -405,11 +403,11 @@ const SpecificData = ({ navigation }: Props) => {
             placeholderTextColor="#ccc"
           />
         </View>
-        {/* Departamento  / Casa / Local / Oficina / Bodega / Terreno / Edificio / Casa en condo*/}
         <Text style={styles.subtitle}>Seguridad</Text>
         {propertyType === warehouse ? <SecurityWarehouse /> : null}
         {propertyType === aparment ? <SecurityAparment /> : null}
-        {/*  / Casa / Local / Oficina /  / Terreno / Edificio / Casa en condo*/}
+        {propertyType === singleHouse ? <SecurityHouse /> : null}
+        {/*  /  / Local / Oficina /  / Terreno / Edificio / Casa en condo*/}
         <BouncyCheckbox
           style={{ paddingVertical: 5 }}
           size={25}
@@ -425,7 +423,7 @@ const SpecificData = ({ navigation }: Props) => {
             setWireFence(!specificData.wireFence);
           }}
         />
-        {/*  / Casa / Local / Oficina /  / Terreno / Edificio / Casa en condo*/}
+        {/*  /  / Local / Oficina /  / Terreno / Edificio / Casa en condo*/}
         <BouncyCheckbox
           style={{ paddingVertical: 5 }}
           size={25}
@@ -457,7 +455,7 @@ const SpecificData = ({ navigation }: Props) => {
             setFireAlarm(!specificData.fireAlarm);
           }}
         />
-        {/*  / Casa / Local / Oficina /  / Terreno / Edificio / Casa en condo*/}
+        {/*  /  / Local / Oficina /  / Terreno / Edificio / Casa en condo*/}
         <BouncyCheckbox
           style={{ paddingVertical: 5 }}
           size={25}
@@ -473,7 +471,7 @@ const SpecificData = ({ navigation }: Props) => {
             setClosedStreet(!specificData.closedStreet);
           }}
         />
-        {/*  / Casa / Local / Oficina /  / Terreno / Edificio / Casa en condo*/}
+        {/*  /  / Local / Oficina /  / Terreno / Edificio / Casa en condo*/}
         <BouncyCheckbox
           style={{ paddingVertical: 5 }}
           size={25}
@@ -489,7 +487,7 @@ const SpecificData = ({ navigation }: Props) => {
             setCctv(!specificData.cctv);
           }}
         />
-        {/*  / Casa  / Oficina /  / Terreno / Edificio / Casa en condo*/}
+        {/*  /   / Oficina /  / Terreno / Edificio / Casa en condo*/}
         <BouncyCheckbox
           style={{ paddingVertical: 5 }}
           size={25}
@@ -522,7 +520,6 @@ const SpecificData = ({ navigation }: Props) => {
           }}
         />
         {/*  / Local / Oficina /  / Terreno / Edificio / Casa en condo*/}
-
         <BouncyCheckbox
           style={{ paddingVertical: 5 }}
           size={25}
@@ -538,16 +535,15 @@ const SpecificData = ({ navigation }: Props) => {
             setSecurity247(!specificData.security247);
           }}
         />
-
         {propertyType === aparment ? <AmenidadesAparment /> : null}
+        {/* Condohouse */}
 
-        {/* Departamento  / Casa / Local / Oficina / Bodega / Edificio / Casa en condo*/}
         {propertyType !== terrain ? (
           <Text style={styles.subtitle}>Servicios</Text>
         ) : null}
-
         {propertyType === warehouse ? <ServicesWarehouse /> : null}
         {propertyType === aparment ? <ServicesAparment /> : null}
+        {propertyType === singleHouse ? <ServicesHouse /> : null}
 
         {/*  / Edificio*/}
         <BouncyCheckbox
@@ -565,8 +561,7 @@ const SpecificData = ({ navigation }: Props) => {
             setElevator(!specificData.elevator);
           }}
         />
-
-        {/*   / Casa / Local / Oficina /  / Edificio / Casa en condo*/}
+        {/*   /  / Local / Oficina /  / Edificio / Casa en condo*/}
         <BouncyCheckbox
           style={{ paddingVertical: 5 }}
           size={25}
@@ -662,7 +657,6 @@ const SpecificData = ({ navigation }: Props) => {
             placeholderTextColor="#ccc"
           />
         ) : null}
-
         {propertyType !== terrain ? (
           <>
             <Text style={styles.subtitle}>Tipo de gas</Text>
@@ -678,7 +672,6 @@ const SpecificData = ({ navigation }: Props) => {
             </View>
           </>
         ) : null}
-
         {propertyType !== terrain && propertyType !== warehouse ? (
           <BouncyCheckbox
             style={{ paddingVertical: 10 }}
@@ -807,7 +800,6 @@ const SpecificData = ({ navigation }: Props) => {
             placeholderTextColor="#ccc"
           />
         </View>
-
         {propertyType !== terrain ? (
           <>
             <Text style={styles.subtitle}>Tiempo</Text>
@@ -819,10 +811,10 @@ const SpecificData = ({ navigation }: Props) => {
             />
           </>
         ) : null}
-
-        {/*  / Casa / Local / */}
+        {/*  /  / Local / */}
         {propertyType === aparment ? <AntiquityAparment /> : null}
         {propertyType === warehouse ? <AntiquityWarehouse /> : null}
+        {propertyType === singleHouse ? <AntiquityHouse /> : null}
         <View>
           <Text style={styles.subtitle}>Antigüedad (años)</Text>
           <View style={appStyles.picker}>
