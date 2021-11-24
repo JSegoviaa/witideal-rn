@@ -11,20 +11,14 @@ interface Props
   extends StackScreenProps<RootAddPropertyStackNavigation, 'SummaryScreen'> {}
 
 const UploadPropertyPictures = ({ navigation }: Props) => {
-  const {
-    uploadPicture,
-    uploadPictures,
-    tempUri,
-    setTempUri,
-    fileName,
-    setFileName,
-  } = useContext(PropertyContext);
+  const { uploadPicture, uploadPictures, tempUri, setTempUri, setFileName } =
+    useContext(PropertyContext);
 
   const takePhotoFromGallery = () => {
     launchImageLibrary(
       {
         mediaType: 'photo',
-        quality: 0.5,
+        quality: 1,
       },
       resp => {
         if (resp.didCancel) return;
@@ -41,6 +35,7 @@ const UploadPropertyPictures = ({ navigation }: Props) => {
       {
         mediaType: 'photo',
         quality: 0.5,
+        selectionLimit: 30,
       },
       resp => {
         if (resp.didCancel) return;

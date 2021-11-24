@@ -5,6 +5,7 @@ import {
   StyleSheet,
   Text,
   TouchableOpacity,
+  useWindowDimensions,
   View,
 } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
@@ -27,15 +28,23 @@ const Summary = () => {
     int_number,
     postal_code,
     specificData,
+    tempUri,
   } = useContext(PropertyContext);
 
+  const { width } = useWindowDimensions();
   return (
     <ScrollView>
       <View style={appStyles.container}>
         <View style={{ marginTop: 50 }}>
           <Text style={styles.title}>¡Su inmueble se ha publicado!</Text>
         </View>
-        <Text>Imagen principal</Text>
+
+        <View style={{ paddingVertical: 30 }}>
+          <Image
+            source={{ uri: tempUri }}
+            style={{ width: width * 0.9, height: 250 }}
+          />
+        </View>
         <Text style={styles.text}>El costo del inmueble es:</Text>
         <Text style={styles.title}>
           {currencyFormat(parseInt(precio))} {currency}
