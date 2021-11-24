@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext } from 'react';
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { launchImageLibrary } from 'react-native-image-picker';
 import { StackScreenProps } from '@react-navigation/stack';
@@ -11,8 +11,7 @@ interface Props
   extends StackScreenProps<RootAddPropertyStackNavigation, 'SummaryScreen'> {}
 
 const UploadPropertyPictures = ({ navigation }: Props) => {
-  const { uploadPicture, uploadPictures, tempUri, setTempUri, setFileName } =
-    useContext(PropertyContext);
+  const { tempUri, setTempUri, setFileName } = useContext(PropertyContext);
 
   const takePhotoFromGallery = () => {
     launchImageLibrary(
@@ -25,7 +24,6 @@ const UploadPropertyPictures = ({ navigation }: Props) => {
         if (!resp.assets![0].uri) return;
         setTempUri(resp.assets![0].uri);
         setFileName(resp.assets![0].fileName!);
-        uploadPicture();
       },
     );
   };
@@ -42,7 +40,6 @@ const UploadPropertyPictures = ({ navigation }: Props) => {
         if (!resp.assets![0].uri) return;
         setTempUri(resp.assets![0].uri);
         setFileName(resp.assets![0].fileName!);
-        uploadPictures();
       },
     );
   };

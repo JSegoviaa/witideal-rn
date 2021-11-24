@@ -29,6 +29,7 @@ const Summary = () => {
     postal_code,
     specificData,
     tempUri,
+    uploadProperty,
   } = useContext(PropertyContext);
 
   const { width } = useWindowDimensions();
@@ -708,7 +709,9 @@ const Summary = () => {
         <Text style={styles.text}>Latitud: {coordinates.latitude}</Text>
         <Text style={styles.text}>Longitud: {coordinates.longitude}</Text>
         <View style={{ alignSelf: 'center' }}>
-          <TouchableOpacity style={appStyles.btnPrimary}>
+          <TouchableOpacity
+            onPress={uploadProperty}
+            style={appStyles.btnPrimary}>
             <Text style={styles.textBtn}>Confirmar</Text>
           </TouchableOpacity>
         </View>

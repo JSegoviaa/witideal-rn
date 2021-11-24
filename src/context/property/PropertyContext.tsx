@@ -1,4 +1,5 @@
-import React, { createContext, FC, useState } from 'react';
+import React, { createContext, FC, useContext, useState } from 'react';
+import firestore from '@react-native-firebase/firestore';
 import { rent } from '../../constant/action';
 import { mxn } from '../../constant/currency';
 import { lp } from '../../constant/gasType';
@@ -9,10 +10,13 @@ import { singleHouse } from '../../constant/propertyType';
 import { useForm } from '../../hooks/useForm';
 import { ContextProps } from '../../interfaces/ContextProps';
 import { Location } from '../../interfaces/Location';
+import { AuthContext } from '../auth/AuthContext';
 
 export const PropertyContext = createContext({} as ContextProps);
 
 const PropertyProvider: FC = ({ children }) => {
+  const { user } = useContext(AuthContext);
+
   const { form, onChange } = useForm({
     precio: '',
     antiquity: '',
@@ -191,6 +195,24 @@ const PropertyProvider: FC = ({ children }) => {
   const uploadPictures = () => {
     console.log('Se subieron muchas imágenes');
   };
+
+  const uploadProperty = () => {
+    uploadPicture();
+    uploadPictures();
+    firestore().settings({ ignoreUndefinedProperties: true });
+    try {
+      firestore()
+        .collection('production')
+        .doc('Users')
+        .collection(user?.uid!)
+        .doc('properties')
+        .collection('ownedProperties')
+        .add(property);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   const specificData = {
     airConditioner,
     alarm,
@@ -267,6 +289,30 @@ const PropertyProvider: FC = ({ children }) => {
     tvRoom,
     water,
     wireFence,
+  };
+
+  const { latitude, longitude } = coordinates;
+  const property = {
+    action,
+    administrative_area_level_1,
+    bankSale,
+    latitude,
+    longitude,
+    country,
+    currency,
+    ext_number,
+    int_number,
+    isCommercial,
+    isExactLoaction,
+    locality,
+    postal_code,
+    route,
+    propertyType,
+    propertyTypeSelected,
+    sharesCom,
+    tempUri,
+    fileName,
+    specificData,
   };
 
   return (
@@ -348,13 +394,12 @@ const PropertyProvider: FC = ({ children }) => {
         setInsideIndust,
         setElectricity,
         setWater,
-        uploadPicture,
-        uploadPictures,
         tempUri,
         setTempUri,
         fileName,
         setFileName,
         specificData,
+        uploadProperty,
       }}>
       {children}
     </PropertyContext.Provider>
