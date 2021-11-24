@@ -95,7 +95,7 @@ const UploadPropertyPictures = ({ navigation }: Props) => {
               fontWeight: '700',
               textAlign: 'center',
             }}>
-            Confirmar
+            Continuar
           </Text>
         </TouchableOpacity>
       </View>

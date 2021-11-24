@@ -35,8 +35,10 @@ const Summary = () => {
   return (
     <ScrollView>
       <View style={appStyles.container}>
-        <View style={{ marginTop: 50 }}>
-          <Text style={styles.title}>¡Su inmueble se ha publicado!</Text>
+        <View style={{ marginTop: 20 }}>
+          <Text style={styles.title}>
+            Confirme la información de su inmueble
+          </Text>
         </View>
 
         <View style={{ paddingVertical: 30 }}>
@@ -707,7 +709,7 @@ const Summary = () => {
         <Text style={styles.text}>Longitud: {coordinates.longitude}</Text>
         <View style={{ alignSelf: 'center' }}>
           <TouchableOpacity style={appStyles.btnPrimary}>
-            <Text style={styles.textBtn}>Inicio</Text>
+            <Text style={styles.textBtn}>Confirmar</Text>
           </TouchableOpacity>
         </View>
       </View>
