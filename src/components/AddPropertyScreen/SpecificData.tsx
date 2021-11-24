@@ -71,6 +71,11 @@ import ServiciosLocal from './local/ServiciosLocal';
 import EspaciosBuilding from './building/EspaciosBuilding';
 import SecurityBuiling from './building/SecurityBuiling';
 import ServicesBulding from './building/ServicesBulding';
+import EspaciosOffice from './office/EspaciosOffice';
+import CocinaOffice from './office/CocinaOffice';
+import CaracteristicasOffice from './office/CaracteristicasOffice';
+import SecurityOffice from './office/SecurityOffice';
+import ServicesOffices from './office/ServicesOffices';
 
 interface Props
   extends StackScreenProps<
@@ -120,6 +125,7 @@ const SpecificData = ({ navigation }: Props) => {
             usuarios
           </Text>
         </View>
+
         <View>
           <Text style={styles.subtitle}>Características Físicas</Text>
           {propertyType === aparment ? <CaracteristicasFisicasAp /> : null}
@@ -154,83 +160,28 @@ const SpecificData = ({ navigation }: Props) => {
             </View>
           </>
         ) : null}
-        <View>
-          <Text style={styles.subtitle}>Espacios internos</Text>
-          {propertyType === warehouse ? <EspaciosWarehouse /> : null}
-          {propertyType === aparment ? <EspaciosAparment /> : null}
-          {propertyType === singleHouse ? <EspaciosHouse /> : null}
-          {propertyType === condoHouse ? <EspaciosCondo /> : null}
-          {propertyType === local ? <EspaciosLocal /> : null}
-          {propertyType === building ? <EspaciosBuilding /> : null}
 
-          {/*  /  /  / Oficina /  /  / */}
-          <TextInput
-            keyboardType="numeric"
-            onChangeText={value => onChange(value, 'halfBath')}
-            style={appStyles.input}
-            placeholder="Medio baño"
-            placeholderTextColor="#ccc"
-          />
-          {/*  /  /  / Oficina /  /  / */}
-          <TextInput
-            keyboardType="numeric"
-            onChangeText={value => onChange(value, 'parkingSlots')}
-            style={appStyles.input}
-            placeholder="Estacionamientos"
-            placeholderTextColor="#ccc"
-          />
-        </View>
+        <Text style={styles.subtitle}>Espacios internos</Text>
+        {propertyType === warehouse ? <EspaciosWarehouse /> : null}
+        {propertyType === aparment ? <EspaciosAparment /> : null}
+        {propertyType === singleHouse ? <EspaciosHouse /> : null}
+        {propertyType === condoHouse ? <EspaciosCondo /> : null}
+        {propertyType === local ? <EspaciosLocal /> : null}
+        {propertyType === building ? <EspaciosBuilding /> : null}
+        {propertyType === office ? <EspaciosOffice /> : null}
 
-        {/*  /  /  / Oficina / */}
         {propertyType === aparment ? <CocinaAparment /> : null}
         {propertyType === singleHouse ? <CocinaHouse /> : null}
         {propertyType === condoHouse ? <CocinaCondo /> : null}
         {propertyType === local ? <CocinaLocal /> : null}
+        {propertyType === office ? <CocinaOffice /> : null}
 
-        <View>
-          <Text style={styles.subtitle}>Cocina</Text>
-          <View style={appStyles.picker}>
-            <Picker
-              selectedValue={specificData.kitchen}
-              style={{ color: '#000' }}
-              onValueChange={(itemValue, itemIndex) => setKitchen(itemValue)}>
-              <Picker.Item label="Abierta" value={abierta} />
-              <Picker.Item label="Cerrada" value={cerrada} />
-            </Picker>
-          </View>
-        </View>
-        <View>
-          {propertyType === aparment ? <CaracteristicasAparment /> : null}
-          {propertyType === singleHouse ? <CaracteristicaHouse /> : null}
-          {propertyType === condoHouse ? <CaracteristicaSCondos /> : null}
-          {propertyType === local ? <CaracteristicasLocal /> : null}
+        {propertyType === aparment ? <CaracteristicasAparment /> : null}
+        {propertyType === singleHouse ? <CaracteristicaHouse /> : null}
+        {propertyType === condoHouse ? <CaracteristicaSCondos /> : null}
+        {propertyType === local ? <CaracteristicasLocal /> : null}
+        {propertyType === office ? <CaracteristicasOffice /> : null}
 
-          {/*  /  /  / Oficina / */}
-          <BouncyCheckbox
-            style={{ paddingVertical: 5 }}
-            size={25}
-            fillColor="#3F19F9"
-            unfillColor="#FFFFFF"
-            text="Bodega"
-            iconStyle={{ borderColor: '#3F19F9' }}
-            textStyle={{
-              fontFamily: 'JosefinSans-Regular',
-              textDecorationLine: 'none',
-            }}
-            onPress={() => {
-              setCellar(!specificData.cellar);
-            }}
-          />
-
-          {/* Oficina */}
-          <TextInput
-            keyboardType="numeric"
-            onChangeText={value => onChange(value, 'privateOffice')}
-            style={appStyles.input}
-            placeholder="Oficinas privadas"
-            placeholderTextColor="#ccc"
-          />
-        </View>
         <Text style={styles.subtitle}>Seguridad</Text>
         {propertyType === warehouse ? <SecurityWarehouse /> : null}
         {propertyType === aparment ? <SecurityAparment /> : null}
@@ -238,8 +189,9 @@ const SpecificData = ({ navigation }: Props) => {
         {propertyType === condoHouse ? <SecurityCondo /> : null}
         {propertyType === local ? <SecurityLocal /> : null}
         {propertyType === building ? <SecurityBuiling /> : null}
+        {propertyType === office ? <SecurityOffice /> : null}
 
-        {/*  /  /  / Oficina /  / Terreno /  / */}
+        {/*  /  /  /  /  / Terreno /  / */}
         <BouncyCheckbox
           style={{ paddingVertical: 5 }}
           size={25}
@@ -255,7 +207,7 @@ const SpecificData = ({ navigation }: Props) => {
             setWireFence(!specificData.wireFence);
           }}
         />
-        {/*  /  /  / Oficina /  / Terreno /  / */}
+        {/*  /  /  /  /  / Terreno /  / */}
         <BouncyCheckbox
           style={{ paddingVertical: 5 }}
           size={25}
@@ -272,7 +224,7 @@ const SpecificData = ({ navigation }: Props) => {
           }}
         />
 
-        {/*  /  /  / Oficina /  / Terreno /  /*/}
+        {/*  /  /  /  /  / Terreno /  /*/}
         <BouncyCheckbox
           style={{ paddingVertical: 5 }}
           size={25}
@@ -288,7 +240,7 @@ const SpecificData = ({ navigation }: Props) => {
             setClosedStreet(!specificData.closedStreet);
           }}
         />
-        {/*  /  /  / Oficina /  / Terreno /  / */}
+        {/*  /  /  /  /  / Terreno /  / */}
         <BouncyCheckbox
           style={{ paddingVertical: 5 }}
           size={25}
@@ -304,7 +256,7 @@ const SpecificData = ({ navigation }: Props) => {
             setCctv(!specificData.cctv);
           }}
         />
-        {/*  /   / Oficina /  / Terreno /  / */}
+        {/*  /   /  /  / Terreno /  / */}
         <BouncyCheckbox
           style={{ paddingVertical: 5 }}
           size={25}
@@ -321,7 +273,7 @@ const SpecificData = ({ navigation }: Props) => {
           }}
         />
 
-        {/*  /  / Oficina /  / Terreno /  / */}
+        {/*  /  /  /  / Terreno /  / */}
         <BouncyCheckbox
           style={{ paddingVertical: 5 }}
           size={25}
@@ -354,39 +306,7 @@ const SpecificData = ({ navigation }: Props) => {
         {propertyType === condoHouse ? <ServicesCondo /> : null}
         {propertyType === local ? <ServiciosLocal /> : null}
         {propertyType === building ? <ServicesBulding /> : null}
-
-        {/*   /  /  / Oficina /  /  / */}
-        <BouncyCheckbox
-          style={{ paddingVertical: 5 }}
-          size={25}
-          fillColor="#3F19F9"
-          unfillColor="#FFFFFF"
-          text="Aire acondicionado"
-          iconStyle={{ borderColor: '#3F19F9' }}
-          textStyle={{
-            fontFamily: 'JosefinSans-Regular',
-            textDecorationLine: 'none',
-          }}
-          onPress={() => {
-            setAirConditioner(!specificData.airConditioner);
-          }}
-        />
-        {/*  /  / Oficina /  / */}
-        <BouncyCheckbox
-          style={{ paddingVertical: 5 }}
-          size={25}
-          fillColor="#3F19F9"
-          unfillColor="#FFFFFF"
-          text="Mantenimiento incluido (solo renta)"
-          iconStyle={{ borderColor: '#3F19F9' }}
-          textStyle={{
-            fontFamily: 'JosefinSans-Regular',
-            textDecorationLine: 'none',
-          }}
-          onPress={() => {
-            setIsMantainceIncluded(!specificData.isMantainceIncluded);
-          }}
-        />
+        {propertyType === office ? <ServicesOffices /> : null}
 
         {/*   / Terreno*/}
         <BouncyCheckbox
@@ -427,15 +347,6 @@ const SpecificData = ({ navigation }: Props) => {
           placeholder="Uso de suelo"
           placeholderTextColor="#ccc"
         />
-        {/*  /  / Oficina /  / */}
-        {specificData.isMantainceIncluded ? (
-          <TextInput
-            style={appStyles.input}
-            placeholder="Costo de mantenimiento"
-            onChangeText={value => onChange(value, 'mantainance')}
-            placeholderTextColor="#ccc"
-          />
-        ) : null}
 
         {propertyType !== terrain ? (
           <>
@@ -471,7 +382,6 @@ const SpecificData = ({ navigation }: Props) => {
           />
         ) : null}
 
-        {/*  / Casa / Local / Oficina / Terreno / Edificio / */}
         <View>
           <Text style={styles.subtitle}>Características de la zona</Text>
           {propertyType === warehouse ? <ZoneWarehouse /> : null}
