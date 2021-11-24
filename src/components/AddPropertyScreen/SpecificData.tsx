@@ -57,6 +57,12 @@ import CaracteristicaHouse from './singleHouse/CaracteristicaHouse';
 import SecurityHouse from './singleHouse/SecurityHouse';
 import ServicesHouse from './singleHouse/ServicesHouse';
 import AntiquityHouse from './singleHouse/AntiquityHouse';
+import EspaciosCondo from './condoHouse/EspaciosCondo';
+import CocinaCondo from './condoHouse/CocinaCondo';
+import CaracteristicaSCondos from './condoHouse/CaracteristicaSCondos';
+import SecurityCondo from './condoHouse/SecurityCondo';
+import AmenidadesCondo from './condoHouse/AmenidadesCondo';
+import ServicesCondo from './condoHouse/ServicesCondo';
 
 interface Props
   extends StackScreenProps<
@@ -70,21 +76,12 @@ const SpecificData = ({ navigation }: Props) => {
     onChange,
     setPreservationState,
     setKitchen,
-    setServiceRoom,
-    setLaundry,
     setCellar,
-    setBalcony,
-    setTerrace,
-    setRoofGarden,
-    setFamilyRoom,
-    setStudy,
-    setTvRoom,
     setWireFence,
     setElectricFence,
     setClosedStreet,
     setCctv,
     setAlarm,
-    setJanitor,
     setSecurity247,
     setElevator,
     setAirConditioner,
@@ -92,7 +89,6 @@ const SpecificData = ({ navigation }: Props) => {
     setGasType,
     setPetFriendly,
     setAntiquity,
-    setGarden,
     setCistern,
     setEquipment,
     setOnstreet,
@@ -135,6 +131,7 @@ const SpecificData = ({ navigation }: Props) => {
           {propertyType === terrain ? <CaracteristicasTerrain /> : null}
           {propertyType === condoHouse ? <CaracteristicasCondo /> : null}
         </View>
+
         {propertyType !== terrain ? (
           <>
             <Text style={styles.subtitle}>Estado de conservación</Text>
@@ -158,15 +155,9 @@ const SpecificData = ({ navigation }: Props) => {
           {propertyType === warehouse ? <EspaciosWarehouse /> : null}
           {propertyType === aparment ? <EspaciosAparment /> : null}
           {propertyType === singleHouse ? <EspaciosHouse /> : null}
-          {/*  /   / Casa en condo*/}
-          <TextInput
-            keyboardType="numeric"
-            onChangeText={value => onChange(value, 'room')}
-            style={appStyles.input}
-            placeholder="Recámaras"
-            placeholderTextColor="#ccc"
-          />
-          {/*  /  / Local /  / Edificio / Casa en condo*/}
+          {propertyType === condoHouse ? <EspaciosCondo /> : null}
+
+          {/*  /  / Local /  / Edificio / */}
           <TextInput
             keyboardType="numeric"
             onChangeText={value => onChange(value, 'bath')}
@@ -174,7 +165,7 @@ const SpecificData = ({ navigation }: Props) => {
             placeholder="Baños completos"
             placeholderTextColor="#ccc"
           />
-          {/*  /  / Local / Oficina /  / Edificio / Casa en condo*/}
+          {/*  /  / Local / Oficina /  / Edificio / */}
           <TextInput
             keyboardType="numeric"
             onChangeText={value => onChange(value, 'halfBath')}
@@ -182,7 +173,7 @@ const SpecificData = ({ navigation }: Props) => {
             placeholder="Medio baño"
             placeholderTextColor="#ccc"
           />
-          {/*  /  / Local / Oficina /  / Edificio / Casa en condo*/}
+          {/*  /  / Local / Oficina /  / Edificio / */}
           <TextInput
             keyboardType="numeric"
             onChangeText={value => onChange(value, 'parkingSlots')}
@@ -199,9 +190,11 @@ const SpecificData = ({ navigation }: Props) => {
             placeholderTextColor="#ccc"
           />
         </View>
-        {/*  /  / Local / Oficina / Casa en condo*/}
+
+        {/*  /  / Local / Oficina / */}
         {propertyType === aparment ? <CocinaAparment /> : null}
         {propertyType === singleHouse ? <CocinaHouse /> : null}
+        {propertyType === condoHouse ? <CocinaCondo /> : null}
         <View>
           <Text style={styles.subtitle}>Cocina</Text>
           <View style={appStyles.picker}>
@@ -217,39 +210,9 @@ const SpecificData = ({ navigation }: Props) => {
         <View>
           {propertyType === aparment ? <CaracteristicasAparment /> : null}
           {propertyType === singleHouse ? <CaracteristicaHouse /> : null}
-          {/*  /  / Casa en condo*/}
-          <BouncyCheckbox
-            style={{ paddingVertical: 5 }}
-            size={25}
-            fillColor="#3F19F9"
-            unfillColor="#FFFFFF"
-            text="Cuarto de servicio"
-            iconStyle={{ borderColor: '#3F19F9' }}
-            textStyle={{
-              fontFamily: 'JosefinSans-Regular',
-              textDecorationLine: 'none',
-            }}
-            onPress={() => {
-              setServiceRoom(!specificData.serviceRoom);
-            }}
-          />
-          {/*  /  / Casa en condo*/}
-          <BouncyCheckbox
-            style={{ paddingVertical: 5 }}
-            size={25}
-            fillColor="#3F19F9"
-            unfillColor="#FFFFFF"
-            text="Área de lavado"
-            iconStyle={{ borderColor: '#3F19F9' }}
-            textStyle={{
-              fontFamily: 'JosefinSans-Regular',
-              textDecorationLine: 'none',
-            }}
-            onPress={() => {
-              setLaundry(!specificData.laundry);
-            }}
-          />
-          {/*  /  / Local / Oficina / Casa en condo*/}
+          {propertyType === condoHouse ? <CaracteristicaSCondos /> : null}
+
+          {/*  /  / Local / Oficina / */}
           <BouncyCheckbox
             style={{ paddingVertical: 5 }}
             size={25}
@@ -281,118 +244,6 @@ const SpecificData = ({ navigation }: Props) => {
               setEquipment(!specificData.equipment);
             }}
           />
-          {/*  /  / Casa en condo*/}
-          <BouncyCheckbox
-            style={{ paddingVertical: 5 }}
-            size={25}
-            fillColor="#3F19F9"
-            unfillColor="#FFFFFF"
-            text="Balcón"
-            iconStyle={{ borderColor: '#3F19F9' }}
-            textStyle={{
-              fontFamily: 'JosefinSans-Regular',
-              textDecorationLine: 'none',
-            }}
-            onPress={() => {
-              setBalcony(!specificData.balcony);
-            }}
-          />
-          {/*  /  / Casa en condo*/}
-          <BouncyCheckbox
-            style={{ paddingVertical: 5 }}
-            size={25}
-            fillColor="#3F19F9"
-            unfillColor="#FFFFFF"
-            text="Terraza"
-            iconStyle={{ borderColor: '#3F19F9' }}
-            textStyle={{
-              fontFamily: 'JosefinSans-Regular',
-              textDecorationLine: 'none',
-            }}
-            onPress={() => {
-              setTerrace(!specificData.terrace);
-            }}
-          />
-          {/*  /  / Casa en condo*/}
-          <BouncyCheckbox
-            style={{ paddingVertical: 5 }}
-            size={25}
-            fillColor="#3F19F9"
-            unfillColor="#FFFFFF"
-            text="Roof garden"
-            iconStyle={{ borderColor: '#3F19F9' }}
-            textStyle={{
-              fontFamily: 'JosefinSans-Regular',
-              textDecorationLine: 'none',
-            }}
-            onPress={() => {
-              setRoofGarden(!specificData.roofGarden);
-            }}
-          />
-          {/*  / Casa en condo */}
-          <BouncyCheckbox
-            style={{ paddingVertical: 5 }}
-            size={25}
-            fillColor="#3F19F9"
-            unfillColor="#FFFFFF"
-            text="Jardín"
-            iconStyle={{ borderColor: '#3F19F9' }}
-            textStyle={{
-              fontFamily: 'JosefinSans-Regular',
-              textDecorationLine: 'none',
-            }}
-            onPress={() => {
-              setGarden(!specificData.garden);
-            }}
-          />
-          {/*  /  / Casa en condo*/}
-          <BouncyCheckbox
-            style={{ paddingVertical: 5 }}
-            size={25}
-            fillColor="#3F19F9"
-            unfillColor="#FFFFFF"
-            text="Family room"
-            iconStyle={{ borderColor: '#3F19F9' }}
-            textStyle={{
-              fontFamily: 'JosefinSans-Regular',
-              textDecorationLine: 'none',
-            }}
-            onPress={() => {
-              setFamilyRoom(!specificData.familyRoom);
-            }}
-          />
-          {/*  /  / Casa en condo*/}
-          <BouncyCheckbox
-            style={{ paddingVertical: 5 }}
-            size={25}
-            fillColor="#3F19F9"
-            unfillColor="#FFFFFF"
-            text="Estudio"
-            iconStyle={{ borderColor: '#3F19F9' }}
-            textStyle={{
-              fontFamily: 'JosefinSans-Regular',
-              textDecorationLine: 'none',
-            }}
-            onPress={() => {
-              setStudy(!specificData.study);
-            }}
-          />
-          {/*  /  / Casa en condo*/}
-          <BouncyCheckbox
-            style={{ paddingVertical: 5 }}
-            size={25}
-            fillColor="#3F19F9"
-            unfillColor="#FFFFFF"
-            text="Cuarto de TV"
-            iconStyle={{ borderColor: '#3F19F9' }}
-            textStyle={{
-              fontFamily: 'JosefinSans-Regular',
-              textDecorationLine: 'none',
-            }}
-            onPress={() => {
-              setTvRoom(!specificData.tvRoom);
-            }}
-          />
 
           {/* Oficina */}
           <TextInput
@@ -407,7 +258,9 @@ const SpecificData = ({ navigation }: Props) => {
         {propertyType === warehouse ? <SecurityWarehouse /> : null}
         {propertyType === aparment ? <SecurityAparment /> : null}
         {propertyType === singleHouse ? <SecurityHouse /> : null}
-        {/*  /  / Local / Oficina /  / Terreno / Edificio / Casa en condo*/}
+        {propertyType === condoHouse ? <SecurityCondo /> : null}
+
+        {/*  /  / Local / Oficina /  / Terreno / Edificio / */}
         <BouncyCheckbox
           style={{ paddingVertical: 5 }}
           size={25}
@@ -423,7 +276,7 @@ const SpecificData = ({ navigation }: Props) => {
             setWireFence(!specificData.wireFence);
           }}
         />
-        {/*  /  / Local / Oficina /  / Terreno / Edificio / Casa en condo*/}
+        {/*  /  / Local / Oficina /  / Terreno / Edificio / */}
         <BouncyCheckbox
           style={{ paddingVertical: 5 }}
           size={25}
@@ -455,7 +308,7 @@ const SpecificData = ({ navigation }: Props) => {
             setFireAlarm(!specificData.fireAlarm);
           }}
         />
-        {/*  /  / Local / Oficina /  / Terreno / Edificio / Casa en condo*/}
+        {/*  /  / Local / Oficina /  / Terreno / Edificio /*/}
         <BouncyCheckbox
           style={{ paddingVertical: 5 }}
           size={25}
@@ -471,7 +324,7 @@ const SpecificData = ({ navigation }: Props) => {
             setClosedStreet(!specificData.closedStreet);
           }}
         />
-        {/*  /  / Local / Oficina /  / Terreno / Edificio / Casa en condo*/}
+        {/*  /  / Local / Oficina /  / Terreno / Edificio / */}
         <BouncyCheckbox
           style={{ paddingVertical: 5 }}
           size={25}
@@ -487,7 +340,7 @@ const SpecificData = ({ navigation }: Props) => {
             setCctv(!specificData.cctv);
           }}
         />
-        {/*  /   / Oficina /  / Terreno / Edificio / Casa en condo*/}
+        {/*  /   / Oficina /  / Terreno / Edificio / */}
         <BouncyCheckbox
           style={{ paddingVertical: 5 }}
           size={25}
@@ -503,23 +356,8 @@ const SpecificData = ({ navigation }: Props) => {
             setAlarm(!specificData.alarm);
           }}
         />
-        {/*  / Casa en condo*/}
-        <BouncyCheckbox
-          style={{ paddingVertical: 5 }}
-          size={25}
-          fillColor="#3F19F9"
-          unfillColor="#FFFFFF"
-          text="Concercejería"
-          iconStyle={{ borderColor: '#3F19F9' }}
-          textStyle={{
-            fontFamily: 'JosefinSans-Regular',
-            textDecorationLine: 'none',
-          }}
-          onPress={() => {
-            setJanitor(!specificData.janitor);
-          }}
-        />
-        {/*  / Local / Oficina /  / Terreno / Edificio / Casa en condo*/}
+
+        {/*  / Local / Oficina /  / Terreno / Edificio / */}
         <BouncyCheckbox
           style={{ paddingVertical: 5 }}
           size={25}
@@ -535,8 +373,12 @@ const SpecificData = ({ navigation }: Props) => {
             setSecurity247(!specificData.security247);
           }}
         />
+
+        {propertyType === aparment && propertyType === singleHouse ? (
+          <Text style={styles.subtitle}>Amenidades</Text>
+        ) : null}
         {propertyType === aparment ? <AmenidadesAparment /> : null}
-        {/* Condohouse */}
+        {propertyType === condoHouse ? <AmenidadesCondo /> : null}
 
         {propertyType !== terrain ? (
           <Text style={styles.subtitle}>Servicios</Text>
@@ -544,6 +386,7 @@ const SpecificData = ({ navigation }: Props) => {
         {propertyType === warehouse ? <ServicesWarehouse /> : null}
         {propertyType === aparment ? <ServicesAparment /> : null}
         {propertyType === singleHouse ? <ServicesHouse /> : null}
+        {propertyType === condoHouse ? <ServicesCondo /> : null}
 
         {/*  / Edificio*/}
         <BouncyCheckbox
@@ -561,7 +404,7 @@ const SpecificData = ({ navigation }: Props) => {
             setElevator(!specificData.elevator);
           }}
         />
-        {/*   /  / Local / Oficina /  / Edificio / Casa en condo*/}
+        {/*   /  / Local / Oficina /  / Edificio / */}
         <BouncyCheckbox
           style={{ paddingVertical: 5 }}
           size={25}
@@ -577,7 +420,7 @@ const SpecificData = ({ navigation }: Props) => {
             setAirConditioner(!specificData.airConditioner);
           }}
         />
-        {/*  / Local / Oficina /  / Casa en condo*/}
+        {/*  / Local / Oficina /  / */}
         <BouncyCheckbox
           style={{ paddingVertical: 5 }}
           size={25}
@@ -648,7 +491,7 @@ const SpecificData = ({ navigation }: Props) => {
           placeholder="Uso de suelo"
           placeholderTextColor="#ccc"
         />
-        {/*  / Local / Oficina /  / Casa en condo*/}
+        {/*  / Local / Oficina /  / */}
         {specificData.isMantainceIncluded ? (
           <TextInput
             style={appStyles.input}
@@ -657,6 +500,7 @@ const SpecificData = ({ navigation }: Props) => {
             placeholderTextColor="#ccc"
           />
         ) : null}
+
         {propertyType !== terrain ? (
           <>
             <Text style={styles.subtitle}>Tipo de gas</Text>
@@ -672,6 +516,7 @@ const SpecificData = ({ navigation }: Props) => {
             </View>
           </>
         ) : null}
+
         {propertyType !== terrain && propertyType !== warehouse ? (
           <BouncyCheckbox
             style={{ paddingVertical: 10 }}
@@ -690,59 +535,66 @@ const SpecificData = ({ navigation }: Props) => {
           />
         ) : null}
 
-        {/*  / Casa / Local / Oficina / Terreno / Edificio / Casa en condo*/}
+        {/*  / Casa / Local / Oficina / Terreno / Edificio / */}
         <View>
           <Text style={styles.subtitle}>Características de la zona</Text>
           {propertyType === warehouse ? <ZoneWarehouse /> : null}
-          {/* Local / Oficina*/}
-          <BouncyCheckbox
-            style={{ paddingVertical: 5 }}
-            size={25}
-            fillColor="#3F19F9"
-            unfillColor="#FFFFFF"
-            text="En centro comercial"
-            iconStyle={{ borderColor: '#3F19F9' }}
-            textStyle={{
-              fontFamily: 'JosefinSans-Regular',
-              textDecorationLine: 'none',
-            }}
-            onPress={() => {
-              setInsideMall(!specificData.insideMall);
-            }}
-          />
+
+          {propertyType === local && propertyType === office ? (
+            <BouncyCheckbox
+              style={{ paddingVertical: 5 }}
+              size={25}
+              fillColor="#3F19F9"
+              unfillColor="#FFFFFF"
+              text="En centro comercial"
+              iconStyle={{ borderColor: '#3F19F9' }}
+              textStyle={{
+                fontFamily: 'JosefinSans-Regular',
+                textDecorationLine: 'none',
+              }}
+              onPress={() => {
+                setInsideMall(!specificData.insideMall);
+              }}
+            />
+          ) : null}
 
           {/* Oficina */}
-          <BouncyCheckbox
-            style={{ paddingVertical: 5 }}
-            size={25}
-            fillColor="#3F19F9"
-            unfillColor="#FFFFFF"
-            text="En centro corporativo"
-            iconStyle={{ borderColor: '#3F19F9' }}
-            textStyle={{
-              fontFamily: 'JosefinSans-Regular',
-              textDecorationLine: 'none',
-            }}
-            onPress={() => {
-              setInsideCorp(!specificData.insideCorp);
-            }}
-          />
-          {/* Local */}
-          <BouncyCheckbox
-            style={{ paddingVertical: 5 }}
-            size={25}
-            fillColor="#3F19F9"
-            unfillColor="#FFFFFF"
-            text="A pie de calle"
-            iconStyle={{ borderColor: '#3F19F9' }}
-            textStyle={{
-              fontFamily: 'JosefinSans-Regular',
-              textDecorationLine: 'none',
-            }}
-            onPress={() => {
-              setOnstreet(!specificData.onstreet);
-            }}
-          />
+          {propertyType === office ? (
+            <BouncyCheckbox
+              style={{ paddingVertical: 5 }}
+              size={25}
+              fillColor="#3F19F9"
+              unfillColor="#FFFFFF"
+              text="En centro corporativo"
+              iconStyle={{ borderColor: '#3F19F9' }}
+              textStyle={{
+                fontFamily: 'JosefinSans-Regular',
+                textDecorationLine: 'none',
+              }}
+              onPress={() => {
+                setInsideCorp(!specificData.insideCorp);
+              }}
+            />
+          ) : null}
+
+          {propertyType === local ? (
+            <BouncyCheckbox
+              style={{ paddingVertical: 5 }}
+              size={25}
+              fillColor="#3F19F9"
+              unfillColor="#FFFFFF"
+              text="A pie de calle"
+              iconStyle={{ borderColor: '#3F19F9' }}
+              textStyle={{
+                fontFamily: 'JosefinSans-Regular',
+                textDecorationLine: 'none',
+              }}
+              onPress={() => {
+                setOnstreet(!specificData.onstreet);
+              }}
+            />
+          ) : null}
+
           {/* Departamento / Casa / Local / Oficina / Bodega / Terreno / Edificio / Casa en condo*/}
           <TextInput
             onChangeText={value => onChange(value, 'malls')}
@@ -815,6 +667,7 @@ const SpecificData = ({ navigation }: Props) => {
         {propertyType === aparment ? <AntiquityAparment /> : null}
         {propertyType === warehouse ? <AntiquityWarehouse /> : null}
         {propertyType === singleHouse ? <AntiquityHouse /> : null}
+
         <View>
           <Text style={styles.subtitle}>Antigüedad (años)</Text>
           <View style={appStyles.picker}>
