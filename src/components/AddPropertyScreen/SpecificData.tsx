@@ -78,6 +78,7 @@ import ServicesOffices from './office/ServicesOffices';
 import AntiquityLocal from './local/AntiquityLocal';
 import SecurityTerrain from './terrain/SecurityTerrain';
 import ServicesTerrain from './terrain/ServicesTerrain';
+import AntiquityCondo from './condoHouse/AntiquityCondo';
 
 interface Props
   extends StackScreenProps<
@@ -355,6 +356,7 @@ const SpecificData = ({ navigation }: Props) => {
         {propertyType === warehouse ? <AntiquityWarehouse /> : null}
         {propertyType === singleHouse ? <AntiquityHouse /> : null}
         {propertyType === local ? <AntiquityLocal /> : null}
+        {propertyType === condoHouse ? <AntiquityCondo /> : null}
 
         <View>
           <Text style={styles.subtitle}>Título del inmueble</Text>
