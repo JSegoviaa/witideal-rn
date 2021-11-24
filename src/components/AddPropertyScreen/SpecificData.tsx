@@ -17,12 +17,32 @@ import {
   regular,
   remodelar,
 } from '../../constant/propertyConvervation';
-import { exterior, interior } from '../../constant/locationBuilding';
 import { abierta, cerrada } from '../../constant/kitchen';
 import { lp, natural, noGas } from '../../constant/gasType';
 import { RootAddPropertyStackNavigation } from '../../navigation/AddPropertyStackNavigation';
 import { PropertyContext } from '../../context/property/PropertyContext';
 import urlTranslator from '../../helpers/urlTranslator';
+import {
+  aparment,
+  building,
+  condoHouse,
+  local,
+  office,
+  singleHouse,
+  terrain,
+  warehouse,
+} from '../../constant/propertyType';
+import CaracteristicasFisicasAp from './aparment/CaracteristicasFisicasAp';
+import CaracteristicasFisicasHouse from './singleHouse/CaracteristicasFisicasHouse';
+import CaracteristicasFisicasBuilding from './building/CaracteristicasFisicasBuilding';
+import CaracteristicasFisicasLocal from './local/CaracteristicasFisicasLocal';
+import CaracteristicasWarehouse from './warehouse/CaracteristicasWarehouse';
+import CaracteristicasTerrain from './terrain/CaracteristicasTerrain';
+import CaracteristicasCondo from './condoHouse/CaracteristicasCondo';
+import EspaciosWarehouse from './warehouse/EspaciosWarehouse';
+import SecurityWarehouse from './warehouse/SecurityWarehouse';
+import ServicesWarehouse from './warehouse/ServicesWarehouse';
+import ZoneWarehouse from './warehouse/ZoneWarehouse';
 
 interface Props
   extends StackScreenProps<
@@ -34,7 +54,6 @@ const SpecificData = ({ navigation }: Props) => {
   const {
     propertyType,
     onChange,
-    setLocationInBuilding,
     setPreservationState,
     setKitchen,
     setServiceRoom,
@@ -74,10 +93,8 @@ const SpecificData = ({ navigation }: Props) => {
     setInsideMall,
     setInsideCorp,
     setFireAlarm,
-    setInsideIndust,
     setElectricity,
     setWater,
-    setTrailerPlat,
     specificData,
   } = useContext(PropertyContext);
 
@@ -99,124 +116,20 @@ const SpecificData = ({ navigation }: Props) => {
         </View>
         <View>
           <Text style={styles.subtitle}>Características Físicas</Text>
-          {/* Departamento / Casa  / Local / Oficina / Bodega / Terreno / Edificio / Casa en condo */}
-          <TextInput
-            keyboardType="numeric"
-            onChangeText={value => onChange(value, 'm2Build')}
-            style={appStyles.input}
-            placeholder="M2 construidos"
-            placeholderTextColor="#ccc"
-          />
-          {/* Departamento / Casa en condo*/}
-          <TextInput
-            keyboardType="numeric"
-            onChangeText={value => onChange(value, 'totalUnits')}
-            style={appStyles.input}
-            placeholder="Total de unidades del conjunto"
-            placeholderTextColor="#ccc"
-          />
-          {/* Departamento / Edificio*/}
-          <TextInput
-            keyboardType="numeric"
-            onChangeText={value => onChange(value, 'totalBuildingFloors')}
-            style={appStyles.input}
-            placeholder="Niveles del edificio"
-            placeholderTextColor="#ccc"
-          />
-          {/* Casa  / Bodega / Terreno / Edificio / Casa en condo*/}
-          <TextInput
-            keyboardType="numeric"
-            onChangeText={value => onChange(value, 'm2Terrain')}
-            style={appStyles.input}
-            placeholder="M2 del terreno"
-            placeholderTextColor="#ccc"
-          />
-          {/* Casa  / Local / Oficina / Bodega / Casa en condo*/}
-          <TextInput
-            keyboardType="numeric"
-            onChangeText={value => onChange(value, 'floors')}
-            style={appStyles.input}
-            placeholder="Niveles construidos"
-            placeholderTextColor="#ccc"
-          />
-          {/* Departamento  */}
-          <TextInput
-            keyboardType="numeric"
-            onChangeText={value => onChange(value, 'floorNumber')}
-            style={appStyles.input}
-            placeholder="Nivel en el que se encuentra"
-            placeholderTextColor="#ccc"
-          />
-          {/* Bodega  */}
-          <TextInput
-            keyboardType="numeric"
-            onChangeText={value => onChange(value, 'floorNumber')}
-            style={appStyles.input}
-            placeholder="Metros de altura"
-            placeholderTextColor="#ccc"
-          />
-          {/* Bodega  */}
-          <TextInput
-            keyboardType="numeric"
-            onChangeText={value => onChange(value, 'floorNumber')}
-            style={appStyles.input}
-            placeholder="M2 Bodega"
-            placeholderTextColor="#ccc"
-          />
-          {/* Bodega  */}
-          <TextInput
-            keyboardType="numeric"
-            onChangeText={value => onChange(value, 'm2Office')}
-            style={appStyles.input}
-            placeholder="M2 Oficina"
-            placeholderTextColor="#ccc"
-          />
-          <TextInput
-            keyboardType="numeric"
-            onChangeText={value => onChange(value, 'm2Storage')}
-            style={appStyles.input}
-            placeholder="M2 Bodega"
-            placeholderTextColor="#ccc"
-          />
-          <TextInput
-            keyboardType="numeric"
-            onChangeText={value => onChange(value, 'mHeight')}
-            style={appStyles.input}
-            placeholder="Metros de altura"
-            placeholderTextColor="#ccc"
-          />
-          {/* Terreno  */}
-          <TextInput
-            keyboardType="numeric"
-            onChangeText={value => onChange(value, 'mDepth')}
-            style={appStyles.input}
-            placeholder="Metros de fondo"
-            placeholderTextColor="#ccc"
-          />
-          {/* Terreno  */}
-          <TextInput
-            keyboardType="numeric"
-            onChangeText={value => onChange(value, 'mFront')}
-            style={appStyles.input}
-            placeholder="Metros de frente"
-            placeholderTextColor="#ccc"
-          />
+          {propertyType === aparment ? <CaracteristicasFisicasAp /> : null}
+          {propertyType === singleHouse ? (
+            <CaracteristicasFisicasHouse />
+          ) : null}
+          {propertyType === building ? (
+            <CaracteristicasFisicasBuilding />
+          ) : null}
+          {propertyType === local ? <CaracteristicasFisicasLocal /> : null}
+          {propertyType === office ? <CaracteristicasFisicasLocal /> : null}
+          {propertyType === warehouse ? <CaracteristicasWarehouse /> : null}
+          {propertyType === terrain ? <CaracteristicasTerrain /> : null}
+          {propertyType === condoHouse ? <CaracteristicasCondo /> : null}
         </View>
-        {/* Departamento */}
-        <View>
-          <Text style={styles.subtitle}>Ubicación en edificio</Text>
-          <View style={appStyles.picker}>
-            <Picker
-              selectedValue={specificData.locationInBuilding}
-              style={{ color: '#000' }}
-              onValueChange={(itemValue, itemIndex) =>
-                setLocationInBuilding(itemValue)
-              }>
-              <Picker.Item label="Interior" value={interior} />
-              <Picker.Item label="Exterior" value={exterior} />
-            </Picker>
-          </View>
-        </View>
+
         {/* Departamento  / Casa / Local / Oficina / Bodega / Edificio / Casa en condo*/}
         <View>
           <Text style={styles.subtitle}>Estado de conservación</Text>
@@ -234,8 +147,10 @@ const SpecificData = ({ navigation }: Props) => {
             </Picker>
           </View>
         </View>
+
         <View>
           <Text style={styles.subtitle}>Espacios internos</Text>
+          {propertyType === warehouse ? <EspaciosWarehouse /> : null}
           {/* Departamento / Casa  / Casa en condo*/}
           <TextInput
             keyboardType="numeric"
@@ -244,7 +159,7 @@ const SpecificData = ({ navigation }: Props) => {
             placeholder="Recámaras"
             placeholderTextColor="#ccc"
           />
-          {/* Departamento / Casa / Local / Bodega / Edificio / Casa en condo*/}
+          {/* Departamento / Casa / Local /  / Edificio / Casa en condo*/}
           <TextInput
             keyboardType="numeric"
             onChangeText={value => onChange(value, 'bath')}
@@ -252,7 +167,7 @@ const SpecificData = ({ navigation }: Props) => {
             placeholder="Baños completos"
             placeholderTextColor="#ccc"
           />
-          {/* Departamento / Casa / Local / Oficina / Bodega / Edificio / Casa en condo*/}
+          {/* Departamento / Casa / Local / Oficina /  / Edificio / Casa en condo*/}
           <TextInput
             keyboardType="numeric"
             onChangeText={value => onChange(value, 'halfBath')}
@@ -260,7 +175,7 @@ const SpecificData = ({ navigation }: Props) => {
             placeholder="Medio baño"
             placeholderTextColor="#ccc"
           />
-          {/* Departamento / Casa / Local / Oficina / Bodega / Edificio / Casa en condo*/}
+          {/* Departamento / Casa / Local / Oficina /  / Edificio / Casa en condo*/}
           <TextInput
             keyboardType="numeric"
             onChangeText={value => onChange(value, 'parkingSlots')}
@@ -494,7 +409,8 @@ const SpecificData = ({ navigation }: Props) => {
         </View>
         {/* Departamento  / Casa / Local / Oficina / Bodega / Terreno / Edificio / Casa en condo*/}
         <Text style={styles.subtitle}>Seguridad</Text>
-        {/* Departamento / Casa / Local / Oficina / Bodega / Terreno / Edificio / Casa en condo*/}
+        {propertyType === warehouse ? <SecurityWarehouse /> : null}
+        {/* Departamento / Casa / Local / Oficina /  / Terreno / Edificio / Casa en condo*/}
         <BouncyCheckbox
           style={{ paddingVertical: 5 }}
           size={25}
@@ -510,7 +426,7 @@ const SpecificData = ({ navigation }: Props) => {
             setWireFence(!specificData.wireFence);
           }}
         />
-        {/* Departamento / Casa / Local / Oficina / Bodega / Terreno / Edificio / Casa en condo*/}
+        {/* Departamento / Casa / Local / Oficina /  / Terreno / Edificio / Casa en condo*/}
         <BouncyCheckbox
           style={{ paddingVertical: 5 }}
           size={25}
@@ -526,7 +442,7 @@ const SpecificData = ({ navigation }: Props) => {
             setElectricFence(!specificData.electricFence);
           }}
         />
-        {/* Bodega  / Edificio*/}
+        {/*   / Edificio*/}
         <BouncyCheckbox
           style={{ paddingVertical: 5 }}
           size={25}
@@ -542,7 +458,7 @@ const SpecificData = ({ navigation }: Props) => {
             setFireAlarm(!specificData.fireAlarm);
           }}
         />
-        {/* Departamento / Casa / Local / Oficina / Bodega / Terreno / Edificio / Casa en condo*/}
+        {/* Departamento / Casa / Local / Oficina /  / Terreno / Edificio / Casa en condo*/}
         <BouncyCheckbox
           style={{ paddingVertical: 5 }}
           size={25}
@@ -558,7 +474,7 @@ const SpecificData = ({ navigation }: Props) => {
             setClosedStreet(!specificData.closedStreet);
           }}
         />
-        {/* Departamento / Casa / Local / Oficina / Bodega / Terreno / Edificio / Casa en condo*/}
+        {/* Departamento / Casa / Local / Oficina /  / Terreno / Edificio / Casa en condo*/}
         <BouncyCheckbox
           style={{ paddingVertical: 5 }}
           size={25}
@@ -574,7 +490,7 @@ const SpecificData = ({ navigation }: Props) => {
             setCctv(!specificData.cctv);
           }}
         />
-        {/* Departamento / Casa  / Oficina / Bodega / Terreno / Edificio / Casa en condo*/}
+        {/* Departamento / Casa  / Oficina /  / Terreno / Edificio / Casa en condo*/}
         <BouncyCheckbox
           style={{ paddingVertical: 5 }}
           size={25}
@@ -606,7 +522,8 @@ const SpecificData = ({ navigation }: Props) => {
             setJanitor(!specificData.janitor);
           }}
         />
-        {/* Departamento / Local / Oficina / Bodega / Terreno / Edificio / Casa en condo*/}
+        {/* Departamento / Local / Oficina /  / Terreno / Edificio / Casa en condo*/}
+
         <BouncyCheckbox
           style={{ paddingVertical: 5 }}
           size={25}
@@ -745,6 +662,8 @@ const SpecificData = ({ navigation }: Props) => {
         />
         {/* Departamento  / Casa / Local / Oficina / Bodega / Edificio / Casa en condo*/}
         <Text style={styles.subtitle}>Servicios</Text>
+        {propertyType === warehouse ? <ServicesWarehouse /> : null}
+
         {/* Departamento / Edificio*/}
         <BouncyCheckbox
           style={{ paddingVertical: 5 }}
@@ -761,23 +680,8 @@ const SpecificData = ({ navigation }: Props) => {
             setElevator(!specificData.elevator);
           }}
         />
-        {/* Bodega  */}
-        <BouncyCheckbox
-          style={{ paddingVertical: 5 }}
-          size={25}
-          fillColor="#3F19F9"
-          unfillColor="#FFFFFF"
-          text="Andén para triáler"
-          iconStyle={{ borderColor: '#3F19F9' }}
-          textStyle={{
-            fontFamily: 'JosefinSans-Regular',
-            textDecorationLine: 'none',
-          }}
-          onPress={() => {
-            setTrailerPlat(!specificData.trailerPlat);
-          }}
-        />
-        {/* Departamento  / Casa / Local / Oficina / Bodega / Edificio / Casa en condo*/}
+
+        {/* Departamento  / Casa / Local / Oficina /  / Edificio / Casa en condo*/}
         <BouncyCheckbox
           style={{ paddingVertical: 5 }}
           size={25}
@@ -793,7 +697,7 @@ const SpecificData = ({ navigation }: Props) => {
             setAirConditioner(!specificData.airConditioner);
           }}
         />
-        {/* Departamento / Local / Oficina / Bodega / Casa en condo*/}
+        {/* Departamento / Local / Oficina /  / Casa en condo*/}
         <BouncyCheckbox
           style={{ paddingVertical: 5 }}
           size={25}
@@ -809,7 +713,7 @@ const SpecificData = ({ navigation }: Props) => {
             setIsMantainceIncluded(!specificData.isMantainceIncluded);
           }}
         />
-        {/* Bodega / Edificio */}
+        {/*  / Edificio */}
         <BouncyCheckbox
           style={{ paddingVertical: 5 }}
           size={25}
@@ -825,7 +729,7 @@ const SpecificData = ({ navigation }: Props) => {
             setCistern(!specificData.cistern);
           }}
         />
-        {/* Bodega  / Terreno*/}
+        {/*   / Terreno*/}
         <BouncyCheckbox
           style={{ paddingVertical: 5 }}
           size={25}
@@ -841,7 +745,7 @@ const SpecificData = ({ navigation }: Props) => {
             setElectricity(!specificData.electricity);
           }}
         />
-        {/* Bodega / Terreno*/}
+        {/*  / Terreno*/}
         <BouncyCheckbox
           style={{ paddingVertical: 5 }}
           size={25}
@@ -864,7 +768,7 @@ const SpecificData = ({ navigation }: Props) => {
           placeholder="Uso de suelo"
           placeholderTextColor="#ccc"
         />
-        {/* Departamento / Local / Oficina / Bodega / Casa en condo*/}
+        {/* Departamento / Local / Oficina /  / Casa en condo*/}
         {specificData.isMantainceIncluded ? (
           <TextInput
             style={appStyles.input}
@@ -874,17 +778,22 @@ const SpecificData = ({ navigation }: Props) => {
           />
         ) : null}
         {/* Departamento / Casa  / Local / Oficina / Bodega / Edificio / Casa en condo*/}
-        <Text style={styles.subtitle}>Tipo de gas</Text>
-        <View style={appStyles.picker}>
-          <Picker
-            selectedValue={specificData.gasType}
-            style={{ color: '#000' }}
-            onValueChange={(itemValue, itemIndex) => setGasType(itemValue)}>
-            <Picker.Item label="LP" value={lp} />
-            <Picker.Item label="Natural" value={natural} />
-            <Picker.Item label="No instalado" value={noGas} />
-          </Picker>
-        </View>
+        {propertyType !== terrain ? (
+          <>
+            <Text style={styles.subtitle}>Tipo de gas</Text>
+            <View style={appStyles.picker}>
+              <Picker
+                selectedValue={specificData.gasType}
+                style={{ color: '#000' }}
+                onValueChange={(itemValue, itemIndex) => setGasType(itemValue)}>
+                <Picker.Item label="LP" value={lp} />
+                <Picker.Item label="Natural" value={natural} />
+                <Picker.Item label="No instalado" value={noGas} />
+              </Picker>
+            </View>
+          </>
+        ) : null}
+
         {/* Departamento  / Casa / Local / Oficina / Edificio / Casa en condo*/}
         <BouncyCheckbox
           style={{ paddingVertical: 10 }}
@@ -904,6 +813,7 @@ const SpecificData = ({ navigation }: Props) => {
         {/* Departamento / Casa / Local / Oficina / Terreno / Edificio / Casa en condo*/}
         <View>
           <Text style={styles.subtitle}>Características de la zona</Text>
+          {propertyType === warehouse ? <ZoneWarehouse /> : null}
           {/* Local / Oficina*/}
           <BouncyCheckbox
             style={{ paddingVertical: 5 }}
@@ -920,22 +830,7 @@ const SpecificData = ({ navigation }: Props) => {
               setInsideMall(!specificData.insideMall);
             }}
           />
-          {/* Bodega  */}
-          <BouncyCheckbox
-            style={{ paddingVertical: 5 }}
-            size={25}
-            fillColor="#3F19F9"
-            unfillColor="#FFFFFF"
-            text="En parque industrial"
-            iconStyle={{ borderColor: '#3F19F9' }}
-            textStyle={{
-              fontFamily: 'JosefinSans-Regular',
-              textDecorationLine: 'none',
-            }}
-            onPress={() => {
-              setInsideIndust(!specificData.insideIndust);
-            }}
-          />
+
           {/* Oficina */}
           <BouncyCheckbox
             style={{ paddingVertical: 5 }}
@@ -1026,15 +921,18 @@ const SpecificData = ({ navigation }: Props) => {
           />
         </View>
         {/* Departamento / Casa / Local / Oficina / Bodega / Edificio / Casa en condo*/}
-        <View>
-          <Text style={styles.subtitle}>Tiempo</Text>
-          <TextInput
-            style={appStyles.input}
-            onChangeText={value => onChange(value, 'deliverydate')}
-            placeholder="Fecha de entrega"
-            placeholderTextColor="#ccc"
-          />
-        </View>
+        {propertyType !== terrain ? (
+          <>
+            <Text style={styles.subtitle}>Tiempo</Text>
+            <TextInput
+              style={appStyles.input}
+              onChangeText={value => onChange(value, 'deliverydate')}
+              placeholder="Fecha de entrega"
+              placeholderTextColor="#ccc"
+            />
+          </>
+        ) : null}
+
         {/* Departamento / Casa / Local / Bodega*/}
         <View>
           <Text style={styles.subtitle}>Antigüedad (años)</Text>
@@ -1050,7 +948,7 @@ const SpecificData = ({ navigation }: Props) => {
             </Picker>
           </View>
         </View>
-        {/* Departamento / Casa / Local*/}
+
         <View>
           <Text style={styles.subtitle}>Título del inmueble</Text>
           <TextInput
