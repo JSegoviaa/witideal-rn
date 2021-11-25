@@ -6,6 +6,7 @@ import Ubicacion from '../components/AddPropertyScreen/Ubicacion';
 import SpecificData from '../components/AddPropertyScreen/SpecificData';
 import UploadPropertyPictures from '../components/AddPropertyScreen/UploadPropertyPictures';
 import Summary from '../components/AddPropertyScreen/Summary';
+import Finish from '../components/AddPropertyScreen/Finish';
 
 export type RootAddPropertyStackNavigation = {
   PropertyTypeScreen: undefined;
@@ -14,6 +15,7 @@ export type RootAddPropertyStackNavigation = {
   SpecificDataScreen: undefined;
   UploadPropertyPicTureScreen: undefined;
   SummaryScreen: undefined;
+  FinishScreen: undefined;
 };
 
 const Stack = createStackNavigator<RootAddPropertyStackNavigation>();
@@ -71,6 +73,11 @@ const AddPropertyStackNavigation = () => {
           headerTitleStyle: { color: '#1E0e6F', fontSize: 24 },
         }}
         component={Summary}
+      />
+      <Stack.Screen
+        name="FinishScreen"
+        options={{ headerShown: false }}
+        component={Finish}
       />
     </Stack.Navigator>
   );

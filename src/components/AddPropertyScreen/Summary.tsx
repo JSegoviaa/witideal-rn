@@ -13,16 +13,16 @@ import { StackScreenProps } from '@react-navigation/stack';
 import { PropertyContext } from '../../context/property/PropertyContext';
 import { currencyFormat } from '../../helpers/currencyFormat';
 import urlTranslator from '../../helpers/urlTranslator';
-import { RootTabsNavigation } from '../../navigation/TabsNavigation';
 import { appStyles } from '../../theme/appTheme';
+import { RootAddPropertyStackNavigation } from '../../navigation/AddPropertyStackNavigation';
 
 interface Props
-  extends StackScreenProps<RootTabsNavigation, 'MyPropertiesScreenStack'> {}
+  extends StackScreenProps<RootAddPropertyStackNavigation, 'SummaryScreen'> {}
 
 const Summary = ({ navigation }: Props) => {
   const handleConfirm = () => {
-    uploadProperty();
-    navigation.popToTop();
+    // uploadProperty();
+    navigation.push('FinishScreen');
   };
 
   const {
@@ -721,7 +721,9 @@ const Summary = ({ navigation }: Props) => {
         <Text style={styles.text}>Latitud: {coordinates.latitude}</Text>
         <Text style={styles.text}>Longitud: {coordinates.longitude}</Text>
         <View style={{ alignSelf: 'center' }}>
-          <TouchableOpacity style={appStyles.btnPrimary}>
+          <TouchableOpacity
+            onPress={handleConfirm}
+            style={appStyles.btnPrimary}>
             <Text style={styles.textBtn}>Confirmar</Text>
           </TouchableOpacity>
         </View>
