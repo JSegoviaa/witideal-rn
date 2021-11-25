@@ -6,6 +6,7 @@ import { appStyles } from '../../../theme/appTheme';
 
 const AntiquityHouse = () => {
   const { specificData, setAntiquity } = useContext(PropertyContext);
+  console.log(specificData.antiquity, 'asdf');
 
   return (
     <>

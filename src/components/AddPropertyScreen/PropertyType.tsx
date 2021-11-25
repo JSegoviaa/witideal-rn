@@ -231,6 +231,7 @@ const PropertyType = ({ navigation }: Props) => {
 
           <View style={{ paddingVertical: 9 }}>
             <BouncyCheckbox
+              isChecked={sharesCom}
               size={25}
               fillColor="#3F19F9"
               unfillColor="#FFFFFF"

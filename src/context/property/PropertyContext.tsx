@@ -95,12 +95,12 @@ const PropertyProvider: FC = ({ children }) => {
     totalUnits,
   } = form;
 
-  const [antiquity, setAntiquity] = useState('');
+  const [antiquity, setAntiquity] = useState('0-5');
   const [currency, setCurrency] = useState(mxn);
   const [propertyType, setPropertyType] = useState(singleHouse);
   const [actionSelected, setActionSelected] = useState(false);
-  const [sharesCom, setSharesCom] = useState<boolean | undefined>(undefined);
-  const [bankSale, setBankSale] = useState<boolean | undefined>(undefined);
+  const [sharesCom, setSharesCom] = useState<boolean | undefined>(true);
+  const [bankSale, setBankSale] = useState<boolean | undefined>(false);
   const [isCommercial, setIsCommercial] = useState(false);
   const [propertyTypeSelected, setPropertyTypeSelected] = useState(false);
   const [action, setAction] = useState(rent);
@@ -112,7 +112,7 @@ const PropertyProvider: FC = ({ children }) => {
     useState('');
   const [country, setCountry] = useState('');
   const [locality, setLocality] = useState('');
-  const [isExactLoaction, setIsExactLoaction] = useState(false);
+  const [isExactLoaction, setIsExactLoaction] = useState(true);
 
   const [locationInBuilding, setLocationInBuilding] = useState(interior);
   const [preservationState, setPreservationState] = useState(excelente);
@@ -313,6 +313,10 @@ const PropertyProvider: FC = ({ children }) => {
     tempUri,
     fileName,
     specificData,
+    uId: user?.uid,
+    isEnabled: true,
+    isActive: true,
+    uploadDate: new Date(),
   };
 
   return (

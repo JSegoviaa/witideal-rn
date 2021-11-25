@@ -89,6 +89,7 @@ const Ubicacion = ({ navigation }: Props) => {
         <View style={{ paddingVertical: 9 }}>
           <BouncyCheckbox
             size={25}
+            isChecked={isExactLoaction}
             fillColor="#3F19F9"
             unfillColor="#FFFFFF"
             text="Ubicación exacta"
@@ -126,6 +127,7 @@ const Ubicacion = ({ navigation }: Props) => {
             />
             <TextInput
               placeholder="Código postal"
+              keyboardType="numeric"
               style={styles.input}
               onChangeText={value => onChange(value, 'postal_code')}
             />
