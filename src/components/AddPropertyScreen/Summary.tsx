@@ -9,12 +9,22 @@ import {
   View,
 } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
+import { StackScreenProps } from '@react-navigation/stack';
 import { PropertyContext } from '../../context/property/PropertyContext';
 import { currencyFormat } from '../../helpers/currencyFormat';
 import urlTranslator from '../../helpers/urlTranslator';
+import { RootTabsNavigation } from '../../navigation/TabsNavigation';
 import { appStyles } from '../../theme/appTheme';
 
-const Summary = () => {
+interface Props
+  extends StackScreenProps<RootTabsNavigation, 'MyPropertiesScreenStack'> {}
+
+const Summary = ({ navigation }: Props) => {
+  const handleConfirm = () => {
+    uploadProperty();
+    navigation.popToTop();
+  };
+
   const {
     price,
     currency,
@@ -33,6 +43,7 @@ const Summary = () => {
   } = useContext(PropertyContext);
 
   const { width } = useWindowDimensions();
+
   return (
     <ScrollView>
       <View style={appStyles.container}>
@@ -710,9 +721,7 @@ const Summary = () => {
         <Text style={styles.text}>Latitud: {coordinates.latitude}</Text>
         <Text style={styles.text}>Longitud: {coordinates.longitude}</Text>
         <View style={{ alignSelf: 'center' }}>
-          <TouchableOpacity
-            onPress={uploadProperty}
-            style={appStyles.btnPrimary}>
+          <TouchableOpacity style={appStyles.btnPrimary}>
             <Text style={styles.textBtn}>Confirmar</Text>
           </TouchableOpacity>
         </View>

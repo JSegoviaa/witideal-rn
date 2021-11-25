@@ -95,6 +95,8 @@ const PropertyProvider: FC = ({ children }) => {
     totalUnits,
   } = form;
 
+  const [uploadingProperty, setUploadingProperty] = useState(false);
+
   const [antiquity, setAntiquity] = useState('0-5');
   const [currency, setCurrency] = useState(mxn);
   const [propertyType, setPropertyType] = useState(singleHouse);
@@ -188,20 +190,17 @@ const PropertyProvider: FC = ({ children }) => {
   const [tempUri, setTempUri] = useState<string>('');
   const [fileName, setFileName] = useState<string | undefined>('');
 
-  const uploadPicture = () => {
+  const uploadPicture = async () => {
     console.log('Se subió una imagen');
   };
 
-  const uploadPictures = () => {
+  const uploadPictures = async () => {
     console.log('Se subieron muchas imágenes');
   };
 
-  const uploadProperty = () => {
-    uploadPicture();
-    uploadPictures();
-    firestore().settings({ ignoreUndefinedProperties: true });
+  const uploadToUserInfo = async () => {
     try {
-      firestore()
+      await firestore()
         .collection('production')
         .doc('Users')
         .collection(user?.uid!)
@@ -211,6 +210,32 @@ const PropertyProvider: FC = ({ children }) => {
     } catch (error) {
       console.log(error);
     }
+  };
+
+  const uploadToAllProperties = async () => {
+    try {
+      await firestore()
+        .collection('production')
+        .doc('witideal')
+        .collection('genders')
+        .doc(propertyType)
+        .collection(action)
+        .add(property);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const uploadProperty = () => {
+    setUploadingProperty(true);
+    //Esto sube las imágenes
+    uploadPicture();
+    uploadPictures();
+
+    firestore().settings({ ignoreUndefinedProperties: true });
+    //Esto sube el inmueble
+    uploadToUserInfo();
+    setUploadingProperty(false);
   };
 
   const specificData = {
@@ -316,12 +341,14 @@ const PropertyProvider: FC = ({ children }) => {
     uId: user?.uid,
     isEnabled: true,
     isActive: true,
+    isDestProperty: false,
     uploadDate: new Date(),
   };
 
   return (
     <PropertyContext.Provider
       value={{
+        uploadingProperty,
         price,
         street_number,
         route,

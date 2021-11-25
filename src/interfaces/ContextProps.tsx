@@ -117,6 +117,7 @@ interface SpecificData {
 }
 
 export interface ContextProps {
+  uploadingProperty: boolean;
   price: string;
   street_number: string | undefined;
   int_number: string | undefined;
