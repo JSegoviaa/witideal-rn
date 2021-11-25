@@ -16,7 +16,7 @@ import { appStyles } from '../../theme/appTheme';
 
 const Summary = () => {
   const {
-    precio,
+    price,
     currency,
     propertyType,
     action,
@@ -50,7 +50,7 @@ const Summary = () => {
         </View>
         <Text style={styles.text}>El costo del inmueble es:</Text>
         <Text style={styles.title}>
-          {currencyFormat(parseInt(precio))} {currency}
+          {currencyFormat(parseInt(price))} {currency}
         </Text>
         <Text style={styles.text}>{urlTranslator(propertyType)}</Text>
         <Text style={styles.text}>{urlTranslator(action)} </Text>

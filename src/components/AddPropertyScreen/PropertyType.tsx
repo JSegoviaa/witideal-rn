@@ -107,7 +107,7 @@ const PropertyType = ({ navigation }: Props) => {
               <TouchableOpacity
                 style={styles.btnNoActive}
                 onPress={handleActionTypeSelected}>
-                <Text style={styles.textNoActive}>Comprar</Text>
+                <Text style={styles.textNoActive}>Vender</Text>
               </TouchableOpacity>
             </View>
           ) : (
@@ -118,7 +118,7 @@ const PropertyType = ({ navigation }: Props) => {
                 <Text style={styles.textNoActive}>Rentar</Text>
               </TouchableOpacity>
               <TouchableOpacity style={styles.btnActivate}>
-                <Text style={styles.textActive}>Comprar</Text>
+                <Text style={styles.textActive}>Vender</Text>
               </TouchableOpacity>
             </View>
           )}
