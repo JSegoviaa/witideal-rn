@@ -21,7 +21,7 @@ const PropertyProvider: FC = ({ children }) => {
     price: '',
     antiquity: undefined,
     int_number: undefined,
-    ext_number: undefined,
+    street_number: undefined,
     postal_code: undefined,
     route: undefined,
     banks: undefined,
@@ -58,7 +58,7 @@ const PropertyProvider: FC = ({ children }) => {
   });
   const {
     price,
-    ext_number,
+    street_number,
     int_number,
     postal_code,
     route,
@@ -301,7 +301,7 @@ const PropertyProvider: FC = ({ children }) => {
     price: parseInt(price),
     country,
     currency,
-    ext_number,
+    street_number,
     int_number,
     isCommercial,
     isExactLoaction,
@@ -323,7 +323,7 @@ const PropertyProvider: FC = ({ children }) => {
     <PropertyContext.Provider
       value={{
         price,
-        ext_number,
+        street_number,
         route,
         postal_code,
         int_number,

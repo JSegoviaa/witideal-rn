@@ -6,7 +6,7 @@ type onChangeValues =
   | 'route'
   | 'postal_code'
   | 'int_number'
-  | 'ext_number'
+  | 'street_number'
   | 'banks'
   | 'bath'
   | 'deliverydate'
@@ -118,7 +118,7 @@ interface SpecificData {
 
 export interface ContextProps {
   price: string;
-  ext_number: string | undefined;
+  street_number: string | undefined;
   int_number: string | undefined;
   postal_code: string | undefined;
   route: string | undefined;

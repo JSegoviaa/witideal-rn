@@ -24,7 +24,7 @@ const Summary = () => {
     administrative_area_level_1,
     locality,
     route,
-    ext_number,
+    street_number,
     int_number,
     postal_code,
     specificData,
@@ -702,7 +702,8 @@ const Summary = () => {
         <Text style={styles.subtitle}>Ubicación</Text>
         <Text style={styles.text}>
           {locality}, {administrative_area_level_1}, C. {route ? route : null}{' '}
-          {ext_number ? ext_number : null} {int_number ? int_number : null} , CP{' '}
+          {street_number ? street_number : null}{' '}
+          {int_number ? int_number : null} , CP{' '}
           {postal_code ? postal_code : null}
         </Text>
         <Text style={styles.subtitle}>Coordenadas</Text>

@@ -116,7 +116,7 @@ const Ubicacion = ({ navigation }: Props) => {
               keyboardType="numeric"
               placeholderTextColor="#ccc"
               style={styles.input}
-              onChangeText={value => onChange(value, 'ext_number')}
+              onChangeText={value => onChange(value, 'street_number')}
             />
             <TextInput
               placeholder="Número interior"
