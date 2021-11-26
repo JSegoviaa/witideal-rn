@@ -115,8 +115,8 @@ const SearchScreen = ({ navigation }: Props) => {
         locality,
         bath,
         room,
-        petFriendly,
-        conservacion,
+        // petFriendly,
+        // conservacion,
         desde,
         hasta,
       });
@@ -364,7 +364,7 @@ const SearchScreen = ({ navigation }: Props) => {
                     keyboardType="numeric"
                     onChangeText={value => onChange(value, 'bath')}
                   />
-                  <Text style={styles.subtitle}>Pet Friendly</Text>
+                  {/* <Text style={styles.subtitle}>Pet Friendly</Text>
                   <View style={styles.picker}>
                     <Picker
                       selectedValue={petFriendly}
@@ -391,7 +391,7 @@ const SearchScreen = ({ navigation }: Props) => {
                       <Picker.Item label="Regular" value={regular} />
                       <Picker.Item label="Remodelar" value={remodelar} />
                     </Picker>
-                  </View>
+                  </View> */}
                 </View>
               </View>
             )}

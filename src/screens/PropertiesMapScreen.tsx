@@ -32,8 +32,8 @@ const PropertiesMapScreen = ({ navigation, route }: Props) => {
     locality,
     bath,
     room,
-    petFriendly,
-    conservacion,
+    // petFriendly,
+    // conservacion,
     desde,
     hasta,
   } = route.params;
@@ -46,8 +46,8 @@ const PropertiesMapScreen = ({ navigation, route }: Props) => {
     locality,
     bath,
     room,
-    petFriendly,
-    conservacion,
+    // petFriendly,
+    // conservacion,
   );
   const [selectedPlaceId, setSelectedPlaceId] = useState('');
   const width = useWindowDimensions().width;

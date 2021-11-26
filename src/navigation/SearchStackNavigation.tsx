@@ -18,8 +18,8 @@ interface PropertiesMap {
   locality: string;
   bath: number;
   room: number;
-  petFriendly: boolean;
-  conservacion: string;
+  // petFriendly: boolean;
+  // conservacion: string;
   desde: number;
   hasta: number;
 }
