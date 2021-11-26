@@ -189,6 +189,8 @@ const PropertyProvider: FC = ({ children }) => {
   );
   const [tempUri, setTempUri] = useState<string>('');
   const [fileName, setFileName] = useState<string | undefined>('');
+  const [tempUris, setTempUris] = useState<any>();
+  const [fileNames, setFileNames] = useState<any>();
 
   const uploadPicture = async () => {
     console.log('Se subió una imagen');
@@ -337,7 +339,7 @@ const PropertyProvider: FC = ({ children }) => {
     sharesCom,
     specificData,
     principalPhotoPath: tempUri,
-    photos: { extras: [tempUri, tempUri, tempUri] },
+    photos: { extras: tempUris },
     uId: user?.uid,
     isEnabled: true,
     isActive: true,
@@ -431,6 +433,10 @@ const PropertyProvider: FC = ({ children }) => {
         setFileName,
         specificData,
         uploadProperty,
+        tempUris,
+        fileNames,
+        setTempUris,
+        setFileNames,
       }}>
       {children}
     </PropertyContext.Provider>

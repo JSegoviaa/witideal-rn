@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { launchImageLibrary } from 'react-native-image-picker';
 import { StackScreenProps } from '@react-navigation/stack';
@@ -11,7 +11,14 @@ interface Props
   extends StackScreenProps<RootAddPropertyStackNavigation, 'SummaryScreen'> {}
 
 const UploadPropertyPictures = ({ navigation }: Props) => {
-  const { tempUri, setTempUri, setFileName } = useContext(PropertyContext);
+  const {
+    tempUri,
+    setTempUri,
+    setFileName,
+    tempUris,
+    setTempUris,
+    setFileNames,
+  } = useContext(PropertyContext);
 
   const takePhotoFromGallery = () => {
     launchImageLibrary(
@@ -32,14 +39,21 @@ const UploadPropertyPictures = ({ navigation }: Props) => {
     launchImageLibrary(
       {
         mediaType: 'photo',
-        quality: 0.5,
+        quality: 1,
         selectionLimit: 30,
       },
       resp => {
         if (resp.didCancel) return;
         if (!resp.assets![0].uri) return;
-        setTempUri(resp.assets![0].uri);
-        setFileName(resp.assets![0].fileName!);
+        if (resp.assets!.length > 30) {
+          Toast.show({
+            type: 'error',
+            text1: 'Seleecionaste más de 30 imágenes',
+            text2: 'Inténtelo nuevamente',
+          });
+        }
+        setTempUris(resp.assets?.map(asset => asset.uri));
+        setFileNames(resp.assets?.map(asset => asset.fileName));
       },
     );
   };
@@ -79,23 +93,30 @@ const UploadPropertyPictures = ({ navigation }: Props) => {
           <Text style={styles.subtitle}>
             Selcciona las fotos que quieres mostrar en tu inmueble
           </Text>
-          <Text style={styles.text}>Máximo 30 fotos</Text>
-        </TouchableOpacity>
-      </View>
-
-      <View style={{ alignItems: 'center' }}>
-        <TouchableOpacity onPress={handleNext} style={appStyles.btnPrimary}>
-          <Text
-            style={{
-              color: '#fff',
-              fontSize: 17,
-              fontWeight: '700',
-              textAlign: 'center',
-            }}>
-            Continuar
+          <Text style={styles.text}>
+            Máximo 30 fotos.
+            {tempUris?.length! <= 30
+              ? ` Haz seleccionado ${tempUris?.length}`
+              : null}
           </Text>
         </TouchableOpacity>
       </View>
+
+      {tempUris?.length! <= 30 ? (
+        <View style={{ alignItems: 'center' }}>
+          <TouchableOpacity onPress={handleNext} style={appStyles.btnPrimary}>
+            <Text
+              style={{
+                color: '#fff',
+                fontSize: 17,
+                fontWeight: '700',
+                textAlign: 'center',
+              }}>
+              Continuar
+            </Text>
+          </TouchableOpacity>
+        </View>
+      ) : null}
     </View>
   );
 };

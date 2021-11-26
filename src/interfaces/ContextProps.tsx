@@ -198,6 +198,10 @@ export interface ContextProps {
   setTempUri: Dispatch<SetStateAction<string>>;
   fileName: string | undefined;
   setFileName: Dispatch<SetStateAction<string | undefined>>;
+  tempUris: (string | undefined)[] | undefined;
+  fileNames: (string | undefined)[] | undefined;
+  setTempUris: any;
+  setFileNames: any;
   uploadProperty: () => void;
   specificData: SpecificData;
 }
