@@ -21,7 +21,7 @@ interface Props
 
 const Summary = ({ navigation }: Props) => {
   const handleConfirm = () => {
-    // uploadProperty();
+    uploadProperty();
     navigation.push('FinishScreen');
   };
 

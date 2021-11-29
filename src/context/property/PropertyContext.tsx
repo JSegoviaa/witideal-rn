@@ -17,7 +17,7 @@ export const PropertyContext = createContext({} as ContextProps);
 const PropertyProvider: FC = ({ children }) => {
   const { user } = useContext(AuthContext);
 
-  const { form, onChange } = useForm({
+  const { form, onChange, setFormValue } = useForm({
     price: '',
     antiquity: undefined,
     int_number: undefined,
@@ -94,7 +94,6 @@ const PropertyProvider: FC = ({ children }) => {
     totalBuildingFloors,
     totalUnits,
   } = form;
-
   const [uploadingProperty, setUploadingProperty] = useState(false);
 
   const [antiquity, setAntiquity] = useState('0-5');
@@ -255,6 +254,45 @@ const PropertyProvider: FC = ({ children }) => {
     setTempUris([]);
     setFileNames([]);
     setCoordinates({ latitude: 0, longitude: 0 });
+    setFormValue({
+      price: '',
+      antiquity: undefined,
+      int_number: undefined,
+      street_number: undefined,
+      postal_code: undefined,
+      route: undefined,
+      banks: undefined,
+      bath: undefined,
+      deliverydate: undefined,
+      extras: undefined,
+      floorNumber: undefined,
+      floors: undefined,
+      halfBath: undefined,
+      hospitals: undefined,
+      landUseCode: undefined,
+      m2Build: undefined,
+      m2Office: undefined,
+      m2Storage: undefined,
+      m2Terrain: undefined,
+      mainavs: undefined,
+      malls: undefined,
+      mantainance: undefined,
+      mDepth: undefined,
+      mFront: undefined,
+      metrobus: undefined,
+      numDepBuilding: undefined,
+      mHeight: undefined,
+      parkingSlots: undefined,
+      privateOffice: undefined,
+      propertyDescription: undefined,
+      propertyTitle: undefined,
+      room: undefined,
+      schools: undefined,
+      shops: undefined,
+      subway: undefined,
+      totalBuildingFloors: undefined,
+      totalUnits: undefined,
+    });
 
     console.log('Aquí se limpia el state');
   };
