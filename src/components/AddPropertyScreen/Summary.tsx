@@ -55,8 +55,9 @@ const Summary = ({ navigation }: Props) => {
 
         <View style={{ paddingVertical: 30 }}>
           <Image
+            resizeMode="contain"
             source={{ uri: tempUri }}
-            style={{ width: width * 0.9, height: 250 }}
+            style={{ width: width * 0.9, height: 250, borderRadius: 5 }}
           />
         </View>
         <Text style={styles.text}>El costo del inmueble es:</Text>

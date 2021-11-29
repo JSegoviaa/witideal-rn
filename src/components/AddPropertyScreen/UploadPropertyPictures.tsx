@@ -1,6 +1,5 @@
 import React, { useContext } from 'react';
 import {
-  Dimensions,
   Image,
   ScrollView,
   StyleSheet,
@@ -20,8 +19,6 @@ import CarouselPictures from './CarouselPictures';
 
 interface Props
   extends StackScreenProps<RootAddPropertyStackNavigation, 'SummaryScreen'> {}
-
-const { width: windowWidth } = Dimensions.get('window');
 
 const UploadPropertyPictures = ({ navigation }: Props) => {
   const { width } = useWindowDimensions();
@@ -94,6 +91,7 @@ const UploadPropertyPictures = ({ navigation }: Props) => {
           <View style={{ paddingBottom: 15 }}>
             {tempUri !== '' ? (
               <Image
+                resizeMode="contain"
                 style={{ width: width * 0.9, height: 230, borderRadius: 5 }}
                 source={{ uri: tempUri }}
               />
@@ -118,8 +116,8 @@ const UploadPropertyPictures = ({ navigation }: Props) => {
             <Carousel
               data={tempUris!}
               renderItem={({ item }: any) => <CarouselPictures item={item} />}
-              sliderWidth={windowWidth}
-              itemWidth={320}
+              sliderWidth={width}
+              itemWidth={width}
               inactiveSlideOpacity={0.8}
             />
           ) : null}

@@ -1,12 +1,15 @@
 import React from 'react';
-import { Image, View } from 'react-native';
+import { Image, useWindowDimensions, View } from 'react-native';
 
 const CarouselPictures = ({ item }: any) => {
+  const { width } = useWindowDimensions();
+
   return (
     <View style={{ paddingVertical: 10 }}>
       <Image
+        resizeMode="contain"
         style={{
-          width: 300,
+          width: width * 0.9,
           height: 200,
           borderRadius: 5,
         }}
