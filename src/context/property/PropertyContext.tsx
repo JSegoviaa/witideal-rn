@@ -1,5 +1,6 @@
 import React, { createContext, FC, useContext, useState } from 'react';
 import firestore from '@react-native-firebase/firestore';
+import storage from '@react-native-firebase/storage';
 import { rent } from '../../constant/action';
 import { mxn } from '../../constant/currency';
 import { lp } from '../../constant/gasType';
@@ -192,6 +193,14 @@ const PropertyProvider: FC = ({ children }) => {
   const [fileNames, setFileNames] = useState<any>([]);
 
   const uploadPicture = async () => {
+    await storage()
+      .ref(`witideal/${user?.uid}/thumb@1100_${fileName}`)
+      .putFile(tempUri);
+
+    const photo = await storage()
+      .ref(`witideal/${user?.uid}/thumb@1100_${fileName}`)
+      .getDownloadURL();
+
     console.log('Se subió una imagen');
   };
 
@@ -327,8 +336,8 @@ const PropertyProvider: FC = ({ children }) => {
 
   const uploadProperty = () => {
     //Esto sube las imágenes
-    uploadPicture();
-    uploadPictures();
+    // uploadPicture();
+    // uploadPictures();
 
     firestore().settings({ ignoreUndefinedProperties: true });
     //Esto sube el inmueble
