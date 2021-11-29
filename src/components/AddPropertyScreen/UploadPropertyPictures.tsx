@@ -1,16 +1,31 @@
-import React, { useContext, useState } from 'react';
-import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import React, { useContext } from 'react';
+import {
+  Dimensions,
+  Image,
+  ScrollView,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  useWindowDimensions,
+  View,
+} from 'react-native';
 import { launchImageLibrary } from 'react-native-image-picker';
 import { StackScreenProps } from '@react-navigation/stack';
 import Toast from 'react-native-toast-message';
+import Carousel from 'react-native-snap-carousel';
 import { PropertyContext } from '../../context/property/PropertyContext';
 import { appStyles } from '../../theme/appTheme';
 import { RootAddPropertyStackNavigation } from '../../navigation/AddPropertyStackNavigation';
+import CarouselPictures from './CarouselPictures';
 
 interface Props
   extends StackScreenProps<RootAddPropertyStackNavigation, 'SummaryScreen'> {}
 
+const { width: windowWidth } = Dimensions.get('window');
+
 const UploadPropertyPictures = ({ navigation }: Props) => {
+  const { width } = useWindowDimensions();
+
   const {
     tempUri,
     setTempUri,
@@ -72,52 +87,75 @@ const UploadPropertyPictures = ({ navigation }: Props) => {
   };
 
   return (
-    <View style={appStyles.container}>
-      <View>
-        <Text style={styles.subtitle}>Foto principal</Text>
-        <TouchableOpacity
-          style={styles.background}
-          onPress={takePhotoFromGallery}>
-          <Text style={styles.subtitle}>
-            Selecciona la imagen principal de tu inmueble
-          </Text>
-          <Text style={styles.text}>Solo se subir una foto (obligatorio)</Text>
-        </TouchableOpacity>
-      </View>
-
-      <View>
-        <Text style={styles.subtitle}>Fotos del inmueble</Text>
-        <TouchableOpacity
-          style={styles.background}
-          onPress={takePhotosFromGallery}>
-          <Text style={styles.subtitle}>
-            Selcciona las fotos que quieres mostrar en tu inmueble
-          </Text>
-          <Text style={styles.text}>
-            Máximo 30 fotos.
-            {tempUris?.length! <= 30
-              ? ` Haz seleccionado ${tempUris?.length}`
-              : null}
-          </Text>
-        </TouchableOpacity>
-      </View>
-
-      {tempUris?.length! <= 30 ? (
-        <View style={{ alignItems: 'center' }}>
-          <TouchableOpacity onPress={handleNext} style={appStyles.btnPrimary}>
-            <Text
-              style={{
-                color: '#fff',
-                fontSize: 17,
-                fontWeight: '700',
-                textAlign: 'center',
-              }}>
-              Continuar
+    <ScrollView>
+      <View style={appStyles.container}>
+        <View>
+          <Text style={styles.subtitle}>Foto principal</Text>
+          <View style={{ paddingBottom: 15 }}>
+            {tempUri !== '' ? (
+              <Image
+                style={{ width: width * 0.9, height: 230, borderRadius: 5 }}
+                source={{ uri: tempUri }}
+              />
+            ) : null}
+          </View>
+          <TouchableOpacity
+            style={styles.background}
+            onPress={takePhotoFromGallery}>
+            <Text style={styles.subtitle}>
+              Selecciona la imagen principal de tu inmueble
+            </Text>
+            <Text style={styles.text}>
+              Solo se puede subir una foto (obligatorio)
             </Text>
           </TouchableOpacity>
         </View>
-      ) : null}
-    </View>
+
+        <View>
+          <Text style={styles.subtitle}>Fotos del inmueble</Text>
+
+          {tempUris?.length! > 0 && tempUris?.length! <= 30 ? (
+            <Carousel
+              data={tempUris!}
+              renderItem={({ item }: any) => <CarouselPictures item={item} />}
+              sliderWidth={windowWidth}
+              itemWidth={320}
+              inactiveSlideOpacity={0.8}
+            />
+          ) : null}
+
+          <TouchableOpacity
+            style={styles.background}
+            onPress={takePhotosFromGallery}>
+            <Text style={styles.subtitle}>
+              Selcciona las fotos que quieres mostrar en tu inmueble
+            </Text>
+            <Text style={styles.text}>
+              Máximo 30 fotos.
+              {tempUris?.length! <= 30
+                ? ` Haz seleccionado ${tempUris?.length}`
+                : null}
+            </Text>
+          </TouchableOpacity>
+        </View>
+
+        {tempUris?.length! <= 30 ? (
+          <View style={{ alignItems: 'center' }}>
+            <TouchableOpacity onPress={handleNext} style={appStyles.btnPrimary}>
+              <Text
+                style={{
+                  color: '#fff',
+                  fontSize: 17,
+                  fontWeight: '700',
+                  textAlign: 'center',
+                }}>
+                Continuar
+              </Text>
+            </TouchableOpacity>
+          </View>
+        ) : null}
+      </View>
+    </ScrollView>
   );
 };
 
@@ -135,6 +173,7 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontWeight: '700',
     paddingVertical: 10,
+    paddingHorizontal: 5,
     textAlign: 'center',
   },
   text: {
