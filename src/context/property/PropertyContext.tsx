@@ -189,8 +189,8 @@ const PropertyProvider: FC = ({ children }) => {
   );
   const [tempUri, setTempUri] = useState<string>('');
   const [fileName, setFileName] = useState<string | undefined>('');
-  const [tempUris, setTempUris] = useState<any>();
-  const [fileNames, setFileNames] = useState<any>();
+  const [tempUris, setTempUris] = useState<any>([]);
+  const [fileNames, setFileNames] = useState<any>([]);
 
   const uploadPicture = async () => {
     console.log('Se subió una imagen');
@@ -198,6 +198,65 @@ const PropertyProvider: FC = ({ children }) => {
 
   const uploadPictures = async () => {
     console.log('Se subieron muchas imágenes');
+  };
+
+  const cleanState = () => {
+    setBankSale(undefined);
+    setTrailerPlat(undefined);
+    setWater(undefined);
+    setElectricity(undefined);
+    setInsideIndust(undefined);
+    setFireAlarm(undefined);
+    setInsideCorp(undefined);
+    setInsideMall(undefined);
+    setPetFriendly(undefined);
+    setGarden(undefined);
+    setCistern(undefined);
+    setEquipment(undefined);
+    setOnstreet(undefined);
+    setServiceRoom(undefined);
+    setLaundry(undefined);
+    setCellar(undefined);
+    setBalcony(undefined);
+    setTerrace(undefined);
+    setRoofGarden(undefined);
+    setFamilyRoom(undefined);
+    setStudy(undefined);
+    setTvRoom(undefined);
+    setCarElevator(undefined);
+    setWireFence(undefined);
+    setElectricFence(undefined);
+    setCctv(undefined);
+    setAlarm(undefined);
+    setJanitor(undefined);
+    setSecurity247(undefined);
+    setPool(undefined);
+    setSportsField(undefined);
+    setSwimmingLane(undefined);
+    setBussinessCentre(undefined);
+    setPlayground(undefined);
+    setPartyRoom(undefined);
+    setGym(undefined);
+    setElevator(undefined);
+    setAirConditioner(undefined);
+    setIsMantainceIncluded(undefined);
+    setIsExactLoaction(true);
+    setActionSelected(false);
+    setClosedStreet(undefined);
+    setSharesCom(true);
+    setBankSale(false);
+    setIsCommercial(false);
+    setPropertyTypeSelected(false);
+    setAdministrative_area_level_1('');
+    setCountry('');
+    setLocality('');
+    setTempUri('');
+    setFileName('');
+    setTempUris([]);
+    setFileNames([]);
+    setCoordinates({ latitude: 0, longitude: 0 });
+
+    console.log('Aquí se limpia el state');
   };
 
   const uploadToUserInfo = async () => {
@@ -229,15 +288,14 @@ const PropertyProvider: FC = ({ children }) => {
   };
 
   const uploadProperty = () => {
-    setUploadingProperty(true);
     //Esto sube las imágenes
     uploadPicture();
     uploadPictures();
 
     firestore().settings({ ignoreUndefinedProperties: true });
     //Esto sube el inmueble
-    uploadToUserInfo();
-    setUploadingProperty(false);
+    // uploadToUserInfo();
+    cleanState();
   };
 
   const specificData = {
