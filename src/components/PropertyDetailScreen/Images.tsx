@@ -7,7 +7,6 @@ import {
   View,
 } from 'react-native';
 import Share from 'react-native-share';
-import Icon from 'react-native-vector-icons/Ionicons';
 import urlTranslator from '../../helpers/urlTranslator';
 import { useProperty } from '../../hooks/useProperty';
 import Fab from '../ui/Fab';
