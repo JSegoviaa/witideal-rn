@@ -20,8 +20,8 @@ interface Props
   extends StackScreenProps<RootAddPropertyStackNavigation, 'SummaryScreen'> {}
 
 const Summary = ({ navigation }: Props) => {
-  const handleConfirm = () => {
-    uploadProperty();
+  const handleFinish = () => {
+    cleanState();
     navigation.push('FinishScreen');
   };
 
@@ -39,7 +39,7 @@ const Summary = ({ navigation }: Props) => {
     postal_code,
     specificData,
     tempUri,
-    uploadProperty,
+    cleanState,
   } = useContext(PropertyContext);
 
   const { width } = useWindowDimensions();
@@ -48,9 +48,7 @@ const Summary = ({ navigation }: Props) => {
     <ScrollView>
       <View style={appStyles.container}>
         <View style={{ marginTop: 20 }}>
-          <Text style={styles.title}>
-            Confirme la información de su inmueble
-          </Text>
+          <Text style={styles.title}>Su inmueble se ha publicado</Text>
         </View>
 
         <View style={{ paddingVertical: 30 }}>
@@ -722,9 +720,7 @@ const Summary = ({ navigation }: Props) => {
         <Text style={styles.text}>Latitud: {coordinates.latitude}</Text>
         <Text style={styles.text}>Longitud: {coordinates.longitude}</Text>
         <View style={{ alignSelf: 'center' }}>
-          <TouchableOpacity
-            onPress={handleConfirm}
-            style={appStyles.btnPrimary}>
+          <TouchableOpacity onPress={handleFinish} style={appStyles.btnPrimary}>
             <Text style={styles.textBtn}>Confirmar</Text>
           </TouchableOpacity>
         </View>

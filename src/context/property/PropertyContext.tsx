@@ -193,29 +193,36 @@ const PropertyProvider: FC = ({ children }) => {
   const [fileNames, setFileNames] = useState<any>([]);
 
   const uploadPicture = async (pid: string) => {
-    await storage()
-      .ref(`witideal/${user?.uid}/thumb@1100_${fileName}`)
-      .putFile(tempUri);
+    try {
+      await storage()
+        .ref(`witideal/${user?.uid}/${pid}/thumb@1100_${fileName}`)
+        .putFile(tempUri);
 
-    const photo = await storage()
-      .ref(`witideal/${user?.uid}/thumb@1100_${fileName}`)
-      .getDownloadURL();
+      const photo = await storage()
+        .ref(`witideal/${user?.uid}/${pid}/thumb@1100_${fileName}`)
+        .getDownloadURL();
 
-    await firestore()
-      .collection('production')
-      .doc('Users')
-      .collection(user?.uid!)
-      .doc('properties')
-      .collection('ownedProperties')
-      .doc(pid)
-      .update({
-        principalPhotoPath: photo,
-      });
-
-    console.log('Se subió una imagen');
+      await firestore()
+        .collection('production')
+        .doc('Users')
+        .collection(user?.uid!)
+        .doc('properties')
+        .collection('ownedProperties')
+        .doc(pid)
+        .update({
+          principalPhotoPath: photo,
+        });
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   const uploadPictures = async () => {
+    try {
+    } catch (error) {
+      console.log(error);
+    }
+
     console.log('Se subieron muchas imágenes');
   };
 
@@ -460,6 +467,7 @@ const PropertyProvider: FC = ({ children }) => {
   return (
     <PropertyContext.Provider
       value={{
+        cleanState,
         uploadPicture,
         uploadingProperty,
         price,

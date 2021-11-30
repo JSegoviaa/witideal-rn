@@ -204,5 +204,6 @@ export interface ContextProps {
   setFileNames: any;
   uploadProperty: () => void;
   uploadPicture: (pid: string) => Promise<void>;
+  cleanState: () => void;
   specificData: SpecificData;
 }
