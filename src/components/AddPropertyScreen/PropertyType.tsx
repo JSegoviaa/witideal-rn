@@ -48,6 +48,7 @@ const PropertyType = ({ navigation }: Props) => {
     setIsCommercial,
     propertyTypeSelected,
     setPropertyTypeSelected,
+    action,
     setAction,
     price,
     onChange,
@@ -84,7 +85,24 @@ const PropertyType = ({ navigation }: Props) => {
       });
     }
 
-    if (price.trim()) {
+    if (action === buy && parseInt(price) < 500000) {
+      Toast.show({
+        type: 'error',
+        text1: 'Ese precio no corresponde a una venta',
+      });
+    }
+
+    if (action === rent && parseInt(price) > 500000) {
+      Toast.show({
+        type: 'error',
+        text1: 'Ese precio no corresponde a una renta',
+      });
+    }
+
+    if (
+      (price.trim() && action === buy && parseInt(price) >= 500000) ||
+      (action === rent && parseInt(price) <= 500000)
+    ) {
       navigation.navigate('UbicationScreen');
     }
   };
