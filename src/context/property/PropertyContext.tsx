@@ -114,7 +114,7 @@ const PropertyProvider: FC = ({ children }) => {
     useState('');
   const [country, setCountry] = useState('');
   const [locality, setLocality] = useState('');
-  const [isExactLoaction, setIsExactLoaction] = useState(true);
+  const [isExactLocation, setIsExactLocation] = useState(true);
 
   const [locationInBuilding, setLocationInBuilding] = useState(interior);
   const [preservationState, setPreservationState] = useState(excelente);
@@ -266,7 +266,7 @@ const PropertyProvider: FC = ({ children }) => {
     setElevator(undefined);
     setAirConditioner(undefined);
     setIsMantainceIncluded(undefined);
-    setIsExactLoaction(true);
+    setIsExactLocation(true);
     setActionSelected(false);
     setClosedStreet(undefined);
     setSharesCom(true);
@@ -448,7 +448,7 @@ const PropertyProvider: FC = ({ children }) => {
     street_number,
     int_number,
     isCommercial,
-    isExactLoaction,
+    isExactLocation,
     locality,
     postal_code,
     route,
@@ -500,9 +500,9 @@ const PropertyProvider: FC = ({ children }) => {
         setCountry,
         locality,
         setLocality,
-        isExactLoaction,
+        isExactLocation,
         setAntiquity,
-        setIsExactLoaction,
+        setIsExactLocation,
         setLocationInBuilding,
         setPreservationState,
         setKitchen,

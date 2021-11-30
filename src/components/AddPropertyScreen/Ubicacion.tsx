@@ -27,8 +27,8 @@ const Ubicacion = ({ navigation }: Props) => {
     setCountry,
     locality,
     setLocality,
-    isExactLoaction,
-    setIsExactLoaction,
+    isExactLocation,
+    setIsExactLocation,
     onChange,
   } = useContext(PropertyContext);
 
@@ -89,7 +89,7 @@ const Ubicacion = ({ navigation }: Props) => {
         <View style={{ paddingVertical: 9 }}>
           <BouncyCheckbox
             size={25}
-            isChecked={isExactLoaction}
+            isChecked={isExactLocation}
             fillColor="#3F19F9"
             unfillColor="#FFFFFF"
             text="Ubicación exacta"
@@ -99,7 +99,7 @@ const Ubicacion = ({ navigation }: Props) => {
               textDecorationLine: 'none',
             }}
             onPress={() => {
-              setIsExactLoaction(!isExactLoaction);
+              setIsExactLocation(!isExactLocation);
             }}
           />
         </View>

@@ -148,10 +148,10 @@ export interface ContextProps {
   setCountry: Dispatch<SetStateAction<string>>;
   locality: string;
   setLocality: Dispatch<SetStateAction<string>>;
-  isExactLoaction: boolean;
+  isExactLocation: boolean;
   setTrailerPlat: Dispatch<SetStateAction<boolean | undefined>>;
   setAntiquity: Dispatch<SetStateAction<string>>;
-  setIsExactLoaction: Dispatch<SetStateAction<boolean>>;
+  setIsExactLocation: Dispatch<SetStateAction<boolean>>;
   setLocationInBuilding: Dispatch<SetStateAction<string>>;
   setPreservationState: Dispatch<SetStateAction<string>>;
   setKitchen: Dispatch<SetStateAction<string>>;
