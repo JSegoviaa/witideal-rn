@@ -52,7 +52,6 @@ const MyPropertiesListItem = ({ inmueble }: any) => {
             inmueble.id,
           );
           deleteMyProperty(inmueble.id, inmueble.data.uId);
-          navigation.push('MyPropertiesScreen');
         },
       },
     ]);
