@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import {
   Image,
   ImageBackground,
+  Linking,
   ScrollView,
   Text,
   TouchableOpacity,
@@ -15,8 +16,16 @@ interface Props
   extends StackScreenProps<RootSearchStackNavigation, 'HomeScreen'> {}
 
 const image = { uri: 'https://i.imgur.com/QxTLA6l.jpg' };
+const link = 'https://witideal.com/como-funciona';
 
-const HomeScreen = ({navigation}:Props) => {
+const HomeScreen = ({ navigation }: Props) => {
+  const handlePress = useCallback(async () => {
+    const supported = await Linking.canOpenURL(link);
+
+    if (supported) {
+      await Linking.openURL(link);
+    }
+  }, [link]);
 
   return (
     <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
@@ -48,7 +57,9 @@ const HomeScreen = ({navigation}:Props) => {
           <Text style={{ color: '#32FFD2', fontSize: 18 }}>
             te ayudamos a encontrar el inmueble que necesitas
           </Text>
-
+          <TouchableOpacity onPress={handlePress}>
+            <Text>Como funciona</Text>
+          </TouchableOpacity>
           <View
             style={{
               alignItems: 'flex-end',
