@@ -192,7 +192,7 @@ const PropertyProvider: FC = ({ children }) => {
   const [tempUris, setTempUris] = useState<any>([]);
   const [fileNames, setFileNames] = useState<any>([]);
 
-  const uploadPicture = async () => {
+  const uploadPicture = async (pid: string) => {
     await storage()
       .ref(`witideal/${user?.uid}/thumb@1100_${fileName}`)
       .putFile(tempUri);
@@ -200,6 +200,17 @@ const PropertyProvider: FC = ({ children }) => {
     const photo = await storage()
       .ref(`witideal/${user?.uid}/thumb@1100_${fileName}`)
       .getDownloadURL();
+
+    await firestore()
+      .collection('production')
+      .doc('Users')
+      .collection(user?.uid!)
+      .doc('properties')
+      .collection('ownedProperties')
+      .doc(pid)
+      .update({
+        principalPhotoPath: photo,
+      });
 
     console.log('Se subió una imagen');
   };
@@ -335,14 +346,8 @@ const PropertyProvider: FC = ({ children }) => {
   };
 
   const uploadProperty = () => {
-    //Esto sube las imágenes
-    // uploadPicture();
-    // uploadPictures();
-
     firestore().settings({ ignoreUndefinedProperties: true });
-    //Esto sube el inmueble
-    // uploadToUserInfo();
-    cleanState();
+    uploadToUserInfo();
   };
 
   const specificData = {
@@ -455,6 +460,7 @@ const PropertyProvider: FC = ({ children }) => {
   return (
     <PropertyContext.Provider
       value={{
+        uploadPicture,
         uploadingProperty,
         price,
         street_number,

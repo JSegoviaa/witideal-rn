@@ -16,12 +16,16 @@ import { PropertyContext } from '../../context/property/PropertyContext';
 import { appStyles } from '../../theme/appTheme';
 import { RootAddPropertyStackNavigation } from '../../navigation/AddPropertyStackNavigation';
 import CarouselPictures from './CarouselPictures';
+import { useLastProperty } from '../../hooks/useLastProperty';
+import { AuthContext } from '../../context/auth/AuthContext';
 
 interface Props
   extends StackScreenProps<RootAddPropertyStackNavigation, 'SummaryScreen'> {}
 
 const UploadPropertyPictures = ({ navigation }: Props) => {
   const { width } = useWindowDimensions();
+  const { user } = useContext(AuthContext);
+  const { lastProperty } = useLastProperty(user?.uid!);
 
   const {
     tempUri,
@@ -30,6 +34,7 @@ const UploadPropertyPictures = ({ navigation }: Props) => {
     tempUris,
     setTempUris,
     setFileNames,
+    uploadPicture,
   } = useContext(PropertyContext);
 
   const takePhotoFromGallery = () => {
@@ -79,6 +84,7 @@ const UploadPropertyPictures = ({ navigation }: Props) => {
       });
     }
     if (tempUri !== '') {
+      uploadPicture(lastProperty[0].id);
       navigation.navigate('SummaryScreen');
     }
   };

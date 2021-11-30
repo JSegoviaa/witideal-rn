@@ -96,9 +96,13 @@ const SpecificData = ({ navigation }: Props) => {
     setGasType,
     setPetFriendly,
     specificData,
+    uploadProperty,
   } = useContext(PropertyContext);
 
-  const handleNext = () => navigation.navigate('UploadPropertyPicTureScreen');
+  const handleNext = () => {
+    uploadProperty();
+    navigation.navigate('UploadPropertyPicTureScreen');
+  };
 
   return (
     <ScrollView>

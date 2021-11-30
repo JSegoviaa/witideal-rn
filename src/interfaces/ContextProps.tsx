@@ -203,5 +203,6 @@ export interface ContextProps {
   setTempUris: any;
   setFileNames: any;
   uploadProperty: () => void;
+  uploadPicture: (pid: string) => Promise<void>;
   specificData: SpecificData;
 }
