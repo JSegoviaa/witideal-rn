@@ -217,8 +217,33 @@ const PropertyProvider: FC = ({ children }) => {
     }
   };
 
-  const uploadPictures = async () => {
+  const uploadPictures = async (pid: string) => {
     try {
+      const photos: string[] = [];
+      tempUris.forEach(async (uri: string, i: number) => {
+        await storage()
+          .ref(`witideal/${user?.uid}/${pid}/extras/thumb@1100_${i}`)
+          .putFile(uri);
+
+        const photo = await storage()
+          .ref(`witideal/${user?.uid}/${pid}/extras/thumb@1100_${i}`)
+          .getDownloadURL();
+
+        photos.push(photo);
+
+        console.log(photos, 'esto debe ser un arreglo con fotos');
+
+        await firestore()
+          .collection('production')
+          .doc('Users')
+          .collection(user?.uid!)
+          .doc('properties')
+          .collection('ownedProperties')
+          .doc(pid)
+          .update({
+            photos: { extras: photos },
+          });
+      });
     } catch (error) {
       console.log(error);
     }
@@ -469,6 +494,7 @@ const PropertyProvider: FC = ({ children }) => {
       value={{
         cleanState,
         uploadPicture,
+        uploadPictures,
         uploadingProperty,
         price,
         street_number,

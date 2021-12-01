@@ -33,8 +33,8 @@ const UploadPropertyPictures = ({ navigation }: Props) => {
     setFileName,
     tempUris,
     setTempUris,
-    setFileNames,
     uploadPicture,
+    uploadPictures,
   } = useContext(PropertyContext);
 
   const takePhotoFromGallery = () => {
@@ -70,7 +70,6 @@ const UploadPropertyPictures = ({ navigation }: Props) => {
           });
         }
         setTempUris(resp.assets?.map(asset => asset.uri));
-        setFileNames(resp.assets?.map(asset => asset.fileName));
       },
     );
   };
@@ -85,6 +84,7 @@ const UploadPropertyPictures = ({ navigation }: Props) => {
     }
     if (tempUri !== '') {
       uploadPicture(lastProperty[0].id);
+      uploadPictures(lastProperty[0].id);
       navigation.navigate('SummaryScreen');
     }
   };
