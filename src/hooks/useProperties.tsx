@@ -37,9 +37,8 @@ export const useProperties = (
       // .where('specificData.petFriendly', '==', petFriendly)
       // .where('specificData.preservationState', '==', conservacion);
 
-      const list: DocumentData = [];
-
       return data.onSnapshot(querySnapshot => {
+        const list: DocumentData = [];
         querySnapshot.forEach(doc => {
           if (doc.exists) {
             const data = doc.data();

@@ -16,8 +16,8 @@ export const useSubscription = (uid: string) => {
         .doc(uid)
         .collection('subscriptions');
 
-      const list: DocumentData = [];
       return data.onSnapshot(querySnapshot => {
+        const list: DocumentData = [];
         querySnapshot.forEach(doc => {
           if (doc.exists) {
             const data = doc.data();

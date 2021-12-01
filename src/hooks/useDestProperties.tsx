@@ -18,9 +18,9 @@ export const useDestProperties = (uid: string) => {
         .doc('properties')
         .collection('ownedProperties')
         .where('isDestProperty', '==', true);
-      const list: DocumentData = [];
 
       return data.onSnapshot(querySnapshot => {
+        const list: DocumentData = [];
         querySnapshot.forEach(doc => {
           if (doc.exists) {
             const data = doc.data();

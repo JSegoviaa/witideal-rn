@@ -19,9 +19,9 @@ export const useLastProperty = (uid: string) => {
         .collection('ownedProperties')
         .orderBy('uploadDate', 'desc')
         .limit(1);
-      const list: DocumentData = [];
 
       return data.onSnapshot(querySnapshot => {
+        const list: DocumentData = [];
         querySnapshot.forEach(doc => {
           if (doc.exists) {
             const data = doc.data();
