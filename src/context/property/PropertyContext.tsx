@@ -231,8 +231,6 @@ const PropertyProvider: FC = ({ children }) => {
 
         photos.push(photo);
 
-        console.log(photos, 'esto debe ser un arreglo con fotos');
-
         await firestore()
           .collection('production')
           .doc('Users')
@@ -247,8 +245,6 @@ const PropertyProvider: FC = ({ children }) => {
     } catch (error) {
       console.log(error);
     }
-
-    console.log('Se subieron muchas imágenes');
   };
 
   const cleanState = () => {
@@ -380,6 +376,7 @@ const PropertyProvider: FC = ({ children }) => {
   const uploadProperty = () => {
     firestore().settings({ ignoreUndefinedProperties: true });
     uploadToUserInfo();
+    uploadToAllProperties();
   };
 
   const specificData = {

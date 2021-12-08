@@ -150,7 +150,7 @@ const MyPropertiesListItem = ({ inmueble }: any) => {
               </TouchableOpacity>
             ) : null}
 
-            {isEnable && !isDestProperty ? (
+            {isEnable && !isDestProperty && role ? (
               <TouchableOpacity
                 style={styles.btnDest}
                 onPress={handleDestacado}>
